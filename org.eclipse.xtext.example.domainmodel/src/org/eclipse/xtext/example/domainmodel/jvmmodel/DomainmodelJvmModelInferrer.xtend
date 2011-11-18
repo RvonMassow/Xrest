@@ -40,9 +40,8 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private createJSONById(JvmGenericType t, EObject e) {
-		val ref = tRefs.createTypeRef(t) // createJvmAnyTypeReference
-		ref.type = t
-		toMethod(e, '''get«t.simpleName»AsJSON'''.toString, ref) [
+		val ref = tRefs.createTypeRef(t)
+		e.toMethod('''get«t.simpleName»AsJSON'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")
@@ -87,7 +86,7 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def createGetAnnotation(EObject it) {
-		toAnnotation("javax.ws.rs.GET")
+		toAnnotation(it, "javax.ws.rs.GET")
 	}
 
 	def createPathParamAnnotation(EObject it, String name) {

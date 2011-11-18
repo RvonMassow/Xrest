@@ -98,7 +98,6 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
     {
       JvmParameterizedTypeReference _createTypeRef = this.tRefs.createTypeRef(t);
       final JvmParameterizedTypeReference ref = _createTypeRef;
-      ref.setType(t);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("get");
       String _simpleName = t.getSimpleName();
