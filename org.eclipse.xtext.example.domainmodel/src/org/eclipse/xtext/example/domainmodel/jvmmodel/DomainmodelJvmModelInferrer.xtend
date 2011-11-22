@@ -31,12 +31,14 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private toControllerClass(Entity e, JvmGenericType forType, IAcceptor acceptor) {
-		e.toClass(e.fullyQualifiedName.toString + "Controller") [
-			annotations += e.toAnnotation("javax.ws.rs.Path",
-				e.fullyQualifiedName.segments.map[toLowerCase].join("/")
-			)
-			members += createJSONById(forType, e)
-		]
+		if(e.name != null) {
+			e.toClass(e.fullyQualifiedName?.toString + "Controller") [
+				annotations += e.toAnnotation("javax.ws.rs.Path",
+					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
+				)
+				members += createJSONById(forType, e)
+			]
+		}
 	}
 
 	def private createJSONById(JvmGenericType t, EObject e) {
@@ -86,7 +88,7 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def createGetAnnotation(EObject it) {
-		toAnnotation(it, "javax.ws.rs.GET")
+		toAnnotation("javax.ws.rs.GET")
 	}
 
 	def createPathParamAnnotation(EObject it, String name) {
