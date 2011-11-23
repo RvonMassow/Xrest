@@ -9,8 +9,10 @@ package org.eclipse.xtext.example.domainmodel;
 
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.example.domainmodel.generator.DMGenerator;
+import org.eclipse.xtext.example.domainmodel.generator.FixedJvmModelGenerator;
 import org.eclipse.xtext.example.domainmodel.valueconverter.DomainmodelValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 
 /**
  * used to register components to be used within the IDE.
@@ -25,5 +27,9 @@ public class DomainmodelRuntimeModule extends AbstractDomainmodelRuntimeModule {
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return DMGenerator.class;
+	}
+
+	public Class<? extends JvmModelGenerator> bindJvmModelGenerator() {
+		return FixedJvmModelGenerator.class;
 	}
 }

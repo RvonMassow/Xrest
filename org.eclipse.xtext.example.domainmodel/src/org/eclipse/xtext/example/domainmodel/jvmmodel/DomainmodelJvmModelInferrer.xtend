@@ -14,6 +14,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.common.types.JvmAnnotationType
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	
@@ -56,35 +57,50 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	def private toEntityClass(Entity e, IAcceptor<JvmDeclaredType> acceptor) {
 		e.toClass( e.fullyQualifiedName ) [
 			documentation = e.documentation
+			annotations += e.createEntityAnnotation
 			if (e.superType != null)
 				superTypes += e.superType.cloneWithProxies
 			val id = "id"
 			if(! e.features.exists[name == id]) {
 				val intType = tRefs.getTypeForName(typeof(int), e)
-				members += toField(id, intType)
+				members += toField(id, intType) [
+					annotations += e.createIdAnnotation()
+				]
 				members += toGetter(id, intType)
 				members += toSetter(id, intType)
 			}
-			for ( f : e.features ) {
-				switch f {
-					Property : {
-						members += f.toField(f.name, f.type)
-						members += f.toGetter(f.name, f.type)
-						members += f.toSetter(f.name, f.type)
-					}
-			
-					Operation : {
-						members += f.toMethod(f.name, f.type) [
-							documentation = f.documentation
-							for (p : f.params) {
-								parameters += p.toParameter(p.name, p.parameterType)
-							}
-							body = f.body
-						]
-					}
+			generateFeatures(e)
+		]
+	}
+
+	def generateFeatures(JvmGenericType it, Entity e) {
+		for ( f : e.features ) {
+			switch f {
+				Property : {
+					members += f.toField(f.name, f.type)
+					members += f.toGetter(f.name, f.type)
+					members += f.toSetter(f.name, f.type)
+				}
+		
+				Operation : {
+					members += f.toMethod(f.name, f.type) [
+						documentation = f.documentation
+						for (p : f.params) {
+							parameters += p.toParameter(p.name, p.parameterType)
+						}
+						body = f.body
+					]
 				}
 			}
-		]
+		}
+	}
+
+	def createIdAnnotation(EObject it) {
+		toAnnotation("javax.persistence.Id")
+	}
+
+	def createEntityAnnotation(EObject it) {
+		toAnnotation("javax.persistence.Entity")
 	}
 
 	def createGetAnnotation(EObject it) {
