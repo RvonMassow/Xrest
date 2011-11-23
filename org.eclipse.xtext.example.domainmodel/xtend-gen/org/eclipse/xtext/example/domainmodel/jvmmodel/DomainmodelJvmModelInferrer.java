@@ -1,10 +1,8 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel;
 
 import com.google.inject.Inject;
-import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
@@ -14,14 +12,13 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
-import org.eclipse.xtext.example.domainmodel.jvmmodel.TypesBuilderExtensions;
+import org.eclipse.xtext.example.domainmodel.jvmmodel.DMControllerGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.IAcceptor;
@@ -32,18 +29,13 @@ import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
-  
-  @Inject
-  private TypesBuilderExtensions _typesBuilderExtensions;
   
   @Inject
   private IQualifiedNameProvider _iQualifiedNameProvider;
@@ -52,92 +44,18 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   private TypesFactory _typesFactory;
   
   @Inject
-  private TypeReferences tRefs;
+  private DMControllerGenerator _dMControllerGenerator;
+  
+  @Inject
+  private TypeReferences _typeReferences;
   
   protected void _infer(final Entity e, final IAcceptor<JvmDeclaredType> acceptor, final boolean prelinkingPhase) {
       JvmGenericType _entityClass = this.toEntityClass(e, acceptor);
       final JvmGenericType entityClass = _entityClass;
       acceptor.accept(entityClass);
-      JvmGenericType _controllerClass = this.toControllerClass(e, entityClass, acceptor);
+      JvmGenericType _controllerClass = this._dMControllerGenerator.toControllerClass(e, entityClass, acceptor);
       final JvmGenericType controllerClass = _controllerClass;
       acceptor.accept(controllerClass);
-  }
-  
-  private JvmGenericType toControllerClass(final Entity e, final JvmGenericType forType, final IAcceptor acceptor) {
-    JvmGenericType _xifexpression = null;
-    String _name = e.getName();
-    boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_name, null);
-    if (_operator_notEquals) {
-      QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
-      String _string = _fullyQualifiedName==null?(String)null:_fullyQualifiedName.toString();
-      String _operator_plus = StringExtensions.operator_plus(_string, "Controller");
-      final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-          public void apply(final JvmGenericType it) {
-            {
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              QualifiedName _fullyQualifiedName_1 = DomainmodelJvmModelInferrer.this._iQualifiedNameProvider.getFullyQualifiedName(e);
-              List<String> _segments = _fullyQualifiedName_1.getSegments();
-              final Function1<String,String> _function = new Function1<String,String>() {
-                  public String apply(final String it) {
-                    String _lowerCase = it.toLowerCase();
-                    return _lowerCase;
-                  }
-                };
-              List<String> _map = ListExtensions.<String, String>map(_segments, _function);
-              String _join = IterableExtensions.join(_map, "/");
-              JvmAnnotationReference _annotation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(e, "javax.ws.rs.Path", _join);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-              EList<JvmMember> _members = it.getMembers();
-              JvmOperation _createJSONById = DomainmodelJvmModelInferrer.this.createJSONById(forType, e);
-              CollectionExtensions.<JvmOperation>operator_add(_members, _createJSONById);
-            }
-          }
-        };
-      JvmGenericType _class = this._jvmTypesBuilder.toClass(e, _operator_plus, _function);
-      _xifexpression = _class;
-    }
-    return _xifexpression;
-  }
-  
-  private JvmOperation createJSONById(final JvmGenericType t, final EObject e) {
-    JvmOperation _xblockexpression = null;
-    {
-      JvmParameterizedTypeReference _createTypeRef = this.tRefs.createTypeRef(t);
-      final JvmParameterizedTypeReference ref = _createTypeRef;
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("get");
-      String _simpleName = t.getSimpleName();
-      _builder.append(_simpleName, "");
-      _builder.append("AsJSON");
-      String _string = _builder.toString();
-      final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-          public void apply(final JvmOperation it) {
-            {
-              it.setVisibility(JvmVisibility.PUBLIC);
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _createGetAnnotation = DomainmodelJvmModelInferrer.this.createGetAnnotation(e);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _createProducesAnnotation = DomainmodelJvmModelInferrer.this.createProducesAnnotation(e, "application/json");
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
-              EList<JvmFormalParameter> _parameters = it.getParameters();
-              JvmTypeReference _typeForName = DomainmodelJvmModelInferrer.this.tRefs.getTypeForName(int.class, e);
-              final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
-                  public void apply(final JvmFormalParameter it) {
-                    EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
-                    JvmAnnotationReference _createPathParamAnnotation = DomainmodelJvmModelInferrer.this.createPathParamAnnotation(e, "id");
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _createPathParamAnnotation);
-                  }
-                };
-              JvmFormalParameter _parameter = DomainmodelJvmModelInferrer.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
-              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-            }
-          }
-        };
-      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, ref, _function);
-      _xblockexpression = (_method);
-    }
-    return _xblockexpression;
   }
   
   private JvmGenericType toEntityClass(final Entity e, final IAcceptor<JvmDeclaredType> acceptor) {
@@ -171,7 +89,7 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
             boolean _operator_not = BooleanExtensions.operator_not(_exists);
             if (_operator_not) {
               {
-                JvmTypeReference _typeForName = DomainmodelJvmModelInferrer.this.tRefs.getTypeForName(int.class, e);
+                JvmTypeReference _typeForName = DomainmodelJvmModelInferrer.this._typeReferences.getTypeForName(int.class, e);
                 final JvmTypeReference intType = _typeForName;
                 EList<JvmMember> _members = it.getMembers();
                 final Procedure1<JvmField> _function_1 = new Procedure1<JvmField>() {
@@ -263,21 +181,6 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   
   public JvmAnnotationReference createEntityAnnotation(final EObject it) {
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.persistence.Entity");
-    return _annotation;
-  }
-  
-  public JvmAnnotationReference createGetAnnotation(final EObject it) {
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.GET");
-    return _annotation;
-  }
-  
-  public JvmAnnotationReference createPathParamAnnotation(final EObject it, final String name) {
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.PathParam", name);
-    return _annotation;
-  }
-  
-  public JvmAnnotationReference createProducesAnnotation(final EObject it, final String mime) {
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.Produces", mime);
     return _annotation;
   }
   
