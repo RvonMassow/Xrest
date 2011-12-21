@@ -13,6 +13,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import com.google.common.collect.Lists
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -71,7 +72,9 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def createIdAnnotation(EObject it) {
-		toAnnotation("javax.persistence.Id")
+		Lists::newArrayList(
+			toAnnotation("javax.persistence.Id")
+		)
 	}
 
 	def createEntityAnnotation(EObject it) {

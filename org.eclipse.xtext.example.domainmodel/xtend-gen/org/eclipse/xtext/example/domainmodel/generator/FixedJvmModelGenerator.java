@@ -45,10 +45,10 @@ public class FixedJvmModelGenerator extends JvmModelGenerator {
           _builder.append(_serialize, "");
           {
             EList<JvmAnnotationValue> _values = a.getValues();
-            boolean hasAnyElements = false;
+            boolean _hasElements = false;
             for(final JvmAnnotationValue value : _values) {
-              if (!hasAnyElements) {
-                hasAnyElements = true;
+              if (!_hasElements) {
+                _hasElements = true;
                 _builder.append("(", "");
               } else {
                 _builder.appendImmediate(", ", "");
@@ -56,7 +56,7 @@ public class FixedJvmModelGenerator extends JvmModelGenerator {
               CharSequence _java = this.toJava(value, importManager);
               _builder.append(_java, "");
             }
-            if (hasAnyElements) {
+            if (_hasElements) {
               _builder.append(")", "");
             }
           }

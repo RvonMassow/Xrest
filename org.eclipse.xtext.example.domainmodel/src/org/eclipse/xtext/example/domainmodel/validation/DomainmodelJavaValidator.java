@@ -9,9 +9,12 @@ package org.eclipse.xtext.example.domainmodel.validation;
 
 import static com.google.common.collect.Lists.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.JavaReflectAccess;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
@@ -22,7 +25,12 @@ import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.validation.XbaseJavaValidator;
 
+import com.google.inject.Inject;
+
 public class DomainmodelJavaValidator extends XbaseJavaValidator {
+
+	@Inject 
+	private JavaReflectAccess jra;
 
     @Check
     public void checkTypeNameStartsWithCapital(Entity entity) {
@@ -44,6 +52,19 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
             		IssueCodes.INVALID_FEATURE_NAME, 
             		feature.getName());
         }
+    }
+
+    @Check
+    public void checkFeatureTypeCompatible(Feature feature) {
+    	JvmTypeReference type = feature.getType();
+    	Class<?> clazz = jra.getRawType(type.getType());
+    	if(!Serializable.class.isAssignableFrom(clazz)) {
+    		warning("Invalid type, must be primitive, subclass of java.io.Serializable or Entity itself", 
+            		DomainmodelPackage.Literals.FEATURE__TYPE,
+            		ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+            		IssueCodes.INVALID_FEATURE_TYPE,
+            		feature.getType().getQualifiedName());
+    	}
     }
     
     @Check

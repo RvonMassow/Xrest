@@ -51,14 +51,14 @@ public class DMControllerGenerator {
     boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_name, null);
     if (_operator_notEquals) {
       QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
-      String _string = _fullyQualifiedName==null?(String)null:_fullyQualifiedName.toString();
+      String _string = _fullyQualifiedName.toString();
       String _operator_plus = StringExtensions.operator_plus(_string, "Controller");
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             {
               EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              QualifiedName _fullyQualifiedName_1 = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
-              List<String> _segments = _fullyQualifiedName_1.getSegments();
+              QualifiedName _fullyQualifiedName = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
+              List<String> _segments = _fullyQualifiedName.getSegments();
               final Function1<String,String> _function = new Function1<String,String>() {
                   public String apply(final String it) {
                     String _lowerCase = it.toLowerCase();
@@ -122,42 +122,42 @@ public class DMControllerGenerator {
               JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
               final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
                   public void apply(final JvmFormalParameter it) {
-                    EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                     JvmAnnotationReference _createPathParamAnnotation = DMControllerGenerator.this.createPathParamAnnotation(e, "id");
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_2, _createPathParamAnnotation);
+                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createPathParamAnnotation);
                   }
                 };
               JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
               CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
               final Function1<ImportManager,CharSequence> _function_1 = new Function1<ImportManager,CharSequence>() {
                   public CharSequence apply(final ImportManager it) {
-                    CharSequence _xblockexpression_1 = null;
+                    CharSequence _xblockexpression = null;
                     {
                       JvmType _findDeclaredType = DMControllerGenerator.this._typeReferences.findDeclaredType("javax.persistence.EntityManager", e);
                       it.addImportFor(_findDeclaredType);
                       StringConcatenation _builder = new StringConcatenation();
                       _builder.append("EntityManager entityManager = _emf.createEntityManager();");
                       _builder.newLine();
-                      String _simpleName_1 = t.getSimpleName();
-                      _builder.append(_simpleName_1, "");
+                      String _simpleName = t.getSimpleName();
+                      _builder.append(_simpleName, "");
                       _builder.append(" ");
-                      String _simpleName_2 = t.getSimpleName();
-                      String _firstLower = StringExtensions.toFirstLower(_simpleName_2);
+                      String _simpleName_1 = t.getSimpleName();
+                      String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
                       _builder.append(_firstLower, "");
                       _builder.append(" = entityManager.find(");
-                      String _simpleName_3 = t.getSimpleName();
-                      _builder.append(_simpleName_3, "");
+                      String _simpleName_2 = t.getSimpleName();
+                      _builder.append(_simpleName_2, "");
                       _builder.append(".class, id);");
                       _builder.newLineIfNotEmpty();
                       _builder.append("return ");
-                      String _simpleName_4 = t.getSimpleName();
-                      String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_4);
+                      String _simpleName_3 = t.getSimpleName();
+                      String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_3);
                       _builder.append(_firstLower_1, "");
                       _builder.append(";");
                       _builder.newLineIfNotEmpty();
-                      _xblockexpression_1 = (_builder);
+                      _xblockexpression = (_builder);
                     }
-                    return _xblockexpression_1;
+                    return _xblockexpression;
                   }
                 };
               DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function_1);

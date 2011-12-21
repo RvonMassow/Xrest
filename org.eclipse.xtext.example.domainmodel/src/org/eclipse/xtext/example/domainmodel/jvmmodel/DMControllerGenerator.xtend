@@ -19,10 +19,10 @@ class DMControllerGenerator {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension TypesBuilderExtensions
 	@Inject extension TypeReferences
-	
+
 	def toControllerClass(Entity e, JvmGenericType forType, IAcceptor acceptor) {
 		if(e.name != null) {
-			e.toClass(e.fullyQualifiedName?.toString + "Controller") [
+			e.toClass(e.fullyQualifiedName.toString + "Controller") [
 				annotations += e.toAnnotation("javax.ws.rs.Path",
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
@@ -40,7 +40,7 @@ class DMControllerGenerator {
 
 	def private createJSONById(JvmGenericType t, EObject e) {
 		val ref = t.createTypeRef
-			e.toMethod('''get«t.simpleName»AsJSON'''.toString, ref) [
+		e.toMethod('''get«t.simpleName»AsJSON'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")

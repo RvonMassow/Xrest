@@ -20,4 +20,5 @@ public interface IssueCodes {
 
 	String MISSING_TYPE = PREFIX + "MissingType";
 
+	String INVALID_FEATURE_TYPE = PREFIX + "InvalidFeatureType";
 }
