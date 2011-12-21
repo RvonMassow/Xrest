@@ -1,0 +1,5 @@
+package foo {
+	entity Foo {
+		bla : String
+	}
+}
