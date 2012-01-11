@@ -14,6 +14,8 @@ import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import com.google.common.collect.Lists
+import java.util.List
+import org.eclipse.xtext.common.types.util.JavaReflectAccess
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -22,6 +24,8 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension TypesFactory
 	@Inject extension DMControllerGenerator
 	@Inject extension TypeReferences
+	@Inject extension TypesBuilderExtensions
+	@Inject extension JavaReflectAccess
 
 	def dispatch infer(Entity e, IAcceptor<JvmDeclaredType> acceptor, boolean prelinkingPhase) {
 		val entityClass = e.toEntityClass(acceptor)
@@ -42,7 +46,6 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				members += toField(id, intType) [
 					annotations += e.createIdAnnotation()
 				]
-				members += toGetter(id, intType)
 				members += toSetter(id, intType)
 			}
 			generateFeatures(e)
@@ -54,10 +57,14 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 			switch f {
 				Property : {
 					members += f.toField(f.name, f.type)
-					members += f.toGetter(f.name, f.type)
+					members += f.toGetter(f.name, f.type) [
+						if(typeof(List).isAssignableFrom(returnType.type.rawType)){
+							annotations += createOneToMany(e)
+						}
+					]
 					members += f.toSetter(f.name, f.type)
 				}
-		
+
 				Operation : {
 					members += f.toMethod(f.name, f.type) [
 						documentation = f.documentation
@@ -69,6 +76,10 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				}
 			}
 		}
+	}
+
+	def createOneToMany(EObject it) {
+		toAnnotation("javax.persistence.OneToMany")
 	}
 
 	def createIdAnnotation(EObject it) {

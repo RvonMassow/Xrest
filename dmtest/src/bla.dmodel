@@ -1,5 +1,13 @@
 package foo {
-	entity Foo {
-		bla : String
+	import java.util.List
+	entity Person {
+		address : List<Address>
+		
+//		op id() : int {
+//			bla.get(0).id
+//		}
+	}
+	
+	entity Address {
 	}
 }

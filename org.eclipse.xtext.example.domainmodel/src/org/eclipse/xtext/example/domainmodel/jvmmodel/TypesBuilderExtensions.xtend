@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.lib.Procedures
 import org.eclipse.xtext.common.types.JvmFormalParameter
+import org.eclipse.xtext.common.types.JvmOperation
 
 class TypesBuilderExtensions {
 
@@ -18,4 +19,10 @@ class TypesBuilderExtensions {
 		parameter
 	} 
 
+	def toGetter(EObject sourceElement, String name, JvmTypeReference typeRef, Procedures$Procedure1<JvmOperation> init) {
+		val getter = toGetter(sourceElement, name, typeRef)
+		if(name != null && init != null)
+			init.apply(getter)
+		getter
+	} 
 }

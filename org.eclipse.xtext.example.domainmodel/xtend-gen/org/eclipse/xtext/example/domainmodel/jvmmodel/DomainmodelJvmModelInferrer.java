@@ -3,6 +3,7 @@ package org.eclipse.xtext.example.domainmodel.jvmmodel;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
@@ -13,14 +14,17 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
+import org.eclipse.xtext.common.types.util.JavaReflectAccess;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.DMControllerGenerator;
+import org.eclipse.xtext.example.domainmodel.jvmmodel.TypesBuilderExtensions;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.IAcceptor;
@@ -50,6 +54,12 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   
   @Inject
   private TypeReferences _typeReferences;
+  
+  @Inject
+  private TypesBuilderExtensions _typesBuilderExtensions;
+  
+  @Inject
+  private JavaReflectAccess _javaReflectAccess;
   
   protected void _infer(final Entity e, final IAcceptor<JvmDeclaredType> acceptor, final boolean prelinkingPhase) {
       JvmGenericType _entityClass = this.toEntityClass(e, acceptor);
@@ -104,11 +114,8 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
                 JvmField _field = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toField(it, id, intType, _function_1);
                 CollectionExtensions.<JvmField>operator_add(_members, _field);
                 EList<JvmMember> _members_1 = it.getMembers();
-                JvmOperation _getter = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toGetter(it, id, intType);
-                CollectionExtensions.<JvmOperation>operator_add(_members_1, _getter);
-                EList<JvmMember> _members_2 = it.getMembers();
                 JvmOperation _setter = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toSetter(it, id, intType);
-                CollectionExtensions.<JvmOperation>operator_add(_members_2, _setter);
+                CollectionExtensions.<JvmOperation>operator_add(_members_1, _setter);
               }
             }
             DomainmodelJvmModelInferrer.this.generateFeatures(it, e);
@@ -136,7 +143,20 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
             EList<JvmMember> _members_1 = it.getMembers();
             String _name_1 = _property.getName();
             JvmTypeReference _type_1 = _property.getType();
-            JvmOperation _getter = this._jvmTypesBuilder.toGetter(_property, _name_1, _type_1);
+            final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+                public void apply(final JvmOperation it) {
+                  JvmTypeReference _returnType = it.getReturnType();
+                  JvmType _type = _returnType.getType();
+                  Class<? extends Object> _rawType = DomainmodelJvmModelInferrer.this._javaReflectAccess.getRawType(_type);
+                  boolean _isAssignableFrom = java.util.List.class.isAssignableFrom(_rawType);
+                  if (_isAssignableFrom) {
+                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                    JvmAnnotationReference _createOneToMany = DomainmodelJvmModelInferrer.this.createOneToMany(e);
+                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createOneToMany);
+                  }
+                }
+              };
+            JvmOperation _getter = this._typesBuilderExtensions.toGetter(_property, _name_1, _type_1, _function);
             CollectionExtensions.<JvmOperation>operator_add(_members_1, _getter);
             EList<JvmMember> _members_2 = it.getMembers();
             String _name_2 = _property.getName();
@@ -178,6 +198,11 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
     }
   }
   
+  public JvmAnnotationReference createOneToMany(final EObject it) {
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.persistence.OneToMany");
+    return _annotation;
+  }
+  
   public ArrayList<JvmAnnotationReference> createIdAnnotation(final EObject it) {
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.persistence.Id");
     ArrayList<JvmAnnotationReference> _newArrayList = Lists.<JvmAnnotationReference>newArrayList(_annotation);
@@ -192,8 +217,11 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   public void infer(final EObject e, final IAcceptor<JvmDeclaredType> acceptor, final boolean prelinkingPhase) {
     if (e instanceof Entity) {
       _infer((Entity)e, acceptor, prelinkingPhase);
-    } else {
+    } else if (e != null) {
       _infer(e, acceptor, prelinkingPhase);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e, acceptor, prelinkingPhase).toString());
     }
   }
 }
