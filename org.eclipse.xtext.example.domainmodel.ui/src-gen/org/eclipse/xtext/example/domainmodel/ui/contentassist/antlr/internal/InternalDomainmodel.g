@@ -3377,6 +3377,7 @@ rule__Property__Group__2
     }
 :
 	rule__Property__Group__2__Impl
+	rule__Property__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3399,6 +3400,99 @@ finally {
 }
 
 
+rule__Property__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getGroup_3()); }
+(rule__Property__Group_3__0)?
+{ after(grammarAccess.getPropertyAccess().getGroup_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__Property__Group_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group_3__0__Impl
+	rule__Property__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group_3__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getHyphenMinusGreaterThanSignKeyword_3_0()); }
+
+	'->' 
+
+{ after(grammarAccess.getPropertyAccess().getHyphenMinusGreaterThanSignKeyword_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Property__Group_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group_3__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group_3__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getMappedByAssignment_3_1()); }
+(rule__Property__MappedByAssignment_3_1)
+{ after(grammarAccess.getPropertyAccess().getMappedByAssignment_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -13867,6 +13961,25 @@ rule__Property__TypeAssignment_2
 (
 { before(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0()); }
 	ruleJvmTypeReference{ after(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__MappedByAssignment_3_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getMappedByPropertyCrossReference_3_1_0()); }
+(
+{ before(grammarAccess.getPropertyAccess().getMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getPropertyAccess().getMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1()); }
+)
+{ after(grammarAccess.getPropertyAccess().getMappedByPropertyCrossReference_3_1_0()); }
 )
 
 ;

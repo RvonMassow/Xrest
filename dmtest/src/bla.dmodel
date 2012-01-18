@@ -2,12 +2,9 @@ package foo {
 	import java.util.List
 	entity Person {
 		address : List<Address>
-		
-//		op id() : int {
-//			bla.get(0).id
-//		}
 	}
 	
 	entity Address {
+		person: Person -> Person.address
 	}
 }

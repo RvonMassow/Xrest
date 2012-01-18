@@ -980,11 +980,11 @@ protected class Feature_OperationParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Property ****************
  *
  * Property:
- * 	name=ValidID ":" type=JvmTypeReference;
+ * 	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?;
  *
  **/
 
-// name=ValidID ":" type=JvmTypeReference
+// name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?
 protected class Property_Group extends GroupToken {
 	
 	public Property_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -999,7 +999,8 @@ protected class Property_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Property_TypeAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Property_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Property_TypeAssignment_2(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -1113,6 +1114,88 @@ protected class Property_TypeAssignment_2 extends AssignmentToken  {
 		}	
 	}	
 }
+
+// ("->" mappedBy=[Property|QualifiedName])?
+protected class Property_Group_3 extends GroupToken {
+	
+	public Property_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getPropertyAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Property_MappedByAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "->"
+protected class Property_HyphenMinusGreaterThanSignKeyword_3_0 extends KeywordToken  {
+	
+	public Property_HyphenMinusGreaterThanSignKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPropertyAccess().getHyphenMinusGreaterThanSignKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Property_TypeAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// mappedBy=[Property|QualifiedName]
+protected class Property_MappedByAssignment_3_1 extends AssignmentToken  {
+	
+	public Property_MappedByAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPropertyAccess().getMappedByAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Property_HyphenMinusGreaterThanSignKeyword_3_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("mappedBy",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("mappedBy");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPropertyAccess().getMappedByPropertyCrossReference_3_1_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPropertyAccess().getMappedByPropertyCrossReference_3_1_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
 
 
 /************ end Rule Property ****************/

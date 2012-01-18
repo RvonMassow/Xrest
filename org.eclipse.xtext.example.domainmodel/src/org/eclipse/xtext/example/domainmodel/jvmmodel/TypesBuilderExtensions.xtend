@@ -7,6 +7,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.lib.Procedures
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmAnnotationReference
 
 class TypesBuilderExtensions {
 
@@ -24,5 +25,6 @@ class TypesBuilderExtensions {
 		if(name != null && init != null)
 			init.apply(getter)
 		getter
-	} 
+	}
+
 }

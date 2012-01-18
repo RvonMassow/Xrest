@@ -7,6 +7,8 @@ import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmAnnotationType;
+import org.eclipse.xtext.common.types.JvmAnnotationValue;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -14,7 +16,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.JavaReflectAccess;
@@ -45,9 +47,6 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   
   @Inject
   private IQualifiedNameProvider _iQualifiedNameProvider;
-  
-  @Inject
-  private TypesFactory _typesFactory;
   
   @Inject
   private DMControllerGenerator _dMControllerGenerator;
@@ -145,14 +144,36 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
             JvmTypeReference _type_1 = _property.getType();
             final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
-                  JvmTypeReference _returnType = it.getReturnType();
-                  JvmType _type = _returnType.getType();
-                  Class<? extends Object> _rawType = DomainmodelJvmModelInferrer.this._javaReflectAccess.getRawType(_type);
-                  boolean _isAssignableFrom = java.util.List.class.isAssignableFrom(_rawType);
-                  if (_isAssignableFrom) {
-                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                  {
                     JvmAnnotationReference _createOneToMany = DomainmodelJvmModelInferrer.this.createOneToMany(e);
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createOneToMany);
+                    final JvmAnnotationReference anno = _createOneToMany;
+                    Property _mappedBy = _property.getMappedBy();
+                    boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_mappedBy, null);
+                    if (_operator_notEquals) {
+                      {
+                        JvmStringAnnotationValue _createJvmStringAnnotationValue = TypesFactory.eINSTANCE.createJvmStringAnnotationValue();
+                        final JvmStringAnnotationValue annoVal = _createJvmStringAnnotationValue;
+                        JvmAnnotationType _annotation = anno.getAnnotation();
+                        EList<JvmMember> _members = _annotation.getMembers();
+                        final Function1<JvmMember,Boolean> _function = new Function1<JvmMember,Boolean>() {
+                            public Boolean apply(final JvmMember it) {
+                              String _simpleName = it.getSimpleName();
+                              boolean _operator_equals = ObjectExtensions.operator_equals(_simpleName, "mappedBy");
+                              return Boolean.valueOf(_operator_equals);
+                            }
+                          };
+                        JvmMember _findFirst = IterableExtensions.<JvmMember>findFirst(_members, _function);
+                        annoVal.setOperation(((JvmOperation) _findFirst));
+                        EList<String> _values = annoVal.getValues();
+                        Property _mappedBy_1 = _property.getMappedBy();
+                        String _name = _mappedBy_1.getName();
+                        CollectionExtensions.<String>operator_add(_values, _name);
+                        EList<JvmAnnotationValue> _values_1 = anno.getValues();
+                        CollectionExtensions.<JvmStringAnnotationValue>operator_add(_values_1, annoVal);
+                        EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                        CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, anno);
+                      }
+                    }
                   }
                 }
               };

@@ -1,10 +1,12 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
+import com.google.common.collect.Lists
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.common.types.util.JavaReflectAccess
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
@@ -13,15 +15,15 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import com.google.common.collect.Lists
-import java.util.List
-import org.eclipse.xtext.common.types.util.JavaReflectAccess
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
+import org.eclipse.xtext.common.types.JvmAnnotationReference
+import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.common.types.JvmOperation
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
-	@Inject extension TypesFactory
 	@Inject extension DMControllerGenerator
 	@Inject extension TypeReferences
 	@Inject extension TypesBuilderExtensions
@@ -58,9 +60,17 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				Property : {
 					members += f.toField(f.name, f.type)
 					members += f.toGetter(f.name, f.type) [
-						if(typeof(List).isAssignableFrom(returnType.type.rawType)){
-							annotations += createOneToMany(e)
-						}
+//						if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
+							val anno = createOneToMany(e)
+							if(f.mappedBy != null) {
+							val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
+							annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
+							annoVal.values += f.mappedBy.name
+							anno.values += annoVal
+							annotations += anno
+							
+							}
+//						}
 					]
 					members += f.toSetter(f.name, f.type)
 				}

@@ -32,7 +32,7 @@ Feature:
 	Property | Operation;
 
 Property:
-	name=ValidID ':' type=JvmTypeReference;
+	name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])?;
 
 Operation:
 	'op' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' ':' type=JvmTypeReference 

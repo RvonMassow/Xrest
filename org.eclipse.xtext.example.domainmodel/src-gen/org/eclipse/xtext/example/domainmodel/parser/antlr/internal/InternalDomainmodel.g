@@ -449,7 +449,26 @@ ruleProperty returns [EObject current=null]
 	    }
 
 )
-))
+)(	otherlv_3='->' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getHyphenMinusGreaterThanSignKeyword_3_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPropertyRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getMappedByPropertyCrossReference_3_1_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
