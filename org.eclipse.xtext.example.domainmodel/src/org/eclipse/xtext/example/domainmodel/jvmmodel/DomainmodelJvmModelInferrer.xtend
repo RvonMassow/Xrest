@@ -48,6 +48,7 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				members += toField(id, intType) [
 					annotations += e.createIdAnnotation()
 				]
+				members += toGetter(id, intType)
 				members += toSetter(id, intType)
 			}
 			generateFeatures(e)
@@ -61,14 +62,18 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 					members += f.toField(f.name, f.type)
 					members += f.toGetter(f.name, f.type) [
 //						if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
-							val anno = createOneToMany(e)
-							if(f.mappedBy != null) {
-							val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
-							annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
-							annoVal.values += f.mappedBy.name
-							anno.values += annoVal
-							annotations += anno
 							
+							if(f.mappedBy != null) {
+								val anno = createOneToMany(e)
+								val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
+								annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
+								annoVal.values += f.mappedBy.name
+								anno.values += annoVal
+								annotations += anno
+							}
+							if(f.reflectsOn != null) {
+								val anno = createManyToOne(e)
+								annotations += anno
 							}
 //						}
 					]
@@ -90,6 +95,10 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
 	def createOneToMany(EObject it) {
 		toAnnotation("javax.persistence.OneToMany")
+	}
+	
+	def createManyToOne(EObject it) {
+		toAnnotation("javax.persistence.ManyToOne")
 	}
 
 	def createIdAnnotation(EObject it) {

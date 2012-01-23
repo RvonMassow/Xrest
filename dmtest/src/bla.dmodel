@@ -1,10 +1,32 @@
-package foo {
+package blog.models {
+	
 	import java.util.List
-	entity Person {
-		address : List<Address>
+	import java.util.Date
+	
+	entity User {
+		email : String
+		password : String
+		fullname : String
+		isAdmin : Boolean
 	}
 	
-	entity Address {
-		person: Person -> Person.address
+	entity Tag {
+		name : String
+	}
+	
+	entity Comment {
+		author : String
+		postedAt : Date
+		content : String
+		post : Post <- Post.comments
+	}
+	
+	entity Post {
+		title : String
+		postedAt : Date
+		content : String
+		author : User
+		comments : List<Comment> -> Comment.post
+		tags : List<Tag>
 	}
 }

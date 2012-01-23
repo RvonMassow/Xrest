@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel.impl;
 
@@ -23,6 +24,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#getMappedBy <em>Mapped By</em>}</li>
+ *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#getReflectsOn <em>Reflects On</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +41,16 @@ public class PropertyImpl extends FeatureImpl implements Property
    * @ordered
    */
   protected Property mappedBy;
+
+  /**
+   * The cached value of the '{@link #getReflectsOn() <em>Reflects On</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReflectsOn()
+   * @generated
+   * @ordered
+   */
+  protected Property reflectsOn;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,6 +121,49 @@ public class PropertyImpl extends FeatureImpl implements Property
    * <!-- end-user-doc -->
    * @generated
    */
+  public Property getReflectsOn()
+  {
+    if (reflectsOn != null && reflectsOn.eIsProxy())
+    {
+      InternalEObject oldReflectsOn = (InternalEObject)reflectsOn;
+      reflectsOn = (Property)eResolveProxy(oldReflectsOn);
+      if (reflectsOn != oldReflectsOn)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DomainmodelPackage.PROPERTY__REFLECTS_ON, oldReflectsOn, reflectsOn));
+      }
+    }
+    return reflectsOn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property basicGetReflectsOn()
+  {
+    return reflectsOn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReflectsOn(Property newReflectsOn)
+  {
+    Property oldReflectsOn = reflectsOn;
+    reflectsOn = newReflectsOn;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DomainmodelPackage.PROPERTY__REFLECTS_ON, oldReflectsOn, reflectsOn));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -117,6 +172,9 @@ public class PropertyImpl extends FeatureImpl implements Property
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         if (resolve) return getMappedBy();
         return basicGetMappedBy();
+      case DomainmodelPackage.PROPERTY__REFLECTS_ON:
+        if (resolve) return getReflectsOn();
+        return basicGetReflectsOn();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -133,6 +191,9 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         setMappedBy((Property)newValue);
+        return;
+      case DomainmodelPackage.PROPERTY__REFLECTS_ON:
+        setReflectsOn((Property)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -151,6 +212,9 @@ public class PropertyImpl extends FeatureImpl implements Property
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         setMappedBy((Property)null);
         return;
+      case DomainmodelPackage.PROPERTY__REFLECTS_ON:
+        setReflectsOn((Property)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -167,6 +231,8 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         return mappedBy != null;
+      case DomainmodelPackage.PROPERTY__REFLECTS_ON:
+        return reflectsOn != null;
     }
     return super.eIsSet(featureID);
   }

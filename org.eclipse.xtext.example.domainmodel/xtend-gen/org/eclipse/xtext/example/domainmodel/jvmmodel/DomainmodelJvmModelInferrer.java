@@ -113,8 +113,11 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
                 JvmField _field = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toField(it, id, intType, _function_1);
                 CollectionExtensions.<JvmField>operator_add(_members, _field);
                 EList<JvmMember> _members_1 = it.getMembers();
+                JvmOperation _getter = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toGetter(it, id, intType);
+                CollectionExtensions.<JvmOperation>operator_add(_members_1, _getter);
+                EList<JvmMember> _members_2 = it.getMembers();
                 JvmOperation _setter = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.toSetter(it, id, intType);
-                CollectionExtensions.<JvmOperation>operator_add(_members_1, _setter);
+                CollectionExtensions.<JvmOperation>operator_add(_members_2, _setter);
               }
             }
             DomainmodelJvmModelInferrer.this.generateFeatures(it, e);
@@ -145,12 +148,12 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
             final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
                   {
-                    JvmAnnotationReference _createOneToMany = DomainmodelJvmModelInferrer.this.createOneToMany(e);
-                    final JvmAnnotationReference anno = _createOneToMany;
                     Property _mappedBy = _property.getMappedBy();
                     boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_mappedBy, null);
                     if (_operator_notEquals) {
                       {
+                        JvmAnnotationReference _createOneToMany = DomainmodelJvmModelInferrer.this.createOneToMany(e);
+                        final JvmAnnotationReference anno = _createOneToMany;
                         JvmStringAnnotationValue _createJvmStringAnnotationValue = TypesFactory.eINSTANCE.createJvmStringAnnotationValue();
                         final JvmStringAnnotationValue annoVal = _createJvmStringAnnotationValue;
                         JvmAnnotationType _annotation = anno.getAnnotation();
@@ -172,6 +175,16 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
                         CollectionExtensions.<JvmStringAnnotationValue>operator_add(_values_1, annoVal);
                         EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                         CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, anno);
+                      }
+                    }
+                    Property _reflectsOn = _property.getReflectsOn();
+                    boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_reflectsOn, null);
+                    if (_operator_notEquals_1) {
+                      {
+                        JvmAnnotationReference _createManyToOne = DomainmodelJvmModelInferrer.this.createManyToOne(e);
+                        final JvmAnnotationReference anno_1 = _createManyToOne;
+                        EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                        CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, anno_1);
                       }
                     }
                   }
@@ -221,6 +234,11 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   
   public JvmAnnotationReference createOneToMany(final EObject it) {
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.persistence.OneToMany");
+    return _annotation;
+  }
+  
+  public JvmAnnotationReference createManyToOne(final EObject it) {
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.persistence.ManyToOne");
     return _annotation;
   }
   
