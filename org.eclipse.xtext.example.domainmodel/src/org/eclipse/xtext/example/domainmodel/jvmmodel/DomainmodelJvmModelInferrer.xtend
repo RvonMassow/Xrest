@@ -2,10 +2,11 @@ package org.eclipse.xtext.example.domainmodel.jvmmodel
 
 import com.google.common.collect.Lists
 import com.google.inject.Inject
-import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.JavaReflectAccess
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
@@ -15,10 +16,6 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-import org.eclipse.xtext.common.types.JvmAnnotationReference
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.JvmOperation
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -61,10 +58,11 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				Property : {
 					members += f.toField(f.name, f.type)
 					members += f.toGetter(f.name, f.type) [
-//						if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
-							
 							if(f.mappedBy != null) {
-								val anno = createOneToMany(e)
+								val anno = 
+								//if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
+								createOneToMany(e)
+								// } else createOneToOne(e)
 								val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
 								annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
 								annoVal.values += f.mappedBy.name
@@ -75,7 +73,6 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 								val anno = createManyToOne(e)
 								annotations += anno
 							}
-//						}
 					]
 					members += f.toSetter(f.name, f.type)
 				}

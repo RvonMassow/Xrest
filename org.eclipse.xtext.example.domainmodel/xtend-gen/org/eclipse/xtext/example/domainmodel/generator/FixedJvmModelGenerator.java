@@ -13,7 +13,7 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 
 @SuppressWarnings("all")
 public class FixedJvmModelGenerator extends JvmModelGenerator {
-  public String generateParameter(final JvmFormalParameter it, final ImportManager importManager) {
+  public CharSequence generateParameter(final JvmFormalParameter it, final ImportManager importManager) {
     StringConcatenation _builder = new StringConcatenation();
     EList<JvmAnnotationReference> _annotations = it.getAnnotations();
     CharSequence _generateInlineAnnotations = this.generateInlineAnnotations(_annotations, importManager);
