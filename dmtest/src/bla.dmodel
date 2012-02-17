@@ -18,7 +18,7 @@ package blog.models {
 		author : String
 		postedAt : Date
 		content : String
-		post : Post <- Post.comments
+		post : Post
 	}
 	
 	entity Post {

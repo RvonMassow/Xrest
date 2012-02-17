@@ -31,7 +31,6 @@
     </genClasses>
     <genClasses ecoreClass="Domainmodel.ecore#//Property">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Property/mappedBy"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Property/reflectsOn"/>
     </genClasses>
     <genClasses ecoreClass="Domainmodel.ecore#//Operation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/params"/>

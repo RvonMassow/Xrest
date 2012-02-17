@@ -12,6 +12,8 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 
 import com.google.inject.Inject
 import org.eclipse.xtext.common.types.JvmVisibility
+import javax.xml.bind.JAXBElement
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 
 class DMControllerGenerator {
 
@@ -20,14 +22,15 @@ class DMControllerGenerator {
 	@Inject extension TypesBuilderExtensions
 	@Inject extension TypeReferences
 
-	def toControllerClass(Entity e, JvmGenericType forType, IAcceptor acceptor) {
+	def toControllerClass(Entity e, JvmGenericType forType, IJvmDeclaredTypeAcceptor acceptor) {
 		if(e.name != null) {
-			e.toClass(e.fullyQualifiedName.toString + "Controller") [
+			acceptor.accept(e.toClass(e.fullyQualifiedName.toString + "Controller")).initializeLater [
 				annotations += e.toAnnotation("javax.ws.rs.Path",
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
 				members += injectedEntityManagerFactory(e)
 				members += createJSONById(forType, e)
+				members += createPost(forType, e)
 			]
 		}
 	}
@@ -57,9 +60,39 @@ class DMControllerGenerator {
 			]
 		]
 	}
+	
+	def private createPost(JvmGenericType t, EObject e) {
+		val ref = t.createTypeRef
+		e.toMethod('''post«t.simpleName»'''.toString, ref) [
+			visibility = JvmVisibility::PUBLIC
+			annotations += e.createPostAnnotation()
+			annotations += e.createConsumesAnnotation("application/json")
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»Element'''.toString, typeof(JAXBElement).getTypeForName(e,ref))
+			setBody [
+				'''
+				EntityManager entityManager = _emf.createEntityManager();
+				«t.simpleName» «t.simpleName.toFirstLower» = «t.simpleName.toFirstLower»Element.getValue();
+				entityManager.persist(«t.simpleName.toFirstLower»);
+				return «t.simpleName.toFirstLower»;
+	  			'''
+			]
+		]
+	}
 
 	def createGetAnnotation(EObject it) {
 		toAnnotation("javax.ws.rs.GET")
+	}
+	
+	def createPostAnnotation(EObject it) {
+		toAnnotation("javax.ws.rs.POST")
+	}
+	
+	def createPuttAnnotation(EObject it) {
+		toAnnotation("javax.ws.rs.PUT")
+	}
+	
+	def createDeleteAnnotation(EObject it) {
+		toAnnotation("javax.ws.rs.DELETE")
 	}
 
 	def createPathParamAnnotation(EObject it, String name) {
@@ -68,5 +101,9 @@ class DMControllerGenerator {
 
 	def createProducesAnnotation(EObject it, String mime) {
 		toAnnotation("javax.ws.rs.Produces", mime)
+	}
+	
+	def createConsumesAnnotation(EObject it, String mime) {
+		toAnnotation("javax.ws.rs.Consumes", mime)
 	}
 }

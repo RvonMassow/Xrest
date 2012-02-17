@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel;
 
@@ -292,22 +293,13 @@ public interface DomainmodelPackage extends EPackage
   int PROPERTY__MAPPED_BY = FEATURE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Reflects On</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__REFLECTS_ON = FEATURE_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl <em>Operation</em>}' class.
@@ -546,17 +538,6 @@ public interface DomainmodelPackage extends EPackage
   EReference getProperty_MappedBy();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getReflectsOn <em>Reflects On</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Reflects On</em>'.
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Property#getReflectsOn()
-   * @see #getProperty()
-   * @generated
-   */
-  EReference getProperty_ReflectsOn();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Operation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -760,14 +741,6 @@ public interface DomainmodelPackage extends EPackage
      * @generated
      */
     EReference PROPERTY__MAPPED_BY = eINSTANCE.getProperty_MappedBy();
-
-    /**
-     * The meta object literal for the '<em><b>Reflects On</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROPERTY__REFLECTS_ON = eINSTANCE.getProperty_ReflectsOn();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl <em>Operation</em>}' class.

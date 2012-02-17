@@ -468,25 +468,6 @@ ruleProperty returns [EObject current=null]
 	    }
 
 )
-))?(	otherlv_5='<-' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getLessThanSignHyphenMinusKeyword_4_0());
-    }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPropertyRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getPropertyAccess().getReflectsOnPropertyCrossReference_4_1_0()); 
-	    }
-		ruleQualifiedName		{ 
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 ))?)
 ;
 

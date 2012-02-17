@@ -211,19 +211,12 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMappedByAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final CrossReference cMappedByPropertyCrossReference_3_1_0 = (CrossReference)cMappedByAssignment_3_1.eContents().get(0);
 		private final RuleCall cMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cMappedByPropertyCrossReference_3_1_0.eContents().get(1);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cLessThanSignHyphenMinusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cReflectsOnAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cReflectsOnPropertyCrossReference_4_1_0 = (CrossReference)cReflectsOnAssignment_4_1.eContents().get(0);
-		private final RuleCall cReflectsOnPropertyQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cReflectsOnPropertyCrossReference_4_1_0.eContents().get(1);
 		
 		//Property:
-		//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? ("<-"
-		//	reflectsOn=[Property|QualifiedName])?;
+		//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?;
 		public ParserRule getRule() { return rule; }
 
-		//name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? ("<-"
-		//reflectsOn=[Property|QualifiedName])?
+		//name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?
 		public Group getGroup() { return cGroup; }
 
 		//name=ValidID
@@ -255,21 +248,6 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//QualifiedName
 		public RuleCall getMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1() { return cMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1; }
-
-		//("<-" reflectsOn=[Property|QualifiedName])?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"<-"
-		public Keyword getLessThanSignHyphenMinusKeyword_4_0() { return cLessThanSignHyphenMinusKeyword_4_0; }
-
-		//reflectsOn=[Property|QualifiedName]
-		public Assignment getReflectsOnAssignment_4_1() { return cReflectsOnAssignment_4_1; }
-
-		//[Property|QualifiedName]
-		public CrossReference getReflectsOnPropertyCrossReference_4_1_0() { return cReflectsOnPropertyCrossReference_4_1_0; }
-
-		//QualifiedName
-		public RuleCall getReflectsOnPropertyQualifiedNameParserRuleCall_4_1_0_1() { return cReflectsOnPropertyQualifiedNameParserRuleCall_4_1_0_1; }
 	}
 
 	public class OperationElements extends AbstractParserRuleElementFinder {
@@ -475,8 +453,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? ("<-"
-	//	reflectsOn=[Property|QualifiedName])?;
+	//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?;
 	public PropertyElements getPropertyAccess() {
 		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}

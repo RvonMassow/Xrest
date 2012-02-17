@@ -3,7 +3,6 @@ package org.eclipse.xtext.example.domainmodel.jvmmodel
 import com.google.common.collect.Lists
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesFactory
@@ -13,9 +12,9 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -26,15 +25,14 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension TypesBuilderExtensions
 	@Inject extension JavaReflectAccess
 
-	def dispatch infer(Entity e, IAcceptor<JvmDeclaredType> acceptor, boolean prelinkingPhase) {
-		val entityClass = e.toEntityClass(acceptor)
-		acceptor.accept(entityClass)
-		val controllerClass = e.toControllerClass(entityClass, acceptor)
-		acceptor.accept(controllerClass)
+	def dispatch void infer(Entity e, IJvmDeclaredTypeAcceptor acceptor, boolean prelinkingPhase) {
+		val entityClass = e.toEntityClass(acceptor, prelinkingPhase)
+		e.toControllerClass(entityClass, acceptor)
 	}
 
-	def private toEntityClass(Entity e, IAcceptor<JvmDeclaredType> acceptor) {
-		e.toClass( e.fullyQualifiedName ) [
+	def private toEntityClass(Entity e, IJvmDeclaredTypeAcceptor acceptor, boolean prelinkingPhase) {
+		val clazz = e.toClass( e.fullyQualifiedName )
+		acceptor.accept(clazz).initializeLater [
 			documentation = e.documentation
 			annotations += e.createEntityAnnotation
 			if (e.superType != null)
@@ -48,48 +46,46 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 				members += toGetter(id, intType)
 				members += toSetter(id, intType)
 			}
-			generateFeatures(e)
+			generateFeatures(e, prelinkingPhase)
 		]
+		clazz
 	}
 
-	def generateFeatures(JvmGenericType it, Entity e) {
-		for ( f : e.features ) {
-			switch f {
-				Property : {
-					members += f.toField(f.name, f.type)
-					members += f.toGetter(f.name, f.type) [
+	def generateFeatures(JvmGenericType it, Entity e, boolean prelinkingPhase) {
+			for ( f : e.features ) {
+				switch f {
+					Property : {
+						f.type.type.identifier
+						members += f.toField(f.name, f.type)
+						members += f.toGetter(f.name, f.type) [
 							if(f.mappedBy != null) {
-								val anno = 
+								val anno = createOneToMany(e)
 								//if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
-								createOneToMany(e)
-								// } else createOneToOne(e)
+								
+								//} else createOneToOne(e)
 								val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
 								annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
 								annoVal.values += f.mappedBy.name
 								anno.values += annoVal
 								annotations += anno
 							}
-							if(f.reflectsOn != null) {
-								val anno = createManyToOne(e)
-								annotations += anno
+						]
+						members += f.toSetter(f.name, f.type)
+					}
+	
+					Operation : {
+						members += f.toMethod(f.name, f.type) [
+							documentation = f.documentation
+							for (p : f.params) {
+								parameters += p.toParameter(p.name, p.parameterType)
 							}
-					]
-					members += f.toSetter(f.name, f.type)
-				}
-
-				Operation : {
-					members += f.toMethod(f.name, f.type) [
-						documentation = f.documentation
-						for (p : f.params) {
-							parameters += p.toParameter(p.name, p.parameterType)
-						}
-						body = f.body
-					]
+							body = f.body
+						]
+					}
 				}
 			}
-		}
 	}
-
+	
 	def createOneToMany(EObject it) {
 		toAnnotation("javax.persistence.OneToMany")
 	}
