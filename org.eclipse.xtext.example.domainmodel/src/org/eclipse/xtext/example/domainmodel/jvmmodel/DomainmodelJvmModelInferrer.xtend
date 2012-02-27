@@ -6,15 +6,14 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.util.JavaReflectAccess
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -23,7 +22,6 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension DMControllerGenerator
 	@Inject extension TypeReferences
 	@Inject extension TypesBuilderExtensions
-	@Inject extension JavaReflectAccess
 
 	def dispatch void infer(Entity e, IJvmDeclaredTypeAcceptor acceptor, boolean prelinkingPhase) {
 		val entityClass = e.toEntityClass(acceptor, prelinkingPhase)
@@ -59,16 +57,16 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 						members += f.toField(f.name, f.type)
 						members += f.toGetter(f.name, f.type) [
 							if(f.mappedBy != null) {
-								val anno = createOneToMany(e)
-								//if(typeof(List).isAssignableFrom(returnType.type.rawType)){ // FIXME compatibility
-								
-								//} else createOneToOne(e)
-								val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
-								annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
-								annoVal.values += f.mappedBy.name
-								anno.values += annoVal
-								annotations += anno
-							}
+//								if(typeof(List).isAssignableFrom(returnType.type.rawType)){
+									val anno = createOneToMany(e)// FIXME compatibility
+
+									val annoVal = TypesFactory::eINSTANCE.createJvmStringAnnotationValue
+									annoVal.operation = anno.annotation.members.findFirst[simpleName == "mappedBy"] as JvmOperation
+									annoVal.values += f.mappedBy.name
+									anno.values += annoVal
+									annotations += anno
+								} //else createOneToOne(e)
+//							}
 						]
 						members += f.toSetter(f.name, f.type)
 					}

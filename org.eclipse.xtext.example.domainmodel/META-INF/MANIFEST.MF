@@ -8,9 +8,6 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
  org.eclipse.xtext;bundle-version="2.0.0";visibility:=reexport,
  org.eclipse.xtext.generator;bundle-version="2.0.0";resolution:=optional,
- org.eclipse.xtend;bundle-version="1.1.0",
- org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1",
- org.eclipse.xpand;bundle-version="1.1.0",
  org.eclipse.xtext.util;bundle-version="2.0.0",
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
@@ -19,10 +16,9 @@ Require-Bundle: org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="2.0.0",
  org.eclipse.xtext.common.types;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.0.0";visibility:=reexport,
- org.eclipse.xtext.xtend2.lib;bundle-version="2.0.0";visibility:=reexport,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.ui.codetemplates;bundle-version="2.0.0",
- org.eclipse.xtend2.lib
+ org.eclipse.xtend
 Export-Package: org.eclipse.xtext.example.domainmodel,
  org.eclipse.xtext.example.domainmodel.domainmodel,
  org.eclipse.xtext.example.domainmodel.domainmodel.impl,
@@ -37,5 +33,4 @@ Export-Package: org.eclipse.xtext.example.domainmodel,
  org.eclipse.xtext.example.domainmodel.valueconverter
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.xtend2.lib
+ org.eclipse.xtext.xbase.lib

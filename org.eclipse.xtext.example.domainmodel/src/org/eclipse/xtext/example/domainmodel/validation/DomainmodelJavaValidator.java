@@ -19,6 +19,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
 import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
@@ -55,15 +56,23 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
     }
 
     @Check
-    public void checkFeatureTypeCompatible(Feature feature) {
-    	JvmTypeReference type = feature.getType();
+    public void checkFeatureTypeCompatible(Property property) {
+    	JvmTypeReference type = property.getType();
     	Class<?> clazz = jra.getRawType(type.getType());
-    	if(!Serializable.class.isAssignableFrom(clazz)) {
-    		warning("Invalid type, must be primitive, subclass of java.io.Serializable or Entity itself", 
+//    	if(!List.class.isAssignableFrom(clazz)){
+//    		if(property.getMappedBy() == null) {
+//    			error("Multiplicity many relations need to define an oppisite for database mappings",
+//    					DomainmodelPackage.Literals.PROPERTY__MAPPED_BY,
+//    					IssueCodes.INVALID_MAPPING,
+//    					property.getType().getQualifiedName());
+//    		}
+//    	} else 
+    		if(!Serializable.class.isAssignableFrom(clazz)) {
+    		warning("Invalid type, must be primitive, List, subclass of java.io.Serializable or Entity itself", 
             		DomainmodelPackage.Literals.FEATURE__TYPE,
             		ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
             		IssueCodes.INVALID_FEATURE_TYPE,
-            		feature.getType().getQualifiedName());
+            		property.getType().getQualifiedName());
     	}
     }
     

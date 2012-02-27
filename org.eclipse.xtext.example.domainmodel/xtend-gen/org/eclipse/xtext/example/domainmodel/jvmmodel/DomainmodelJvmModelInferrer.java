@@ -19,7 +19,6 @@ import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
-import org.eclipse.xtext.common.types.util.JavaReflectAccess;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
@@ -58,13 +57,12 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   @Inject
   private TypesBuilderExtensions _typesBuilderExtensions;
   
-  @Inject
-  private JavaReflectAccess _javaReflectAccess;
-  
   protected void _infer(final Entity e, final IJvmDeclaredTypeAcceptor acceptor, final boolean prelinkingPhase) {
+    {
       JvmGenericType _entityClass = this.toEntityClass(e, acceptor, prelinkingPhase);
       final JvmGenericType entityClass = _entityClass;
       this._dMControllerGenerator.toControllerClass(e, entityClass, acceptor);
+    }
   }
   
   private JvmGenericType toEntityClass(final Entity e, final IJvmDeclaredTypeAcceptor acceptor, final boolean prelinkingPhase) {
