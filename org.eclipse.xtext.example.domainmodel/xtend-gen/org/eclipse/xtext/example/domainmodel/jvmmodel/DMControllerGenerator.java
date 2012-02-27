@@ -81,6 +81,12 @@ public class DMControllerGenerator {
               EList<JvmMember> _members_2 = it.getMembers();
               JvmOperation _createPost = DMControllerGenerator.this.createPost(forType, e);
               CollectionExtensions.<JvmOperation>operator_add(_members_2, _createPost);
+              EList<JvmMember> _members_3 = it.getMembers();
+              JvmOperation _createPut = DMControllerGenerator.this.createPut(forType, e);
+              CollectionExtensions.<JvmOperation>operator_add(_members_3, _createPut);
+              EList<JvmMember> _members_4 = it.getMembers();
+              JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
+              CollectionExtensions.<JvmOperation>operator_add(_members_4, _createDelete);
             }
           }
         };
@@ -185,6 +191,7 @@ public class DMControllerGenerator {
       String _simpleName = t.getSimpleName();
       _builder.append(_simpleName, "");
       String _string = _builder.toString();
+      JvmTypeReference _typeForName = this._typeReferences.getTypeForName(int.class, e);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
             {
@@ -200,39 +207,25 @@ public class DMControllerGenerator {
               String _simpleName = t.getSimpleName();
               String _firstLower = StringExtensions.toFirstLower(_simpleName);
               _builder.append(_firstLower, "");
-              _builder.append("Element");
               String _string = _builder.toString();
-              JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(javax.xml.bind.JAXBElement.class, e, ref);
-              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, _typeForName);
+              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
               CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
               final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
                   public CharSequence apply(final ImportManager it) {
                     StringConcatenation _builder = new StringConcatenation();
                     _builder.append("EntityManager entityManager = _emf.createEntityManager();");
                     _builder.newLine();
-                    String _simpleName = t.getSimpleName();
-                    _builder.append(_simpleName, "");
-                    _builder.append(" ");
-                    String _simpleName_1 = t.getSimpleName();
-                    String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                    _builder.append(_firstLower, "");
-                    _builder.append(" = ");
-                    String _simpleName_2 = t.getSimpleName();
-                    String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_2);
-                    _builder.append(_firstLower_1, "");
-                    _builder.append("Element.getValue();");
-                    _builder.newLineIfNotEmpty();
                     _builder.append("entityManager.persist(");
-                    String _simpleName_3 = t.getSimpleName();
-                    String _firstLower_2 = StringExtensions.toFirstLower(_simpleName_3);
-                    _builder.append(_firstLower_2, "");
+                    String _simpleName = t.getSimpleName();
+                    String _firstLower = StringExtensions.toFirstLower(_simpleName);
+                    _builder.append(_firstLower, "");
                     _builder.append(");");
                     _builder.newLineIfNotEmpty();
                     _builder.append("return ");
-                    String _simpleName_4 = t.getSimpleName();
-                    String _firstLower_3 = StringExtensions.toFirstLower(_simpleName_4);
-                    _builder.append(_firstLower_3, "");
-                    _builder.append(";");
+                    String _simpleName_1 = t.getSimpleName();
+                    String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_1);
+                    _builder.append(_firstLower_1, "");
+                    _builder.append(".getId();");
                     _builder.newLineIfNotEmpty();
                     return _builder;
                   }
@@ -241,7 +234,117 @@ public class DMControllerGenerator {
             }
           }
         };
-      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, ref, _function);
+      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
+      _xblockexpression = (_method);
+    }
+    return _xblockexpression;
+  }
+  
+  private JvmOperation createPut(final JvmGenericType t, final EObject e) {
+    JvmOperation _xblockexpression = null;
+    {
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
+      final JvmParameterizedTypeReference ref = _createTypeRef;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("put");
+      String _simpleName = t.getSimpleName();
+      _builder.append(_simpleName, "");
+      String _string = _builder.toString();
+      JvmTypeReference _typeForName = this._typeReferences.getTypeForName(int.class, e);
+      final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+          public void apply(final JvmOperation it) {
+            {
+              it.setVisibility(JvmVisibility.PUBLIC);
+              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+              JvmAnnotationReference _createPutAnnotation = DMControllerGenerator.this.createPutAnnotation(e);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createPutAnnotation);
+              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+              JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
+              EList<JvmFormalParameter> _parameters = it.getParameters();
+              StringConcatenation _builder = new StringConcatenation();
+              String _simpleName = t.getSimpleName();
+              String _firstLower = StringExtensions.toFirstLower(_simpleName);
+              _builder.append(_firstLower, "");
+              String _string = _builder.toString();
+              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
+              final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
+                  public CharSequence apply(final ImportManager it) {
+                    StringConcatenation _builder = new StringConcatenation();
+                    _builder.append("EntityManager entityManager = _emf.createEntityManager();");
+                    _builder.newLine();
+                    String _simpleName = t.getSimpleName();
+                    _builder.append(_simpleName, "");
+                    _builder.append(" entity = entityManager.merge(");
+                    String _simpleName_1 = t.getSimpleName();
+                    String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
+                    _builder.append(_firstLower, "");
+                    _builder.append(");");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("return entity.getId();");
+                    _builder.newLine();
+                    return _builder;
+                  }
+                };
+              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
+            }
+          }
+        };
+      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
+      _xblockexpression = (_method);
+    }
+    return _xblockexpression;
+  }
+  
+  private JvmOperation createDelete(final JvmGenericType t, final EObject e) {
+    JvmOperation _xblockexpression = null;
+    {
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
+      final JvmParameterizedTypeReference ref = _createTypeRef;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("delete");
+      String _simpleName = t.getSimpleName();
+      _builder.append(_simpleName, "");
+      String _string = _builder.toString();
+      JvmTypeReference _typeForName = this._typeReferences.getTypeForName(void.class, e);
+      final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+          public void apply(final JvmOperation it) {
+            {
+              it.setVisibility(JvmVisibility.PUBLIC);
+              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+              JvmAnnotationReference _createDeleteAnnotation = DMControllerGenerator.this.createDeleteAnnotation(e);
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createDeleteAnnotation);
+              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+              JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
+              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
+              EList<JvmFormalParameter> _parameters = it.getParameters();
+              StringConcatenation _builder = new StringConcatenation();
+              String _simpleName = t.getSimpleName();
+              String _firstLower = StringExtensions.toFirstLower(_simpleName);
+              _builder.append(_firstLower, "");
+              String _string = _builder.toString();
+              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
+              final Function1<ImportManager,CharSequence> _function = new Function1<ImportManager,CharSequence>() {
+                  public CharSequence apply(final ImportManager it) {
+                    StringConcatenation _builder = new StringConcatenation();
+                    _builder.append("EntityManager entityManager = _emf.createEntityManager();");
+                    _builder.newLine();
+                    _builder.append("entityManager.remove(");
+                    String _simpleName = t.getSimpleName();
+                    String _firstLower = StringExtensions.toFirstLower(_simpleName);
+                    _builder.append(_firstLower, "");
+                    _builder.append(");");
+                    _builder.newLineIfNotEmpty();
+                    return _builder;
+                  }
+                };
+              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
+            }
+          }
+        };
+      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
       _xblockexpression = (_method);
     }
     return _xblockexpression;
@@ -257,7 +360,7 @@ public class DMControllerGenerator {
     return _annotation;
   }
   
-  public JvmAnnotationReference createPuttAnnotation(final EObject it) {
+  public JvmAnnotationReference createPutAnnotation(final EObject it) {
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.PUT");
     return _annotation;
   }

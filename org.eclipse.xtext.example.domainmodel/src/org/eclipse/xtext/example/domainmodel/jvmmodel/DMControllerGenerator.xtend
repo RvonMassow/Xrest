@@ -1,19 +1,14 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
-import org.eclipse.emf.ecore.EObject
-
-import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.common.types.util.TypeReferences
-
-
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
-import javax.xml.bind.JAXBElement
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class DMControllerGenerator {
 
@@ -31,6 +26,8 @@ class DMControllerGenerator {
 				members += injectedEntityManagerFactory(e)
 				members += createJSONById(forType, e)
 				members += createPost(forType, e)
+				members += createPut(forType, e)
+				members += createDelete(forType, e)
 			]
 		}
 	}
@@ -63,17 +60,49 @@ class DMControllerGenerator {
 	
 	def private createPost(JvmGenericType t, EObject e) {
 		val ref = t.createTypeRef
-		e.toMethod('''post«t.simpleName»'''.toString, ref) [
+		e.toMethod('''post«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPostAnnotation()
 			annotations += e.createConsumesAnnotation("application/json")
-			parameters += e.toParameter('''«t.simpleName.toFirstLower»Element'''.toString, typeof(JAXBElement).getTypeForName(e,ref))
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
 				'''
 				EntityManager entityManager = _emf.createEntityManager();
-				«t.simpleName» «t.simpleName.toFirstLower» = «t.simpleName.toFirstLower»Element.getValue();
 				entityManager.persist(«t.simpleName.toFirstLower»);
-				return «t.simpleName.toFirstLower»;
+				return «t.simpleName.toFirstLower».getId();
+	  			'''
+			]
+		]
+	}
+	
+	def private createPut(JvmGenericType t, EObject e) {
+		val ref = t.createTypeRef
+		e.toMethod('''put«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
+			visibility = JvmVisibility::PUBLIC
+			annotations += e.createPutAnnotation()
+			annotations += e.createConsumesAnnotation("application/json")
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
+			setBody [
+				'''
+				EntityManager entityManager = _emf.createEntityManager();
+				«t.simpleName» entity = entityManager.merge(«t.simpleName.toFirstLower»);
+				return entity.getId();
+	  			'''
+			]
+		]
+	}
+	
+	def private createDelete(JvmGenericType t, EObject e) {
+		val ref = t.createTypeRef
+		e.toMethod('''delete«t.simpleName»'''.toString, typeof(void).getTypeForName(e)) [
+			visibility = JvmVisibility::PUBLIC
+			annotations += e.createDeleteAnnotation()
+			annotations += e.createConsumesAnnotation("application/json")
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
+			setBody [
+				'''
+				EntityManager entityManager = _emf.createEntityManager();
+				entityManager.remove(«t.simpleName.toFirstLower»);
 	  			'''
 			]
 		]
@@ -87,7 +116,7 @@ class DMControllerGenerator {
 		toAnnotation("javax.ws.rs.POST")
 	}
 	
-	def createPuttAnnotation(EObject it) {
+	def createPutAnnotation(EObject it) {
 		toAnnotation("javax.ws.rs.PUT")
 	}
 	
