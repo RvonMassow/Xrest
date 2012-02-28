@@ -49,6 +49,7 @@ class DMControllerGenerator {
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")
+			annotations += e.toAnnotation("javax.ws.rs.Path","{id}")
 			parameters += e.toParameter("id", typeof(int).getTypeForName(e)) [
 				annotations += e.createPathParamAnnotation("id")
 			]

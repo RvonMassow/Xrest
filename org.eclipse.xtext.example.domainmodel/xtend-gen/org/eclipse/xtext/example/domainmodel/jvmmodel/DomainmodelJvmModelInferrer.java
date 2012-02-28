@@ -76,6 +76,9 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _createEntityAnnotation = DomainmodelJvmModelInferrer.this.createEntityAnnotation(e);
             _annotations.add(_createEntityAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createXmlRootElement = DomainmodelJvmModelInferrer.this.createXmlRootElement(e);
+            _annotations_1.add(_createXmlRootElement);
             JvmParameterizedTypeReference _superType = e.getSuperType();
             boolean _notEquals = !ObjectExtensions.equals(_superType, null);
             if (_notEquals) {
@@ -211,6 +214,11 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
         }
       }
     }
+  }
+  
+  public JvmAnnotationReference createXmlRootElement(final EObject it) {
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.xml.bind.annotation.XmlRootElement");
+    return _annotation;
   }
   
   public JvmAnnotationReference createOneToMany(final EObject it) {

@@ -132,6 +132,9 @@ public class DMControllerGenerator {
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this.createProducesAnnotation(e, "application/json");
             _annotations_1.add(_createProducesAnnotation);
+            EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+            JvmAnnotationReference _annotation = DMControllerGenerator.this._jvmTypesBuilder.toAnnotation(e, "javax.ws.rs.Path", "{id}");
+            _annotations_2.add(_annotation);
             EList<JvmFormalParameter> _parameters = it.getParameters();
             JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
             final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {

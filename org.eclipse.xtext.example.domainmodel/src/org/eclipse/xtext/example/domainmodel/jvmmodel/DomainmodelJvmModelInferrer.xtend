@@ -33,6 +33,7 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 		acceptor.accept(clazz).initializeLater [
 			documentation = e.documentation
 			annotations += e.createEntityAnnotation
+			annotations += e.createXmlRootElement
 			if (e.superType != null)
 				superTypes += e.superType.cloneWithProxies
 			val id = "id"
@@ -82,6 +83,10 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 					}
 				}
 			}
+	}
+	
+	def createXmlRootElement(EObject it){
+		toAnnotation("javax.xml.bind.annotation.XmlRootElement")
 	}
 	
 	def createOneToMany(EObject it) {
