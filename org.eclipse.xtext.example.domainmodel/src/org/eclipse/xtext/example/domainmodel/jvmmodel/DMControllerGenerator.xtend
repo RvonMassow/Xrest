@@ -29,7 +29,7 @@ class DMControllerGenerator {
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
 				members += injectedEntityManagerFactory(e)
-				members += createPut(forType, e)
+				members += createJsonPut(forType, e)
 				members += createDelete(forType, e)
 				members += createJsonGetById(forType, e)
 				members += createJsonPost(forType, e)
@@ -73,15 +73,14 @@ class DMControllerGenerator {
 			setBody [
 				trace(e)
 				append('''
-				«t.simpleName» «t.simpleName.toFirstLower» = «t.simpleName.toFirstLower»Element.getValue();
 				_entityManager.persist(«t.simpleName.toFirstLower»);
-				return «t.simpleName.toFirstLower»;
+				return «t.simpleName.toFirstLower».getId();
 	  			'''.toString)
 	  		]
 		]
 	}
 	
-	def private createPut(JvmGenericType t, EObject e) {
+	def private createJsonPut(JvmGenericType t, EObject e) {
 		val ref = t.createTypeRef
 		e.toMethod('''put«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
@@ -92,8 +91,7 @@ class DMControllerGenerator {
 				trace(e)
 				append(
 				'''
-				EntityManager entityManager = _emf.createEntityManager();
-				«t.simpleName» entity = entityManager.merge(«t.simpleName.toFirstLower»);
+				«t.simpleName» entity = _entityManager.merge(«t.simpleName.toFirstLower»);
 				return entity.getId();
 	  			'''.toString)
 			]
@@ -111,8 +109,7 @@ class DMControllerGenerator {
 				trace(e)
 				append(
 				'''
-				EntityManager entityManager = _emf.createEntityManager();
-				entityManager.remove(«t.simpleName.toFirstLower»);
+				_entityManager.remove(«t.simpleName.toFirstLower»);
 	  			'''.toString)
 	  		]
 	  	]

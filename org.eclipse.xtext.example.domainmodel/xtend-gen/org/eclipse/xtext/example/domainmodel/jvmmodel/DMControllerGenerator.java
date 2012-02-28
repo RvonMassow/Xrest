@@ -81,8 +81,8 @@ public class DMControllerGenerator {
             JvmField _injectedEntityManagerFactory = DMControllerGenerator.this.injectedEntityManagerFactory(e);
             _members.add(_injectedEntityManagerFactory);
             EList<JvmMember> _members_1 = it.getMembers();
-            JvmOperation _createPut = DMControllerGenerator.this.createPut(forType, e);
-            _members_1.add(_createPut);
+            JvmOperation _createJsonPut = DMControllerGenerator.this.createJsonPut(forType, e);
+            _members_1.add(_createJsonPut);
             EList<JvmMember> _members_2 = it.getMembers();
             JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
             _members_2.add(_createDelete);
@@ -212,29 +212,17 @@ public class DMControllerGenerator {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
                   StringConcatenation _builder = new StringConcatenation();
-                  String _simpleName = t.getSimpleName();
-                  _builder.append(_simpleName, "");
-                  _builder.append(" ");
-                  String _simpleName_1 = t.getSimpleName();
-                  String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                  _builder.append(_firstLower, "");
-                  _builder.append(" = ");
-                  String _simpleName_2 = t.getSimpleName();
-                  String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_2);
-                  _builder.append(_firstLower_1, "");
-                  _builder.append("Element.getValue();");
-                  _builder.newLineIfNotEmpty();
                   _builder.append("_entityManager.persist(");
-                  String _simpleName_3 = t.getSimpleName();
-                  String _firstLower_2 = StringExtensions.toFirstLower(_simpleName_3);
-                  _builder.append(_firstLower_2, "");
+                  String _simpleName = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName);
+                  _builder.append(_firstLower, "");
                   _builder.append(");");
                   _builder.newLineIfNotEmpty();
                   _builder.append("return ");
-                  String _simpleName_4 = t.getSimpleName();
-                  String _firstLower_3 = StringExtensions.toFirstLower(_simpleName_4);
-                  _builder.append(_firstLower_3, "");
-                  _builder.append(";");
+                  String _simpleName_1 = t.getSimpleName();
+                  String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_1);
+                  _builder.append(_firstLower_1, "");
+                  _builder.append(".getId();");
                   _builder.newLineIfNotEmpty();
                   String _string = _builder.toString();
                   it.append(_string);
@@ -249,7 +237,7 @@ public class DMControllerGenerator {
     return _xblockexpression;
   }
   
-  private JvmOperation createPut(final JvmGenericType t, final EObject e) {
+  private JvmOperation createJsonPut(final JvmGenericType t, final EObject e) {
     JvmOperation _xblockexpression = null;
     {
       JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
@@ -281,11 +269,9 @@ public class DMControllerGenerator {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
                   StringConcatenation _builder = new StringConcatenation();
-                  _builder.append("EntityManager entityManager = _emf.createEntityManager();");
-                  _builder.newLine();
                   String _simpleName = t.getSimpleName();
                   _builder.append(_simpleName, "");
-                  _builder.append(" entity = entityManager.merge(");
+                  _builder.append(" entity = _entityManager.merge(");
                   String _simpleName_1 = t.getSimpleName();
                   String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
                   _builder.append(_firstLower, "");
@@ -338,9 +324,7 @@ public class DMControllerGenerator {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
                   StringConcatenation _builder = new StringConcatenation();
-                  _builder.append("EntityManager entityManager = _emf.createEntityManager();");
-                  _builder.newLine();
-                  _builder.append("entityManager.remove(");
+                  _builder.append("_entityManager.remove(");
                   String _simpleName = t.getSimpleName();
                   String _firstLower = StringExtensions.toFirstLower(_simpleName);
                   _builder.append(_firstLower, "");
