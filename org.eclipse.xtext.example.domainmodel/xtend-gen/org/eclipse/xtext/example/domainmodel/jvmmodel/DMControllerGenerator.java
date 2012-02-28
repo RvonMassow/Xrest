@@ -25,7 +25,6 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -56,45 +55,43 @@ public class DMControllerGenerator {
   public Object toControllerClass(final Entity e, final JvmGenericType forType, final IJvmDeclaredTypeAcceptor acceptor) {
     Object _xifexpression = null;
     String _name = e.getName();
-    boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_name, null);
-    if (_operator_notEquals) {
+    boolean _notEquals = !ObjectExtensions.equals(_name, null);
+    if (_notEquals) {
       QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
       String _string = _fullyQualifiedName.toString();
-      String _operator_plus = StringExtensions.operator_plus(_string, "Controller");
-      JvmGenericType _class = this._jvmTypesBuilder.toClass(e, _operator_plus);
+      String _plus = (_string + "Controller");
+      JvmGenericType _class = this._jvmTypesBuilder.toClass(e, _plus);
       IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
-            {
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              QualifiedName _fullyQualifiedName = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
-              List<String> _segments = _fullyQualifiedName.getSegments();
-              final Function1<String,String> _function = new Function1<String,String>() {
-                  public String apply(final String it) {
-                    String _lowerCase = it.toLowerCase();
-                    return _lowerCase;
-                  }
-                };
-              List<String> _map = ListExtensions.<String, String>map(_segments, _function);
-              String _join = IterableExtensions.join(_map, "/");
-              JvmAnnotationReference _annotation = DMControllerGenerator.this._jvmTypesBuilder.toAnnotation(e, "javax.ws.rs.Path", _join);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-              EList<JvmMember> _members = it.getMembers();
-              JvmField _injectedEntityManagerFactory = DMControllerGenerator.this.injectedEntityManagerFactory(e);
-              CollectionExtensions.<JvmField>operator_add(_members, _injectedEntityManagerFactory);
-              EList<JvmMember> _members_1 = it.getMembers();
-              JvmOperation _createPut = DMControllerGenerator.this.createPut(forType, e);
-              CollectionExtensions.<JvmOperation>operator_add(_members_1, _createPut);
-              EList<JvmMember> _members_2 = it.getMembers();
-              JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
-              CollectionExtensions.<JvmOperation>operator_add(_members_2, _createDelete);
-              EList<JvmMember> _members_3 = it.getMembers();
-              JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
-              CollectionExtensions.<JvmOperation>operator_add(_members_3, _createJsonGetById);
-              EList<JvmMember> _members_4 = it.getMembers();
-              JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
-              CollectionExtensions.<JvmOperation>operator_add(_members_4, _createJsonPost);
-            }
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            QualifiedName _fullyQualifiedName = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
+            List<String> _segments = _fullyQualifiedName.getSegments();
+            final Function1<String,String> _function = new Function1<String,String>() {
+                public String apply(final String it) {
+                  String _lowerCase = it.toLowerCase();
+                  return _lowerCase;
+                }
+              };
+            List<String> _map = ListExtensions.<String, String>map(_segments, _function);
+            String _join = IterableExtensions.join(_map, "/");
+            JvmAnnotationReference _annotation = DMControllerGenerator.this._jvmTypesBuilder.toAnnotation(e, "javax.ws.rs.Path", _join);
+            _annotations.add(_annotation);
+            EList<JvmMember> _members = it.getMembers();
+            JvmField _injectedEntityManagerFactory = DMControllerGenerator.this.injectedEntityManagerFactory(e);
+            _members.add(_injectedEntityManagerFactory);
+            EList<JvmMember> _members_1 = it.getMembers();
+            JvmOperation _createPut = DMControllerGenerator.this.createPut(forType, e);
+            _members_1.add(_createPut);
+            EList<JvmMember> _members_2 = it.getMembers();
+            JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
+            _members_2.add(_createDelete);
+            EList<JvmMember> _members_3 = it.getMembers();
+            JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
+            _members_3.add(_createJsonGetById);
+            EList<JvmMember> _members_4 = it.getMembers();
+            JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
+            _members_4.add(_createJsonPost);
           }
         };
       _accept.initializeLater(_function);
@@ -108,7 +105,7 @@ public class DMControllerGenerator {
         public void apply(final JvmField it) {
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _annotation = DMControllerGenerator.this._jvmTypesBuilder.toAnnotation(e, "javax.persistence.PersistenceContext");
-          CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          _annotations.add(_annotation);
         }
       };
     JvmField _field = this._jvmTypesBuilder.toField(e, "_entityManager", _typeForName, _function);
@@ -128,54 +125,50 @@ public class DMControllerGenerator {
       String _string = _builder.toString();
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            {
-              it.setVisibility(JvmVisibility.PUBLIC);
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this.createGetAnnotation(e);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this.createProducesAnnotation(e, "application/json");
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
-              EList<JvmFormalParameter> _parameters = it.getParameters();
-              JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
-              final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
-                  public void apply(final JvmFormalParameter it) {
-                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                    JvmAnnotationReference _createPathParamAnnotation = DMControllerGenerator.this.createPathParamAnnotation(e, "id");
-                    CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createPathParamAnnotation);
-                  }
-                };
-              JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
-              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-              final Procedure1<ITreeAppendable> _function_1 = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    {
-                      it.trace(e);
-                      StringConcatenation _builder = new StringConcatenation();
-                      String _simpleName = t.getSimpleName();
-                      _builder.append(_simpleName, "");
-                      _builder.append(" ");
-                      String _simpleName_1 = t.getSimpleName();
-                      String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                      _builder.append(_firstLower, "");
-                      _builder.append(" = _entityManager.find(");
-                      String _simpleName_2 = t.getSimpleName();
-                      _builder.append(_simpleName_2, "");
-                      _builder.append(".class, id);");
-                      _builder.newLineIfNotEmpty();
-                      _builder.append("return ");
-                      String _simpleName_3 = t.getSimpleName();
-                      String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_3);
-                      _builder.append(_firstLower_1, "");
-                      _builder.append(";");
-                      _builder.newLineIfNotEmpty();
-                      String _string = _builder.toString();
-                      it.append(_string);
-                    }
-                  }
-                };
-              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function_1);
-            }
+            it.setVisibility(JvmVisibility.PUBLIC);
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this.createGetAnnotation(e);
+            _annotations.add(_createGetAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this.createProducesAnnotation(e, "application/json");
+            _annotations_1.add(_createProducesAnnotation);
+            EList<JvmFormalParameter> _parameters = it.getParameters();
+            JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
+            final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
+                public void apply(final JvmFormalParameter it) {
+                  EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                  JvmAnnotationReference _createPathParamAnnotation = DMControllerGenerator.this.createPathParamAnnotation(e, "id");
+                  _annotations.add(_createPathParamAnnotation);
+                }
+              };
+            JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
+            _parameters.add(_parameter);
+            final Procedure1<ITreeAppendable> _function_1 = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  it.trace(e);
+                  StringConcatenation _builder = new StringConcatenation();
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append(" ");
+                  String _simpleName_1 = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
+                  _builder.append(_firstLower, "");
+                  _builder.append(" = _entityManager.find(");
+                  String _simpleName_2 = t.getSimpleName();
+                  _builder.append(_simpleName_2, "");
+                  _builder.append(".class, id);");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("return ");
+                  String _simpleName_3 = t.getSimpleName();
+                  String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_3);
+                  _builder.append(_firstLower_1, "");
+                  _builder.append(";");
+                  _builder.newLineIfNotEmpty();
+                  String _string = _builder.toString();
+                  it.append(_string);
+                }
+              };
+            DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function_1);
           }
         };
       JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, ref, _function);
@@ -197,58 +190,54 @@ public class DMControllerGenerator {
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName(int.class, e);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            {
-              it.setVisibility(JvmVisibility.PUBLIC);
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _createPostAnnotation = DMControllerGenerator.this.createPostAnnotation(e);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createPostAnnotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
-              EList<JvmFormalParameter> _parameters = it.getParameters();
-              StringConcatenation _builder = new StringConcatenation();
-              String _simpleName = t.getSimpleName();
-              String _firstLower = StringExtensions.toFirstLower(_simpleName);
-              _builder.append(_firstLower, "");
-              String _string = _builder.toString();
-              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
-              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    {
-                      it.trace(e);
-                      StringConcatenation _builder = new StringConcatenation();
-                      String _simpleName = t.getSimpleName();
-                      _builder.append(_simpleName, "");
-                      _builder.append(" ");
-                      String _simpleName_1 = t.getSimpleName();
-                      String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                      _builder.append(_firstLower, "");
-                      _builder.append(" = ");
-                      String _simpleName_2 = t.getSimpleName();
-                      String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_2);
-                      _builder.append(_firstLower_1, "");
-                      _builder.append("Element.getValue();");
-                      _builder.newLineIfNotEmpty();
-                      _builder.append("_entityManager.persist(");
-                      String _simpleName_3 = t.getSimpleName();
-                      String _firstLower_2 = StringExtensions.toFirstLower(_simpleName_3);
-                      _builder.append(_firstLower_2, "");
-                      _builder.append(");");
-                      _builder.newLineIfNotEmpty();
-                      _builder.append("return ");
-                      String _simpleName_4 = t.getSimpleName();
-                      String _firstLower_3 = StringExtensions.toFirstLower(_simpleName_4);
-                      _builder.append(_firstLower_3, "");
-                      _builder.append(";");
-                      _builder.newLineIfNotEmpty();
-                      String _string = _builder.toString();
-                      it.append(_string);
-                    }
-                  }
-                };
-              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
-            }
+            it.setVisibility(JvmVisibility.PUBLIC);
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _createPostAnnotation = DMControllerGenerator.this.createPostAnnotation(e);
+            _annotations.add(_createPostAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
+            _annotations_1.add(_createConsumesAnnotation);
+            EList<JvmFormalParameter> _parameters = it.getParameters();
+            StringConcatenation _builder = new StringConcatenation();
+            String _simpleName = t.getSimpleName();
+            String _firstLower = StringExtensions.toFirstLower(_simpleName);
+            _builder.append(_firstLower, "");
+            String _string = _builder.toString();
+            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+            _parameters.add(_parameter);
+            final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  it.trace(e);
+                  StringConcatenation _builder = new StringConcatenation();
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append(" ");
+                  String _simpleName_1 = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
+                  _builder.append(_firstLower, "");
+                  _builder.append(" = ");
+                  String _simpleName_2 = t.getSimpleName();
+                  String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_2);
+                  _builder.append(_firstLower_1, "");
+                  _builder.append("Element.getValue();");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("_entityManager.persist(");
+                  String _simpleName_3 = t.getSimpleName();
+                  String _firstLower_2 = StringExtensions.toFirstLower(_simpleName_3);
+                  _builder.append(_firstLower_2, "");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("return ");
+                  String _simpleName_4 = t.getSimpleName();
+                  String _firstLower_3 = StringExtensions.toFirstLower(_simpleName_4);
+                  _builder.append(_firstLower_3, "");
+                  _builder.append(";");
+                  _builder.newLineIfNotEmpty();
+                  String _string = _builder.toString();
+                  it.append(_string);
+                }
+              };
+            DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
           }
         };
       JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
@@ -270,46 +259,42 @@ public class DMControllerGenerator {
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName(int.class, e);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            {
-              it.setVisibility(JvmVisibility.PUBLIC);
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _createPutAnnotation = DMControllerGenerator.this.createPutAnnotation(e);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createPutAnnotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
-              EList<JvmFormalParameter> _parameters = it.getParameters();
-              StringConcatenation _builder = new StringConcatenation();
-              String _simpleName = t.getSimpleName();
-              String _firstLower = StringExtensions.toFirstLower(_simpleName);
-              _builder.append(_firstLower, "");
-              String _string = _builder.toString();
-              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
-              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    {
-                      it.trace(e);
-                      StringConcatenation _builder = new StringConcatenation();
-                      _builder.append("EntityManager entityManager = _emf.createEntityManager();");
-                      _builder.newLine();
-                      String _simpleName = t.getSimpleName();
-                      _builder.append(_simpleName, "");
-                      _builder.append(" entity = entityManager.merge(");
-                      String _simpleName_1 = t.getSimpleName();
-                      String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                      _builder.append(_firstLower, "");
-                      _builder.append(");");
-                      _builder.newLineIfNotEmpty();
-                      _builder.append("return entity.getId();");
-                      _builder.newLine();
-                      String _string = _builder.toString();
-                      it.append(_string);
-                    }
-                  }
-                };
-              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
-            }
+            it.setVisibility(JvmVisibility.PUBLIC);
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _createPutAnnotation = DMControllerGenerator.this.createPutAnnotation(e);
+            _annotations.add(_createPutAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
+            _annotations_1.add(_createConsumesAnnotation);
+            EList<JvmFormalParameter> _parameters = it.getParameters();
+            StringConcatenation _builder = new StringConcatenation();
+            String _simpleName = t.getSimpleName();
+            String _firstLower = StringExtensions.toFirstLower(_simpleName);
+            _builder.append(_firstLower, "");
+            String _string = _builder.toString();
+            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+            _parameters.add(_parameter);
+            final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  it.trace(e);
+                  StringConcatenation _builder = new StringConcatenation();
+                  _builder.append("EntityManager entityManager = _emf.createEntityManager();");
+                  _builder.newLine();
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append(" entity = entityManager.merge(");
+                  String _simpleName_1 = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
+                  _builder.append(_firstLower, "");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("return entity.getId();");
+                  _builder.newLine();
+                  String _string = _builder.toString();
+                  it.append(_string);
+                }
+              };
+            DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
           }
         };
       JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
@@ -331,42 +316,38 @@ public class DMControllerGenerator {
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName(void.class, e);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            {
-              it.setVisibility(JvmVisibility.PUBLIC);
-              EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-              JvmAnnotationReference _createDeleteAnnotation = DMControllerGenerator.this.createDeleteAnnotation(e);
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations, _createDeleteAnnotation);
-              EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-              JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
-              CollectionExtensions.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
-              EList<JvmFormalParameter> _parameters = it.getParameters();
-              StringConcatenation _builder = new StringConcatenation();
-              String _simpleName = t.getSimpleName();
-              String _firstLower = StringExtensions.toFirstLower(_simpleName);
-              _builder.append(_firstLower, "");
-              String _string = _builder.toString();
-              JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
-              CollectionExtensions.<JvmFormalParameter>operator_add(_parameters, _parameter);
-              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    {
-                      it.trace(e);
-                      StringConcatenation _builder = new StringConcatenation();
-                      _builder.append("EntityManager entityManager = _emf.createEntityManager();");
-                      _builder.newLine();
-                      _builder.append("entityManager.remove(");
-                      String _simpleName = t.getSimpleName();
-                      String _firstLower = StringExtensions.toFirstLower(_simpleName);
-                      _builder.append(_firstLower, "");
-                      _builder.append(");");
-                      _builder.newLineIfNotEmpty();
-                      String _string = _builder.toString();
-                      it.append(_string);
-                    }
-                  }
-                };
-              DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
-            }
+            it.setVisibility(JvmVisibility.PUBLIC);
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _createDeleteAnnotation = DMControllerGenerator.this.createDeleteAnnotation(e);
+            _annotations.add(_createDeleteAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
+            _annotations_1.add(_createConsumesAnnotation);
+            EList<JvmFormalParameter> _parameters = it.getParameters();
+            StringConcatenation _builder = new StringConcatenation();
+            String _simpleName = t.getSimpleName();
+            String _firstLower = StringExtensions.toFirstLower(_simpleName);
+            _builder.append(_firstLower, "");
+            String _string = _builder.toString();
+            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+            _parameters.add(_parameter);
+            final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  it.trace(e);
+                  StringConcatenation _builder = new StringConcatenation();
+                  _builder.append("EntityManager entityManager = _emf.createEntityManager();");
+                  _builder.newLine();
+                  _builder.append("entityManager.remove(");
+                  String _simpleName = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName);
+                  _builder.append(_firstLower, "");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                  String _string = _builder.toString();
+                  it.append(_string);
+                }
+              };
+            DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
           }
         };
       JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
@@ -386,30 +367,28 @@ public class DMControllerGenerator {
           public void apply(final Document it) {
             final Procedure1<Node> _function = new Procedure1<Node>() {
                 public void apply(final Node it) {
-                  {
-                    final Procedure1<Node> _function = new Procedure1<Node>() {
-                        public void apply(final Node it) {
-                          final Procedure1<Node> _function = new Procedure1<Node>() {
-                              public void apply(final Node it) {
-                                it.setTextContent("Todd m\u00FCffelt");
-                              }
-                            };
-                          DMControllerGenerator.this._hTMLBuilder.title(it, _function);
-                        }
-                      };
-                    DMControllerGenerator.this._hTMLBuilder.head(it, _function);
-                    final Procedure1<Node> _function_1 = new Procedure1<Node>() {
-                        public void apply(final Node it) {
-                          final Procedure1<Node> _function = new Procedure1<Node>() {
-                              public void apply(final Node it) {
-                                it.setTextContent("Extrablatt");
-                              }
-                            };
-                          DMControllerGenerator.this._hTMLBuilder.h1(it, _function);
-                        }
-                      };
-                    DMControllerGenerator.this._hTMLBuilder.body(it, _function_1);
-                  }
+                  final Procedure1<Node> _function = new Procedure1<Node>() {
+                      public void apply(final Node it) {
+                        final Procedure1<Node> _function = new Procedure1<Node>() {
+                            public void apply(final Node it) {
+                              it.setTextContent("Todd m\u00FCffelt");
+                            }
+                          };
+                        DMControllerGenerator.this._hTMLBuilder.title(it, _function);
+                      }
+                    };
+                  DMControllerGenerator.this._hTMLBuilder.head(it, _function);
+                  final Procedure1<Node> _function_1 = new Procedure1<Node>() {
+                      public void apply(final Node it) {
+                        final Procedure1<Node> _function = new Procedure1<Node>() {
+                            public void apply(final Node it) {
+                              it.setTextContent("Extrablatt");
+                            }
+                          };
+                        DMControllerGenerator.this._hTMLBuilder.h1(it, _function);
+                      }
+                    };
+                  DMControllerGenerator.this._hTMLBuilder.body(it, _function_1);
                 }
               };
             DMControllerGenerator.this._hTMLBuilder.html(it, _function);
