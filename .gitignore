@@ -1,3 +1,4 @@
 *.class
+*_trace
 */bin/
 dmtest/src-gen/

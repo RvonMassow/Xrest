@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.xtext.services
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: org.eclipse.xtext.services; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.xtext.services,
+ org.eclipse.xtext.services.services,
+ org.eclipse.xtext.services.services.impl,
+ org.eclipse.xtext.services.services.util,
+ org.eclipse.xtext.services.serializer,
+ org.eclipse.xtext.services.parser.antlr,
+ org.eclipse.xtext.services.parser.antlr.internal,
+ org.eclipse.xtext.services.validation,
+ org.eclipse.xtext.services.formatting,
+ org.eclipse.xtext.services.jvmmodel

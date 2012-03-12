@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/xtext/services/Services" 
+       class = "org.eclipse.xtext.services.services.ServicesPackage"
+       genModel = "org/eclipse/xtext/services/Services.genmodel" /> 
+	
+  </extension>
+
+
+
+
+
+</plugin>

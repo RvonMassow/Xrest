@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.xtext.services/src-gen"
+    editDirectory="/org.eclipse.xtext.services.edit/src" editorDirectory="/org.eclipse.xtext.services.editor/src"
+    modelPluginID="org.eclipse.xtext.services" forceOverwrite="true" modelName="Services"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.xtext.services.edit"
+    editorPluginID="org.eclipse.xtext.services.editor" usedGenPackages="../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="Services" basePackage="org.eclipse.xtext.services" disposableProviderFactory="true"
+      ecorePackage="Services.ecore#/">
+    <genClasses ecoreClass="Services.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/packageName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/imports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/services"/>
+    </genClasses>
+    <genClasses ecoreClass="Services.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/service"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/get"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/post"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/uses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Services.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Import/importedNamespace"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
