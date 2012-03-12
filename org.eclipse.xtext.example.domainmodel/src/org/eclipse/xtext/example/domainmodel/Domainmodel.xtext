@@ -32,11 +32,23 @@ Feature:
 	Property | Operation;
 
 Property:
-	name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])?;
+	(derive?='derive')? name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+;
 
 Operation:
-	'op' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' ':' type=JvmTypeReference 
+	Validate | Derive;
+
+Validate:
+	'op' name='validate'
+		body=XBlockExpression;
+
+Derive:
+	 name='derive' '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' ':' type=JvmTypeReference 
 		body=XBlockExpression;
 
 QualifiedNameWithWildCard :
 	QualifiedName  ('.' '*')?;
+
+ValidID:
+	(ID | 'derive' | 'validate')
+;

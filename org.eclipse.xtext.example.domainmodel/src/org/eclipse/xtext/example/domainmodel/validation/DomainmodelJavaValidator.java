@@ -34,7 +34,7 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
 	private JavaReflectAccess jra;
 
     @Check
-    public void checkTypeNameStartsWithCapital(Entity entity) {
+    public void checkTypeNameStartsWithCapital(final Entity entity) {
         if (!Character.isUpperCase(entity.getName().charAt(0))) {
             warning("Name should start with a capital", 
             		DomainmodelPackage.Literals.ENTITY__NAME,
@@ -45,7 +45,7 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
     }
 
     @Check
-    public void checkFeatureNameStartsWithLowercase(Feature feature) {
+    public void checkFeatureNameStartsWithLowercase(final Feature feature) {
         if (!Character.isLowerCase(feature.getName().charAt(0))) {
             warning("Name should start with a lowercase", 
             		DomainmodelPackage.Literals.FEATURE__NAME,
@@ -56,12 +56,12 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
     }
 
     @Check
-    public void checkFeatureTypeCompatible(Property property) {
-    	JvmTypeReference type = property.getType();
-    	Class<?> clazz = jra.getRawType(type.getType());
+    public void checkFeatureTypeCompatible(final Property property) {
+    	final JvmTypeReference type = property.getType();
+    	final Class<?> clazz = jra.getRawType(type.getType());
 //    	if(!List.class.isAssignableFrom(clazz)){
 //    		if(property.getMappedBy() == null) {
-//    			error("Multiplicity many relations need to define an oppisite for database mappings",
+//    			error("Multiplicity many relations need to define an opposite for database mappings",
 //    					DomainmodelPackage.Literals.PROPERTY__MAPPED_BY,
 //    					IssueCodes.INVALID_MAPPING,
 //    					property.getType().getQualifiedName());
@@ -77,7 +77,7 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
     }
     
     @Check
-    public void checkPackage(PackageDeclaration packages) {
+    public void checkPackage(final PackageDeclaration packages) {
     	if(Strings.isEmpty(packages.getName())) {
     		error("Name cannot be empty", DomainmodelPackage.Literals.PACKAGE_DECLARATION__NAME);
     	}

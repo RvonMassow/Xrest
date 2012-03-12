@@ -33,9 +33,4 @@ public class DomainmodelRuntimeModule extends AbstractDomainmodelRuntimeModule {
 	public Class<? extends JvmModelGenerator> bindJvmModelGenerator() {
 		return FixedJvmModelGenerator.class;
 	}
-
-	@Override
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return DomainmodelScopeProvider.class;
-	}
 }

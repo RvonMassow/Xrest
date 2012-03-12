@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel;
 
@@ -284,13 +283,22 @@ public interface DomainmodelPackage extends EPackage
   int PROPERTY__TYPE = FEATURE__TYPE;
 
   /**
+   * The feature id for the '<em><b>Derive</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__DERIVE = FEATURE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Mapped By</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__MAPPED_BY = FEATURE_FEATURE_COUNT + 0;
+  int PROPERTY__MAPPED_BY = FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -299,7 +307,7 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl <em>Operation</em>}' class.
@@ -527,6 +535,17 @@ public interface DomainmodelPackage extends EPackage
   EClass getProperty();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive <em>Derive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Derive</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive()
+   * @see #getProperty()
+   * @generated
+   */
+  EAttribute getProperty_Derive();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getMappedBy <em>Mapped By</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -733,6 +752,14 @@ public interface DomainmodelPackage extends EPackage
      * @generated
      */
     EClass PROPERTY = eINSTANCE.getProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Derive</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY__DERIVE = eINSTANCE.getProperty_Derive();
 
     /**
      * The meta object literal for the '<em><b>Mapped By</b></em>' reference feature.

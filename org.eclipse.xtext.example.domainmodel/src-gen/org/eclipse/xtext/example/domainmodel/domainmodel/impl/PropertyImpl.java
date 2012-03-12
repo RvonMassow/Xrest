@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel.impl;
 
@@ -23,6 +22,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#isDerive <em>Derive</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#getMappedBy <em>Mapped By</em>}</li>
  * </ul>
  * </p>
@@ -31,6 +31,26 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
  */
 public class PropertyImpl extends FeatureImpl implements Property
 {
+  /**
+   * The default value of the '{@link #isDerive() <em>Derive</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDerive()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean DERIVE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isDerive() <em>Derive</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDerive()
+   * @generated
+   * @ordered
+   */
+  protected boolean derive = DERIVE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getMappedBy() <em>Mapped By</em>}' reference.
    * <!-- begin-user-doc -->
@@ -60,6 +80,29 @@ public class PropertyImpl extends FeatureImpl implements Property
   protected EClass eStaticClass()
   {
     return DomainmodelPackage.Literals.PROPERTY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isDerive()
+  {
+    return derive;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDerive(boolean newDerive)
+  {
+    boolean oldDerive = derive;
+    derive = newDerive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DomainmodelPackage.PROPERTY__DERIVE, oldDerive, derive));
   }
 
   /**
@@ -115,6 +158,8 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
+      case DomainmodelPackage.PROPERTY__DERIVE:
+        return isDerive();
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         if (resolve) return getMappedBy();
         return basicGetMappedBy();
@@ -132,6 +177,9 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
+      case DomainmodelPackage.PROPERTY__DERIVE:
+        setDerive((Boolean)newValue);
+        return;
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         setMappedBy((Property)newValue);
         return;
@@ -149,6 +197,9 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
+      case DomainmodelPackage.PROPERTY__DERIVE:
+        setDerive(DERIVE_EDEFAULT);
+        return;
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         setMappedBy((Property)null);
         return;
@@ -166,10 +217,29 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
+      case DomainmodelPackage.PROPERTY__DERIVE:
+        return derive != DERIVE_EDEFAULT;
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
         return mappedBy != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (derive: ");
+    result.append(derive);
+    result.append(')');
+    return result.toString();
   }
 
 } //PropertyImpl

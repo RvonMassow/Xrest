@@ -201,53 +201,62 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	public class PropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cMappedByAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cMappedByPropertyCrossReference_3_1_0 = (CrossReference)cMappedByAssignment_3_1.eContents().get(0);
-		private final RuleCall cMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cMappedByPropertyCrossReference_3_1_0.eContents().get(1);
+		private final Assignment cDeriveAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cDeriveDeriveKeyword_0_0 = (Keyword)cDeriveAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cMappedByAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cMappedByPropertyCrossReference_4_1_0 = (CrossReference)cMappedByAssignment_4_1.eContents().get(0);
+		private final RuleCall cMappedByPropertyQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cMappedByPropertyCrossReference_4_1_0.eContents().get(1);
 		
 		//Property:
-		//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?;
+		//	derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+		//;
 		public ParserRule getRule() { return rule; }
 
-		//name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?
+		//derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 		public Group getGroup() { return cGroup; }
 
+		//derive?="derive"?
+		public Assignment getDeriveAssignment_0() { return cDeriveAssignment_0; }
+
+		//"derive"
+		public Keyword getDeriveDeriveKeyword_0_0() { return cDeriveDeriveKeyword_0_0; }
+
 		//name=ValidID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
+		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 
 		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//type=JvmTypeReference
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_0() { return cTypeJvmTypeReferenceParserRuleCall_2_0; }
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_3_0() { return cTypeJvmTypeReferenceParserRuleCall_3_0; }
 
 		//("->" mappedBy=[Property|QualifiedName])?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"->"
-		public Keyword getHyphenMinusGreaterThanSignKeyword_3_0() { return cHyphenMinusGreaterThanSignKeyword_3_0; }
+		public Keyword getHyphenMinusGreaterThanSignKeyword_4_0() { return cHyphenMinusGreaterThanSignKeyword_4_0; }
 
 		//mappedBy=[Property|QualifiedName]
-		public Assignment getMappedByAssignment_3_1() { return cMappedByAssignment_3_1; }
+		public Assignment getMappedByAssignment_4_1() { return cMappedByAssignment_4_1; }
 
 		//[Property|QualifiedName]
-		public CrossReference getMappedByPropertyCrossReference_3_1_0() { return cMappedByPropertyCrossReference_3_1_0; }
+		public CrossReference getMappedByPropertyCrossReference_4_1_0() { return cMappedByPropertyCrossReference_4_1_0; }
 
 		//QualifiedName
-		public RuleCall getMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1() { return cMappedByPropertyQualifiedNameParserRuleCall_3_1_0_1; }
+		public RuleCall getMappedByPropertyQualifiedNameParserRuleCall_4_1_0_1() { return cMappedByPropertyQualifiedNameParserRuleCall_4_1_0_1; }
 	}
 
 	public class OperationElements extends AbstractParserRuleElementFinder {
@@ -359,6 +368,30 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		//"*"
 		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
 	}
+
+	public class ValidIDElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidID");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Keyword cDeriveKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cValidateKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		
+		//ValidID:
+		//	ID | "derive" | "validate";
+		public ParserRule getRule() { return rule; }
+
+		//ID | "derive" | "validate"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//"derive"
+		public Keyword getDeriveKeyword_1() { return cDeriveKeyword_1; }
+
+		//"validate"
+		public Keyword getValidateKeyword_2() { return cValidateKeyword_2; }
+	}
 	
 	
 	private DomainModelElements pDomainModel;
@@ -370,6 +403,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	private PropertyElements pProperty;
 	private OperationElements pOperation;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
+	private ValidIDElements pValidID;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -453,7 +487,8 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])?;
+	//	derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+	//;
 	public PropertyElements getPropertyAccess() {
 		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}
@@ -481,6 +516,16 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getQualifiedNameWithWildCardRule() {
 		return getQualifiedNameWithWildCardAccess().getRule();
+	}
+
+	//ValidID:
+	//	ID | "derive" | "validate";
+	public ValidIDElements getValidIDAccess() {
+		return (pValidID != null) ? pValidID : (pValidID = new ValidIDElements());
+	}
+	
+	public ParserRule getValidIDRule() {
+		return getValidIDAccess().getRule();
 	}
 
 	//XExpression:
@@ -932,8 +977,8 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//XConstructorCall returns XExpression:
 	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
-	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? "("
-	//	(arguments+=XShortClosure | arguments+=XExpression ("," arguments+=XExpression)*)? ")" => arguments+=XClosure?;
+	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
+	//	(arguments+=XShortClosure | arguments+=XExpression ("," arguments+=XExpression)*)? ")")? => arguments+=XClosure?;
 	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
 		return gaXbase.getXConstructorCallAccess();
 	}
@@ -1160,16 +1205,6 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmTypeParameterRule() {
 		return getJvmTypeParameterAccess().getRule();
-	}
-
-	//ValidID:
-	//	ID;
-	public XtypeGrammarAccess.ValidIDElements getValidIDAccess() {
-		return gaXbase.getValidIDAccess();
-	}
-	
-	public ParserRule getValidIDRule() {
-		return getValidIDAccess().getRule();
 	}
 
 	//terminal ID:
