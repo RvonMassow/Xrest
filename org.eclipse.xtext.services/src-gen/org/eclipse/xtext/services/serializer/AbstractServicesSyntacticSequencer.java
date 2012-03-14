@@ -18,7 +18,6 @@ import org.eclipse.xtext.services.services.ServicesGrammarAccess;
 public class AbstractServicesSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ServicesGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Service_UsesKeyword_7_0_q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -29,7 +28,6 @@ public class AbstractServicesSyntacticSequencer extends AbstractSyntacticSequenc
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ServicesGrammarAccess) access;
-		match_Service_UsesKeyword_7_0_q = new TokenAlias(false, true, grammarAccess.getServiceAccess().getUsesKeyword_7_0());
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()));
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -57,9 +55,7 @@ public class AbstractServicesSyntacticSequencer extends AbstractSyntacticSequenc
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_Service_UsesKeyword_7_0_q.equals(syntax))
-				emit_Service_UsesKeyword_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
+			if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q.equals(syntax))
 				emit_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -75,14 +71,6 @@ public class AbstractServicesSyntacticSequencer extends AbstractSyntacticSequenc
 		}
 	}
 
-	/**
-	 * Syntax:
-	 *     'uses'?
-	 */
-	protected void emit_Service_UsesKeyword_7_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Syntax:
 	 *     ';'?

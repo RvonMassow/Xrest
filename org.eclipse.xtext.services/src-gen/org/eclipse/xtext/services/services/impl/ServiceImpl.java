@@ -26,6 +26,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesPackage;
+import org.eclipse.xtext.services.services.UseDeclaration;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -159,7 +160,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * @generated
    * @ordered
    */
-  protected EList<JvmTypeReference> uses;
+  protected EList<UseDeclaration> uses;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -351,11 +352,11 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<JvmTypeReference> getUses()
+  public EList<UseDeclaration> getUses()
   {
     if (uses == null)
     {
-      uses = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, ServicesPackage.SERVICE__USES);
+      uses = new EObjectContainmentEList<UseDeclaration>(UseDeclaration.class, this, ServicesPackage.SERVICE__USES);
     }
     return uses;
   }
@@ -492,7 +493,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return;
       case ServicesPackage.SERVICE__USES:
         getUses().clear();
-        getUses().addAll((Collection<? extends JvmTypeReference>)newValue);
+        getUses().addAll((Collection<? extends UseDeclaration>)newValue);
         return;
       case ServicesPackage.SERVICE__BODY:
         setBody((XExpression)newValue);

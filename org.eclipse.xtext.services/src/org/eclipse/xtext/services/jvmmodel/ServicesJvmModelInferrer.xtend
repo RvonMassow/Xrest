@@ -8,6 +8,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.XbaseTypeProvider
 import java.util.Map
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.services.services.UseDeclaration
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -38,7 +39,7 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    		// An example based on the initial hellow world example could look like this:
    		
    		acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater [
-			val injectedMembers = <JvmTypeReference>newHashSet()
+			val injectedMembers = <UseDeclaration>newHashSet()
    			for(service : component.services) {
    				members += service.toMethod(service.name, service.type) [
    					if(service.get) {
@@ -54,7 +55,15 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    				]
    			}
    			for(injectedMember : injectedMembers) {
-   				members += injectedMember.toField(injectedMember.simpleName.toFirstLower, injectedMember) [
+   				val name = { 
+   					if(injectedMember.name != null)
+   						injectedMember.name 
+   					else 
+   						injectedMember.type?.simpleName?.toFirstLower
+   				}
+   				members += injectedMember.toField( name
+   					, injectedMember.type
+   				) [
    					annotations += injectedMember.toAnnotation("javax.inject.Inject")
    				]
    			}

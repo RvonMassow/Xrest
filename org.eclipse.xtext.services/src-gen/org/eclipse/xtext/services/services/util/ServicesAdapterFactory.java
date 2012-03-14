@@ -78,6 +78,11 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
     new ServicesSwitch<Adapter>()
     {
       @Override
+      public Adapter caseServicesFile(ServicesFile object)
+      {
+        return createServicesFileAdapter();
+      }
+      @Override
       public Adapter caseComponent(Component object)
       {
         return createComponentAdapter();
@@ -86,6 +91,11 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
       public Adapter caseService(Service object)
       {
         return createServiceAdapter();
+      }
+      @Override
+      public Adapter caseUseDeclaration(UseDeclaration object)
+      {
+        return createUseDeclarationAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -115,6 +125,21 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
 
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.ServicesFile <em>File</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.ServicesFile
+   * @generated
+   */
+  public Adapter createServicesFileAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.Component <em>Component</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -140,6 +165,21 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createServiceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.UseDeclaration <em>Use Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.UseDeclaration
+   * @generated
+   */
+  public Adapter createUseDeclarationAdapter()
   {
     return null;
   }

@@ -187,7 +187,7 @@ public interface Service extends EObject
 
   /**
    * Returns the value of the '<em><b>Uses</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmTypeReference}.
+   * The list contents are of type {@link org.eclipse.xtext.services.services.UseDeclaration}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Uses</em>' containment reference list isn't clear,
@@ -199,7 +199,7 @@ public interface Service extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<JvmTypeReference> getUses();
+  EList<UseDeclaration> getUses();
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.

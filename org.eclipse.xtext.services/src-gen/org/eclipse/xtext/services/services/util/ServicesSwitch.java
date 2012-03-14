@@ -75,6 +75,13 @@ public class ServicesSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case ServicesPackage.SERVICES_FILE:
+      {
+        ServicesFile servicesFile = (ServicesFile)theEObject;
+        T result = caseServicesFile(servicesFile);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ServicesPackage.COMPONENT:
       {
         Component component = (Component)theEObject;
@@ -89,6 +96,13 @@ public class ServicesSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ServicesPackage.USE_DECLARATION:
+      {
+        UseDeclaration useDeclaration = (UseDeclaration)theEObject;
+        T result = caseUseDeclaration(useDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ServicesPackage.IMPORT:
       {
         Import import_ = (Import)theEObject;
@@ -98,6 +112,22 @@ public class ServicesSwitch<T> extends Switch<T>
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>File</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>File</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseServicesFile(ServicesFile object)
+  {
+    return null;
   }
 
   /**
@@ -128,6 +158,22 @@ public class ServicesSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseService(Service object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Use Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Use Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUseDeclaration(UseDeclaration object)
   {
     return null;
   }

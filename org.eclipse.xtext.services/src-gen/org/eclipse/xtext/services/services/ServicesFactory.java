@@ -26,6 +26,15 @@ public interface ServicesFactory extends EFactory
   ServicesFactory eINSTANCE = org.eclipse.xtext.services.services.impl.ServicesFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>File</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>File</em>'.
+   * @generated
+   */
+  ServicesFile createServicesFile();
+
+  /**
    * Returns a new object of class '<em>Component</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -42,6 +51,15 @@ public interface ServicesFactory extends EFactory
    * @generated
    */
   Service createService();
+
+  /**
+   * Returns a new object of class '<em>Use Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Use Declaration</em>'.
+   * @generated
+   */
+  UseDeclaration createUseDeclaration();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

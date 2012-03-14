@@ -1,5 +1,6 @@
 package org.eclipse.xtext.services.jvmmodel;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Service;
+import org.eclipse.xtext.services.services.UseDeclaration;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
@@ -60,7 +62,7 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
-          final HashSet<JvmTypeReference> injectedMembers = CollectionLiterals.<JvmTypeReference>newHashSet();
+          final HashSet<UseDeclaration> injectedMembers = CollectionLiterals.<UseDeclaration>newHashSet();
           EList<Service> _services = component.getServices();
           for (final Service service : _services) {
             EList<JvmMember> _members = it.getMembers();
@@ -85,8 +87,8 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                     JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name, _parameterType);
                     _parameters.add(_parameter);
                   }
-                  EList<JvmTypeReference> _uses = service.getUses();
-                  Iterables.<JvmTypeReference>addAll(injectedMembers, _uses);
+                  EList<UseDeclaration> _uses = service.getUses();
+                  Iterables.<UseDeclaration>addAll(injectedMembers, _uses);
                   XExpression _body = service.getBody();
                   ServicesJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
                 }
@@ -94,19 +96,33 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
             JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _name, _type, _function);
             _members.add(_method);
           }
-          for (final JvmTypeReference injectedMember : injectedMembers) {
-            EList<JvmMember> _members_1 = it.getMembers();
-            String _simpleName = injectedMember.getSimpleName();
-            String _firstLower = StringExtensions.toFirstLower(_simpleName);
-            final Procedure1<JvmField> _function_1 = new Procedure1<JvmField>() {
-                public void apply(final JvmField it) {
-                  EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-                  JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(injectedMember, "javax.inject.Inject");
-                  _annotations.add(_annotation);
-                }
-              };
-            JvmField _field = ServicesJvmModelInferrer.this._jvmTypesBuilder.toField(injectedMember, _firstLower, injectedMember, _function_1);
-            _members_1.add(_field);
+          for (final UseDeclaration injectedMember : injectedMembers) {
+            {
+              String _xifexpression = null;
+              String _name_1 = injectedMember.getName();
+              boolean _notEquals = (!Objects.equal(_name_1, null));
+              if (_notEquals) {
+                String _name_2 = injectedMember.getName();
+                _xifexpression = _name_2;
+              } else {
+                JvmTypeReference _type_1 = injectedMember.getType();
+                String _simpleName = _type_1==null?(String)null:_type_1.getSimpleName();
+                String _firstLower = _simpleName==null?(String)null:StringExtensions.toFirstLower(_simpleName);
+                _xifexpression = _firstLower;
+              }
+              final String name = _xifexpression;
+              EList<JvmMember> _members_1 = it.getMembers();
+              JvmTypeReference _type_2 = injectedMember.getType();
+              final Procedure1<JvmField> _function_1 = new Procedure1<JvmField>() {
+                  public void apply(final JvmField it) {
+                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                    JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(injectedMember, "javax.inject.Inject");
+                    _annotations.add(_annotation);
+                  }
+                };
+              JvmField _field = ServicesJvmModelInferrer.this._jvmTypesBuilder.toField(injectedMember, name, _type_2, _function_1);
+              _members_1.add(_field);
+            }
           }
         }
       };

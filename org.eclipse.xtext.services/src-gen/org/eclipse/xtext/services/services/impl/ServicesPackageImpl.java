@@ -18,7 +18,9 @@ import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Import;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesFactory;
+import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesPackage;
+import org.eclipse.xtext.services.services.UseDeclaration;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
@@ -35,6 +37,13 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass servicesFileEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass componentEClass = null;
 
   /**
@@ -43,6 +52,13 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * @generated
    */
   private EClass serviceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass useDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,6 +131,26 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(ServicesPackage.eNS_URI, theServicesPackage);
     return theServicesPackage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getServicesFile()
+  {
+    return servicesFileEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getServicesFile_Component()
+  {
+    return (EReference)servicesFileEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -262,6 +298,36 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getUseDeclaration()
+  {
+    return useDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUseDeclaration_Type()
+  {
+    return (EReference)useDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUseDeclaration_Name()
+  {
+    return (EAttribute)useDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getImport()
   {
     return importEClass;
@@ -307,6 +373,9 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     isCreated = true;
 
     // Create classes and their features
+    servicesFileEClass = createEClass(SERVICES_FILE);
+    createEReference(servicesFileEClass, SERVICES_FILE__COMPONENT);
+
     componentEClass = createEClass(COMPONENT);
     createEAttribute(componentEClass, COMPONENT__PACKAGE_NAME);
     createEReference(componentEClass, COMPONENT__IMPORTS);
@@ -322,6 +391,10 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     createEReference(serviceEClass, SERVICE__TYPE);
     createEReference(serviceEClass, SERVICE__USES);
     createEReference(serviceEClass, SERVICE__BODY);
+
+    useDeclarationEClass = createEClass(USE_DECLARATION);
+    createEReference(useDeclarationEClass, USE_DECLARATION__TYPE);
+    createEAttribute(useDeclarationEClass, USE_DECLARATION__NAME);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
@@ -362,6 +435,9 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
+    initEClass(servicesFileEClass, ServicesFile.class, "ServicesFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getServicesFile_Component(), this.getComponent(), null, "component", null, 0, 1, ServicesFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getComponent_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponent_Imports(), this.getImport(), null, "imports", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -375,8 +451,12 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     initEAttribute(getService_Name(), ecorePackage.getEString(), "name", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getService_Uses(), theTypesPackage.getJvmTypeReference(), null, "uses", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getService_Uses(), this.getUseDeclaration(), null, "uses", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(useDeclarationEClass, UseDeclaration.class, "UseDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUseDeclaration_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, UseDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getUseDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, UseDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

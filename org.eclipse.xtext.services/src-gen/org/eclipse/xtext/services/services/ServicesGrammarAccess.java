@@ -18,6 +18,22 @@ import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
+	public class ServicesFileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ServicesFile");
+		private final Assignment cComponentAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cComponentComponentParserRuleCall_0 = (RuleCall)cComponentAssignment.eContents().get(0);
+		
+		//ServicesFile:
+		//	component=Component;
+		public ParserRule getRule() { return rule; }
+
+		//component=Component
+		public Assignment getComponentAssignment() { return cComponentAssignment; }
+
+		//Component
+		public RuleCall getComponentComponentParserRuleCall_0() { return cComponentComponentParserRuleCall_0; }
+	}
+
 	public class ComponentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Component");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -108,19 +124,23 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cUsesKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Assignment cUsesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cUsesJvmTypeReferenceParserRuleCall_7_1_0 = (RuleCall)cUsesAssignment_7_1.eContents().get(0);
+		private final RuleCall cUsesUseDeclarationParserRuleCall_7_1_0 = (RuleCall)cUsesAssignment_7_1.eContents().get(0);
+		private final Group cGroup_7_2 = (Group)cGroup_7.eContents().get(2);
+		private final Keyword cCommaKeyword_7_2_0 = (Keyword)cGroup_7_2.eContents().get(0);
+		private final Assignment cUsesAssignment_7_2_1 = (Assignment)cGroup_7_2.eContents().get(1);
+		private final RuleCall cUsesUseDeclarationParserRuleCall_7_2_1_0 = (RuleCall)cUsesAssignment_7_2_1.eContents().get(0);
 		private final Assignment cBodyAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_8_0 = (RuleCall)cBodyAssignment_8.eContents().get(0);
 		
 		//Service:
 		//	(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-		//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=JvmTypeReference*)?
-		//	body=XBlockExpression;
+		//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
+		//	uses+=UseDeclaration)*)? body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
 		//(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-		//params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=JvmTypeReference*)?
-		//body=XBlockExpression
+		//params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
+		//uses+=UseDeclaration)*)? body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//(service?="service" "[" (get?="GET" | post?="POST") "]")?
@@ -195,23 +215,63 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		//JvmTypeReference
 		public RuleCall getTypeJvmTypeReferenceParserRuleCall_6_0() { return cTypeJvmTypeReferenceParserRuleCall_6_0; }
 
-		//("uses" uses+=JvmTypeReference*)?
+		//("uses" uses+=UseDeclaration ("," uses+=UseDeclaration)*)?
 		public Group getGroup_7() { return cGroup_7; }
 
 		//"uses"
 		public Keyword getUsesKeyword_7_0() { return cUsesKeyword_7_0; }
 
-		//uses+=JvmTypeReference*
+		//uses+=UseDeclaration
 		public Assignment getUsesAssignment_7_1() { return cUsesAssignment_7_1; }
 
-		//JvmTypeReference
-		public RuleCall getUsesJvmTypeReferenceParserRuleCall_7_1_0() { return cUsesJvmTypeReferenceParserRuleCall_7_1_0; }
+		//UseDeclaration
+		public RuleCall getUsesUseDeclarationParserRuleCall_7_1_0() { return cUsesUseDeclarationParserRuleCall_7_1_0; }
+
+		//("," uses+=UseDeclaration)*
+		public Group getGroup_7_2() { return cGroup_7_2; }
+
+		//","
+		public Keyword getCommaKeyword_7_2_0() { return cCommaKeyword_7_2_0; }
+
+		//uses+=UseDeclaration
+		public Assignment getUsesAssignment_7_2_1() { return cUsesAssignment_7_2_1; }
+
+		//UseDeclaration
+		public RuleCall getUsesUseDeclarationParserRuleCall_7_2_1_0() { return cUsesUseDeclarationParserRuleCall_7_2_1_0; }
 
 		//body=XBlockExpression
 		public Assignment getBodyAssignment_8() { return cBodyAssignment_8; }
 
 		//XBlockExpression
 		public RuleCall getBodyXBlockExpressionParserRuleCall_8_0() { return cBodyXBlockExpressionParserRuleCall_8_0; }
+	}
+
+	public class UseDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UseDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//UseDeclaration:
+		//	type=JvmTypeReference name=ID?;
+		public ParserRule getRule() { return rule; }
+
+		//type=JvmTypeReference name=ID?
+		public Group getGroup() { return cGroup; }
+
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_0_0() { return cTypeJvmTypeReferenceParserRuleCall_0_0; }
+
+		//name=ID?
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -239,8 +299,10 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	private ServicesFileElements pServicesFile;
 	private ComponentElements pComponent;
 	private ServiceElements pService;
+	private UseDeclarationElements pUseDeclaration;
 	private ImportElements pImport;
 	
 	private final GrammarProvider grammarProvider;
@@ -264,6 +326,16 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//ServicesFile:
+	//	component=Component;
+	public ServicesFileElements getServicesFileAccess() {
+		return (pServicesFile != null) ? pServicesFile : (pServicesFile = new ServicesFileElements());
+	}
+	
+	public ParserRule getServicesFileRule() {
+		return getServicesFileAccess().getRule();
+	}
+
 	//Component:
 	//	"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" services+=Service* "}";
 	public ComponentElements getComponentAccess() {
@@ -276,14 +348,24 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Service:
 	//	(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-	//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=JvmTypeReference*)?
-	//	body=XBlockExpression;
+	//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
+	//	uses+=UseDeclaration)*)? body=XBlockExpression;
 	public ServiceElements getServiceAccess() {
 		return (pService != null) ? pService : (pService = new ServiceElements());
 	}
 	
 	public ParserRule getServiceRule() {
 		return getServiceAccess().getRule();
+	}
+
+	//UseDeclaration:
+	//	type=JvmTypeReference name=ID?;
+	public UseDeclarationElements getUseDeclarationAccess() {
+		return (pUseDeclaration != null) ? pUseDeclaration : (pUseDeclaration = new UseDeclarationElements());
+	}
+	
+	public ParserRule getUseDeclarationRule() {
+		return getUseDeclarationAccess().getRule();
 	}
 
 	//Import:

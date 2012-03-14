@@ -2,6 +2,10 @@ grammar org.eclipse.xtext.services.Services with org.eclipse.xtext.xbase.Xbase
 
 generate services "http://www.eclipse.org/xtext/services/Services"
 
+ServicesFile:
+	component=Component
+;
+
 Component:
 	'package' packageName=QualifiedName
 	(imports+=Import)*
@@ -14,9 +18,14 @@ Component:
 Service:
 	(service?='service' '[' (get?='GET' | post?='POST') ']')? name=ValidID'(' (params+=FullJvmFormalParameter(',' params+=FullJvmFormalParameter)*)? ')' 
 		':' type=JvmTypeReference
-		('uses' (uses +=JvmTypeReference)*)?
+		('uses' uses+=UseDeclaration (',' uses+=UseDeclaration)*)?
 		body=XBlockExpression
 ;
+
+UseDeclaration:
+	type=JvmTypeReference (name=ID)?
+;
+
 
 Import:
 	"import" importedNamespace=QualifiedName

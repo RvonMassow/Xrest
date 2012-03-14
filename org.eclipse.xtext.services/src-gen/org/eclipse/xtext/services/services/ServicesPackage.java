@@ -60,6 +60,34 @@ public interface ServicesPackage extends EPackage
   ServicesPackage eINSTANCE = org.eclipse.xtext.services.services.impl.ServicesPackageImpl.init();
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ServicesFileImpl <em>File</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.ServicesFileImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getServicesFile()
+   * @generated
+   */
+  int SERVICES_FILE = 0;
+
+  /**
+   * The feature id for the '<em><b>Component</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SERVICES_FILE__COMPONENT = 0;
+
+  /**
+   * The number of structural features of the '<em>File</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SERVICES_FILE_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ComponentImpl <em>Component</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,7 +95,7 @@ public interface ServicesPackage extends EPackage
    * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getComponent()
    * @generated
    */
-  int COMPONENT = 0;
+  int COMPONENT = 1;
 
   /**
    * The feature id for the '<em><b>Package Name</b></em>' attribute.
@@ -122,7 +150,7 @@ public interface ServicesPackage extends EPackage
    * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getService()
    * @generated
    */
-  int SERVICE = 1;
+  int SERVICE = 2;
 
   /**
    * The feature id for the '<em><b>Service</b></em>' attribute.
@@ -206,6 +234,43 @@ public interface ServicesPackage extends EPackage
   int SERVICE_FEATURE_COUNT = 8;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl <em>Use Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.UseDeclarationImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getUseDeclaration()
+   * @generated
+   */
+  int USE_DECLARATION = 3;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USE_DECLARATION__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USE_DECLARATION__NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Use Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USE_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ImportImpl <em>Import</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,7 +278,7 @@ public interface ServicesPackage extends EPackage
    * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 2;
+  int IMPORT = 4;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -233,6 +298,27 @@ public interface ServicesPackage extends EPackage
    */
   int IMPORT_FEATURE_COUNT = 1;
 
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.ServicesFile <em>File</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>File</em>'.
+   * @see org.eclipse.xtext.services.services.ServicesFile
+   * @generated
+   */
+  EClass getServicesFile();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.ServicesFile#getComponent <em>Component</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Component</em>'.
+   * @see org.eclipse.xtext.services.services.ServicesFile#getComponent()
+   * @see #getServicesFile()
+   * @generated
+   */
+  EReference getServicesFile_Component();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.services.services.Component <em>Component</em>}'.
@@ -387,6 +473,38 @@ public interface ServicesPackage extends EPackage
   EReference getService_Body();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.UseDeclaration <em>Use Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Use Declaration</em>'.
+   * @see org.eclipse.xtext.services.services.UseDeclaration
+   * @generated
+   */
+  EClass getUseDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.UseDeclaration#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see org.eclipse.xtext.services.services.UseDeclaration#getType()
+   * @see #getUseDeclaration()
+   * @generated
+   */
+  EReference getUseDeclaration_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.UseDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.xtext.services.services.UseDeclaration#getName()
+   * @see #getUseDeclaration()
+   * @generated
+   */
+  EAttribute getUseDeclaration_Name();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.services.services.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -430,6 +548,24 @@ public interface ServicesPackage extends EPackage
    */
   interface Literals
   {
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.ServicesFileImpl <em>File</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.ServicesFileImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getServicesFile()
+     * @generated
+     */
+    EClass SERVICES_FILE = eINSTANCE.getServicesFile();
+
+    /**
+     * The meta object literal for the '<em><b>Component</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SERVICES_FILE__COMPONENT = eINSTANCE.getServicesFile_Component();
+
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.ComponentImpl <em>Component</em>}' class.
      * <!-- begin-user-doc -->
@@ -545,6 +681,32 @@ public interface ServicesPackage extends EPackage
      * @generated
      */
     EReference SERVICE__BODY = eINSTANCE.getService_Body();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl <em>Use Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.UseDeclarationImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getUseDeclaration()
+     * @generated
+     */
+    EClass USE_DECLARATION = eINSTANCE.getUseDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference USE_DECLARATION__TYPE = eINSTANCE.getUseDeclaration_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute USE_DECLARATION__NAME = eINSTANCE.getUseDeclaration_Name();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.ImportImpl <em>Import</em>}' class.

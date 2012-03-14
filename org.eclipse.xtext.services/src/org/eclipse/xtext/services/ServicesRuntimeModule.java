@@ -4,6 +4,7 @@
 package org.eclipse.xtext.services;
 
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.services.scoping.ServicesScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
