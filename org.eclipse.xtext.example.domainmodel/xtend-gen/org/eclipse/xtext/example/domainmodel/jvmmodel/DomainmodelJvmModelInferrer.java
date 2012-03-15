@@ -19,10 +19,11 @@ import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Derive;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Validate;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.DMControllerGenerator;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.TypesBuilderExtensions;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -177,21 +178,40 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
         }
       }
       if (!_matched) {
-        if (f instanceof Operation) {
-          final Operation _operation = (Operation)f;
+        if (f instanceof Derive) {
+          final Derive _derive = (Derive)f;
           _matched=true;
           EList<JvmMember> _members = it.getMembers();
-          String _name = _operation.getName();
+          String _name = _derive.getName();
           JvmTypeReference _typeForName = this._typeReferences.getTypeForName(void.class, e);
           final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
               public void apply(final JvmOperation it) {
-                String _documentation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(_operation);
+                String _documentation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(_derive);
                 DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
-                XExpression _body = _operation.getBody();
+                XExpression _body = _derive.getBody();
                 DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
               }
             };
-          JvmOperation _method = this._jvmTypesBuilder.toMethod(_operation, _name, _typeForName, _function);
+          JvmOperation _method = this._jvmTypesBuilder.toMethod(_derive, _name, _typeForName, _function);
+          this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+        }
+      }
+      if (!_matched) {
+        if (f instanceof Validate) {
+          final Validate _validate = (Validate)f;
+          _matched=true;
+          EList<JvmMember> _members = it.getMembers();
+          String _name = _validate.getName();
+          JvmTypeReference _typeForName = this._typeReferences.getTypeForName(boolean.class, e);
+          final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+              public void apply(final JvmOperation it) {
+                String _documentation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(_validate);
+                DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
+                XExpression _body = _validate.getBody();
+                DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
+              }
+            };
+          JvmOperation _method = this._jvmTypesBuilder.toMethod(_validate, _name, _typeForName, _function);
           this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
         }
       }

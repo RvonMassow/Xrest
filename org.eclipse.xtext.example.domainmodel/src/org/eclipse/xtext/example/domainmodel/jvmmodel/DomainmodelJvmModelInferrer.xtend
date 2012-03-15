@@ -13,7 +13,9 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.example.domainmodel.domainmodel.Derive
+import org.eclipse.xtext.example.domainmodel.domainmodel.Validate
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 
@@ -69,8 +71,15 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 						members += f.toSetter(f.name, f.type)
 					}
 	
-					Operation : {
+					Derive : {
 						members += f.toMethod(f.name, typeof(void).getTypeForName(e)) [
+							documentation = f.documentation
+							body = f.body
+						]
+					}
+					
+					Validate : {
+							members += f.toMethod(f.name, typeof(boolean).getTypeForName(e)) [
 							documentation = f.documentation
 							body = f.body
 						]
