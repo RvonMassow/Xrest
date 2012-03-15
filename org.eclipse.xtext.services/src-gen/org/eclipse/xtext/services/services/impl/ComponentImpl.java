@@ -36,8 +36,8 @@ import org.eclipse.xtext.services.services.ServicesPackage;
  * <ul>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getServices <em>Services</em>}</li>
  * </ul>
  * </p>
@@ -77,16 +77,6 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
   protected EList<Import> imports;
 
   /**
-   * The cached value of the '{@link #getRequires() <em>Requires</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRequires()
-   * @generated
-   * @ordered
-   */
-  protected EList<RequireDeclaration> requires;
-
-  /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -105,6 +95,16 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRequires() <em>Requires</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRequires()
+   * @generated
+   * @ordered
+   */
+  protected EList<RequireDeclaration> requires;
 
   /**
    * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
@@ -179,20 +179,6 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RequireDeclaration> getRequires()
-  {
-    if (requires == null)
-    {
-      requires = new EObjectContainmentEList<RequireDeclaration>(RequireDeclaration.class, this, ServicesPackage.COMPONENT__REQUIRES);
-    }
-    return requires;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getName()
   {
     return name;
@@ -209,6 +195,20 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.COMPONENT__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<RequireDeclaration> getRequires()
+  {
+    if (requires == null)
+    {
+      requires = new EObjectContainmentEList<RequireDeclaration>(RequireDeclaration.class, this, ServicesPackage.COMPONENT__REQUIRES);
+    }
+    return requires;
   }
 
   /**
@@ -259,10 +259,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return getPackageName();
       case ServicesPackage.COMPONENT__IMPORTS:
         return getImports();
-      case ServicesPackage.COMPONENT__REQUIRES:
-        return getRequires();
       case ServicesPackage.COMPONENT__NAME:
         return getName();
+      case ServicesPackage.COMPONENT__REQUIRES:
+        return getRequires();
       case ServicesPackage.COMPONENT__SERVICES:
         return getServices();
     }
@@ -287,12 +287,12 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
+      case ServicesPackage.COMPONENT__NAME:
+        setName((String)newValue);
+        return;
       case ServicesPackage.COMPONENT__REQUIRES:
         getRequires().clear();
         getRequires().addAll((Collection<? extends RequireDeclaration>)newValue);
-        return;
-      case ServicesPackage.COMPONENT__NAME:
-        setName((String)newValue);
         return;
       case ServicesPackage.COMPONENT__SERVICES:
         getServices().clear();
@@ -318,11 +318,11 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
       case ServicesPackage.COMPONENT__IMPORTS:
         getImports().clear();
         return;
-      case ServicesPackage.COMPONENT__REQUIRES:
-        getRequires().clear();
-        return;
       case ServicesPackage.COMPONENT__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case ServicesPackage.COMPONENT__REQUIRES:
+        getRequires().clear();
         return;
       case ServicesPackage.COMPONENT__SERVICES:
         getServices().clear();
@@ -345,10 +345,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return PACKAGE_NAME_EDEFAULT == null ? packageName != null : !PACKAGE_NAME_EDEFAULT.equals(packageName);
       case ServicesPackage.COMPONENT__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case ServicesPackage.COMPONENT__REQUIRES:
-        return requires != null && !requires.isEmpty();
       case ServicesPackage.COMPONENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ServicesPackage.COMPONENT__REQUIRES:
+        return requires != null && !requires.isEmpty();
       case ServicesPackage.COMPONENT__SERVICES:
         return services != null && !services.isEmpty();
     }

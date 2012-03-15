@@ -42,29 +42,29 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPackageNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
 		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cUsesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cRequiresAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cRequiresRequireDeclarationParserRuleCall_3_1_0 = (RuleCall)cRequiresAssignment_3_1.eContents().get(0);
-		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
-		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
-		private final Assignment cRequiresAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
-		private final RuleCall cRequiresRequireDeclarationParserRuleCall_3_2_1_0 = (RuleCall)cRequiresAssignment_3_2_1.eContents().get(0);
-		private final Keyword cComponentKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cNameValidIDParserRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cComponentKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameValidIDParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cRequiresKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cRequiresAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cRequiresRequireDeclarationParserRuleCall_6_1_0 = (RuleCall)cRequiresAssignment_6_1.eContents().get(0);
+		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
+		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
+		private final Assignment cRequiresAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
+		private final RuleCall cRequiresRequireDeclarationParserRuleCall_6_2_1_0 = (RuleCall)cRequiresAssignment_6_2_1.eContents().get(0);
 		private final Assignment cServicesAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cServicesServiceParserRuleCall_7_0 = (RuleCall)cServicesAssignment_7.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Component:
-		//	"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
-		//	requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}";
+		//	"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" ("requires"
+		//	requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)? services+=Service* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
-		//requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}"
+		//"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" ("requires"
+		//requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)? services+=Service* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -82,41 +82,41 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		//Import
 		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
 
-		//("uses" requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)?
-		public Group getGroup_3() { return cGroup_3; }
-
-		//"uses"
-		public Keyword getUsesKeyword_3_0() { return cUsesKeyword_3_0; }
-
-		//requires+=RequireDeclaration
-		public Assignment getRequiresAssignment_3_1() { return cRequiresAssignment_3_1; }
-
-		//RequireDeclaration
-		public RuleCall getRequiresRequireDeclarationParserRuleCall_3_1_0() { return cRequiresRequireDeclarationParserRuleCall_3_1_0; }
-
-		//("," requires+=RequireDeclaration)*
-		public Group getGroup_3_2() { return cGroup_3_2; }
-
-		//","
-		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
-
-		//requires+=RequireDeclaration
-		public Assignment getRequiresAssignment_3_2_1() { return cRequiresAssignment_3_2_1; }
-
-		//RequireDeclaration
-		public RuleCall getRequiresRequireDeclarationParserRuleCall_3_2_1_0() { return cRequiresRequireDeclarationParserRuleCall_3_2_1_0; }
-
 		//"component"
-		public Keyword getComponentKeyword_4() { return cComponentKeyword_4; }
+		public Keyword getComponentKeyword_3() { return cComponentKeyword_3; }
 
 		//name=ValidID
-		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_5_0() { return cNameValidIDParserRuleCall_5_0; }
+		public RuleCall getNameValidIDParserRuleCall_4_0() { return cNameValidIDParserRuleCall_4_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_6() { return cLeftCurlyBracketKeyword_6; }
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+
+		//("requires" requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//"requires"
+		public Keyword getRequiresKeyword_6_0() { return cRequiresKeyword_6_0; }
+
+		//requires+=RequireDeclaration
+		public Assignment getRequiresAssignment_6_1() { return cRequiresAssignment_6_1; }
+
+		//RequireDeclaration
+		public RuleCall getRequiresRequireDeclarationParserRuleCall_6_1_0() { return cRequiresRequireDeclarationParserRuleCall_6_1_0; }
+
+		//("," requires+=RequireDeclaration)*
+		public Group getGroup_6_2() { return cGroup_6_2; }
+
+		//","
+		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
+
+		//requires+=RequireDeclaration
+		public Assignment getRequiresAssignment_6_2_1() { return cRequiresAssignment_6_2_1; }
+
+		//RequireDeclaration
+		public RuleCall getRequiresRequireDeclarationParserRuleCall_6_2_1_0() { return cRequiresRequireDeclarationParserRuleCall_6_2_1_0; }
 
 		//services+=Service*
 		public Assignment getServicesAssignment_7() { return cServicesAssignment_7; }
@@ -337,8 +337,8 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Component:
-	//	"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
-	//	requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}";
+	//	"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" ("requires"
+	//	requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)? services+=Service* "}";
 	public ComponentElements getComponentAccess() {
 		return (pComponent != null) ? pComponent : (pComponent = new ComponentElements());
 	}

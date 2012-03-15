@@ -116,22 +116,22 @@ public interface ServicesPackage extends EPackage
   int COMPONENT__IMPORTS = 1;
 
   /**
-   * The feature id for the '<em><b>Requires</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPONENT__REQUIRES = 2;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__NAME = 3;
+  int COMPONENT__NAME = 2;
+
+  /**
+   * The feature id for the '<em><b>Requires</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__REQUIRES = 3;
 
   /**
    * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -353,17 +353,6 @@ public interface ServicesPackage extends EPackage
   EReference getComponent_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Component#getRequires <em>Requires</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Requires</em>'.
-   * @see org.eclipse.xtext.services.services.Component#getRequires()
-   * @see #getComponent()
-   * @generated
-   */
-  EReference getComponent_Requires();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Component#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -373,6 +362,17 @@ public interface ServicesPackage extends EPackage
    * @generated
    */
   EAttribute getComponent_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Component#getRequires <em>Requires</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Requires</em>'.
+   * @see org.eclipse.xtext.services.services.Component#getRequires()
+   * @see #getComponent()
+   * @generated
+   */
+  EReference getComponent_Requires();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Component#getServices <em>Services</em>}'.
@@ -593,20 +593,20 @@ public interface ServicesPackage extends EPackage
     EReference COMPONENT__IMPORTS = eINSTANCE.getComponent_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Requires</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPONENT__REQUIRES = eINSTANCE.getComponent_Requires();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute COMPONENT__NAME = eINSTANCE.getComponent_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Requires</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT__REQUIRES = eINSTANCE.getComponent_Requires();
 
     /**
      * The meta object literal for the '<em><b>Services</b></em>' containment reference list feature.

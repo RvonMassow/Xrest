@@ -985,7 +985,7 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (packageName=QualifiedName imports+=Import* (requires+=RequireDeclaration requires+=RequireDeclaration*)? name=ValidID services+=Service*)
+	 *     (packageName=QualifiedName imports+=Import* name=ValidID (requires+=RequireDeclaration requires+=RequireDeclaration*)? services+=Service*)
 	 */
 	protected void sequence_Component(EObject context, Component semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

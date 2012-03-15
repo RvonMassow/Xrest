@@ -15,8 +15,8 @@
     <genClasses ecoreClass="Services.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/requires"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/requires"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/services"/>
     </genClasses>
     <genClasses ecoreClass="Services.ecore#//Service">

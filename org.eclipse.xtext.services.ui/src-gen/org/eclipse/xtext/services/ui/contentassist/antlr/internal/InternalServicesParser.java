@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalServicesParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'super'", "'false'", "'package'", "'component'", "'{'", "'}'", "'uses'", "','", "'('", "')'", "':'", "'['", "']'", "'import'", "'instanceof'", "'as'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'=>'", "'?'", "'extends'", "'&'", "'service'", "'GET'", "'POST'", "'?.'", "'*.'", "'|'", "'var'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'super'", "'false'", "'package'", "'component'", "'{'", "'}'", "'requires'", "','", "'('", "')'", "':'", "'['", "']'", "'import'", "'instanceof'", "'as'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'=>'", "'?'", "'extends'", "'&'", "'service'", "'GET'", "'POST'", "'?.'", "'*.'", "'|'", "'var'", "'true'"
     };
     public static final int T__68=68;
     public static final int T__69=69;
@@ -9616,45 +9616,24 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__3__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2922:1: rule__Component__Group__3__Impl : ( ( rule__Component__Group_3__0 )? ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2922:1: rule__Component__Group__3__Impl : ( 'component' ) ;
     public final void rule__Component__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2926:1: ( ( ( rule__Component__Group_3__0 )? ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( ( rule__Component__Group_3__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2926:1: ( ( 'component' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( 'component' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( ( rule__Component__Group_3__0 )? )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2928:1: ( rule__Component__Group_3__0 )?
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( 'component' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2928:1: 'component'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getGroup_3()); 
+               before(grammarAccess.getComponentAccess().getComponentKeyword_3()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2929:1: ( rule__Component__Group_3__0 )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
-
-            if ( (LA33_0==40) ) {
-                alt33=1;
-            }
-            switch (alt33) {
-                case 1 :
-                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2929:2: rule__Component__Group_3__0
-                    {
-                    pushFollow(FOLLOW_rule__Component__Group_3__0_in_rule__Component__Group__3__Impl6321);
-                    rule__Component__Group_3__0();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-                    break;
-
-            }
-
+            match(input,37,FOLLOW_37_in_rule__Component__Group__3__Impl6322); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getGroup_3()); 
+               after(grammarAccess.getComponentAccess().getComponentKeyword_3()); 
             }
 
             }
@@ -9678,21 +9657,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__4"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2939:1: rule__Component__Group__4 : rule__Component__Group__4__Impl rule__Component__Group__5 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2941:1: rule__Component__Group__4 : rule__Component__Group__4__Impl rule__Component__Group__5 ;
     public final void rule__Component__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2943:1: ( rule__Component__Group__4__Impl rule__Component__Group__5 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2944:2: rule__Component__Group__4__Impl rule__Component__Group__5
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2945:1: ( rule__Component__Group__4__Impl rule__Component__Group__5 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2946:2: rule__Component__Group__4__Impl rule__Component__Group__5
             {
-            pushFollow(FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46352);
+            pushFollow(FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46353);
             rule__Component__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46355);
+            pushFollow(FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46356);
             rule__Component__Group__5();
 
             state._fsp--;
@@ -9716,24 +9695,34 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__4__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2951:1: rule__Component__Group__4__Impl : ( 'component' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2953:1: rule__Component__Group__4__Impl : ( ( rule__Component__NameAssignment_4 ) ) ;
     public final void rule__Component__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2955:1: ( ( 'component' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2956:1: ( 'component' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2957:1: ( ( ( rule__Component__NameAssignment_4 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2958:1: ( ( rule__Component__NameAssignment_4 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2956:1: ( 'component' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2957:1: 'component'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2958:1: ( ( rule__Component__NameAssignment_4 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2959:1: ( rule__Component__NameAssignment_4 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getComponentKeyword_4()); 
+               before(grammarAccess.getComponentAccess().getNameAssignment_4()); 
             }
-            match(input,37,FOLLOW_37_in_rule__Component__Group__4__Impl6383); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2960:1: ( rule__Component__NameAssignment_4 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2960:2: rule__Component__NameAssignment_4
+            {
+            pushFollow(FOLLOW_rule__Component__NameAssignment_4_in_rule__Component__Group__4__Impl6383);
+            rule__Component__NameAssignment_4();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getComponentKeyword_4()); 
+               after(grammarAccess.getComponentAccess().getNameAssignment_4()); 
             }
 
             }
@@ -9766,12 +9755,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2974:1: ( rule__Component__Group__5__Impl rule__Component__Group__6 )
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2975:2: rule__Component__Group__5__Impl rule__Component__Group__6
             {
-            pushFollow(FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56414);
+            pushFollow(FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56413);
             rule__Component__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56417);
+            pushFollow(FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56416);
             rule__Component__Group__6();
 
             state._fsp--;
@@ -9795,34 +9784,24 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__5__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2982:1: rule__Component__Group__5__Impl : ( ( rule__Component__NameAssignment_5 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2982:1: rule__Component__Group__5__Impl : ( '{' ) ;
     public final void rule__Component__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2986:1: ( ( ( rule__Component__NameAssignment_5 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( ( rule__Component__NameAssignment_5 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2986:1: ( ( '{' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( '{' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( ( rule__Component__NameAssignment_5 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2988:1: ( rule__Component__NameAssignment_5 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( '{' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2988:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getNameAssignment_5()); 
+               before(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_5()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2989:1: ( rule__Component__NameAssignment_5 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2989:2: rule__Component__NameAssignment_5
-            {
-            pushFollow(FOLLOW_rule__Component__NameAssignment_5_in_rule__Component__Group__5__Impl6444);
-            rule__Component__NameAssignment_5();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
+            match(input,38,FOLLOW_38_in_rule__Component__Group__5__Impl6444); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getNameAssignment_5()); 
+               after(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_5()); 
             }
 
             }
@@ -9846,21 +9825,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__6"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2999:1: rule__Component__Group__6 : rule__Component__Group__6__Impl rule__Component__Group__7 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3001:1: rule__Component__Group__6 : rule__Component__Group__6__Impl rule__Component__Group__7 ;
     public final void rule__Component__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3003:1: ( rule__Component__Group__6__Impl rule__Component__Group__7 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3004:2: rule__Component__Group__6__Impl rule__Component__Group__7
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3005:1: ( rule__Component__Group__6__Impl rule__Component__Group__7 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3006:2: rule__Component__Group__6__Impl rule__Component__Group__7
             {
-            pushFollow(FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66474);
+            pushFollow(FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66475);
             rule__Component__Group__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66477);
+            pushFollow(FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66478);
             rule__Component__Group__7();
 
             state._fsp--;
@@ -9884,24 +9863,45 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__6__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3011:1: rule__Component__Group__6__Impl : ( '{' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3013:1: rule__Component__Group__6__Impl : ( ( rule__Component__Group_6__0 )? ) ;
     public final void rule__Component__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3015:1: ( ( '{' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3016:1: ( '{' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3017:1: ( ( ( rule__Component__Group_6__0 )? ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3018:1: ( ( rule__Component__Group_6__0 )? )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3016:1: ( '{' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3017:1: '{'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3018:1: ( ( rule__Component__Group_6__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3019:1: ( rule__Component__Group_6__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_6()); 
+               before(grammarAccess.getComponentAccess().getGroup_6()); 
             }
-            match(input,38,FOLLOW_38_in_rule__Component__Group__6__Impl6505); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3020:1: ( rule__Component__Group_6__0 )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
+
+            if ( (LA33_0==40) ) {
+                alt33=1;
+            }
+            switch (alt33) {
+                case 1 :
+                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3020:2: rule__Component__Group_6__0
+                    {
+                    pushFollow(FOLLOW_rule__Component__Group_6__0_in_rule__Component__Group__6__Impl6505);
+                    rule__Component__Group_6__0();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_6()); 
+               after(grammarAccess.getComponentAccess().getGroup_6()); 
             }
 
             }
@@ -10105,23 +10105,23 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Component__Group__8__Impl"
 
 
-    // $ANTLR start "rule__Component__Group_3__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3107:1: rule__Component__Group_3__0 : rule__Component__Group_3__0__Impl rule__Component__Group_3__1 ;
-    public final void rule__Component__Group_3__0() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6__0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3107:1: rule__Component__Group_6__0 : rule__Component__Group_6__0__Impl rule__Component__Group_6__1 ;
+    public final void rule__Component__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3111:1: ( rule__Component__Group_3__0__Impl rule__Component__Group_3__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3112:2: rule__Component__Group_3__0__Impl rule__Component__Group_3__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3111:1: ( rule__Component__Group_6__0__Impl rule__Component__Group_6__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3112:2: rule__Component__Group_6__0__Impl rule__Component__Group_6__1
             {
-            pushFollow(FOLLOW_rule__Component__Group_3__0__Impl_in_rule__Component__Group_3__06674);
-            rule__Component__Group_3__0__Impl();
+            pushFollow(FOLLOW_rule__Component__Group_6__0__Impl_in_rule__Component__Group_6__06674);
+            rule__Component__Group_6__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group_3__1_in_rule__Component__Group_3__06677);
-            rule__Component__Group_3__1();
+            pushFollow(FOLLOW_rule__Component__Group_6__1_in_rule__Component__Group_6__06677);
+            rule__Component__Group_6__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10140,117 +10140,28 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3__0"
+    // $ANTLR end "rule__Component__Group_6__0"
 
 
-    // $ANTLR start "rule__Component__Group_3__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3119:1: rule__Component__Group_3__0__Impl : ( 'uses' ) ;
-    public final void rule__Component__Group_3__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3123:1: ( ( 'uses' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'uses' )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'uses' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3125:1: 'uses'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getUsesKeyword_3_0()); 
-            }
-            match(input,40,FOLLOW_40_in_rule__Component__Group_3__0__Impl6705); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getUsesKeyword_3_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Component__Group_3__0__Impl"
-
-
-    // $ANTLR start "rule__Component__Group_3__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3138:1: rule__Component__Group_3__1 : rule__Component__Group_3__1__Impl rule__Component__Group_3__2 ;
-    public final void rule__Component__Group_3__1() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6__0__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3119:1: rule__Component__Group_6__0__Impl : ( 'requires' ) ;
+    public final void rule__Component__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3142:1: ( rule__Component__Group_3__1__Impl rule__Component__Group_3__2 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3143:2: rule__Component__Group_3__1__Impl rule__Component__Group_3__2
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3123:1: ( ( 'requires' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'requires' )
             {
-            pushFollow(FOLLOW_rule__Component__Group_3__1__Impl_in_rule__Component__Group_3__16736);
-            rule__Component__Group_3__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group_3__2_in_rule__Component__Group_3__16739);
-            rule__Component__Group_3__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Component__Group_3__1"
-
-
-    // $ANTLR start "rule__Component__Group_3__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3150:1: rule__Component__Group_3__1__Impl : ( ( rule__Component__RequiresAssignment_3_1 ) ) ;
-    public final void rule__Component__Group_3__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3154:1: ( ( ( rule__Component__RequiresAssignment_3_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_3_1 ) )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_3_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3156:1: ( rule__Component__RequiresAssignment_3_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'requires' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3125:1: 'requires'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getRequiresAssignment_3_1()); 
+               before(grammarAccess.getComponentAccess().getRequiresKeyword_6_0()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:1: ( rule__Component__RequiresAssignment_3_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:2: rule__Component__RequiresAssignment_3_1
-            {
-            pushFollow(FOLLOW_rule__Component__RequiresAssignment_3_1_in_rule__Component__Group_3__1__Impl6766);
-            rule__Component__RequiresAssignment_3_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
+            match(input,40,FOLLOW_40_in_rule__Component__Group_6__0__Impl6705); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getRequiresAssignment_3_1()); 
+               after(grammarAccess.getComponentAccess().getRequiresKeyword_6_0()); 
             }
 
             }
@@ -10270,21 +10181,26 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3__1__Impl"
+    // $ANTLR end "rule__Component__Group_6__0__Impl"
 
 
-    // $ANTLR start "rule__Component__Group_3__2"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3167:1: rule__Component__Group_3__2 : rule__Component__Group_3__2__Impl ;
-    public final void rule__Component__Group_3__2() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6__1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3138:1: rule__Component__Group_6__1 : rule__Component__Group_6__1__Impl rule__Component__Group_6__2 ;
+    public final void rule__Component__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3171:1: ( rule__Component__Group_3__2__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3172:2: rule__Component__Group_3__2__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3142:1: ( rule__Component__Group_6__1__Impl rule__Component__Group_6__2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3143:2: rule__Component__Group_6__1__Impl rule__Component__Group_6__2
             {
-            pushFollow(FOLLOW_rule__Component__Group_3__2__Impl_in_rule__Component__Group_3__26796);
-            rule__Component__Group_3__2__Impl();
+            pushFollow(FOLLOW_rule__Component__Group_6__1__Impl_in_rule__Component__Group_6__16736);
+            rule__Component__Group_6__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Component__Group_6__2_in_rule__Component__Group_6__16739);
+            rule__Component__Group_6__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10303,26 +10219,110 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3__2"
+    // $ANTLR end "rule__Component__Group_6__1"
 
 
-    // $ANTLR start "rule__Component__Group_3__2__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3178:1: rule__Component__Group_3__2__Impl : ( ( rule__Component__Group_3_2__0 )* ) ;
-    public final void rule__Component__Group_3__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6__1__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3150:1: rule__Component__Group_6__1__Impl : ( ( rule__Component__RequiresAssignment_6_1 ) ) ;
+    public final void rule__Component__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3182:1: ( ( ( rule__Component__Group_3_2__0 )* ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_3_2__0 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3154:1: ( ( ( rule__Component__RequiresAssignment_6_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_6_1 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_3_2__0 )* )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3184:1: ( rule__Component__Group_3_2__0 )*
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_6_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3156:1: ( rule__Component__RequiresAssignment_6_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getGroup_3_2()); 
+               before(grammarAccess.getComponentAccess().getRequiresAssignment_6_1()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:1: ( rule__Component__Group_3_2__0 )*
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:1: ( rule__Component__RequiresAssignment_6_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:2: rule__Component__RequiresAssignment_6_1
+            {
+            pushFollow(FOLLOW_rule__Component__RequiresAssignment_6_1_in_rule__Component__Group_6__1__Impl6766);
+            rule__Component__RequiresAssignment_6_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRequiresAssignment_6_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_6__1__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_6__2"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3167:1: rule__Component__Group_6__2 : rule__Component__Group_6__2__Impl ;
+    public final void rule__Component__Group_6__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3171:1: ( rule__Component__Group_6__2__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3172:2: rule__Component__Group_6__2__Impl
+            {
+            pushFollow(FOLLOW_rule__Component__Group_6__2__Impl_in_rule__Component__Group_6__26796);
+            rule__Component__Group_6__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_6__2"
+
+
+    // $ANTLR start "rule__Component__Group_6__2__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3178:1: rule__Component__Group_6__2__Impl : ( ( rule__Component__Group_6_2__0 )* ) ;
+    public final void rule__Component__Group_6__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3182:1: ( ( ( rule__Component__Group_6_2__0 )* ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_6_2__0 )* )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_6_2__0 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3184:1: ( rule__Component__Group_6_2__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getGroup_6_2()); 
+            }
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:1: ( rule__Component__Group_6_2__0 )*
             loop35:
             do {
                 int alt35=2;
@@ -10335,10 +10335,10 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
                 switch (alt35) {
             	case 1 :
-            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:2: rule__Component__Group_3_2__0
+            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:2: rule__Component__Group_6_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__Component__Group_3_2__0_in_rule__Component__Group_3__2__Impl6823);
-            	    rule__Component__Group_3_2__0();
+            	    pushFollow(FOLLOW_rule__Component__Group_6_2__0_in_rule__Component__Group_6__2__Impl6823);
+            	    rule__Component__Group_6_2__0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -10352,7 +10352,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getGroup_3_2()); 
+               after(grammarAccess.getComponentAccess().getGroup_6_2()); 
             }
 
             }
@@ -10372,26 +10372,26 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3__2__Impl"
+    // $ANTLR end "rule__Component__Group_6__2__Impl"
 
 
-    // $ANTLR start "rule__Component__Group_3_2__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3201:1: rule__Component__Group_3_2__0 : rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1 ;
-    public final void rule__Component__Group_3_2__0() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6_2__0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3201:1: rule__Component__Group_6_2__0 : rule__Component__Group_6_2__0__Impl rule__Component__Group_6_2__1 ;
+    public final void rule__Component__Group_6_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3205:1: ( rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3206:2: rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3205:1: ( rule__Component__Group_6_2__0__Impl rule__Component__Group_6_2__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3206:2: rule__Component__Group_6_2__0__Impl rule__Component__Group_6_2__1
             {
-            pushFollow(FOLLOW_rule__Component__Group_3_2__0__Impl_in_rule__Component__Group_3_2__06860);
-            rule__Component__Group_3_2__0__Impl();
+            pushFollow(FOLLOW_rule__Component__Group_6_2__0__Impl_in_rule__Component__Group_6_2__06860);
+            rule__Component__Group_6_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group_3_2__1_in_rule__Component__Group_3_2__06863);
-            rule__Component__Group_3_2__1();
+            pushFollow(FOLLOW_rule__Component__Group_6_2__1_in_rule__Component__Group_6_2__06863);
+            rule__Component__Group_6_2__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10410,12 +10410,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3_2__0"
+    // $ANTLR end "rule__Component__Group_6_2__0"
 
 
-    // $ANTLR start "rule__Component__Group_3_2__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3213:1: rule__Component__Group_3_2__0__Impl : ( ',' ) ;
-    public final void rule__Component__Group_3_2__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6_2__0__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3213:1: rule__Component__Group_6_2__0__Impl : ( ',' ) ;
+    public final void rule__Component__Group_6_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -10427,11 +10427,11 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3219:1: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getCommaKeyword_3_2_0()); 
+               before(grammarAccess.getComponentAccess().getCommaKeyword_6_2_0()); 
             }
-            match(input,41,FOLLOW_41_in_rule__Component__Group_3_2__0__Impl6891); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__Component__Group_6_2__0__Impl6891); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getCommaKeyword_3_2_0()); 
+               after(grammarAccess.getComponentAccess().getCommaKeyword_6_2_0()); 
             }
 
             }
@@ -10451,21 +10451,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3_2__0__Impl"
+    // $ANTLR end "rule__Component__Group_6_2__0__Impl"
 
 
-    // $ANTLR start "rule__Component__Group_3_2__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3232:1: rule__Component__Group_3_2__1 : rule__Component__Group_3_2__1__Impl ;
-    public final void rule__Component__Group_3_2__1() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6_2__1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3232:1: rule__Component__Group_6_2__1 : rule__Component__Group_6_2__1__Impl ;
+    public final void rule__Component__Group_6_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3236:1: ( rule__Component__Group_3_2__1__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3237:2: rule__Component__Group_3_2__1__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3236:1: ( rule__Component__Group_6_2__1__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3237:2: rule__Component__Group_6_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__Component__Group_3_2__1__Impl_in_rule__Component__Group_3_2__16922);
-            rule__Component__Group_3_2__1__Impl();
+            pushFollow(FOLLOW_rule__Component__Group_6_2__1__Impl_in_rule__Component__Group_6_2__16922);
+            rule__Component__Group_6_2__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10484,30 +10484,30 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3_2__1"
+    // $ANTLR end "rule__Component__Group_6_2__1"
 
 
-    // $ANTLR start "rule__Component__Group_3_2__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3243:1: rule__Component__Group_3_2__1__Impl : ( ( rule__Component__RequiresAssignment_3_2_1 ) ) ;
-    public final void rule__Component__Group_3_2__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Component__Group_6_2__1__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3243:1: rule__Component__Group_6_2__1__Impl : ( ( rule__Component__RequiresAssignment_6_2_1 ) ) ;
+    public final void rule__Component__Group_6_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3247:1: ( ( ( rule__Component__RequiresAssignment_3_2_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_3_2_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3247:1: ( ( ( rule__Component__RequiresAssignment_6_2_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_6_2_1 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_3_2_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3249:1: ( rule__Component__RequiresAssignment_3_2_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_6_2_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3249:1: ( rule__Component__RequiresAssignment_6_2_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getRequiresAssignment_3_2_1()); 
+               before(grammarAccess.getComponentAccess().getRequiresAssignment_6_2_1()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:1: ( rule__Component__RequiresAssignment_3_2_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:2: rule__Component__RequiresAssignment_3_2_1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:1: ( rule__Component__RequiresAssignment_6_2_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:2: rule__Component__RequiresAssignment_6_2_1
             {
-            pushFollow(FOLLOW_rule__Component__RequiresAssignment_3_2_1_in_rule__Component__Group_3_2__1__Impl6949);
-            rule__Component__RequiresAssignment_3_2_1();
+            pushFollow(FOLLOW_rule__Component__RequiresAssignment_6_2_1_in_rule__Component__Group_6_2__1__Impl6949);
+            rule__Component__RequiresAssignment_6_2_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10515,7 +10515,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getRequiresAssignment_3_2_1()); 
+               after(grammarAccess.getComponentAccess().getRequiresAssignment_6_2_1()); 
             }
 
             }
@@ -10535,7 +10535,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__Group_3_2__1__Impl"
+    // $ANTLR end "rule__Component__Group_6_2__1__Impl"
 
 
     // $ANTLR start "rule__Service__Group__0"
@@ -12065,7 +12065,11 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int LA39_0 = input.LA(1);
 
             if ( (LA39_0==RULE_ID) ) {
-                alt39=1;
+                int LA39_1 = input.LA(2);
+
+                if ( (LA39_1==EOF||LA39_1==RULE_ID||LA39_1==39||LA39_1==41||LA39_1==72) ) {
+                    alt39=1;
+                }
             }
             switch (alt39) {
                 case 1 :
@@ -40578,29 +40582,29 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Component__ImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Component__RequiresAssignment_3_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14170:1: rule__Component__RequiresAssignment_3_1 : ( ruleRequireDeclaration ) ;
-    public final void rule__Component__RequiresAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Component__NameAssignment_4"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14170:1: rule__Component__NameAssignment_4 : ( ruleValidID ) ;
+    public final void rule__Component__NameAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14174:1: ( ( ruleRequireDeclaration ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleRequireDeclaration )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14174:1: ( ( ruleValidID ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleValidID )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleRequireDeclaration )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14176:1: ruleRequireDeclaration
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14176:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_1_0()); 
+               before(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_128436);
-            ruleRequireDeclaration();
+            pushFollow(FOLLOW_ruleValidID_in_rule__Component__NameAssignment_428436);
+            ruleValidID();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_1_0()); 
+               after(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_4_0()); 
             }
 
             }
@@ -40620,12 +40624,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__RequiresAssignment_3_1"
+    // $ANTLR end "rule__Component__NameAssignment_4"
 
 
-    // $ANTLR start "rule__Component__RequiresAssignment_3_2_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14185:1: rule__Component__RequiresAssignment_3_2_1 : ( ruleRequireDeclaration ) ;
-    public final void rule__Component__RequiresAssignment_3_2_1() throws RecognitionException {
+    // $ANTLR start "rule__Component__RequiresAssignment_6_1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14185:1: rule__Component__RequiresAssignment_6_1 : ( ruleRequireDeclaration ) ;
+    public final void rule__Component__RequiresAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -40637,15 +40641,15 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14191:1: ruleRequireDeclaration
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_2_1_0()); 
+               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_6_1_0()); 
             }
-            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_2_128467);
+            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_6_128467);
             ruleRequireDeclaration();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_2_1_0()); 
+               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_6_1_0()); 
             }
 
             }
@@ -40665,32 +40669,32 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__RequiresAssignment_3_2_1"
+    // $ANTLR end "rule__Component__RequiresAssignment_6_1"
 
 
-    // $ANTLR start "rule__Component__NameAssignment_5"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14200:1: rule__Component__NameAssignment_5 : ( ruleValidID ) ;
-    public final void rule__Component__NameAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__Component__RequiresAssignment_6_2_1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14200:1: rule__Component__RequiresAssignment_6_2_1 : ( ruleRequireDeclaration ) ;
+    public final void rule__Component__RequiresAssignment_6_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14204:1: ( ( ruleValidID ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14204:1: ( ( ruleRequireDeclaration ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleRequireDeclaration )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleValidID )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14206:1: ruleValidID
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleRequireDeclaration )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14206:1: ruleRequireDeclaration
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_5_0()); 
+               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_6_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__Component__NameAssignment_528498);
-            ruleValidID();
+            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_6_2_128498);
+            ruleRequireDeclaration();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_5_0()); 
+               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_6_2_1_0()); 
             }
 
             }
@@ -40710,7 +40714,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__NameAssignment_5"
+    // $ANTLR end "rule__Component__RequiresAssignment_6_2_1"
 
 
     // $ANTLR start "rule__Component__ServicesAssignment_7"
@@ -49421,8 +49425,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA95_specialS =
         "\1\uffff\1\0\75\uffff}>";
     static final String[] DFA95_transitionS = {
-            "\5\2\5\uffff\10\2\1\1\15\2\1\uffff\3\2\1\uffff\6\2\1\uffff\13"+
-            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\10\2\1\1\15\2\2\uffff\2\2\1\uffff\6\2\1\uffff\13"+
+            "\2\1\uffff\11\2\3\uffff\1\2\2\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -49837,42 +49841,42 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__Component__Group__0__Impl_in_rule__Component__Group__06108 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Component__Group__1_in_rule__Component__Group__06111 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_rule__Component__Group__0__Impl6139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__1__Impl_in_rule__Component__Group__16170 = new BitSet(new long[]{0x0000812000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__1__Impl_in_rule__Component__Group__16170 = new BitSet(new long[]{0x0000802000000000L});
     public static final BitSet FOLLOW_rule__Component__Group__2_in_rule__Component__Group__16173 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Component__PackageNameAssignment_1_in_rule__Component__Group__1__Impl6200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__2__Impl_in_rule__Component__Group__26230 = new BitSet(new long[]{0x0000812000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__2__Impl_in_rule__Component__Group__26230 = new BitSet(new long[]{0x0000802000000000L});
     public static final BitSet FOLLOW_rule__Component__Group__3_in_rule__Component__Group__26233 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Component__ImportsAssignment_2_in_rule__Component__Group__2__Impl6260 = new BitSet(new long[]{0x0000800000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__3__Impl_in_rule__Component__Group__36291 = new BitSet(new long[]{0x0000812000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__3__Impl_in_rule__Component__Group__36291 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Component__Group__4_in_rule__Component__Group__36294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__0_in_rule__Component__Group__3__Impl6321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46352 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__Component__Group__4__Impl6383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56414 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__NameAssignment_5_in_rule__Component__Group__5__Impl6444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66474 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__Component__Group__6__Impl6505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__7__Impl_in_rule__Component__Group__76536 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_37_in_rule__Component__Group__3__Impl6322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46353 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__NameAssignment_4_in_rule__Component__Group__4__Impl6383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56413 = new BitSet(new long[]{0x0000018000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__Component__Group__5__Impl6444 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66475 = new BitSet(new long[]{0x0000018000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__0_in_rule__Component__Group__6__Impl6505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__7__Impl_in_rule__Component__Group__76536 = new BitSet(new long[]{0x0000018000000010L,0x0000000000000100L});
     public static final BitSet FOLLOW_rule__Component__Group__8_in_rule__Component__Group__76539 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Component__ServicesAssignment_7_in_rule__Component__Group__7__Impl6566 = new BitSet(new long[]{0x0000000000000012L,0x0000000000000100L});
     public static final BitSet FOLLOW_rule__Component__Group__8__Impl_in_rule__Component__Group__86597 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_39_in_rule__Component__Group__8__Impl6625 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__0__Impl_in_rule__Component__Group_3__06674 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__1_in_rule__Component__Group_3__06677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__Component__Group_3__0__Impl6705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__1__Impl_in_rule__Component__Group_3__16736 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__2_in_rule__Component__Group_3__16739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_3_1_in_rule__Component__Group_3__1__Impl6766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3__2__Impl_in_rule__Component__Group_3__26796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3_2__0_in_rule__Component__Group_3__2__Impl6823 = new BitSet(new long[]{0x0000020000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3_2__0__Impl_in_rule__Component__Group_3_2__06860 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Component__Group_3_2__1_in_rule__Component__Group_3_2__06863 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__Component__Group_3_2__0__Impl6891 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group_3_2__1__Impl_in_rule__Component__Group_3_2__16922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_3_2_1_in_rule__Component__Group_3_2__1__Impl6949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__0__Impl_in_rule__Component__Group_6__06674 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__1_in_rule__Component__Group_6__06677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_rule__Component__Group_6__0__Impl6705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__1__Impl_in_rule__Component__Group_6__16736 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__2_in_rule__Component__Group_6__16739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_6_1_in_rule__Component__Group_6__1__Impl6766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6__2__Impl_in_rule__Component__Group_6__26796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6_2__0_in_rule__Component__Group_6__2__Impl6823 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6_2__0__Impl_in_rule__Component__Group_6_2__06860 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group_6_2__1_in_rule__Component__Group_6_2__06863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__Component__Group_6_2__0__Impl6891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_6_2__1__Impl_in_rule__Component__Group_6_2__16922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_6_2_1_in_rule__Component__Group_6_2__1__Impl6949 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Service__Group__0__Impl_in_rule__Service__Group__06983 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000100L});
     public static final BitSet FOLLOW_rule__Service__Group__1_in_rule__Service__Group__06986 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Service__Group_0__0_in_rule__Service__Group__0__Impl7013 = new BitSet(new long[]{0x0000000000000002L});
@@ -50742,9 +50746,9 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleComponent_in_rule__ServicesFile__ComponentAssignment28343 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Component__PackageNameAssignment_128374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_rule__Component__ImportsAssignment_228405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_128436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_2_128467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__Component__NameAssignment_528498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__Component__NameAssignment_428436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_6_128467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_6_2_128498 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleService_in_rule__Component__ServicesAssignment_728529 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_72_in_rule__Service__ServiceAssignment_0_028565 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__Service__GetAssignment_0_2_028609 = new BitSet(new long[]{0x0000000000000002L});

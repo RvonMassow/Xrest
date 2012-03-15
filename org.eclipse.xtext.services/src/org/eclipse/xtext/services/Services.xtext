@@ -9,8 +9,8 @@ ServicesFile:
 Component:
 	'package' packageName=QualifiedName
 	(imports+=Import)*
-	('uses' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
 	"component" name=ValidID '{'
+		('requires' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
 		(services+=Service)*
 	'}'
 ;
