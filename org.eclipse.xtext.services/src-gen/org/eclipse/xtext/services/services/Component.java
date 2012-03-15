@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.Component#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getServices <em>Services</em>}</li>
  * </ul>
@@ -71,6 +72,22 @@ public interface Component extends EObject
    * @generated
    */
   EList<Import> getImports();
+
+  /**
+   * Returns the value of the '<em><b>Requires</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.services.services.RequireDeclaration}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Requires</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Requires</em>' containment reference list.
+   * @see org.eclipse.xtext.services.services.ServicesPackage#getComponent_Requires()
+   * @model containment="true"
+   * @generated
+   */
+  EList<RequireDeclaration> getRequires();
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

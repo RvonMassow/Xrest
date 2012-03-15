@@ -16,24 +16,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.ServicesPackage;
-import org.eclipse.xtext.services.services.UseDeclaration;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Use Declaration</b></em>'.
+ * An implementation of the model object '<em><b>Require Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements UseDeclaration
+public class RequireDeclarationImpl extends MinimalEObjectImpl.Container implements RequireDeclaration
 {
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -70,7 +70,7 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  protected UseDeclarationImpl()
+  protected RequireDeclarationImpl()
   {
     super();
   }
@@ -83,7 +83,7 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   @Override
   protected EClass eStaticClass()
   {
-    return ServicesPackage.Literals.USE_DECLARATION;
+    return ServicesPackage.Literals.REQUIRE_DECLARATION;
   }
 
   /**
@@ -107,7 +107,7 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
     type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicesPackage.USE_DECLARATION__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicesPackage.REQUIRE_DECLARATION__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -124,14 +124,14 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
     {
       NotificationChain msgs = null;
       if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.USE_DECLARATION__TYPE, null, msgs);
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.REQUIRE_DECLARATION__TYPE, null, msgs);
       if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.USE_DECLARATION__TYPE, null, msgs);
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.REQUIRE_DECLARATION__TYPE, null, msgs);
       msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.USE_DECLARATION__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.REQUIRE_DECLARATION__TYPE, newType, newType));
   }
 
   /**
@@ -154,7 +154,7 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.USE_DECLARATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.REQUIRE_DECLARATION__NAME, oldName, name));
   }
 
   /**
@@ -167,7 +167,7 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ServicesPackage.USE_DECLARATION__TYPE:
+      case ServicesPackage.REQUIRE_DECLARATION__TYPE:
         return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -183,9 +183,9 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ServicesPackage.USE_DECLARATION__TYPE:
+      case ServicesPackage.REQUIRE_DECLARATION__TYPE:
         return getType();
-      case ServicesPackage.USE_DECLARATION__NAME:
+      case ServicesPackage.REQUIRE_DECLARATION__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -201,10 +201,10 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ServicesPackage.USE_DECLARATION__TYPE:
+      case ServicesPackage.REQUIRE_DECLARATION__TYPE:
         setType((JvmTypeReference)newValue);
         return;
-      case ServicesPackage.USE_DECLARATION__NAME:
+      case ServicesPackage.REQUIRE_DECLARATION__NAME:
         setName((String)newValue);
         return;
     }
@@ -221,10 +221,10 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ServicesPackage.USE_DECLARATION__TYPE:
+      case ServicesPackage.REQUIRE_DECLARATION__TYPE:
         setType((JvmTypeReference)null);
         return;
-      case ServicesPackage.USE_DECLARATION__NAME:
+      case ServicesPackage.REQUIRE_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -241,9 +241,9 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ServicesPackage.USE_DECLARATION__TYPE:
+      case ServicesPackage.REQUIRE_DECLARATION__TYPE:
         return type != null;
-      case ServicesPackage.USE_DECLARATION__NAME:
+      case ServicesPackage.REQUIRE_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -266,4 +266,4 @@ public class UseDeclarationImpl extends MinimalEObjectImpl.Container implements 
     return result.toString();
   }
 
-} //UseDeclarationImpl
+} //RequireDeclarationImpl

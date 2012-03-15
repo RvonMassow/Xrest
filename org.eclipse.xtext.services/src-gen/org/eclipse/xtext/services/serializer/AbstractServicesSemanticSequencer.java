@@ -23,11 +23,11 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Import;
+import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesGrammarAccess;
 import org.eclipse.xtext.services.services.ServicesPackage;
-import org.eclipse.xtext.services.services.UseDeclaration;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -105,6 +105,12 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 					return; 
 				}
 				else break;
+			case ServicesPackage.REQUIRE_DECLARATION:
+				if(context == grammarAccess.getRequireDeclarationRule()) {
+					sequence_RequireDeclaration(context, (RequireDeclaration) semanticObject); 
+					return; 
+				}
+				else break;
 			case ServicesPackage.SERVICE:
 				if(context == grammarAccess.getServiceRule()) {
 					sequence_Service(context, (Service) semanticObject); 
@@ -114,12 +120,6 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 			case ServicesPackage.SERVICES_FILE:
 				if(context == grammarAccess.getServicesFileRule()) {
 					sequence_ServicesFile(context, (ServicesFile) semanticObject); 
-					return; 
-				}
-				else break;
-			case ServicesPackage.USE_DECLARATION:
-				if(context == grammarAccess.getUseDeclarationRule()) {
-					sequence_UseDeclaration(context, (UseDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -985,7 +985,7 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (packageName=QualifiedName imports+=Import* name=ValidID services+=Service*)
+	 *     (packageName=QualifiedName imports+=Import* (requires+=RequireDeclaration requires+=RequireDeclaration*)? name=ValidID services+=Service*)
 	 */
 	protected void sequence_Component(EObject context, Component semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1091,12 +1091,20 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	
 	/**
 	 * Constraint:
+	 *     (type=JvmTypeReference name=ID?)
+	 */
+	protected void sequence_RequireDeclaration(EObject context, RequireDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         (service?='service' (get?='GET' | post?='POST'))? 
 	 *         name=ValidID 
 	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
 	 *         type=JvmTypeReference 
-	 *         (uses+=UseDeclaration uses+=UseDeclaration*)? 
 	 *         body=XBlockExpression
 	 *     )
 	 */
@@ -1118,15 +1126,6 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getServicesFileAccess().getComponentComponentParserRuleCall_0(), semanticObject.getComponent());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=JvmTypeReference name=ID?)
-	 */
-	protected void sequence_UseDeclaration(EObject context, UseDeclaration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

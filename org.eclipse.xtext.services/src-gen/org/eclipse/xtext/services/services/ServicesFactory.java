@@ -53,13 +53,13 @@ public interface ServicesFactory extends EFactory
   Service createService();
 
   /**
-   * Returns a new object of class '<em>Use Declaration</em>'.
+   * Returns a new object of class '<em>Require Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Use Declaration</em>'.
+   * @return a new object of class '<em>Require Declaration</em>'.
    * @generated
    */
-  UseDeclaration createUseDeclaration();
+  RequireDeclaration createRequireDeclaration();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

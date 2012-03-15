@@ -70,7 +70,7 @@ public class ServicesFactoryImpl extends EFactoryImpl implements ServicesFactory
       case ServicesPackage.SERVICES_FILE: return createServicesFile();
       case ServicesPackage.COMPONENT: return createComponent();
       case ServicesPackage.SERVICE: return createService();
-      case ServicesPackage.USE_DECLARATION: return createUseDeclaration();
+      case ServicesPackage.REQUIRE_DECLARATION: return createRequireDeclaration();
       case ServicesPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -115,10 +115,10 @@ public class ServicesFactoryImpl extends EFactoryImpl implements ServicesFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public UseDeclaration createUseDeclaration()
+  public RequireDeclaration createRequireDeclaration()
   {
-    UseDeclarationImpl useDeclaration = new UseDeclarationImpl();
-    return useDeclaration;
+    RequireDeclarationImpl requireDeclaration = new RequireDeclarationImpl();
+    return requireDeclaration;
   }
 
   /**

@@ -9,6 +9,7 @@ ServicesFile:
 Component:
 	'package' packageName=QualifiedName
 	(imports+=Import)*
+	('uses' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
 	"component" name=ValidID '{'
 		(services+=Service)*
 	'}'
@@ -18,11 +19,10 @@ Component:
 Service:
 	(service?='service' '[' (get?='GET' | post?='POST') ']')? name=ValidID'(' (params+=FullJvmFormalParameter(',' params+=FullJvmFormalParameter)*)? ')' 
 		':' type=JvmTypeReference
-		('uses' uses+=UseDeclaration (',' uses+=UseDeclaration)*)?
 		body=XBlockExpression
 ;
 
-UseDeclaration:
+RequireDeclaration:
 	type=JvmTypeReference (name=ID)?
 ;
 

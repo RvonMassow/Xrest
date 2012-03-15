@@ -93,9 +93,9 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
         return createServiceAdapter();
       }
       @Override
-      public Adapter caseUseDeclaration(UseDeclaration object)
+      public Adapter caseRequireDeclaration(RequireDeclaration object)
       {
-        return createUseDeclarationAdapter();
+        return createRequireDeclarationAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -170,16 +170,16 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.UseDeclaration <em>Use Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.RequireDeclaration <em>Require Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.xtext.services.services.UseDeclaration
+   * @see org.eclipse.xtext.services.services.RequireDeclaration
    * @generated
    */
-  public Adapter createUseDeclarationAdapter()
+  public Adapter createRequireDeclarationAdapter()
   {
     return null;
   }

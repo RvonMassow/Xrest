@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalServicesParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'super'", "'false'", "'package'", "'component'", "'{'", "'}'", "'('", "')'", "':'", "'['", "']'", "','", "'uses'", "'import'", "'instanceof'", "'as'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'=>'", "'?'", "'extends'", "'&'", "'service'", "'GET'", "'POST'", "'?.'", "'*.'", "'|'", "'var'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'+='", "'||'", "'&&'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'super'", "'false'", "'package'", "'component'", "'{'", "'}'", "'uses'", "','", "'('", "')'", "':'", "'['", "']'", "'import'", "'instanceof'", "'as'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'::'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'=>'", "'?'", "'extends'", "'&'", "'service'", "'GET'", "'POST'", "'?.'", "'*.'", "'|'", "'var'", "'true'"
     };
     public static final int T__68=68;
     public static final int T__69=69;
@@ -395,25 +395,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "ruleService"
 
 
-    // $ANTLR start "entryRuleUseDeclaration"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:145:1: entryRuleUseDeclaration : ruleUseDeclaration EOF ;
-    public final void entryRuleUseDeclaration() throws RecognitionException {
+    // $ANTLR start "entryRuleRequireDeclaration"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:145:1: entryRuleRequireDeclaration : ruleRequireDeclaration EOF ;
+    public final void entryRuleRequireDeclaration() throws RecognitionException {
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:146:1: ( ruleUseDeclaration EOF )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:147:1: ruleUseDeclaration EOF
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:146:1: ( ruleRequireDeclaration EOF )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:147:1: ruleRequireDeclaration EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationRule()); 
+               before(grammarAccess.getRequireDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleUseDeclaration_in_entryRuleUseDeclaration247);
-            ruleUseDeclaration();
+            pushFollow(FOLLOW_ruleRequireDeclaration_in_entryRuleRequireDeclaration247);
+            ruleRequireDeclaration();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationRule()); 
+               after(grammarAccess.getRequireDeclarationRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUseDeclaration254); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRequireDeclaration254); if (state.failed) return ;
 
             }
 
@@ -426,30 +426,30 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "entryRuleUseDeclaration"
+    // $ANTLR end "entryRuleRequireDeclaration"
 
 
-    // $ANTLR start "ruleUseDeclaration"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:154:1: ruleUseDeclaration : ( ( rule__UseDeclaration__Group__0 ) ) ;
-    public final void ruleUseDeclaration() throws RecognitionException {
+    // $ANTLR start "ruleRequireDeclaration"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:154:1: ruleRequireDeclaration : ( ( rule__RequireDeclaration__Group__0 ) ) ;
+    public final void ruleRequireDeclaration() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:158:2: ( ( ( rule__UseDeclaration__Group__0 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:159:1: ( ( rule__UseDeclaration__Group__0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:158:2: ( ( ( rule__RequireDeclaration__Group__0 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:159:1: ( ( rule__RequireDeclaration__Group__0 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:159:1: ( ( rule__UseDeclaration__Group__0 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:160:1: ( rule__UseDeclaration__Group__0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:159:1: ( ( rule__RequireDeclaration__Group__0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:160:1: ( rule__RequireDeclaration__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationAccess().getGroup()); 
+               before(grammarAccess.getRequireDeclarationAccess().getGroup()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:161:1: ( rule__UseDeclaration__Group__0 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:161:2: rule__UseDeclaration__Group__0
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:161:1: ( rule__RequireDeclaration__Group__0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:161:2: rule__RequireDeclaration__Group__0
             {
-            pushFollow(FOLLOW_rule__UseDeclaration__Group__0_in_ruleUseDeclaration280);
-            rule__UseDeclaration__Group__0();
+            pushFollow(FOLLOW_rule__RequireDeclaration__Group__0_in_ruleRequireDeclaration280);
+            rule__RequireDeclaration__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -457,7 +457,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationAccess().getGroup()); 
+               after(grammarAccess.getRequireDeclarationAccess().getGroup()); 
             }
 
             }
@@ -477,7 +477,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "ruleUseDeclaration"
+    // $ANTLR end "ruleRequireDeclaration"
 
 
     // $ANTLR start "entryRuleImport"
@@ -6039,7 +6039,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( (LA3_0==RULE_ID) ) {
                 int LA3_1 = input.LA(2);
 
-                if ( (LA3_1==EOF||(LA3_1>=RULE_ID && LA3_1<=RULE_STRING)||(LA3_1>=14 && LA3_1<=35)||(LA3_1>=38 && LA3_1<=45)||(LA3_1>=48 && LA3_1<=68)||(LA3_1>=75 && LA3_1<=76)||(LA3_1>=78 && LA3_1<=79)) ) {
+                if ( (LA3_1==EOF||(LA3_1>=RULE_ID && LA3_1<=RULE_STRING)||(LA3_1>=14 && LA3_1<=35)||(LA3_1>=38 && LA3_1<=39)||(LA3_1>=41 && LA3_1<=46)||(LA3_1>=48 && LA3_1<=68)||(LA3_1>=75 && LA3_1<=76)||(LA3_1>=78 && LA3_1<=79)) ) {
                     alt3=2;
                 }
                 else if ( (LA3_1==13) ) {
@@ -6053,7 +6053,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                     throw nvae;
                 }
             }
-            else if ( ((LA3_0>=RULE_HEX && LA3_0<=RULE_STRING)||LA3_0==22||(LA3_0>=25 && LA3_0<=26)||LA3_0==31||(LA3_0>=34 && LA3_0<=35)||LA3_0==38||LA3_0==40||LA3_0==43||LA3_0==51||LA3_0==53||(LA3_0>=56 && LA3_0<=58)||(LA3_0>=60 && LA3_0<=65)||LA3_0==79) ) {
+            else if ( ((LA3_0>=RULE_HEX && LA3_0<=RULE_STRING)||LA3_0==22||(LA3_0>=25 && LA3_0<=26)||LA3_0==31||(LA3_0>=34 && LA3_0<=35)||LA3_0==38||LA3_0==42||LA3_0==45||LA3_0==51||LA3_0==53||(LA3_0>=56 && LA3_0<=58)||(LA3_0>=60 && LA3_0<=65)||LA3_0==79) ) {
                 alt3=2;
             }
             else {
@@ -6757,7 +6757,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( ((LA10_0>=25 && LA10_0<=26)||LA10_0==31) ) {
                 alt10=1;
             }
-            else if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_STRING)||LA10_0==22||(LA10_0>=34 && LA10_0<=35)||LA10_0==38||LA10_0==40||LA10_0==43||LA10_0==51||LA10_0==53||(LA10_0>=56 && LA10_0<=58)||(LA10_0>=60 && LA10_0<=65)||LA10_0==79) ) {
+            else if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_STRING)||LA10_0==22||(LA10_0>=34 && LA10_0<=35)||LA10_0==38||LA10_0==42||LA10_0==45||LA10_0==51||LA10_0==53||(LA10_0>=56 && LA10_0<=58)||(LA10_0>=60 && LA10_0<=65)||LA10_0==79) ) {
                 alt10=2;
             }
             else {
@@ -6968,7 +6968,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                     if ( (LA12_3==13) ) {
                         alt12=1;
                     }
-                    else if ( (LA12_3==EOF||(LA12_3>=RULE_ID && LA12_3<=RULE_STRING)||(LA12_3>=14 && LA12_3<=35)||(LA12_3>=38 && LA12_3<=45)||(LA12_3>=48 && LA12_3<=58)||(LA12_3>=60 && LA12_3<=68)||(LA12_3>=75 && LA12_3<=76)||(LA12_3>=78 && LA12_3<=79)) ) {
+                    else if ( (LA12_3==EOF||(LA12_3>=RULE_ID && LA12_3<=RULE_STRING)||(LA12_3>=14 && LA12_3<=35)||(LA12_3>=38 && LA12_3<=39)||(LA12_3>=41 && LA12_3<=46)||(LA12_3>=48 && LA12_3<=58)||(LA12_3>=60 && LA12_3<=68)||(LA12_3>=75 && LA12_3<=76)||(LA12_3>=78 && LA12_3<=79)) ) {
                         alt12=2;
                     }
                     else {
@@ -7324,7 +7324,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             case RULE_DECIMAL:
             case RULE_STRING:
             case 35:
-            case 43:
+            case 45:
             case 61:
             case 62:
             case 79:
@@ -7367,7 +7367,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 alt15=12;
                 }
                 break;
-            case 40:
+            case 42:
                 {
                 alt15=13;
                 }
@@ -7707,7 +7707,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2440:1: ( ( ruleXClosure ) | ( ruleXBooleanLiteral ) | ( ruleXNumberLiteral ) | ( ruleXNullLiteral ) | ( ruleXStringLiteral ) | ( ruleXTypeLiteral ) )
             int alt16=6;
             switch ( input.LA(1) ) {
-            case 43:
+            case 45:
                 {
                 alt16=1;
                 }
@@ -7915,19 +7915,19 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt17=2;
             int LA17_0 = input.LA(1);
 
-            if ( ((LA17_0>=RULE_ID && LA17_0<=RULE_STRING)||LA17_0==22||(LA17_0>=25 && LA17_0<=26)||LA17_0==31||(LA17_0>=34 && LA17_0<=35)||LA17_0==38||LA17_0==43||LA17_0==51||LA17_0==53||(LA17_0>=56 && LA17_0<=58)||(LA17_0>=60 && LA17_0<=65)||LA17_0==79) ) {
+            if ( ((LA17_0>=RULE_ID && LA17_0<=RULE_STRING)||LA17_0==22||(LA17_0>=25 && LA17_0<=26)||LA17_0==31||(LA17_0>=34 && LA17_0<=35)||LA17_0==38||LA17_0==45||LA17_0==51||LA17_0==53||(LA17_0>=56 && LA17_0<=58)||(LA17_0>=60 && LA17_0<=65)||LA17_0==79) ) {
                 alt17=1;
             }
-            else if ( (LA17_0==40) ) {
+            else if ( (LA17_0==42) ) {
                 int LA17_2 = input.LA(2);
 
                 if ( (LA17_2==RULE_ID) ) {
                     int LA17_3 = input.LA(3);
 
-                    if ( ((LA17_3>=13 && LA17_3<=30)||LA17_3==32||(LA17_3>=40 && LA17_3<=41)||LA17_3==43||(LA17_3>=48 && LA17_3<=49)||LA17_3==59||(LA17_3>=75 && LA17_3<=76)) ) {
+                    if ( ((LA17_3>=13 && LA17_3<=30)||LA17_3==32||(LA17_3>=42 && LA17_3<=43)||LA17_3==45||(LA17_3>=48 && LA17_3<=49)||LA17_3==59||(LA17_3>=75 && LA17_3<=76)) ) {
                         alt17=1;
                     }
-                    else if ( (LA17_3==42) ) {
+                    else if ( (LA17_3==44) ) {
                         alt17=2;
                     }
                     else {
@@ -7938,7 +7938,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                         throw nvae;
                     }
                 }
-                else if ( ((LA17_2>=RULE_HEX && LA17_2<=RULE_STRING)||LA17_2==22||(LA17_2>=25 && LA17_2<=26)||LA17_2==31||(LA17_2>=34 && LA17_2<=35)||LA17_2==38||LA17_2==40||LA17_2==43||LA17_2==51||LA17_2==53||(LA17_2>=56 && LA17_2<=58)||(LA17_2>=60 && LA17_2<=65)||LA17_2==79) ) {
+                else if ( ((LA17_2>=RULE_HEX && LA17_2<=RULE_STRING)||LA17_2==22||(LA17_2>=25 && LA17_2<=26)||LA17_2==31||(LA17_2>=34 && LA17_2<=35)||LA17_2==38||LA17_2==42||LA17_2==45||LA17_2==51||LA17_2==53||(LA17_2>=56 && LA17_2<=58)||(LA17_2>=60 && LA17_2<=65)||LA17_2==79) ) {
                     alt17=1;
                 }
                 else {
@@ -8046,7 +8046,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( (LA18_0==33||LA18_0==78) ) {
                 alt18=1;
             }
-            else if ( ((LA18_0>=RULE_ID && LA18_0<=RULE_STRING)||LA18_0==22||(LA18_0>=25 && LA18_0<=26)||LA18_0==31||(LA18_0>=34 && LA18_0<=35)||LA18_0==38||LA18_0==40||LA18_0==43||LA18_0==51||LA18_0==53||(LA18_0>=56 && LA18_0<=58)||(LA18_0>=60 && LA18_0<=65)||LA18_0==79) ) {
+            else if ( ((LA18_0>=RULE_ID && LA18_0<=RULE_STRING)||LA18_0==22||(LA18_0>=25 && LA18_0<=26)||LA18_0==31||(LA18_0>=34 && LA18_0<=35)||LA18_0==38||LA18_0==42||LA18_0==45||LA18_0==51||LA18_0==53||(LA18_0>=56 && LA18_0<=58)||(LA18_0>=60 && LA18_0<=65)||LA18_0==79) ) {
                 alt18=2;
             }
             else {
@@ -8238,7 +8238,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                     throw nvae;
                 }
             }
-            else if ( (LA20_0==40||LA20_0==68) ) {
+            else if ( (LA20_0==42||LA20_0==68) ) {
                 alt20=1;
             }
             else {
@@ -9034,7 +9034,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( (LA29_0==RULE_ID) ) {
                 alt29=1;
             }
-            else if ( (LA29_0==40||LA29_0==68) ) {
+            else if ( (LA29_0==42||LA29_0==68) ) {
                 alt29=2;
             }
             else {
@@ -9125,7 +9125,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt30=2;
             int LA30_0 = input.LA(1);
 
-            if ( (LA30_0==RULE_ID||LA30_0==40||LA30_0==68) ) {
+            if ( (LA30_0==RULE_ID||LA30_0==42||LA30_0==68) ) {
                 alt30=1;
             }
             else if ( (LA30_0==69) ) {
@@ -9616,24 +9616,45 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__3__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2922:1: rule__Component__Group__3__Impl : ( 'component' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2922:1: rule__Component__Group__3__Impl : ( ( rule__Component__Group_3__0 )? ) ;
     public final void rule__Component__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2926:1: ( ( 'component' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( 'component' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2926:1: ( ( ( rule__Component__Group_3__0 )? ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( ( rule__Component__Group_3__0 )? )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( 'component' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2928:1: 'component'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2927:1: ( ( rule__Component__Group_3__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2928:1: ( rule__Component__Group_3__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getComponentKeyword_3()); 
+               before(grammarAccess.getComponentAccess().getGroup_3()); 
             }
-            match(input,37,FOLLOW_37_in_rule__Component__Group__3__Impl6322); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2929:1: ( rule__Component__Group_3__0 )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
+
+            if ( (LA33_0==40) ) {
+                alt33=1;
+            }
+            switch (alt33) {
+                case 1 :
+                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2929:2: rule__Component__Group_3__0
+                    {
+                    pushFollow(FOLLOW_rule__Component__Group_3__0_in_rule__Component__Group__3__Impl6321);
+                    rule__Component__Group_3__0();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getComponentKeyword_3()); 
+               after(grammarAccess.getComponentAccess().getGroup_3()); 
             }
 
             }
@@ -9657,21 +9678,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__4"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2941:1: rule__Component__Group__4 : rule__Component__Group__4__Impl rule__Component__Group__5 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2939:1: rule__Component__Group__4 : rule__Component__Group__4__Impl rule__Component__Group__5 ;
     public final void rule__Component__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2945:1: ( rule__Component__Group__4__Impl rule__Component__Group__5 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2946:2: rule__Component__Group__4__Impl rule__Component__Group__5
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2943:1: ( rule__Component__Group__4__Impl rule__Component__Group__5 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2944:2: rule__Component__Group__4__Impl rule__Component__Group__5
             {
-            pushFollow(FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46353);
+            pushFollow(FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46352);
             rule__Component__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46356);
+            pushFollow(FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46355);
             rule__Component__Group__5();
 
             state._fsp--;
@@ -9695,34 +9716,24 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__4__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2953:1: rule__Component__Group__4__Impl : ( ( rule__Component__NameAssignment_4 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2951:1: rule__Component__Group__4__Impl : ( 'component' ) ;
     public final void rule__Component__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2957:1: ( ( ( rule__Component__NameAssignment_4 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2958:1: ( ( rule__Component__NameAssignment_4 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2955:1: ( ( 'component' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2956:1: ( 'component' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2958:1: ( ( rule__Component__NameAssignment_4 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2959:1: ( rule__Component__NameAssignment_4 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2956:1: ( 'component' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2957:1: 'component'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getNameAssignment_4()); 
+               before(grammarAccess.getComponentAccess().getComponentKeyword_4()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2960:1: ( rule__Component__NameAssignment_4 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2960:2: rule__Component__NameAssignment_4
-            {
-            pushFollow(FOLLOW_rule__Component__NameAssignment_4_in_rule__Component__Group__4__Impl6383);
-            rule__Component__NameAssignment_4();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
+            match(input,37,FOLLOW_37_in_rule__Component__Group__4__Impl6383); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getNameAssignment_4()); 
+               after(grammarAccess.getComponentAccess().getComponentKeyword_4()); 
             }
 
             }
@@ -9755,12 +9766,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2974:1: ( rule__Component__Group__5__Impl rule__Component__Group__6 )
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2975:2: rule__Component__Group__5__Impl rule__Component__Group__6
             {
-            pushFollow(FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56413);
+            pushFollow(FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56414);
             rule__Component__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56416);
+            pushFollow(FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56417);
             rule__Component__Group__6();
 
             state._fsp--;
@@ -9784,24 +9795,34 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__5__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2982:1: rule__Component__Group__5__Impl : ( '{' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2982:1: rule__Component__Group__5__Impl : ( ( rule__Component__NameAssignment_5 ) ) ;
     public final void rule__Component__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2986:1: ( ( '{' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( '{' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2986:1: ( ( ( rule__Component__NameAssignment_5 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( ( rule__Component__NameAssignment_5 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( '{' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2988:1: '{'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2987:1: ( ( rule__Component__NameAssignment_5 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2988:1: ( rule__Component__NameAssignment_5 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_5()); 
+               before(grammarAccess.getComponentAccess().getNameAssignment_5()); 
             }
-            match(input,38,FOLLOW_38_in_rule__Component__Group__5__Impl6444); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2989:1: ( rule__Component__NameAssignment_5 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2989:2: rule__Component__NameAssignment_5
+            {
+            pushFollow(FOLLOW_rule__Component__NameAssignment_5_in_rule__Component__Group__5__Impl6444);
+            rule__Component__NameAssignment_5();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_5()); 
+               after(grammarAccess.getComponentAccess().getNameAssignment_5()); 
             }
 
             }
@@ -9825,21 +9846,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__6"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3001:1: rule__Component__Group__6 : rule__Component__Group__6__Impl rule__Component__Group__7 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:2999:1: rule__Component__Group__6 : rule__Component__Group__6__Impl rule__Component__Group__7 ;
     public final void rule__Component__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3005:1: ( rule__Component__Group__6__Impl rule__Component__Group__7 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3006:2: rule__Component__Group__6__Impl rule__Component__Group__7
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3003:1: ( rule__Component__Group__6__Impl rule__Component__Group__7 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3004:2: rule__Component__Group__6__Impl rule__Component__Group__7
             {
-            pushFollow(FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66475);
+            pushFollow(FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66474);
             rule__Component__Group__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66478);
+            pushFollow(FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66477);
             rule__Component__Group__7();
 
             state._fsp--;
@@ -9863,52 +9884,24 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__6__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3013:1: rule__Component__Group__6__Impl : ( ( rule__Component__ServicesAssignment_6 )* ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3011:1: rule__Component__Group__6__Impl : ( '{' ) ;
     public final void rule__Component__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3017:1: ( ( ( rule__Component__ServicesAssignment_6 )* ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3018:1: ( ( rule__Component__ServicesAssignment_6 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3015:1: ( ( '{' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3016:1: ( '{' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3018:1: ( ( rule__Component__ServicesAssignment_6 )* )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3019:1: ( rule__Component__ServicesAssignment_6 )*
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3016:1: ( '{' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3017:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getServicesAssignment_6()); 
+               before(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_6()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3020:1: ( rule__Component__ServicesAssignment_6 )*
-            loop33:
-            do {
-                int alt33=2;
-                int LA33_0 = input.LA(1);
-
-                if ( (LA33_0==RULE_ID||LA33_0==72) ) {
-                    alt33=1;
-                }
-
-
-                switch (alt33) {
-            	case 1 :
-            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3020:2: rule__Component__ServicesAssignment_6
-            	    {
-            	    pushFollow(FOLLOW_rule__Component__ServicesAssignment_6_in_rule__Component__Group__6__Impl6505);
-            	    rule__Component__ServicesAssignment_6();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop33;
-                }
-            } while (true);
-
+            match(input,38,FOLLOW_38_in_rule__Component__Group__6__Impl6505); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getServicesAssignment_6()); 
+               after(grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_6()); 
             }
 
             }
@@ -9932,17 +9925,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__7"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3030:1: rule__Component__Group__7 : rule__Component__Group__7__Impl ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3030:1: rule__Component__Group__7 : rule__Component__Group__7__Impl rule__Component__Group__8 ;
     public final void rule__Component__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3034:1: ( rule__Component__Group__7__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3035:2: rule__Component__Group__7__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3034:1: ( rule__Component__Group__7__Impl rule__Component__Group__8 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3035:2: rule__Component__Group__7__Impl rule__Component__Group__8
             {
             pushFollow(FOLLOW_rule__Component__Group__7__Impl_in_rule__Component__Group__76536);
             rule__Component__Group__7__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Component__Group__8_in_rule__Component__Group__76539);
+            rule__Component__Group__8();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9965,24 +9963,52 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Component__Group__7__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3041:1: rule__Component__Group__7__Impl : ( '}' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3042:1: rule__Component__Group__7__Impl : ( ( rule__Component__ServicesAssignment_7 )* ) ;
     public final void rule__Component__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3045:1: ( ( '}' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3046:1: ( '}' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3046:1: ( ( ( rule__Component__ServicesAssignment_7 )* ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3047:1: ( ( rule__Component__ServicesAssignment_7 )* )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3046:1: ( '}' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3047:1: '}'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3047:1: ( ( rule__Component__ServicesAssignment_7 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3048:1: ( rule__Component__ServicesAssignment_7 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_7()); 
+               before(grammarAccess.getComponentAccess().getServicesAssignment_7()); 
             }
-            match(input,39,FOLLOW_39_in_rule__Component__Group__7__Impl6564); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3049:1: ( rule__Component__ServicesAssignment_7 )*
+            loop34:
+            do {
+                int alt34=2;
+                int LA34_0 = input.LA(1);
+
+                if ( (LA34_0==RULE_ID||LA34_0==72) ) {
+                    alt34=1;
+                }
+
+
+                switch (alt34) {
+            	case 1 :
+            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3049:2: rule__Component__ServicesAssignment_7
+            	    {
+            	    pushFollow(FOLLOW_rule__Component__ServicesAssignment_7_in_rule__Component__Group__7__Impl6566);
+            	    rule__Component__ServicesAssignment_7();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop34;
+                }
+            } while (true);
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_7()); 
+               after(grammarAccess.getComponentAccess().getServicesAssignment_7()); 
             }
 
             }
@@ -10005,22 +10031,529 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Component__Group__7__Impl"
 
 
+    // $ANTLR start "rule__Component__Group__8"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3059:1: rule__Component__Group__8 : rule__Component__Group__8__Impl ;
+    public final void rule__Component__Group__8() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3063:1: ( rule__Component__Group__8__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3064:2: rule__Component__Group__8__Impl
+            {
+            pushFollow(FOLLOW_rule__Component__Group__8__Impl_in_rule__Component__Group__86597);
+            rule__Component__Group__8__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group__8"
+
+
+    // $ANTLR start "rule__Component__Group__8__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3070:1: rule__Component__Group__8__Impl : ( '}' ) ;
+    public final void rule__Component__Group__8__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3074:1: ( ( '}' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3075:1: ( '}' )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3075:1: ( '}' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3076:1: '}'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_8()); 
+            }
+            match(input,39,FOLLOW_39_in_rule__Component__Group__8__Impl6625); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_8()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group__8__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_3__0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3107:1: rule__Component__Group_3__0 : rule__Component__Group_3__0__Impl rule__Component__Group_3__1 ;
+    public final void rule__Component__Group_3__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3111:1: ( rule__Component__Group_3__0__Impl rule__Component__Group_3__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3112:2: rule__Component__Group_3__0__Impl rule__Component__Group_3__1
+            {
+            pushFollow(FOLLOW_rule__Component__Group_3__0__Impl_in_rule__Component__Group_3__06674);
+            rule__Component__Group_3__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Component__Group_3__1_in_rule__Component__Group_3__06677);
+            rule__Component__Group_3__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__0"
+
+
+    // $ANTLR start "rule__Component__Group_3__0__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3119:1: rule__Component__Group_3__0__Impl : ( 'uses' ) ;
+    public final void rule__Component__Group_3__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3123:1: ( ( 'uses' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'uses' )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( 'uses' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3125:1: 'uses'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getUsesKeyword_3_0()); 
+            }
+            match(input,40,FOLLOW_40_in_rule__Component__Group_3__0__Impl6705); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getUsesKeyword_3_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__0__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_3__1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3138:1: rule__Component__Group_3__1 : rule__Component__Group_3__1__Impl rule__Component__Group_3__2 ;
+    public final void rule__Component__Group_3__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3142:1: ( rule__Component__Group_3__1__Impl rule__Component__Group_3__2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3143:2: rule__Component__Group_3__1__Impl rule__Component__Group_3__2
+            {
+            pushFollow(FOLLOW_rule__Component__Group_3__1__Impl_in_rule__Component__Group_3__16736);
+            rule__Component__Group_3__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Component__Group_3__2_in_rule__Component__Group_3__16739);
+            rule__Component__Group_3__2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__1"
+
+
+    // $ANTLR start "rule__Component__Group_3__1__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3150:1: rule__Component__Group_3__1__Impl : ( ( rule__Component__RequiresAssignment_3_1 ) ) ;
+    public final void rule__Component__Group_3__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3154:1: ( ( ( rule__Component__RequiresAssignment_3_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_3_1 ) )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3155:1: ( ( rule__Component__RequiresAssignment_3_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3156:1: ( rule__Component__RequiresAssignment_3_1 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getRequiresAssignment_3_1()); 
+            }
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:1: ( rule__Component__RequiresAssignment_3_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3157:2: rule__Component__RequiresAssignment_3_1
+            {
+            pushFollow(FOLLOW_rule__Component__RequiresAssignment_3_1_in_rule__Component__Group_3__1__Impl6766);
+            rule__Component__RequiresAssignment_3_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRequiresAssignment_3_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__1__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_3__2"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3167:1: rule__Component__Group_3__2 : rule__Component__Group_3__2__Impl ;
+    public final void rule__Component__Group_3__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3171:1: ( rule__Component__Group_3__2__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3172:2: rule__Component__Group_3__2__Impl
+            {
+            pushFollow(FOLLOW_rule__Component__Group_3__2__Impl_in_rule__Component__Group_3__26796);
+            rule__Component__Group_3__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__2"
+
+
+    // $ANTLR start "rule__Component__Group_3__2__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3178:1: rule__Component__Group_3__2__Impl : ( ( rule__Component__Group_3_2__0 )* ) ;
+    public final void rule__Component__Group_3__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3182:1: ( ( ( rule__Component__Group_3_2__0 )* ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_3_2__0 )* )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( ( rule__Component__Group_3_2__0 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3184:1: ( rule__Component__Group_3_2__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getGroup_3_2()); 
+            }
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:1: ( rule__Component__Group_3_2__0 )*
+            loop35:
+            do {
+                int alt35=2;
+                int LA35_0 = input.LA(1);
+
+                if ( (LA35_0==41) ) {
+                    alt35=1;
+                }
+
+
+                switch (alt35) {
+            	case 1 :
+            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3185:2: rule__Component__Group_3_2__0
+            	    {
+            	    pushFollow(FOLLOW_rule__Component__Group_3_2__0_in_rule__Component__Group_3__2__Impl6823);
+            	    rule__Component__Group_3_2__0();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop35;
+                }
+            } while (true);
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getGroup_3_2()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3__2__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_3_2__0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3201:1: rule__Component__Group_3_2__0 : rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1 ;
+    public final void rule__Component__Group_3_2__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3205:1: ( rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3206:2: rule__Component__Group_3_2__0__Impl rule__Component__Group_3_2__1
+            {
+            pushFollow(FOLLOW_rule__Component__Group_3_2__0__Impl_in_rule__Component__Group_3_2__06860);
+            rule__Component__Group_3_2__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Component__Group_3_2__1_in_rule__Component__Group_3_2__06863);
+            rule__Component__Group_3_2__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3_2__0"
+
+
+    // $ANTLR start "rule__Component__Group_3_2__0__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3213:1: rule__Component__Group_3_2__0__Impl : ( ',' ) ;
+    public final void rule__Component__Group_3_2__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3217:1: ( ( ',' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3218:1: ( ',' )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3218:1: ( ',' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3219:1: ','
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getCommaKeyword_3_2_0()); 
+            }
+            match(input,41,FOLLOW_41_in_rule__Component__Group_3_2__0__Impl6891); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getCommaKeyword_3_2_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3_2__0__Impl"
+
+
+    // $ANTLR start "rule__Component__Group_3_2__1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3232:1: rule__Component__Group_3_2__1 : rule__Component__Group_3_2__1__Impl ;
+    public final void rule__Component__Group_3_2__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3236:1: ( rule__Component__Group_3_2__1__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3237:2: rule__Component__Group_3_2__1__Impl
+            {
+            pushFollow(FOLLOW_rule__Component__Group_3_2__1__Impl_in_rule__Component__Group_3_2__16922);
+            rule__Component__Group_3_2__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3_2__1"
+
+
+    // $ANTLR start "rule__Component__Group_3_2__1__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3243:1: rule__Component__Group_3_2__1__Impl : ( ( rule__Component__RequiresAssignment_3_2_1 ) ) ;
+    public final void rule__Component__Group_3_2__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3247:1: ( ( ( rule__Component__RequiresAssignment_3_2_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_3_2_1 ) )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3248:1: ( ( rule__Component__RequiresAssignment_3_2_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3249:1: ( rule__Component__RequiresAssignment_3_2_1 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getRequiresAssignment_3_2_1()); 
+            }
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:1: ( rule__Component__RequiresAssignment_3_2_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3250:2: rule__Component__RequiresAssignment_3_2_1
+            {
+            pushFollow(FOLLOW_rule__Component__RequiresAssignment_3_2_1_in_rule__Component__Group_3_2__1__Impl6949);
+            rule__Component__RequiresAssignment_3_2_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRequiresAssignment_3_2_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__Group_3_2__1__Impl"
+
+
     // $ANTLR start "rule__Service__Group__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3076:1: rule__Service__Group__0 : rule__Service__Group__0__Impl rule__Service__Group__1 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3264:1: rule__Service__Group__0 : rule__Service__Group__0__Impl rule__Service__Group__1 ;
     public final void rule__Service__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3080:1: ( rule__Service__Group__0__Impl rule__Service__Group__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3081:2: rule__Service__Group__0__Impl rule__Service__Group__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3268:1: ( rule__Service__Group__0__Impl rule__Service__Group__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3269:2: rule__Service__Group__0__Impl rule__Service__Group__1
             {
-            pushFollow(FOLLOW_rule__Service__Group__0__Impl_in_rule__Service__Group__06611);
+            pushFollow(FOLLOW_rule__Service__Group__0__Impl_in_rule__Service__Group__06983);
             rule__Service__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__1_in_rule__Service__Group__06614);
+            pushFollow(FOLLOW_rule__Service__Group__1_in_rule__Service__Group__06986);
             rule__Service__Group__1();
 
             state._fsp--;
@@ -10044,33 +10577,33 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3088:1: rule__Service__Group__0__Impl : ( ( rule__Service__Group_0__0 )? ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3276:1: rule__Service__Group__0__Impl : ( ( rule__Service__Group_0__0 )? ) ;
     public final void rule__Service__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3092:1: ( ( ( rule__Service__Group_0__0 )? ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3093:1: ( ( rule__Service__Group_0__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3280:1: ( ( ( rule__Service__Group_0__0 )? ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3281:1: ( ( rule__Service__Group_0__0 )? )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3093:1: ( ( rule__Service__Group_0__0 )? )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3094:1: ( rule__Service__Group_0__0 )?
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3281:1: ( ( rule__Service__Group_0__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3282:1: ( rule__Service__Group_0__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getGroup_0()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3095:1: ( rule__Service__Group_0__0 )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3283:1: ( rule__Service__Group_0__0 )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA34_0==72) ) {
-                alt34=1;
+            if ( (LA36_0==72) ) {
+                alt36=1;
             }
-            switch (alt34) {
+            switch (alt36) {
                 case 1 :
-                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3095:2: rule__Service__Group_0__0
+                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3283:2: rule__Service__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__Service__Group_0__0_in_rule__Service__Group__0__Impl6641);
+                    pushFollow(FOLLOW_rule__Service__Group_0__0_in_rule__Service__Group__0__Impl7013);
                     rule__Service__Group_0__0();
 
                     state._fsp--;
@@ -10106,21 +10639,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3105:1: rule__Service__Group__1 : rule__Service__Group__1__Impl rule__Service__Group__2 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3293:1: rule__Service__Group__1 : rule__Service__Group__1__Impl rule__Service__Group__2 ;
     public final void rule__Service__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3109:1: ( rule__Service__Group__1__Impl rule__Service__Group__2 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3110:2: rule__Service__Group__1__Impl rule__Service__Group__2
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3297:1: ( rule__Service__Group__1__Impl rule__Service__Group__2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3298:2: rule__Service__Group__1__Impl rule__Service__Group__2
             {
-            pushFollow(FOLLOW_rule__Service__Group__1__Impl_in_rule__Service__Group__16672);
+            pushFollow(FOLLOW_rule__Service__Group__1__Impl_in_rule__Service__Group__17044);
             rule__Service__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__2_in_rule__Service__Group__16675);
+            pushFollow(FOLLOW_rule__Service__Group__2_in_rule__Service__Group__17047);
             rule__Service__Group__2();
 
             state._fsp--;
@@ -10144,25 +10677,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3117:1: rule__Service__Group__1__Impl : ( ( rule__Service__NameAssignment_1 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3305:1: rule__Service__Group__1__Impl : ( ( rule__Service__NameAssignment_1 ) ) ;
     public final void rule__Service__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3121:1: ( ( ( rule__Service__NameAssignment_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3122:1: ( ( rule__Service__NameAssignment_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3309:1: ( ( ( rule__Service__NameAssignment_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3310:1: ( ( rule__Service__NameAssignment_1 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3122:1: ( ( rule__Service__NameAssignment_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3123:1: ( rule__Service__NameAssignment_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3310:1: ( ( rule__Service__NameAssignment_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3311:1: ( rule__Service__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getNameAssignment_1()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:1: ( rule__Service__NameAssignment_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3124:2: rule__Service__NameAssignment_1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3312:1: ( rule__Service__NameAssignment_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3312:2: rule__Service__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Service__NameAssignment_1_in_rule__Service__Group__1__Impl6702);
+            pushFollow(FOLLOW_rule__Service__NameAssignment_1_in_rule__Service__Group__1__Impl7074);
             rule__Service__NameAssignment_1();
 
             state._fsp--;
@@ -10195,21 +10728,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__2"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3134:1: rule__Service__Group__2 : rule__Service__Group__2__Impl rule__Service__Group__3 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3322:1: rule__Service__Group__2 : rule__Service__Group__2__Impl rule__Service__Group__3 ;
     public final void rule__Service__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3138:1: ( rule__Service__Group__2__Impl rule__Service__Group__3 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3139:2: rule__Service__Group__2__Impl rule__Service__Group__3
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3326:1: ( rule__Service__Group__2__Impl rule__Service__Group__3 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3327:2: rule__Service__Group__2__Impl rule__Service__Group__3
             {
-            pushFollow(FOLLOW_rule__Service__Group__2__Impl_in_rule__Service__Group__26732);
+            pushFollow(FOLLOW_rule__Service__Group__2__Impl_in_rule__Service__Group__27104);
             rule__Service__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__3_in_rule__Service__Group__26735);
+            pushFollow(FOLLOW_rule__Service__Group__3_in_rule__Service__Group__27107);
             rule__Service__Group__3();
 
             state._fsp--;
@@ -10233,22 +10766,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__2__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3146:1: rule__Service__Group__2__Impl : ( '(' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3334:1: rule__Service__Group__2__Impl : ( '(' ) ;
     public final void rule__Service__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3150:1: ( ( '(' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3151:1: ( '(' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3338:1: ( ( '(' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3339:1: ( '(' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3151:1: ( '(' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3152:1: '('
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3339:1: ( '(' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3340:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,40,FOLLOW_40_in_rule__Service__Group__2__Impl6763); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__Service__Group__2__Impl7135); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -10274,21 +10807,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__3"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3165:1: rule__Service__Group__3 : rule__Service__Group__3__Impl rule__Service__Group__4 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3353:1: rule__Service__Group__3 : rule__Service__Group__3__Impl rule__Service__Group__4 ;
     public final void rule__Service__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3169:1: ( rule__Service__Group__3__Impl rule__Service__Group__4 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3170:2: rule__Service__Group__3__Impl rule__Service__Group__4
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3357:1: ( rule__Service__Group__3__Impl rule__Service__Group__4 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3358:2: rule__Service__Group__3__Impl rule__Service__Group__4
             {
-            pushFollow(FOLLOW_rule__Service__Group__3__Impl_in_rule__Service__Group__36794);
+            pushFollow(FOLLOW_rule__Service__Group__3__Impl_in_rule__Service__Group__37166);
             rule__Service__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__4_in_rule__Service__Group__36797);
+            pushFollow(FOLLOW_rule__Service__Group__4_in_rule__Service__Group__37169);
             rule__Service__Group__4();
 
             state._fsp--;
@@ -10312,33 +10845,33 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__3__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3177:1: rule__Service__Group__3__Impl : ( ( rule__Service__Group_3__0 )? ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3365:1: rule__Service__Group__3__Impl : ( ( rule__Service__Group_3__0 )? ) ;
     public final void rule__Service__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3181:1: ( ( ( rule__Service__Group_3__0 )? ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3182:1: ( ( rule__Service__Group_3__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3369:1: ( ( ( rule__Service__Group_3__0 )? ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3370:1: ( ( rule__Service__Group_3__0 )? )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3182:1: ( ( rule__Service__Group_3__0 )? )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3183:1: ( rule__Service__Group_3__0 )?
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3370:1: ( ( rule__Service__Group_3__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3371:1: ( rule__Service__Group_3__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getGroup_3()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3184:1: ( rule__Service__Group_3__0 )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3372:1: ( rule__Service__Group_3__0 )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA35_0==RULE_ID||LA35_0==40||LA35_0==68) ) {
-                alt35=1;
+            if ( (LA37_0==RULE_ID||LA37_0==42||LA37_0==68) ) {
+                alt37=1;
             }
-            switch (alt35) {
+            switch (alt37) {
                 case 1 :
-                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3184:2: rule__Service__Group_3__0
+                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3372:2: rule__Service__Group_3__0
                     {
-                    pushFollow(FOLLOW_rule__Service__Group_3__0_in_rule__Service__Group__3__Impl6824);
+                    pushFollow(FOLLOW_rule__Service__Group_3__0_in_rule__Service__Group__3__Impl7196);
                     rule__Service__Group_3__0();
 
                     state._fsp--;
@@ -10374,21 +10907,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__4"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3194:1: rule__Service__Group__4 : rule__Service__Group__4__Impl rule__Service__Group__5 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3382:1: rule__Service__Group__4 : rule__Service__Group__4__Impl rule__Service__Group__5 ;
     public final void rule__Service__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3198:1: ( rule__Service__Group__4__Impl rule__Service__Group__5 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3199:2: rule__Service__Group__4__Impl rule__Service__Group__5
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3386:1: ( rule__Service__Group__4__Impl rule__Service__Group__5 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3387:2: rule__Service__Group__4__Impl rule__Service__Group__5
             {
-            pushFollow(FOLLOW_rule__Service__Group__4__Impl_in_rule__Service__Group__46855);
+            pushFollow(FOLLOW_rule__Service__Group__4__Impl_in_rule__Service__Group__47227);
             rule__Service__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__5_in_rule__Service__Group__46858);
+            pushFollow(FOLLOW_rule__Service__Group__5_in_rule__Service__Group__47230);
             rule__Service__Group__5();
 
             state._fsp--;
@@ -10412,22 +10945,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__4__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3206:1: rule__Service__Group__4__Impl : ( ')' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3394:1: rule__Service__Group__4__Impl : ( ')' ) ;
     public final void rule__Service__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3210:1: ( ( ')' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3211:1: ( ')' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3398:1: ( ( ')' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3399:1: ( ')' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3211:1: ( ')' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3212:1: ')'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3399:1: ( ')' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3400:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getRightParenthesisKeyword_4()); 
             }
-            match(input,41,FOLLOW_41_in_rule__Service__Group__4__Impl6886); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__Service__Group__4__Impl7258); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getRightParenthesisKeyword_4()); 
             }
@@ -10453,21 +10986,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__5"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3225:1: rule__Service__Group__5 : rule__Service__Group__5__Impl rule__Service__Group__6 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3413:1: rule__Service__Group__5 : rule__Service__Group__5__Impl rule__Service__Group__6 ;
     public final void rule__Service__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3229:1: ( rule__Service__Group__5__Impl rule__Service__Group__6 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3230:2: rule__Service__Group__5__Impl rule__Service__Group__6
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3417:1: ( rule__Service__Group__5__Impl rule__Service__Group__6 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3418:2: rule__Service__Group__5__Impl rule__Service__Group__6
             {
-            pushFollow(FOLLOW_rule__Service__Group__5__Impl_in_rule__Service__Group__56917);
+            pushFollow(FOLLOW_rule__Service__Group__5__Impl_in_rule__Service__Group__57289);
             rule__Service__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__6_in_rule__Service__Group__56920);
+            pushFollow(FOLLOW_rule__Service__Group__6_in_rule__Service__Group__57292);
             rule__Service__Group__6();
 
             state._fsp--;
@@ -10491,22 +11024,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__5__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3237:1: rule__Service__Group__5__Impl : ( ':' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3425:1: rule__Service__Group__5__Impl : ( ':' ) ;
     public final void rule__Service__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3241:1: ( ( ':' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3242:1: ( ':' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3429:1: ( ( ':' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3430:1: ( ':' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3242:1: ( ':' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3243:1: ':'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3430:1: ( ':' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3431:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getColonKeyword_5()); 
             }
-            match(input,42,FOLLOW_42_in_rule__Service__Group__5__Impl6948); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__Service__Group__5__Impl7320); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getColonKeyword_5()); 
             }
@@ -10532,21 +11065,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__6"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3256:1: rule__Service__Group__6 : rule__Service__Group__6__Impl rule__Service__Group__7 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3444:1: rule__Service__Group__6 : rule__Service__Group__6__Impl rule__Service__Group__7 ;
     public final void rule__Service__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3260:1: ( rule__Service__Group__6__Impl rule__Service__Group__7 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3261:2: rule__Service__Group__6__Impl rule__Service__Group__7
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3448:1: ( rule__Service__Group__6__Impl rule__Service__Group__7 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3449:2: rule__Service__Group__6__Impl rule__Service__Group__7
             {
-            pushFollow(FOLLOW_rule__Service__Group__6__Impl_in_rule__Service__Group__66979);
+            pushFollow(FOLLOW_rule__Service__Group__6__Impl_in_rule__Service__Group__67351);
             rule__Service__Group__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__7_in_rule__Service__Group__66982);
+            pushFollow(FOLLOW_rule__Service__Group__7_in_rule__Service__Group__67354);
             rule__Service__Group__7();
 
             state._fsp--;
@@ -10570,25 +11103,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__6__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3268:1: rule__Service__Group__6__Impl : ( ( rule__Service__TypeAssignment_6 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3456:1: rule__Service__Group__6__Impl : ( ( rule__Service__TypeAssignment_6 ) ) ;
     public final void rule__Service__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3272:1: ( ( ( rule__Service__TypeAssignment_6 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3273:1: ( ( rule__Service__TypeAssignment_6 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3460:1: ( ( ( rule__Service__TypeAssignment_6 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3461:1: ( ( rule__Service__TypeAssignment_6 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3273:1: ( ( rule__Service__TypeAssignment_6 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3274:1: ( rule__Service__TypeAssignment_6 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3461:1: ( ( rule__Service__TypeAssignment_6 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3462:1: ( rule__Service__TypeAssignment_6 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getTypeAssignment_6()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3275:1: ( rule__Service__TypeAssignment_6 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3275:2: rule__Service__TypeAssignment_6
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3463:1: ( rule__Service__TypeAssignment_6 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3463:2: rule__Service__TypeAssignment_6
             {
-            pushFollow(FOLLOW_rule__Service__TypeAssignment_6_in_rule__Service__Group__6__Impl7009);
+            pushFollow(FOLLOW_rule__Service__TypeAssignment_6_in_rule__Service__Group__6__Impl7381);
             rule__Service__TypeAssignment_6();
 
             state._fsp--;
@@ -10621,22 +11154,17 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__7"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3285:1: rule__Service__Group__7 : rule__Service__Group__7__Impl rule__Service__Group__8 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3473:1: rule__Service__Group__7 : rule__Service__Group__7__Impl ;
     public final void rule__Service__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3289:1: ( rule__Service__Group__7__Impl rule__Service__Group__8 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3290:2: rule__Service__Group__7__Impl rule__Service__Group__8
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3477:1: ( rule__Service__Group__7__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3478:2: rule__Service__Group__7__Impl
             {
-            pushFollow(FOLLOW_rule__Service__Group__7__Impl_in_rule__Service__Group__77039);
+            pushFollow(FOLLOW_rule__Service__Group__7__Impl_in_rule__Service__Group__77411);
             rule__Service__Group__7__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group__8_in_rule__Service__Group__77042);
-            rule__Service__Group__8();
 
             state._fsp--;
             if (state.failed) return ;
@@ -10659,45 +11187,34 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group__7__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3297:1: rule__Service__Group__7__Impl : ( ( rule__Service__Group_7__0 )? ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3484:1: rule__Service__Group__7__Impl : ( ( rule__Service__BodyAssignment_7 ) ) ;
     public final void rule__Service__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3301:1: ( ( ( rule__Service__Group_7__0 )? ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3302:1: ( ( rule__Service__Group_7__0 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3488:1: ( ( ( rule__Service__BodyAssignment_7 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3489:1: ( ( rule__Service__BodyAssignment_7 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3302:1: ( ( rule__Service__Group_7__0 )? )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3303:1: ( rule__Service__Group_7__0 )?
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3489:1: ( ( rule__Service__BodyAssignment_7 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3490:1: ( rule__Service__BodyAssignment_7 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getGroup_7()); 
+               before(grammarAccess.getServiceAccess().getBodyAssignment_7()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3304:1: ( rule__Service__Group_7__0 )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3491:1: ( rule__Service__BodyAssignment_7 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3491:2: rule__Service__BodyAssignment_7
+            {
+            pushFollow(FOLLOW_rule__Service__BodyAssignment_7_in_rule__Service__Group__7__Impl7438);
+            rule__Service__BodyAssignment_7();
 
-            if ( (LA36_0==46) ) {
-                alt36=1;
-            }
-            switch (alt36) {
-                case 1 :
-                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3304:2: rule__Service__Group_7__0
-                    {
-                    pushFollow(FOLLOW_rule__Service__Group_7__0_in_rule__Service__Group__7__Impl7069);
-                    rule__Service__Group_7__0();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-                    break;
+            state._fsp--;
+            if (state.failed) return ;
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getGroup_7()); 
+               after(grammarAccess.getServiceAccess().getBodyAssignment_7()); 
             }
 
             }
@@ -10720,106 +11237,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Service__Group__7__Impl"
 
 
-    // $ANTLR start "rule__Service__Group__8"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3314:1: rule__Service__Group__8 : rule__Service__Group__8__Impl ;
-    public final void rule__Service__Group__8() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3318:1: ( rule__Service__Group__8__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3319:2: rule__Service__Group__8__Impl
-            {
-            pushFollow(FOLLOW_rule__Service__Group__8__Impl_in_rule__Service__Group__87100);
-            rule__Service__Group__8__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group__8"
-
-
-    // $ANTLR start "rule__Service__Group__8__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3325:1: rule__Service__Group__8__Impl : ( ( rule__Service__BodyAssignment_8 ) ) ;
-    public final void rule__Service__Group__8__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3329:1: ( ( ( rule__Service__BodyAssignment_8 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3330:1: ( ( rule__Service__BodyAssignment_8 ) )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3330:1: ( ( rule__Service__BodyAssignment_8 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3331:1: ( rule__Service__BodyAssignment_8 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getBodyAssignment_8()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3332:1: ( rule__Service__BodyAssignment_8 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3332:2: rule__Service__BodyAssignment_8
-            {
-            pushFollow(FOLLOW_rule__Service__BodyAssignment_8_in_rule__Service__Group__8__Impl7127);
-            rule__Service__BodyAssignment_8();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getBodyAssignment_8()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group__8__Impl"
-
-
     // $ANTLR start "rule__Service__Group_0__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3360:1: rule__Service__Group_0__0 : rule__Service__Group_0__0__Impl rule__Service__Group_0__1 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3517:1: rule__Service__Group_0__0 : rule__Service__Group_0__0__Impl rule__Service__Group_0__1 ;
     public final void rule__Service__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3364:1: ( rule__Service__Group_0__0__Impl rule__Service__Group_0__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3365:2: rule__Service__Group_0__0__Impl rule__Service__Group_0__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3521:1: ( rule__Service__Group_0__0__Impl rule__Service__Group_0__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3522:2: rule__Service__Group_0__0__Impl rule__Service__Group_0__1
             {
-            pushFollow(FOLLOW_rule__Service__Group_0__0__Impl_in_rule__Service__Group_0__07175);
+            pushFollow(FOLLOW_rule__Service__Group_0__0__Impl_in_rule__Service__Group_0__07484);
             rule__Service__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_0__1_in_rule__Service__Group_0__07178);
+            pushFollow(FOLLOW_rule__Service__Group_0__1_in_rule__Service__Group_0__07487);
             rule__Service__Group_0__1();
 
             state._fsp--;
@@ -10843,25 +11276,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3372:1: rule__Service__Group_0__0__Impl : ( ( rule__Service__ServiceAssignment_0_0 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3529:1: rule__Service__Group_0__0__Impl : ( ( rule__Service__ServiceAssignment_0_0 ) ) ;
     public final void rule__Service__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3376:1: ( ( ( rule__Service__ServiceAssignment_0_0 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3377:1: ( ( rule__Service__ServiceAssignment_0_0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3533:1: ( ( ( rule__Service__ServiceAssignment_0_0 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3534:1: ( ( rule__Service__ServiceAssignment_0_0 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3377:1: ( ( rule__Service__ServiceAssignment_0_0 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3378:1: ( rule__Service__ServiceAssignment_0_0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3534:1: ( ( rule__Service__ServiceAssignment_0_0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3535:1: ( rule__Service__ServiceAssignment_0_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getServiceAssignment_0_0()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3379:1: ( rule__Service__ServiceAssignment_0_0 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3379:2: rule__Service__ServiceAssignment_0_0
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3536:1: ( rule__Service__ServiceAssignment_0_0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3536:2: rule__Service__ServiceAssignment_0_0
             {
-            pushFollow(FOLLOW_rule__Service__ServiceAssignment_0_0_in_rule__Service__Group_0__0__Impl7205);
+            pushFollow(FOLLOW_rule__Service__ServiceAssignment_0_0_in_rule__Service__Group_0__0__Impl7514);
             rule__Service__ServiceAssignment_0_0();
 
             state._fsp--;
@@ -10894,21 +11327,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3389:1: rule__Service__Group_0__1 : rule__Service__Group_0__1__Impl rule__Service__Group_0__2 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3546:1: rule__Service__Group_0__1 : rule__Service__Group_0__1__Impl rule__Service__Group_0__2 ;
     public final void rule__Service__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3393:1: ( rule__Service__Group_0__1__Impl rule__Service__Group_0__2 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3394:2: rule__Service__Group_0__1__Impl rule__Service__Group_0__2
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3550:1: ( rule__Service__Group_0__1__Impl rule__Service__Group_0__2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3551:2: rule__Service__Group_0__1__Impl rule__Service__Group_0__2
             {
-            pushFollow(FOLLOW_rule__Service__Group_0__1__Impl_in_rule__Service__Group_0__17235);
+            pushFollow(FOLLOW_rule__Service__Group_0__1__Impl_in_rule__Service__Group_0__17544);
             rule__Service__Group_0__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_0__2_in_rule__Service__Group_0__17238);
+            pushFollow(FOLLOW_rule__Service__Group_0__2_in_rule__Service__Group_0__17547);
             rule__Service__Group_0__2();
 
             state._fsp--;
@@ -10932,22 +11365,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3401:1: rule__Service__Group_0__1__Impl : ( '[' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3558:1: rule__Service__Group_0__1__Impl : ( '[' ) ;
     public final void rule__Service__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3405:1: ( ( '[' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3406:1: ( '[' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3562:1: ( ( '[' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3563:1: ( '[' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3406:1: ( '[' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3407:1: '['
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3563:1: ( '[' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3564:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getLeftSquareBracketKeyword_0_1()); 
             }
-            match(input,43,FOLLOW_43_in_rule__Service__Group_0__1__Impl7266); if (state.failed) return ;
+            match(input,45,FOLLOW_45_in_rule__Service__Group_0__1__Impl7575); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getLeftSquareBracketKeyword_0_1()); 
             }
@@ -10973,21 +11406,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__2"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3420:1: rule__Service__Group_0__2 : rule__Service__Group_0__2__Impl rule__Service__Group_0__3 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3577:1: rule__Service__Group_0__2 : rule__Service__Group_0__2__Impl rule__Service__Group_0__3 ;
     public final void rule__Service__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3424:1: ( rule__Service__Group_0__2__Impl rule__Service__Group_0__3 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3425:2: rule__Service__Group_0__2__Impl rule__Service__Group_0__3
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3581:1: ( rule__Service__Group_0__2__Impl rule__Service__Group_0__3 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3582:2: rule__Service__Group_0__2__Impl rule__Service__Group_0__3
             {
-            pushFollow(FOLLOW_rule__Service__Group_0__2__Impl_in_rule__Service__Group_0__27297);
+            pushFollow(FOLLOW_rule__Service__Group_0__2__Impl_in_rule__Service__Group_0__27606);
             rule__Service__Group_0__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_0__3_in_rule__Service__Group_0__27300);
+            pushFollow(FOLLOW_rule__Service__Group_0__3_in_rule__Service__Group_0__27609);
             rule__Service__Group_0__3();
 
             state._fsp--;
@@ -11011,25 +11444,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__2__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3432:1: rule__Service__Group_0__2__Impl : ( ( rule__Service__Alternatives_0_2 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3589:1: rule__Service__Group_0__2__Impl : ( ( rule__Service__Alternatives_0_2 ) ) ;
     public final void rule__Service__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3436:1: ( ( ( rule__Service__Alternatives_0_2 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3437:1: ( ( rule__Service__Alternatives_0_2 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3593:1: ( ( ( rule__Service__Alternatives_0_2 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3594:1: ( ( rule__Service__Alternatives_0_2 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3437:1: ( ( rule__Service__Alternatives_0_2 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3438:1: ( rule__Service__Alternatives_0_2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3594:1: ( ( rule__Service__Alternatives_0_2 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3595:1: ( rule__Service__Alternatives_0_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getAlternatives_0_2()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3439:1: ( rule__Service__Alternatives_0_2 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3439:2: rule__Service__Alternatives_0_2
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3596:1: ( rule__Service__Alternatives_0_2 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3596:2: rule__Service__Alternatives_0_2
             {
-            pushFollow(FOLLOW_rule__Service__Alternatives_0_2_in_rule__Service__Group_0__2__Impl7327);
+            pushFollow(FOLLOW_rule__Service__Alternatives_0_2_in_rule__Service__Group_0__2__Impl7636);
             rule__Service__Alternatives_0_2();
 
             state._fsp--;
@@ -11062,16 +11495,16 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__3"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3449:1: rule__Service__Group_0__3 : rule__Service__Group_0__3__Impl ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3606:1: rule__Service__Group_0__3 : rule__Service__Group_0__3__Impl ;
     public final void rule__Service__Group_0__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3453:1: ( rule__Service__Group_0__3__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3454:2: rule__Service__Group_0__3__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3610:1: ( rule__Service__Group_0__3__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3611:2: rule__Service__Group_0__3__Impl
             {
-            pushFollow(FOLLOW_rule__Service__Group_0__3__Impl_in_rule__Service__Group_0__37357);
+            pushFollow(FOLLOW_rule__Service__Group_0__3__Impl_in_rule__Service__Group_0__37666);
             rule__Service__Group_0__3__Impl();
 
             state._fsp--;
@@ -11095,22 +11528,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_0__3__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3460:1: rule__Service__Group_0__3__Impl : ( ']' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3617:1: rule__Service__Group_0__3__Impl : ( ']' ) ;
     public final void rule__Service__Group_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3464:1: ( ( ']' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3465:1: ( ']' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3621:1: ( ( ']' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3622:1: ( ']' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3465:1: ( ']' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3466:1: ']'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3622:1: ( ']' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3623:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getRightSquareBracketKeyword_0_3()); 
             }
-            match(input,44,FOLLOW_44_in_rule__Service__Group_0__3__Impl7385); if (state.failed) return ;
+            match(input,46,FOLLOW_46_in_rule__Service__Group_0__3__Impl7694); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getRightSquareBracketKeyword_0_3()); 
             }
@@ -11136,21 +11569,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3487:1: rule__Service__Group_3__0 : rule__Service__Group_3__0__Impl rule__Service__Group_3__1 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3644:1: rule__Service__Group_3__0 : rule__Service__Group_3__0__Impl rule__Service__Group_3__1 ;
     public final void rule__Service__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3491:1: ( rule__Service__Group_3__0__Impl rule__Service__Group_3__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3492:2: rule__Service__Group_3__0__Impl rule__Service__Group_3__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3648:1: ( rule__Service__Group_3__0__Impl rule__Service__Group_3__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3649:2: rule__Service__Group_3__0__Impl rule__Service__Group_3__1
             {
-            pushFollow(FOLLOW_rule__Service__Group_3__0__Impl_in_rule__Service__Group_3__07424);
+            pushFollow(FOLLOW_rule__Service__Group_3__0__Impl_in_rule__Service__Group_3__07733);
             rule__Service__Group_3__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_3__1_in_rule__Service__Group_3__07427);
+            pushFollow(FOLLOW_rule__Service__Group_3__1_in_rule__Service__Group_3__07736);
             rule__Service__Group_3__1();
 
             state._fsp--;
@@ -11174,25 +11607,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3499:1: rule__Service__Group_3__0__Impl : ( ( rule__Service__ParamsAssignment_3_0 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3656:1: rule__Service__Group_3__0__Impl : ( ( rule__Service__ParamsAssignment_3_0 ) ) ;
     public final void rule__Service__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3503:1: ( ( ( rule__Service__ParamsAssignment_3_0 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3504:1: ( ( rule__Service__ParamsAssignment_3_0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3660:1: ( ( ( rule__Service__ParamsAssignment_3_0 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3661:1: ( ( rule__Service__ParamsAssignment_3_0 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3504:1: ( ( rule__Service__ParamsAssignment_3_0 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3505:1: ( rule__Service__ParamsAssignment_3_0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3661:1: ( ( rule__Service__ParamsAssignment_3_0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3662:1: ( rule__Service__ParamsAssignment_3_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getParamsAssignment_3_0()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3506:1: ( rule__Service__ParamsAssignment_3_0 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3506:2: rule__Service__ParamsAssignment_3_0
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3663:1: ( rule__Service__ParamsAssignment_3_0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3663:2: rule__Service__ParamsAssignment_3_0
             {
-            pushFollow(FOLLOW_rule__Service__ParamsAssignment_3_0_in_rule__Service__Group_3__0__Impl7454);
+            pushFollow(FOLLOW_rule__Service__ParamsAssignment_3_0_in_rule__Service__Group_3__0__Impl7763);
             rule__Service__ParamsAssignment_3_0();
 
             state._fsp--;
@@ -11225,16 +11658,16 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3516:1: rule__Service__Group_3__1 : rule__Service__Group_3__1__Impl ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3673:1: rule__Service__Group_3__1 : rule__Service__Group_3__1__Impl ;
     public final void rule__Service__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3520:1: ( rule__Service__Group_3__1__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3521:2: rule__Service__Group_3__1__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3677:1: ( rule__Service__Group_3__1__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3678:2: rule__Service__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__Service__Group_3__1__Impl_in_rule__Service__Group_3__17484);
+            pushFollow(FOLLOW_rule__Service__Group_3__1__Impl_in_rule__Service__Group_3__17793);
             rule__Service__Group_3__1__Impl();
 
             state._fsp--;
@@ -11258,37 +11691,37 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3527:1: rule__Service__Group_3__1__Impl : ( ( rule__Service__Group_3_1__0 )* ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3684:1: rule__Service__Group_3__1__Impl : ( ( rule__Service__Group_3_1__0 )* ) ;
     public final void rule__Service__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3531:1: ( ( ( rule__Service__Group_3_1__0 )* ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3532:1: ( ( rule__Service__Group_3_1__0 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3688:1: ( ( ( rule__Service__Group_3_1__0 )* ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3689:1: ( ( rule__Service__Group_3_1__0 )* )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3532:1: ( ( rule__Service__Group_3_1__0 )* )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3533:1: ( rule__Service__Group_3_1__0 )*
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3689:1: ( ( rule__Service__Group_3_1__0 )* )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3690:1: ( rule__Service__Group_3_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getGroup_3_1()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3534:1: ( rule__Service__Group_3_1__0 )*
-            loop37:
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3691:1: ( rule__Service__Group_3_1__0 )*
+            loop38:
             do {
-                int alt37=2;
-                int LA37_0 = input.LA(1);
+                int alt38=2;
+                int LA38_0 = input.LA(1);
 
-                if ( (LA37_0==45) ) {
-                    alt37=1;
+                if ( (LA38_0==41) ) {
+                    alt38=1;
                 }
 
 
-                switch (alt37) {
+                switch (alt38) {
             	case 1 :
-            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3534:2: rule__Service__Group_3_1__0
+            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3691:2: rule__Service__Group_3_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__Service__Group_3_1__0_in_rule__Service__Group_3__1__Impl7511);
+            	    pushFollow(FOLLOW_rule__Service__Group_3_1__0_in_rule__Service__Group_3__1__Impl7820);
             	    rule__Service__Group_3_1__0();
 
             	    state._fsp--;
@@ -11298,7 +11731,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop37;
+            	    break loop38;
                 }
             } while (true);
 
@@ -11327,21 +11760,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3_1__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3548:1: rule__Service__Group_3_1__0 : rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1 ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3705:1: rule__Service__Group_3_1__0 : rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1 ;
     public final void rule__Service__Group_3_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3552:1: ( rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3553:2: rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3709:1: ( rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3710:2: rule__Service__Group_3_1__0__Impl rule__Service__Group_3_1__1
             {
-            pushFollow(FOLLOW_rule__Service__Group_3_1__0__Impl_in_rule__Service__Group_3_1__07546);
+            pushFollow(FOLLOW_rule__Service__Group_3_1__0__Impl_in_rule__Service__Group_3_1__07855);
             rule__Service__Group_3_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_3_1__1_in_rule__Service__Group_3_1__07549);
+            pushFollow(FOLLOW_rule__Service__Group_3_1__1_in_rule__Service__Group_3_1__07858);
             rule__Service__Group_3_1__1();
 
             state._fsp--;
@@ -11365,22 +11798,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3_1__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3560:1: rule__Service__Group_3_1__0__Impl : ( ',' ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3717:1: rule__Service__Group_3_1__0__Impl : ( ',' ) ;
     public final void rule__Service__Group_3_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3564:1: ( ( ',' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3565:1: ( ',' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3721:1: ( ( ',' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3722:1: ( ',' )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3565:1: ( ',' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3566:1: ','
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3722:1: ( ',' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3723:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getCommaKeyword_3_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__Service__Group_3_1__0__Impl7577); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__Service__Group_3_1__0__Impl7886); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getCommaKeyword_3_1_0()); 
             }
@@ -11406,16 +11839,16 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3_1__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3579:1: rule__Service__Group_3_1__1 : rule__Service__Group_3_1__1__Impl ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3736:1: rule__Service__Group_3_1__1 : rule__Service__Group_3_1__1__Impl ;
     public final void rule__Service__Group_3_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3583:1: ( rule__Service__Group_3_1__1__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3584:2: rule__Service__Group_3_1__1__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3740:1: ( rule__Service__Group_3_1__1__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3741:2: rule__Service__Group_3_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__Service__Group_3_1__1__Impl_in_rule__Service__Group_3_1__17608);
+            pushFollow(FOLLOW_rule__Service__Group_3_1__1__Impl_in_rule__Service__Group_3_1__17917);
             rule__Service__Group_3_1__1__Impl();
 
             state._fsp--;
@@ -11439,25 +11872,25 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__Group_3_1__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3590:1: rule__Service__Group_3_1__1__Impl : ( ( rule__Service__ParamsAssignment_3_1_1 ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3747:1: rule__Service__Group_3_1__1__Impl : ( ( rule__Service__ParamsAssignment_3_1_1 ) ) ;
     public final void rule__Service__Group_3_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3594:1: ( ( ( rule__Service__ParamsAssignment_3_1_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3595:1: ( ( rule__Service__ParamsAssignment_3_1_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3751:1: ( ( ( rule__Service__ParamsAssignment_3_1_1 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3752:1: ( ( rule__Service__ParamsAssignment_3_1_1 ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3595:1: ( ( rule__Service__ParamsAssignment_3_1_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3596:1: ( rule__Service__ParamsAssignment_3_1_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3752:1: ( ( rule__Service__ParamsAssignment_3_1_1 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3753:1: ( rule__Service__ParamsAssignment_3_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getParamsAssignment_3_1_1()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3597:1: ( rule__Service__ParamsAssignment_3_1_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3597:2: rule__Service__ParamsAssignment_3_1_1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3754:1: ( rule__Service__ParamsAssignment_3_1_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3754:2: rule__Service__ParamsAssignment_3_1_1
             {
-            pushFollow(FOLLOW_rule__Service__ParamsAssignment_3_1_1_in_rule__Service__Group_3_1__1__Impl7635);
+            pushFollow(FOLLOW_rule__Service__ParamsAssignment_3_1_1_in_rule__Service__Group_3_1__1__Impl7944);
             rule__Service__ParamsAssignment_3_1_1();
 
             state._fsp--;
@@ -11489,23 +11922,23 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Service__Group_3_1__1__Impl"
 
 
-    // $ANTLR start "rule__Service__Group_7__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3611:1: rule__Service__Group_7__0 : rule__Service__Group_7__0__Impl rule__Service__Group_7__1 ;
-    public final void rule__Service__Group_7__0() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__Group__0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3768:1: rule__RequireDeclaration__Group__0 : rule__RequireDeclaration__Group__0__Impl rule__RequireDeclaration__Group__1 ;
+    public final void rule__RequireDeclaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3615:1: ( rule__Service__Group_7__0__Impl rule__Service__Group_7__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3616:2: rule__Service__Group_7__0__Impl rule__Service__Group_7__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3772:1: ( rule__RequireDeclaration__Group__0__Impl rule__RequireDeclaration__Group__1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3773:2: rule__RequireDeclaration__Group__0__Impl rule__RequireDeclaration__Group__1
             {
-            pushFollow(FOLLOW_rule__Service__Group_7__0__Impl_in_rule__Service__Group_7__07669);
-            rule__Service__Group_7__0__Impl();
+            pushFollow(FOLLOW_rule__RequireDeclaration__Group__0__Impl_in_rule__RequireDeclaration__Group__07978);
+            rule__RequireDeclaration__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_7__1_in_rule__Service__Group_7__07672);
-            rule__Service__Group_7__1();
+            pushFollow(FOLLOW_rule__RequireDeclaration__Group__1_in_rule__RequireDeclaration__Group__07981);
+            rule__RequireDeclaration__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -11524,109 +11957,30 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Service__Group_7__0"
+    // $ANTLR end "rule__RequireDeclaration__Group__0"
 
 
-    // $ANTLR start "rule__Service__Group_7__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3623:1: rule__Service__Group_7__0__Impl : ( 'uses' ) ;
-    public final void rule__Service__Group_7__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3627:1: ( ( 'uses' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3628:1: ( 'uses' )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3628:1: ( 'uses' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3629:1: 'uses'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getUsesKeyword_7_0()); 
-            }
-            match(input,46,FOLLOW_46_in_rule__Service__Group_7__0__Impl7700); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getUsesKeyword_7_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7__0__Impl"
-
-
-    // $ANTLR start "rule__Service__Group_7__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3642:1: rule__Service__Group_7__1 : rule__Service__Group_7__1__Impl rule__Service__Group_7__2 ;
-    public final void rule__Service__Group_7__1() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__Group__0__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3780:1: rule__RequireDeclaration__Group__0__Impl : ( ( rule__RequireDeclaration__TypeAssignment_0 ) ) ;
+    public final void rule__RequireDeclaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3646:1: ( rule__Service__Group_7__1__Impl rule__Service__Group_7__2 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3647:2: rule__Service__Group_7__1__Impl rule__Service__Group_7__2
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3784:1: ( ( ( rule__RequireDeclaration__TypeAssignment_0 ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3785:1: ( ( rule__RequireDeclaration__TypeAssignment_0 ) )
             {
-            pushFollow(FOLLOW_rule__Service__Group_7__1__Impl_in_rule__Service__Group_7__17731);
-            rule__Service__Group_7__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_7__2_in_rule__Service__Group_7__17734);
-            rule__Service__Group_7__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7__1"
-
-
-    // $ANTLR start "rule__Service__Group_7__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3654:1: rule__Service__Group_7__1__Impl : ( ( rule__Service__UsesAssignment_7_1 ) ) ;
-    public final void rule__Service__Group_7__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3658:1: ( ( ( rule__Service__UsesAssignment_7_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3659:1: ( ( rule__Service__UsesAssignment_7_1 ) )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3659:1: ( ( rule__Service__UsesAssignment_7_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3660:1: ( rule__Service__UsesAssignment_7_1 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3785:1: ( ( rule__RequireDeclaration__TypeAssignment_0 ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3786:1: ( rule__RequireDeclaration__TypeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getUsesAssignment_7_1()); 
+               before(grammarAccess.getRequireDeclarationAccess().getTypeAssignment_0()); 
             }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3661:1: ( rule__Service__UsesAssignment_7_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3661:2: rule__Service__UsesAssignment_7_1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3787:1: ( rule__RequireDeclaration__TypeAssignment_0 )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3787:2: rule__RequireDeclaration__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__Service__UsesAssignment_7_1_in_rule__Service__Group_7__1__Impl7761);
-            rule__Service__UsesAssignment_7_1();
+            pushFollow(FOLLOW_rule__RequireDeclaration__TypeAssignment_0_in_rule__RequireDeclaration__Group__0__Impl8008);
+            rule__RequireDeclaration__TypeAssignment_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -11634,7 +11988,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getUsesAssignment_7_1()); 
+               after(grammarAccess.getRequireDeclarationAccess().getTypeAssignment_0()); 
             }
 
             }
@@ -11654,21 +12008,21 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Service__Group_7__1__Impl"
+    // $ANTLR end "rule__RequireDeclaration__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Service__Group_7__2"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3671:1: rule__Service__Group_7__2 : rule__Service__Group_7__2__Impl ;
-    public final void rule__Service__Group_7__2() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__Group__1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3797:1: rule__RequireDeclaration__Group__1 : rule__RequireDeclaration__Group__1__Impl ;
+    public final void rule__RequireDeclaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3675:1: ( rule__Service__Group_7__2__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3676:2: rule__Service__Group_7__2__Impl
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3801:1: ( rule__RequireDeclaration__Group__1__Impl )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3802:2: rule__RequireDeclaration__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Service__Group_7__2__Impl_in_rule__Service__Group_7__27791);
-            rule__Service__Group_7__2__Impl();
+            pushFollow(FOLLOW_rule__RequireDeclaration__Group__1__Impl_in_rule__RequireDeclaration__Group__18038);
+            rule__RequireDeclaration__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -11687,380 +12041,26 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Service__Group_7__2"
+    // $ANTLR end "rule__RequireDeclaration__Group__1"
 
 
-    // $ANTLR start "rule__Service__Group_7__2__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3682:1: rule__Service__Group_7__2__Impl : ( ( rule__Service__Group_7_2__0 )* ) ;
-    public final void rule__Service__Group_7__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3686:1: ( ( ( rule__Service__Group_7_2__0 )* ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3687:1: ( ( rule__Service__Group_7_2__0 )* )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3687:1: ( ( rule__Service__Group_7_2__0 )* )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3688:1: ( rule__Service__Group_7_2__0 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getGroup_7_2()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3689:1: ( rule__Service__Group_7_2__0 )*
-            loop38:
-            do {
-                int alt38=2;
-                int LA38_0 = input.LA(1);
-
-                if ( (LA38_0==45) ) {
-                    alt38=1;
-                }
-
-
-                switch (alt38) {
-            	case 1 :
-            	    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3689:2: rule__Service__Group_7_2__0
-            	    {
-            	    pushFollow(FOLLOW_rule__Service__Group_7_2__0_in_rule__Service__Group_7__2__Impl7818);
-            	    rule__Service__Group_7_2__0();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop38;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getGroup_7_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7__2__Impl"
-
-
-    // $ANTLR start "rule__Service__Group_7_2__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3705:1: rule__Service__Group_7_2__0 : rule__Service__Group_7_2__0__Impl rule__Service__Group_7_2__1 ;
-    public final void rule__Service__Group_7_2__0() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__Group__1__Impl"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3808:1: rule__RequireDeclaration__Group__1__Impl : ( ( rule__RequireDeclaration__NameAssignment_1 )? ) ;
+    public final void rule__RequireDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3709:1: ( rule__Service__Group_7_2__0__Impl rule__Service__Group_7_2__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3710:2: rule__Service__Group_7_2__0__Impl rule__Service__Group_7_2__1
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3812:1: ( ( ( rule__RequireDeclaration__NameAssignment_1 )? ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3813:1: ( ( rule__RequireDeclaration__NameAssignment_1 )? )
             {
-            pushFollow(FOLLOW_rule__Service__Group_7_2__0__Impl_in_rule__Service__Group_7_2__07855);
-            rule__Service__Group_7_2__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Service__Group_7_2__1_in_rule__Service__Group_7_2__07858);
-            rule__Service__Group_7_2__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7_2__0"
-
-
-    // $ANTLR start "rule__Service__Group_7_2__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3717:1: rule__Service__Group_7_2__0__Impl : ( ',' ) ;
-    public final void rule__Service__Group_7_2__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3721:1: ( ( ',' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3722:1: ( ',' )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3722:1: ( ',' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3723:1: ','
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3813:1: ( ( rule__RequireDeclaration__NameAssignment_1 )? )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3814:1: ( rule__RequireDeclaration__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getCommaKeyword_7_2_0()); 
+               before(grammarAccess.getRequireDeclarationAccess().getNameAssignment_1()); 
             }
-            match(input,45,FOLLOW_45_in_rule__Service__Group_7_2__0__Impl7886); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getCommaKeyword_7_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7_2__0__Impl"
-
-
-    // $ANTLR start "rule__Service__Group_7_2__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3736:1: rule__Service__Group_7_2__1 : rule__Service__Group_7_2__1__Impl ;
-    public final void rule__Service__Group_7_2__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3740:1: ( rule__Service__Group_7_2__1__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3741:2: rule__Service__Group_7_2__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Service__Group_7_2__1__Impl_in_rule__Service__Group_7_2__17917);
-            rule__Service__Group_7_2__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7_2__1"
-
-
-    // $ANTLR start "rule__Service__Group_7_2__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3747:1: rule__Service__Group_7_2__1__Impl : ( ( rule__Service__UsesAssignment_7_2_1 ) ) ;
-    public final void rule__Service__Group_7_2__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3751:1: ( ( ( rule__Service__UsesAssignment_7_2_1 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3752:1: ( ( rule__Service__UsesAssignment_7_2_1 ) )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3752:1: ( ( rule__Service__UsesAssignment_7_2_1 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3753:1: ( rule__Service__UsesAssignment_7_2_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getUsesAssignment_7_2_1()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3754:1: ( rule__Service__UsesAssignment_7_2_1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3754:2: rule__Service__UsesAssignment_7_2_1
-            {
-            pushFollow(FOLLOW_rule__Service__UsesAssignment_7_2_1_in_rule__Service__Group_7_2__1__Impl7944);
-            rule__Service__UsesAssignment_7_2_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getUsesAssignment_7_2_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__Group_7_2__1__Impl"
-
-
-    // $ANTLR start "rule__UseDeclaration__Group__0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3768:1: rule__UseDeclaration__Group__0 : rule__UseDeclaration__Group__0__Impl rule__UseDeclaration__Group__1 ;
-    public final void rule__UseDeclaration__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3772:1: ( rule__UseDeclaration__Group__0__Impl rule__UseDeclaration__Group__1 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3773:2: rule__UseDeclaration__Group__0__Impl rule__UseDeclaration__Group__1
-            {
-            pushFollow(FOLLOW_rule__UseDeclaration__Group__0__Impl_in_rule__UseDeclaration__Group__07978);
-            rule__UseDeclaration__Group__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__UseDeclaration__Group__1_in_rule__UseDeclaration__Group__07981);
-            rule__UseDeclaration__Group__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__UseDeclaration__Group__0"
-
-
-    // $ANTLR start "rule__UseDeclaration__Group__0__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3780:1: rule__UseDeclaration__Group__0__Impl : ( ( rule__UseDeclaration__TypeAssignment_0 ) ) ;
-    public final void rule__UseDeclaration__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3784:1: ( ( ( rule__UseDeclaration__TypeAssignment_0 ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3785:1: ( ( rule__UseDeclaration__TypeAssignment_0 ) )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3785:1: ( ( rule__UseDeclaration__TypeAssignment_0 ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3786:1: ( rule__UseDeclaration__TypeAssignment_0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationAccess().getTypeAssignment_0()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3787:1: ( rule__UseDeclaration__TypeAssignment_0 )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3787:2: rule__UseDeclaration__TypeAssignment_0
-            {
-            pushFollow(FOLLOW_rule__UseDeclaration__TypeAssignment_0_in_rule__UseDeclaration__Group__0__Impl8008);
-            rule__UseDeclaration__TypeAssignment_0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationAccess().getTypeAssignment_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__UseDeclaration__Group__0__Impl"
-
-
-    // $ANTLR start "rule__UseDeclaration__Group__1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3797:1: rule__UseDeclaration__Group__1 : rule__UseDeclaration__Group__1__Impl ;
-    public final void rule__UseDeclaration__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3801:1: ( rule__UseDeclaration__Group__1__Impl )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3802:2: rule__UseDeclaration__Group__1__Impl
-            {
-            pushFollow(FOLLOW_rule__UseDeclaration__Group__1__Impl_in_rule__UseDeclaration__Group__18038);
-            rule__UseDeclaration__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__UseDeclaration__Group__1"
-
-
-    // $ANTLR start "rule__UseDeclaration__Group__1__Impl"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3808:1: rule__UseDeclaration__Group__1__Impl : ( ( rule__UseDeclaration__NameAssignment_1 )? ) ;
-    public final void rule__UseDeclaration__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3812:1: ( ( ( rule__UseDeclaration__NameAssignment_1 )? ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3813:1: ( ( rule__UseDeclaration__NameAssignment_1 )? )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3813:1: ( ( rule__UseDeclaration__NameAssignment_1 )? )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3814:1: ( rule__UseDeclaration__NameAssignment_1 )?
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationAccess().getNameAssignment_1()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3815:1: ( rule__UseDeclaration__NameAssignment_1 )?
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3815:1: ( rule__RequireDeclaration__NameAssignment_1 )?
             int alt39=2;
             int LA39_0 = input.LA(1);
 
@@ -12069,10 +12069,10 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             }
             switch (alt39) {
                 case 1 :
-                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3815:2: rule__UseDeclaration__NameAssignment_1
+                    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:3815:2: rule__RequireDeclaration__NameAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__UseDeclaration__NameAssignment_1_in_rule__UseDeclaration__Group__1__Impl8065);
-                    rule__UseDeclaration__NameAssignment_1();
+                    pushFollow(FOLLOW_rule__RequireDeclaration__NameAssignment_1_in_rule__RequireDeclaration__Group__1__Impl8065);
+                    rule__RequireDeclaration__NameAssignment_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -12083,7 +12083,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationAccess().getNameAssignment_1()); 
+               after(grammarAccess.getRequireDeclarationAccess().getNameAssignment_1()); 
             }
 
             }
@@ -12103,7 +12103,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__UseDeclaration__Group__1__Impl"
+    // $ANTLR end "rule__RequireDeclaration__Group__1__Impl"
 
 
     // $ANTLR start "rule__Import__Group__0"
@@ -20591,7 +20591,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt53=2;
                 int LA53_0 = input.LA(1);
 
-                if ( (LA53_0==45) ) {
+                if ( (LA53_0==41) ) {
                     alt53=1;
                 }
 
@@ -20766,7 +20766,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_1_2_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl14085); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl14085); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_1_2_0()); 
             }
@@ -21022,7 +21022,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt54=2;
             int LA54_0 = input.LA(1);
 
-            if ( ((LA54_0>=RULE_ID && LA54_0<=RULE_STRING)||LA54_0==22||(LA54_0>=25 && LA54_0<=26)||LA54_0==31||(LA54_0>=34 && LA54_0<=35)||LA54_0==38||LA54_0==40||LA54_0==43||LA54_0==51||LA54_0==53||(LA54_0>=56 && LA54_0<=58)||(LA54_0>=60 && LA54_0<=65)||LA54_0==68||LA54_0==77||LA54_0==79) ) {
+            if ( ((LA54_0>=RULE_ID && LA54_0<=RULE_STRING)||LA54_0==22||(LA54_0>=25 && LA54_0<=26)||LA54_0==31||(LA54_0>=34 && LA54_0<=35)||LA54_0==38||LA54_0==42||LA54_0==45||LA54_0==51||LA54_0==53||(LA54_0>=56 && LA54_0<=58)||(LA54_0>=60 && LA54_0<=65)||LA54_0==68||LA54_0==77||LA54_0==79) ) {
                 alt54=1;
             }
             switch (alt54) {
@@ -21113,7 +21113,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getRightParenthesisKeyword_1_1_3_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_3__2__Impl14326); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XMemberFeatureCall__Group_1_1_3__2__Impl14326); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getRightParenthesisKeyword_1_1_3_2()); 
             }
@@ -21282,7 +21282,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt55=2;
                 int LA55_0 = input.LA(1);
 
-                if ( (LA55_0==45) ) {
+                if ( (LA55_0==41) ) {
                     alt55=1;
                 }
 
@@ -21383,7 +21383,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_3_1_1_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl14516); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl14516); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_3_1_1_1_0()); 
             }
@@ -21625,7 +21625,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getLeftSquareBracketKeyword_1()); 
             }
-            match(input,43,FOLLOW_43_in_rule__XClosure__Group__1__Impl14700); if (state.failed) return ;
+            match(input,45,FOLLOW_45_in_rule__XClosure__Group__1__Impl14700); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXClosureAccess().getLeftSquareBracketKeyword_1()); 
             }
@@ -21884,7 +21884,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getRightSquareBracketKeyword_4()); 
             }
-            match(input,44,FOLLOW_44_in_rule__XClosure__Group__4__Impl14880); if (state.failed) return ;
+            match(input,46,FOLLOW_46_in_rule__XClosure__Group__4__Impl14880); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXClosureAccess().getRightSquareBracketKeyword_4()); 
             }
@@ -22051,7 +22051,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt57=2;
             int LA57_0 = input.LA(1);
 
-            if ( (LA57_0==RULE_ID||LA57_0==40||LA57_0==68) ) {
+            if ( (LA57_0==RULE_ID||LA57_0==42||LA57_0==68) ) {
                 alt57=1;
             }
             switch (alt57) {
@@ -22321,7 +22321,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt58=2;
                 int LA58_0 = input.LA(1);
 
-                if ( (LA58_0==45) ) {
+                if ( (LA58_0==41) ) {
                     alt58=1;
                 }
 
@@ -22422,7 +22422,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getCommaKeyword_2_0_0_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XClosure__Group_2_0_0_1__0__Impl15255); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XClosure__Group_2_0_0_1__0__Impl15255); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXClosureAccess().getCommaKeyword_2_0_0_1_0()); 
             }
@@ -22665,7 +22665,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt59=2;
                 int LA59_0 = input.LA(1);
 
-                if ( ((LA59_0>=RULE_ID && LA59_0<=RULE_STRING)||LA59_0==22||(LA59_0>=25 && LA59_0<=26)||LA59_0==31||(LA59_0>=33 && LA59_0<=35)||LA59_0==38||LA59_0==40||LA59_0==43||LA59_0==51||LA59_0==53||(LA59_0>=56 && LA59_0<=58)||(LA59_0>=60 && LA59_0<=65)||(LA59_0>=78 && LA59_0<=79)) ) {
+                if ( ((LA59_0>=RULE_ID && LA59_0<=RULE_STRING)||LA59_0==22||(LA59_0>=25 && LA59_0<=26)||LA59_0==31||(LA59_0>=33 && LA59_0<=35)||LA59_0==38||LA59_0==42||LA59_0==45||LA59_0==51||LA59_0==53||(LA59_0>=56 && LA59_0<=58)||(LA59_0>=60 && LA59_0<=65)||(LA59_0>=78 && LA59_0<=79)) ) {
                     alt59=1;
                 }
 
@@ -23286,7 +23286,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt61=2;
             int LA61_0 = input.LA(1);
 
-            if ( (LA61_0==RULE_ID||LA61_0==40||LA61_0==68) ) {
+            if ( (LA61_0==RULE_ID||LA61_0==42||LA61_0==68) ) {
                 alt61=1;
             }
             switch (alt61) {
@@ -23556,7 +23556,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt62=2;
                 int LA62_0 = input.LA(1);
 
-                if ( (LA62_0==45) ) {
+                if ( (LA62_0==41) ) {
                     alt62=1;
                 }
 
@@ -23657,7 +23657,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXShortClosureAccess().getCommaKeyword_0_0_1_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XShortClosure__Group_0_0_1_1__0__Impl16114); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XShortClosure__Group_0_0_1_1__0__Impl16114); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXShortClosureAccess().getCommaKeyword_0_0_1_1_0()); 
             }
@@ -23820,7 +23820,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XParenthesizedExpression__Group__0__Impl16237); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XParenthesizedExpression__Group__0__Impl16237); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0()); 
             }
@@ -23977,7 +23977,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XParenthesizedExpression__Group__2__Impl16355); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XParenthesizedExpression__Group__2__Impl16355); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2()); 
             }
@@ -24214,7 +24214,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXIfExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XIfExpression__Group__2__Impl16546); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XIfExpression__Group__2__Impl16546); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXIfExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -24382,7 +24382,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXIfExpressionAccess().getRightParenthesisKeyword_4()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XIfExpression__Group__4__Impl16668); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XIfExpression__Group__4__Impl16668); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXIfExpressionAccess().getRightParenthesisKeyword_4()); 
             }
@@ -25176,7 +25176,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt64=2;
                 int LA64_0 = input.LA(1);
 
-                if ( (LA64_0==RULE_ID||LA64_0==40||LA64_0==42||LA64_0==55||LA64_0==68) ) {
+                if ( (LA64_0==RULE_ID||LA64_0==42||LA64_0==44||LA64_0==55||LA64_0==68) ) {
                     alt64=1;
                 }
 
@@ -25461,7 +25461,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( (LA66_0==RULE_ID) ) {
                 int LA66_1 = input.LA(2);
 
-                if ( (LA66_1==42) ) {
+                if ( (LA66_1==44) ) {
                     alt66=1;
                 }
             }
@@ -25810,7 +25810,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_0_0_0_1()); 
             }
-            match(input,42,FOLLOW_42_in_rule__XSwitchExpression__Group_2_0_0_0__1__Impl17681); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__XSwitchExpression__Group_2_0_0_0__1__Impl17681); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_0_0_0_1()); 
             }
@@ -26062,7 +26062,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getRightParenthesisKeyword_2_1_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XSwitchExpression__Group_2_1__2__Impl17864); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XSwitchExpression__Group_2_1__2__Impl17864); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXSwitchExpressionAccess().getRightParenthesisKeyword_2_1_2()); 
             }
@@ -26225,7 +26225,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getLeftParenthesisKeyword_2_1_0_0_0()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XSwitchExpression__Group_2_1_0_0__0__Impl17991); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XSwitchExpression__Group_2_1_0_0__0__Impl17991); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXSwitchExpressionAccess().getLeftParenthesisKeyword_2_1_0_0_0()); 
             }
@@ -26388,7 +26388,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_1_0_0_2()); 
             }
-            match(input,42,FOLLOW_42_in_rule__XSwitchExpression__Group_2_1_0_0__2__Impl18110); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__XSwitchExpression__Group_2_1_0_0__2__Impl18110); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_1_0_0_2()); 
             }
@@ -26546,7 +26546,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_5_1()); 
             }
-            match(input,42,FOLLOW_42_in_rule__XSwitchExpression__Group_5__1__Impl18240); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__XSwitchExpression__Group_5__1__Impl18240); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXSwitchExpressionAccess().getColonKeyword_5_1()); 
             }
@@ -26713,7 +26713,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt67=2;
             int LA67_0 = input.LA(1);
 
-            if ( (LA67_0==RULE_ID||LA67_0==40||LA67_0==68) ) {
+            if ( (LA67_0==RULE_ID||LA67_0==42||LA67_0==68) ) {
                 alt67=1;
             }
             switch (alt67) {
@@ -26909,7 +26909,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCasePartAccess().getColonKeyword_2()); 
             }
-            match(input,42,FOLLOW_42_in_rule__XCasePart__Group__2__Impl18487); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__XCasePart__Group__2__Impl18487); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXCasePartAccess().getColonKeyword_2()); 
             }
@@ -27393,7 +27393,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XForLoopExpression__Group__2__Impl18860); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XForLoopExpression__Group__2__Impl18860); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXForLoopExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -27561,7 +27561,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getColonKeyword_4()); 
             }
-            match(input,42,FOLLOW_42_in_rule__XForLoopExpression__Group__4__Impl18982); if (state.failed) return ;
+            match(input,44,FOLLOW_44_in_rule__XForLoopExpression__Group__4__Impl18982); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXForLoopExpressionAccess().getColonKeyword_4()); 
             }
@@ -27729,7 +27729,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getRightParenthesisKeyword_6()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XForLoopExpression__Group__6__Impl19104); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XForLoopExpression__Group__6__Impl19104); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXForLoopExpressionAccess().getRightParenthesisKeyword_6()); 
             }
@@ -28050,7 +28050,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXWhileExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XWhileExpression__Group__2__Impl19362); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XWhileExpression__Group__2__Impl19362); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXWhileExpressionAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -28218,7 +28218,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXWhileExpressionAccess().getRightParenthesisKeyword_4()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XWhileExpression__Group__4__Impl19484); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XWhileExpression__Group__4__Impl19484); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXWhileExpressionAccess().getRightParenthesisKeyword_4()); 
             }
@@ -28707,7 +28707,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXDoWhileExpressionAccess().getLeftParenthesisKeyword_4()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XDoWhileExpression__Group__4__Impl19860); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XDoWhileExpression__Group__4__Impl19860); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXDoWhileExpressionAccess().getLeftParenthesisKeyword_4()); 
             }
@@ -28870,7 +28870,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXDoWhileExpressionAccess().getRightParenthesisKeyword_6()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XDoWhileExpression__Group__6__Impl19979); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XDoWhileExpression__Group__6__Impl19979); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXDoWhileExpressionAccess().getRightParenthesisKeyword_6()); 
             }
@@ -29113,7 +29113,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt69=2;
                 int LA69_0 = input.LA(1);
 
-                if ( ((LA69_0>=RULE_ID && LA69_0<=RULE_STRING)||LA69_0==22||(LA69_0>=25 && LA69_0<=26)||LA69_0==31||(LA69_0>=33 && LA69_0<=35)||LA69_0==38||LA69_0==40||LA69_0==43||LA69_0==51||LA69_0==53||(LA69_0>=56 && LA69_0<=58)||(LA69_0>=60 && LA69_0<=65)||(LA69_0>=78 && LA69_0<=79)) ) {
+                if ( ((LA69_0>=RULE_ID && LA69_0<=RULE_STRING)||LA69_0==22||(LA69_0>=25 && LA69_0<=26)||LA69_0==31||(LA69_0>=33 && LA69_0<=35)||LA69_0==38||LA69_0==42||LA69_0==45||LA69_0==51||LA69_0==53||(LA69_0>=56 && LA69_0<=58)||(LA69_0>=60 && LA69_0<=65)||(LA69_0>=78 && LA69_0<=79)) ) {
                     alt69=1;
                 }
 
@@ -30247,11 +30247,11 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( (LA72_0==RULE_ID) ) {
                 int LA72_1 = input.LA(2);
 
-                if ( (LA72_1==RULE_ID||LA72_1==22||LA72_1==32||LA72_1==43) ) {
+                if ( (LA72_1==RULE_ID||LA72_1==22||LA72_1==32||LA72_1==45) ) {
                     alt72=1;
                 }
             }
-            else if ( (LA72_0==40||LA72_0==68) ) {
+            else if ( (LA72_0==42||LA72_0==68) ) {
                 alt72=1;
             }
             switch (alt72) {
@@ -31337,7 +31337,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt77=2;
                 int LA77_0 = input.LA(1);
 
-                if ( (LA77_0==45) ) {
+                if ( (LA77_0==41) ) {
                     alt77=1;
                 }
 
@@ -31512,7 +31512,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getCommaKeyword_2_2_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XFeatureCall__Group_2_2__0__Impl21849); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XFeatureCall__Group_2_2__0__Impl21849); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFeatureCallAccess().getCommaKeyword_2_2_0()); 
             }
@@ -31768,7 +31768,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( ((LA78_0>=RULE_ID && LA78_0<=RULE_STRING)||LA78_0==22||(LA78_0>=25 && LA78_0<=26)||LA78_0==31||(LA78_0>=34 && LA78_0<=35)||LA78_0==38||LA78_0==40||LA78_0==43||LA78_0==51||LA78_0==53||(LA78_0>=56 && LA78_0<=58)||(LA78_0>=60 && LA78_0<=65)||LA78_0==68||LA78_0==77||LA78_0==79) ) {
+            if ( ((LA78_0>=RULE_ID && LA78_0<=RULE_STRING)||LA78_0==22||(LA78_0>=25 && LA78_0<=26)||LA78_0==31||(LA78_0>=34 && LA78_0<=35)||LA78_0==38||LA78_0==42||LA78_0==45||LA78_0==51||LA78_0==53||(LA78_0>=56 && LA78_0<=58)||(LA78_0>=60 && LA78_0<=65)||LA78_0==68||LA78_0==77||LA78_0==79) ) {
                 alt78=1;
             }
             switch (alt78) {
@@ -31859,7 +31859,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getRightParenthesisKeyword_4_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XFeatureCall__Group_4__2__Impl22090); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XFeatureCall__Group_4__2__Impl22090); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFeatureCallAccess().getRightParenthesisKeyword_4_2()); 
             }
@@ -32028,7 +32028,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt79=2;
                 int LA79_0 = input.LA(1);
 
-                if ( (LA79_0==45) ) {
+                if ( (LA79_0==41) ) {
                     alt79=1;
                 }
 
@@ -32129,7 +32129,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getCommaKeyword_4_1_1_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XFeatureCall__Group_4_1_1_1__0__Impl22280); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XFeatureCall__Group_4_1_1_1__0__Impl22280); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFeatureCallAccess().getCommaKeyword_4_1_1_1_0()); 
             }
@@ -33159,7 +33159,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt83=2;
                 int LA83_0 = input.LA(1);
 
-                if ( (LA83_0==45) ) {
+                if ( (LA83_0==41) ) {
                     alt83=1;
                 }
 
@@ -33334,7 +33334,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getCommaKeyword_3_2_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XConstructorCall__Group_3_2__0__Impl23152); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XConstructorCall__Group_3_2__0__Impl23152); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXConstructorCallAccess().getCommaKeyword_3_2_0()); 
             }
@@ -33500,7 +33500,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:11545:1: ( '(' )
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:11546:2: '('
             {
-            match(input,40,FOLLOW_40_in_rule__XConstructorCall__Group_4__0__Impl23276); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XConstructorCall__Group_4__0__Impl23276); if (state.failed) return ;
 
             }
 
@@ -33586,7 +33586,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt84=2;
             int LA84_0 = input.LA(1);
 
-            if ( ((LA84_0>=RULE_ID && LA84_0<=RULE_STRING)||LA84_0==22||(LA84_0>=25 && LA84_0<=26)||LA84_0==31||(LA84_0>=34 && LA84_0<=35)||LA84_0==38||LA84_0==40||LA84_0==43||LA84_0==51||LA84_0==53||(LA84_0>=56 && LA84_0<=58)||(LA84_0>=60 && LA84_0<=65)||LA84_0==68||LA84_0==77||LA84_0==79) ) {
+            if ( ((LA84_0>=RULE_ID && LA84_0<=RULE_STRING)||LA84_0==22||(LA84_0>=25 && LA84_0<=26)||LA84_0==31||(LA84_0>=34 && LA84_0<=35)||LA84_0==38||LA84_0==42||LA84_0==45||LA84_0==51||LA84_0==53||(LA84_0>=56 && LA84_0<=58)||(LA84_0>=60 && LA84_0<=65)||LA84_0==68||LA84_0==77||LA84_0==79) ) {
                 alt84=1;
             }
             switch (alt84) {
@@ -33677,7 +33677,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XConstructorCall__Group_4__2__Impl23397); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XConstructorCall__Group_4__2__Impl23397); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()); 
             }
@@ -33846,7 +33846,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt85=2;
                 int LA85_0 = input.LA(1);
 
-                if ( (LA85_0==45) ) {
+                if ( (LA85_0==41) ) {
                     alt85=1;
                 }
 
@@ -33947,7 +33947,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XConstructorCall__Group_4_1_1_1__0__Impl23587); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XConstructorCall__Group_4_1_1_1__0__Impl23587); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_1_0()); 
             }
@@ -34910,7 +34910,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XTypeLiteral__Group__2__Impl24323); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XTypeLiteral__Group__2__Impl24323); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -35073,7 +35073,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_4()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XTypeLiteral__Group__4__Impl24442); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XTypeLiteral__Group__4__Impl24442); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_4()); 
             }
@@ -36632,7 +36632,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCatchClauseAccess().getLeftParenthesisKeyword_1()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XCatchClause__Group__1__Impl25586); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XCatchClause__Group__1__Impl25586); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXCatchClauseAccess().getLeftParenthesisKeyword_1()); 
             }
@@ -36800,7 +36800,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCatchClauseAccess().getRightParenthesisKeyword_3()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XCatchClause__Group__3__Impl25708); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XCatchClause__Group__3__Impl25708); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXCatchClauseAccess().getRightParenthesisKeyword_3()); 
             }
@@ -37758,10 +37758,10 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt91=2;
                 int LA91_0 = input.LA(1);
 
-                if ( (LA91_0==43) ) {
+                if ( (LA91_0==45) ) {
                     int LA91_2 = input.LA(2);
 
-                    if ( (LA91_2==44) ) {
+                    if ( (LA91_2==46) ) {
                         int LA91_3 = input.LA(3);
 
                         if ( (synpred112_InternalServices()) ) {
@@ -38034,7 +38034,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmTypeReferenceAccess().getLeftSquareBracketKeyword_0_1_0_1()); 
             }
-            match(input,43,FOLLOW_43_in_rule__JvmTypeReference__Group_0_1_0__1__Impl26568); if (state.failed) return ;
+            match(input,45,FOLLOW_45_in_rule__JvmTypeReference__Group_0_1_0__1__Impl26568); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmTypeReferenceAccess().getLeftSquareBracketKeyword_0_1_0_1()); 
             }
@@ -38108,7 +38108,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmTypeReferenceAccess().getRightSquareBracketKeyword_0_1_0_2()); 
             }
-            match(input,44,FOLLOW_44_in_rule__JvmTypeReference__Group_0_1_0__2__Impl26627); if (state.failed) return ;
+            match(input,46,FOLLOW_46_in_rule__JvmTypeReference__Group_0_1_0__2__Impl26627); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmTypeReferenceAccess().getRightSquareBracketKeyword_0_1_0_2()); 
             }
@@ -38191,7 +38191,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt92=2;
             int LA92_0 = input.LA(1);
 
-            if ( (LA92_0==40) ) {
+            if ( (LA92_0==42) ) {
                 alt92=1;
             }
             switch (alt92) {
@@ -38450,7 +38450,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XFunctionTypeRef__Group_0__0__Impl26881); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XFunctionTypeRef__Group_0__0__Impl26881); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()); 
             }
@@ -38533,7 +38533,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             int alt93=2;
             int LA93_0 = input.LA(1);
 
-            if ( (LA93_0==RULE_ID||LA93_0==40||LA93_0==68) ) {
+            if ( (LA93_0==RULE_ID||LA93_0==42||LA93_0==68) ) {
                 alt93=1;
             }
             switch (alt93) {
@@ -38624,7 +38624,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()); 
             }
-            match(input,41,FOLLOW_41_in_rule__XFunctionTypeRef__Group_0__2__Impl27001); if (state.failed) return ;
+            match(input,43,FOLLOW_43_in_rule__XFunctionTypeRef__Group_0__2__Impl27001); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()); 
             }
@@ -38793,7 +38793,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt94=2;
                 int LA94_0 = input.LA(1);
 
-                if ( (LA94_0==45) ) {
+                if ( (LA94_0==41) ) {
                     alt94=1;
                 }
 
@@ -38894,7 +38894,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XFunctionTypeRef__Group_0_1_1__0__Impl27191); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__XFunctionTypeRef__Group_0_1_1__0__Impl27191); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0()); 
             }
@@ -39417,7 +39417,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
                 int alt96=2;
                 int LA96_0 = input.LA(1);
 
-                if ( (LA96_0==45) ) {
+                if ( (LA96_0==41) ) {
                     alt96=1;
                 }
 
@@ -39592,7 +39592,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl27688); if (state.failed) return ;
+            match(input,41,FOLLOW_41_in_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl27688); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0()); 
             }
@@ -40578,29 +40578,119 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Component__ImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Component__NameAssignment_4"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14170:1: rule__Component__NameAssignment_4 : ( ruleValidID ) ;
-    public final void rule__Component__NameAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__Component__RequiresAssignment_3_1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14170:1: rule__Component__RequiresAssignment_3_1 : ( ruleRequireDeclaration ) ;
+    public final void rule__Component__RequiresAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14174:1: ( ( ruleValidID ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14174:1: ( ( ruleRequireDeclaration ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleRequireDeclaration )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleValidID )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14176:1: ruleValidID
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14175:1: ( ruleRequireDeclaration )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14176:1: ruleRequireDeclaration
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_4_0()); 
+               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__Component__NameAssignment_428436);
+            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_128436);
+            ruleRequireDeclaration();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__RequiresAssignment_3_1"
+
+
+    // $ANTLR start "rule__Component__RequiresAssignment_3_2_1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14185:1: rule__Component__RequiresAssignment_3_2_1 : ( ruleRequireDeclaration ) ;
+    public final void rule__Component__RequiresAssignment_3_2_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14189:1: ( ( ruleRequireDeclaration ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14190:1: ( ruleRequireDeclaration )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14190:1: ( ruleRequireDeclaration )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14191:1: ruleRequireDeclaration
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_2_1_0()); 
+            }
+            pushFollow(FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_2_128467);
+            ruleRequireDeclaration();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getComponentAccess().getRequiresRequireDeclarationParserRuleCall_3_2_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Component__RequiresAssignment_3_2_1"
+
+
+    // $ANTLR start "rule__Component__NameAssignment_5"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14200:1: rule__Component__NameAssignment_5 : ( ruleValidID ) ;
+    public final void rule__Component__NameAssignment_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14204:1: ( ( ruleValidID ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleValidID )
+            {
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14206:1: ruleValidID
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_5_0()); 
+            }
+            pushFollow(FOLLOW_ruleValidID_in_rule__Component__NameAssignment_528498);
             ruleValidID();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_4_0()); 
+               after(grammarAccess.getComponentAccess().getNameValidIDParserRuleCall_5_0()); 
             }
 
             }
@@ -40620,32 +40710,32 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__NameAssignment_4"
+    // $ANTLR end "rule__Component__NameAssignment_5"
 
 
-    // $ANTLR start "rule__Component__ServicesAssignment_6"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14185:1: rule__Component__ServicesAssignment_6 : ( ruleService ) ;
-    public final void rule__Component__ServicesAssignment_6() throws RecognitionException {
+    // $ANTLR start "rule__Component__ServicesAssignment_7"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14215:1: rule__Component__ServicesAssignment_7 : ( ruleService ) ;
+    public final void rule__Component__ServicesAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14189:1: ( ( ruleService ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14190:1: ( ruleService )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14219:1: ( ( ruleService ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14220:1: ( ruleService )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14190:1: ( ruleService )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14191:1: ruleService
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14220:1: ( ruleService )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14221:1: ruleService
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getComponentAccess().getServicesServiceParserRuleCall_6_0()); 
+               before(grammarAccess.getComponentAccess().getServicesServiceParserRuleCall_7_0()); 
             }
-            pushFollow(FOLLOW_ruleService_in_rule__Component__ServicesAssignment_628467);
+            pushFollow(FOLLOW_ruleService_in_rule__Component__ServicesAssignment_728529);
             ruleService();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getComponentAccess().getServicesServiceParserRuleCall_6_0()); 
+               after(grammarAccess.getComponentAccess().getServicesServiceParserRuleCall_7_0()); 
             }
 
             }
@@ -40665,32 +40755,32 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Component__ServicesAssignment_6"
+    // $ANTLR end "rule__Component__ServicesAssignment_7"
 
 
     // $ANTLR start "rule__Service__ServiceAssignment_0_0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14200:1: rule__Service__ServiceAssignment_0_0 : ( ( 'service' ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14230:1: rule__Service__ServiceAssignment_0_0 : ( ( 'service' ) ) ;
     public final void rule__Service__ServiceAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14204:1: ( ( ( 'service' ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ( 'service' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14234:1: ( ( ( 'service' ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14235:1: ( ( 'service' ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14205:1: ( ( 'service' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14206:1: ( 'service' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getServiceServiceKeyword_0_0_0()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14207:1: ( 'service' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14208:1: 'service'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14235:1: ( ( 'service' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14236:1: ( 'service' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getServiceServiceKeyword_0_0_0()); 
             }
-            match(input,72,FOLLOW_72_in_rule__Service__ServiceAssignment_0_028503); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14237:1: ( 'service' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14238:1: 'service'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getServiceAccess().getServiceServiceKeyword_0_0_0()); 
+            }
+            match(input,72,FOLLOW_72_in_rule__Service__ServiceAssignment_0_028565); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getServiceServiceKeyword_0_0_0()); 
             }
@@ -40722,28 +40812,28 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__GetAssignment_0_2_0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14223:1: rule__Service__GetAssignment_0_2_0 : ( ( 'GET' ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14253:1: rule__Service__GetAssignment_0_2_0 : ( ( 'GET' ) ) ;
     public final void rule__Service__GetAssignment_0_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14227:1: ( ( ( 'GET' ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14228:1: ( ( 'GET' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14257:1: ( ( ( 'GET' ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14258:1: ( ( 'GET' ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14228:1: ( ( 'GET' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14229:1: ( 'GET' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getGetGETKeyword_0_2_0_0()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14230:1: ( 'GET' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14231:1: 'GET'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14258:1: ( ( 'GET' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14259:1: ( 'GET' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getGetGETKeyword_0_2_0_0()); 
             }
-            match(input,73,FOLLOW_73_in_rule__Service__GetAssignment_0_2_028547); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14260:1: ( 'GET' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14261:1: 'GET'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getServiceAccess().getGetGETKeyword_0_2_0_0()); 
+            }
+            match(input,73,FOLLOW_73_in_rule__Service__GetAssignment_0_2_028609); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getGetGETKeyword_0_2_0_0()); 
             }
@@ -40775,28 +40865,28 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__PostAssignment_0_2_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14246:1: rule__Service__PostAssignment_0_2_1 : ( ( 'POST' ) ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14276:1: rule__Service__PostAssignment_0_2_1 : ( ( 'POST' ) ) ;
     public final void rule__Service__PostAssignment_0_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14250:1: ( ( ( 'POST' ) ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14251:1: ( ( 'POST' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14280:1: ( ( ( 'POST' ) ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14281:1: ( ( 'POST' ) )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14251:1: ( ( 'POST' ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14252:1: ( 'POST' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getPostPOSTKeyword_0_2_1_0()); 
-            }
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14253:1: ( 'POST' )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14254:1: 'POST'
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14281:1: ( ( 'POST' ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14282:1: ( 'POST' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getPostPOSTKeyword_0_2_1_0()); 
             }
-            match(input,74,FOLLOW_74_in_rule__Service__PostAssignment_0_2_128591); if (state.failed) return ;
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14283:1: ( 'POST' )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14284:1: 'POST'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getServiceAccess().getPostPOSTKeyword_0_2_1_0()); 
+            }
+            match(input,74,FOLLOW_74_in_rule__Service__PostAssignment_0_2_128653); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getServiceAccess().getPostPOSTKeyword_0_2_1_0()); 
             }
@@ -40828,22 +40918,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__NameAssignment_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14269:1: rule__Service__NameAssignment_1 : ( ruleValidID ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14299:1: rule__Service__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__Service__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14273:1: ( ( ruleValidID ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14274:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14303:1: ( ( ruleValidID ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14304:1: ( ruleValidID )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14274:1: ( ruleValidID )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14275:1: ruleValidID
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14304:1: ( ruleValidID )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14305:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getNameValidIDParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__Service__NameAssignment_128630);
+            pushFollow(FOLLOW_ruleValidID_in_rule__Service__NameAssignment_128692);
             ruleValidID();
 
             state._fsp--;
@@ -40873,22 +40963,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__ParamsAssignment_3_0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14284:1: rule__Service__ParamsAssignment_3_0 : ( ruleFullJvmFormalParameter ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14314:1: rule__Service__ParamsAssignment_3_0 : ( ruleFullJvmFormalParameter ) ;
     public final void rule__Service__ParamsAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14288:1: ( ( ruleFullJvmFormalParameter ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14289:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14318:1: ( ( ruleFullJvmFormalParameter ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14319:1: ( ruleFullJvmFormalParameter )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14289:1: ( ruleFullJvmFormalParameter )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14290:1: ruleFullJvmFormalParameter
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14319:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14320:1: ruleFullJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getParamsFullJvmFormalParameterParserRuleCall_3_0_0()); 
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_028661);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_028723);
             ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -40918,22 +41008,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__ParamsAssignment_3_1_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14299:1: rule__Service__ParamsAssignment_3_1_1 : ( ruleFullJvmFormalParameter ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14329:1: rule__Service__ParamsAssignment_3_1_1 : ( ruleFullJvmFormalParameter ) ;
     public final void rule__Service__ParamsAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14303:1: ( ( ruleFullJvmFormalParameter ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14304:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14333:1: ( ( ruleFullJvmFormalParameter ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14334:1: ( ruleFullJvmFormalParameter )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14304:1: ( ruleFullJvmFormalParameter )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14305:1: ruleFullJvmFormalParameter
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14334:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14335:1: ruleFullJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getParamsFullJvmFormalParameterParserRuleCall_3_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_1_128692);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_1_128754);
             ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -40963,22 +41053,22 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Service__TypeAssignment_6"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14314:1: rule__Service__TypeAssignment_6 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14344:1: rule__Service__TypeAssignment_6 : ( ruleJvmTypeReference ) ;
     public final void rule__Service__TypeAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14318:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14319:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14348:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14349:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14319:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14320:1: ruleJvmTypeReference
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14349:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14350:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getServiceAccess().getTypeJvmTypeReferenceParserRuleCall_6_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__Service__TypeAssignment_628723);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__Service__TypeAssignment_628785);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -41007,99 +41097,9 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Service__TypeAssignment_6"
 
 
-    // $ANTLR start "rule__Service__UsesAssignment_7_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14329:1: rule__Service__UsesAssignment_7_1 : ( ruleUseDeclaration ) ;
-    public final void rule__Service__UsesAssignment_7_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14333:1: ( ( ruleUseDeclaration ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14334:1: ( ruleUseDeclaration )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14334:1: ( ruleUseDeclaration )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14335:1: ruleUseDeclaration
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getUsesUseDeclarationParserRuleCall_7_1_0()); 
-            }
-            pushFollow(FOLLOW_ruleUseDeclaration_in_rule__Service__UsesAssignment_7_128754);
-            ruleUseDeclaration();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getUsesUseDeclarationParserRuleCall_7_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__UsesAssignment_7_1"
-
-
-    // $ANTLR start "rule__Service__UsesAssignment_7_2_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14344:1: rule__Service__UsesAssignment_7_2_1 : ( ruleUseDeclaration ) ;
-    public final void rule__Service__UsesAssignment_7_2_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14348:1: ( ( ruleUseDeclaration ) )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14349:1: ( ruleUseDeclaration )
-            {
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14349:1: ( ruleUseDeclaration )
-            // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14350:1: ruleUseDeclaration
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getUsesUseDeclarationParserRuleCall_7_2_1_0()); 
-            }
-            pushFollow(FOLLOW_ruleUseDeclaration_in_rule__Service__UsesAssignment_7_2_128785);
-            ruleUseDeclaration();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getUsesUseDeclarationParserRuleCall_7_2_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Service__UsesAssignment_7_2_1"
-
-
-    // $ANTLR start "rule__Service__BodyAssignment_8"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14359:1: rule__Service__BodyAssignment_8 : ( ruleXBlockExpression ) ;
-    public final void rule__Service__BodyAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__Service__BodyAssignment_7"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14359:1: rule__Service__BodyAssignment_7 : ( ruleXBlockExpression ) ;
+    public final void rule__Service__BodyAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -41111,15 +41111,15 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14365:1: ruleXBlockExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getServiceAccess().getBodyXBlockExpressionParserRuleCall_8_0()); 
+               before(grammarAccess.getServiceAccess().getBodyXBlockExpressionParserRuleCall_7_0()); 
             }
-            pushFollow(FOLLOW_ruleXBlockExpression_in_rule__Service__BodyAssignment_828816);
+            pushFollow(FOLLOW_ruleXBlockExpression_in_rule__Service__BodyAssignment_728816);
             ruleXBlockExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getServiceAccess().getBodyXBlockExpressionParserRuleCall_8_0()); 
+               after(grammarAccess.getServiceAccess().getBodyXBlockExpressionParserRuleCall_7_0()); 
             }
 
             }
@@ -41139,12 +41139,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Service__BodyAssignment_8"
+    // $ANTLR end "rule__Service__BodyAssignment_7"
 
 
-    // $ANTLR start "rule__UseDeclaration__TypeAssignment_0"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14374:1: rule__UseDeclaration__TypeAssignment_0 : ( ruleJvmTypeReference ) ;
-    public final void rule__UseDeclaration__TypeAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__TypeAssignment_0"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14374:1: rule__RequireDeclaration__TypeAssignment_0 : ( ruleJvmTypeReference ) ;
+    public final void rule__RequireDeclaration__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -41156,15 +41156,15 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14380:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_0_0()); 
+               before(grammarAccess.getRequireDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__UseDeclaration__TypeAssignment_028847);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__RequireDeclaration__TypeAssignment_028847);
             ruleJvmTypeReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_0_0()); 
+               after(grammarAccess.getRequireDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
 
             }
@@ -41184,12 +41184,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__UseDeclaration__TypeAssignment_0"
+    // $ANTLR end "rule__RequireDeclaration__TypeAssignment_0"
 
 
-    // $ANTLR start "rule__UseDeclaration__NameAssignment_1"
-    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14389:1: rule__UseDeclaration__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__UseDeclaration__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__RequireDeclaration__NameAssignment_1"
+    // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14389:1: rule__RequireDeclaration__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__RequireDeclaration__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -41201,11 +41201,11 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             // ../org.eclipse.xtext.services.ui/src-gen/org/eclipse/xtext/services/ui/contentassist/antlr/internal/InternalServices.g:14395:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUseDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
+               before(grammarAccess.getRequireDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UseDeclaration__NameAssignment_128878); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RequireDeclaration__NameAssignment_128878); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUseDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
+               after(grammarAccess.getRequireDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
             }
 
             }
@@ -41225,7 +41225,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__UseDeclaration__NameAssignment_1"
+    // $ANTLR end "rule__RequireDeclaration__NameAssignment_1"
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
@@ -42760,7 +42760,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_029966); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_029966); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
             }
@@ -44931,7 +44931,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_4_0_0()); 
             }
-            match(input,40,FOLLOW_40_in_rule__XFeatureCall__ExplicitOperationCallAssignment_4_031491); if (state.failed) return ;
+            match(input,42,FOLLOW_42_in_rule__XFeatureCall__ExplicitOperationCallAssignment_4_031491); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_4_0_0()); 
             }
@@ -47463,7 +47463,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         "\1\uffff\1\0\1\1\32\uffff}>";
     static final String[] DFA14_transitionS = {
             "\1\1\4\5\15\uffff\1\5\2\uffff\2\5\4\uffff\1\5\2\uffff\2\5\2"+
-            "\uffff\1\5\1\uffff\1\2\2\uffff\1\5\7\uffff\1\5\1\uffff\1\5\2"+
+            "\uffff\1\5\3\uffff\1\2\2\uffff\1\5\5\uffff\1\5\1\uffff\1\5\2"+
             "\uffff\3\5\1\uffff\6\5\2\uffff\1\3\10\uffff\1\3\1\uffff\1\5",
             "\1\uffff",
             "\1\uffff",
@@ -47583,7 +47583,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         "\1\uffff\1\0\1\1\32\uffff}>";
     static final String[] DFA21_transitionS = {
             "\1\1\4\5\15\uffff\1\5\2\uffff\2\5\4\uffff\1\5\2\uffff\2\5\2"+
-            "\uffff\1\5\1\uffff\1\2\2\uffff\1\5\7\uffff\1\5\1\uffff\1\5\2"+
+            "\uffff\1\5\3\uffff\1\2\2\uffff\1\5\5\uffff\1\5\1\uffff\1\5\2"+
             "\uffff\3\5\1\uffff\6\5\2\uffff\1\3\10\uffff\1\3\1\uffff\1\5",
             "\1\uffff",
             "\1\uffff",
@@ -47703,7 +47703,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         "\1\uffff\1\0\1\1\32\uffff}>";
     static final String[] DFA23_transitionS = {
             "\1\1\4\5\15\uffff\1\5\2\uffff\2\5\4\uffff\1\5\2\uffff\2\5\2"+
-            "\uffff\1\5\1\uffff\1\2\2\uffff\1\5\7\uffff\1\5\1\uffff\1\5\2"+
+            "\uffff\1\5\3\uffff\1\2\2\uffff\1\5\5\uffff\1\5\1\uffff\1\5\2"+
             "\uffff\3\5\1\uffff\6\5\2\uffff\1\3\10\uffff\1\3\1\uffff\1\5",
             "\1\uffff",
             "\1\uffff",
@@ -47822,8 +47822,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA51_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA51_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\2\2\1\1\5\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\1\2\1\1\4\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -47959,8 +47959,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA52_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA52_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\5\2\1\1\2\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\4\2\1\1\1\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48097,7 +48097,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         "\1\uffff\1\0\1\1\35\uffff}>";
     static final String[] DFA56_transitionS = {
             "\1\1\4\5\15\uffff\1\5\2\uffff\2\5\4\uffff\1\5\1\uffff\3\5\2"+
-            "\uffff\1\5\1\uffff\1\2\2\uffff\2\5\6\uffff\1\5\1\uffff\1\5\2"+
+            "\uffff\1\5\3\uffff\1\2\2\uffff\2\5\4\uffff\1\5\1\uffff\1\5\2"+
             "\uffff\3\5\1\uffff\6\5\2\uffff\1\3\10\uffff\1\3\2\5",
             "\1\uffff",
             "\1\uffff",
@@ -48219,8 +48219,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA75_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA75_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\2\2\1\1\5\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\1\2\1\1\4\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48356,8 +48356,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA76_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA76_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\5\2\1\1\2\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\4\2\1\1\1\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48493,8 +48493,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA80_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA80_transitionS = {
-            "\5\2\5\uffff\10\2\1\1\15\2\2\uffff\10\2\2\uffff\13\2\1\uffff"+
-            "\11\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\10\2\1\1\15\2\2\uffff\2\2\1\uffff\6\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48630,8 +48630,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA81_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA81_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\2\2\1\1\5\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\1\2\1\1\4\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48767,8 +48767,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA82_specialS =
         "\1\uffff\1\0\74\uffff}>";
     static final String[] DFA82_transitionS = {
-            "\5\2\5\uffff\26\2\2\uffff\5\2\1\1\2\2\2\uffff\13\2\1\uffff\11"+
-            "\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\26\2\2\uffff\2\2\1\uffff\4\2\1\1\1\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -48907,9 +48907,10 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
         "\43\uffff}>";
     static final String[] DFA86_transitionS = {
             "\1\1\1\15\1\16\1\17\1\21\5\uffff\10\33\1\10\2\33\1\4\1\3\4\33"+
-            "\1\2\2\33\1\11\1\13\2\uffff\1\6\1\33\1\32\2\33\1\12\2\33\2\uffff"+
-            "\3\33\1\23\1\33\1\7\2\33\1\24\1\25\1\26\1\uffff\1\5\1\20\1\22"+
-            "\1\27\1\30\1\31\3\33\6\uffff\2\33\1\uffff\1\33\1\14",
+            "\1\2\2\33\1\11\1\13\2\uffff\1\6\1\33\1\uffff\1\33\1\32\2\33"+
+            "\1\12\1\33\1\uffff\3\33\1\23\1\33\1\7\2\33\1\24\1\25\1\26\1"+
+            "\uffff\1\5\1\20\1\22\1\27\1\30\1\31\3\33\6\uffff\2\33\1\uffff"+
+            "\1\33\1\14",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -49420,8 +49421,8 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     static final String DFA95_specialS =
         "\1\uffff\1\0\75\uffff}>";
     static final String[] DFA95_transitionS = {
-            "\5\2\5\uffff\10\2\1\1\15\2\2\uffff\11\2\1\uffff\13\2\1\uffff"+
-            "\11\2\6\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\10\2\1\1\15\2\1\uffff\3\2\1\uffff\6\2\1\uffff\13"+
+            "\2\1\uffff\11\2\6\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -49556,9 +49557,9 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleService_in_entryRuleService187 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleService194 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Service__Group__0_in_ruleService220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUseDeclaration_in_entryRuleUseDeclaration247 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUseDeclaration254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__Group__0_in_ruleUseDeclaration280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequireDeclaration_in_entryRuleRequireDeclaration247 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRequireDeclaration254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__Group__0_in_ruleRequireDeclaration280 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_entryRuleImport307 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImport314 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0_in_ruleImport340 = new BitSet(new long[]{0x0000000000000002L});
@@ -49836,91 +49837,91 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__Component__Group__0__Impl_in_rule__Component__Group__06108 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Component__Group__1_in_rule__Component__Group__06111 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_rule__Component__Group__0__Impl6139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__1__Impl_in_rule__Component__Group__16170 = new BitSet(new long[]{0x0000802000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__1__Impl_in_rule__Component__Group__16170 = new BitSet(new long[]{0x0000812000000000L});
     public static final BitSet FOLLOW_rule__Component__Group__2_in_rule__Component__Group__16173 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Component__PackageNameAssignment_1_in_rule__Component__Group__1__Impl6200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__2__Impl_in_rule__Component__Group__26230 = new BitSet(new long[]{0x0000802000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__2__Impl_in_rule__Component__Group__26230 = new BitSet(new long[]{0x0000812000000000L});
     public static final BitSet FOLLOW_rule__Component__Group__3_in_rule__Component__Group__26233 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Component__ImportsAssignment_2_in_rule__Component__Group__2__Impl6260 = new BitSet(new long[]{0x0000800000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__3__Impl_in_rule__Component__Group__36291 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group__3__Impl_in_rule__Component__Group__36291 = new BitSet(new long[]{0x0000812000000000L});
     public static final BitSet FOLLOW_rule__Component__Group__4_in_rule__Component__Group__36294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__Component__Group__3__Impl6322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46353 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__NameAssignment_4_in_rule__Component__Group__4__Impl6383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56413 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__Component__Group__5__Impl6444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66475 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Component__ServicesAssignment_6_in_rule__Component__Group__6__Impl6505 = new BitSet(new long[]{0x0000000000000012L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rule__Component__Group__7__Impl_in_rule__Component__Group__76536 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_rule__Component__Group__7__Impl6564 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__0__Impl_in_rule__Service__Group__06611 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rule__Service__Group__1_in_rule__Service__Group__06614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__0_in_rule__Service__Group__0__Impl6641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__1__Impl_in_rule__Service__Group__16672 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group__2_in_rule__Service__Group__16675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__NameAssignment_1_in_rule__Service__Group__1__Impl6702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__2__Impl_in_rule__Service__Group__26732 = new BitSet(new long[]{0x0000030000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group__3_in_rule__Service__Group__26735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__Service__Group__2__Impl6763 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__3__Impl_in_rule__Service__Group__36794 = new BitSet(new long[]{0x0000030000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group__4_in_rule__Service__Group__36797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3__0_in_rule__Service__Group__3__Impl6824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__4__Impl_in_rule__Service__Group__46855 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group__5_in_rule__Service__Group__46858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__Service__Group__4__Impl6886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__5__Impl_in_rule__Service__Group__56917 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group__6_in_rule__Service__Group__56920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__Service__Group__5__Impl6948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__6__Impl_in_rule__Service__Group__66979 = new BitSet(new long[]{0x0000404000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group__7_in_rule__Service__Group__66982 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__TypeAssignment_6_in_rule__Service__Group__6__Impl7009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__7__Impl_in_rule__Service__Group__77039 = new BitSet(new long[]{0x0000404000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group__8_in_rule__Service__Group__77042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__0_in_rule__Service__Group__7__Impl7069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group__8__Impl_in_rule__Service__Group__87100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__BodyAssignment_8_in_rule__Service__Group__8__Impl7127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__0__Impl_in_rule__Service__Group_0__07175 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__1_in_rule__Service__Group_0__07178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__ServiceAssignment_0_0_in_rule__Service__Group_0__0__Impl7205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__1__Impl_in_rule__Service__Group_0__17235 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000600L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__2_in_rule__Service__Group_0__17238 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_rule__Service__Group_0__1__Impl7266 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__2__Impl_in_rule__Service__Group_0__27297 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__3_in_rule__Service__Group_0__27300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Alternatives_0_2_in_rule__Service__Group_0__2__Impl7327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_0__3__Impl_in_rule__Service__Group_0__37357 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_rule__Service__Group_0__3__Impl7385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3__0__Impl_in_rule__Service__Group_3__07424 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group_3__1_in_rule__Service__Group_3__07427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__ParamsAssignment_3_0_in_rule__Service__Group_3__0__Impl7454 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3__1__Impl_in_rule__Service__Group_3__17484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3_1__0_in_rule__Service__Group_3__1__Impl7511 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3_1__0__Impl_in_rule__Service__Group_3_1__07546 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group_3_1__1_in_rule__Service__Group_3_1__07549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__Service__Group_3_1__0__Impl7577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_3_1__1__Impl_in_rule__Service__Group_3_1__17608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__ParamsAssignment_3_1_1_in_rule__Service__Group_3_1__1__Impl7635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__0__Impl_in_rule__Service__Group_7__07669 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__1_in_rule__Service__Group_7__07672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_rule__Service__Group_7__0__Impl7700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__1__Impl_in_rule__Service__Group_7__17731 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__2_in_rule__Service__Group_7__17734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__UsesAssignment_7_1_in_rule__Service__Group_7__1__Impl7761 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7__2__Impl_in_rule__Service__Group_7__27791 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7_2__0_in_rule__Service__Group_7__2__Impl7818 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7_2__0__Impl_in_rule__Service__Group_7_2__07855 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Service__Group_7_2__1_in_rule__Service__Group_7_2__07858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__Service__Group_7_2__0__Impl7886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__Group_7_2__1__Impl_in_rule__Service__Group_7_2__17917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Service__UsesAssignment_7_2_1_in_rule__Service__Group_7_2__1__Impl7944 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__Group__0__Impl_in_rule__UseDeclaration__Group__07978 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__Group__1_in_rule__UseDeclaration__Group__07981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__TypeAssignment_0_in_rule__UseDeclaration__Group__0__Impl8008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__Group__1__Impl_in_rule__UseDeclaration__Group__18038 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UseDeclaration__NameAssignment_1_in_rule__UseDeclaration__Group__1__Impl8065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__0_in_rule__Component__Group__3__Impl6321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__4__Impl_in_rule__Component__Group__46352 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group__5_in_rule__Component__Group__46355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_rule__Component__Group__4__Impl6383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__5__Impl_in_rule__Component__Group__56414 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group__6_in_rule__Component__Group__56417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__NameAssignment_5_in_rule__Component__Group__5__Impl6444 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__6__Impl_in_rule__Component__Group__66474 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Component__Group__7_in_rule__Component__Group__66477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__Component__Group__6__Impl6505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group__7__Impl_in_rule__Component__Group__76536 = new BitSet(new long[]{0x0000008000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Component__Group__8_in_rule__Component__Group__76539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__ServicesAssignment_7_in_rule__Component__Group__7__Impl6566 = new BitSet(new long[]{0x0000000000000012L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Component__Group__8__Impl_in_rule__Component__Group__86597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_rule__Component__Group__8__Impl6625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__0__Impl_in_rule__Component__Group_3__06674 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__1_in_rule__Component__Group_3__06677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_rule__Component__Group_3__0__Impl6705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__1__Impl_in_rule__Component__Group_3__16736 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__2_in_rule__Component__Group_3__16739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_3_1_in_rule__Component__Group_3__1__Impl6766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3__2__Impl_in_rule__Component__Group_3__26796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3_2__0_in_rule__Component__Group_3__2__Impl6823 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3_2__0__Impl_in_rule__Component__Group_3_2__06860 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Component__Group_3_2__1_in_rule__Component__Group_3_2__06863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__Component__Group_3_2__0__Impl6891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__Group_3_2__1__Impl_in_rule__Component__Group_3_2__16922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Component__RequiresAssignment_3_2_1_in_rule__Component__Group_3_2__1__Impl6949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__0__Impl_in_rule__Service__Group__06983 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Service__Group__1_in_rule__Service__Group__06986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__0_in_rule__Service__Group__0__Impl7013 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__1__Impl_in_rule__Service__Group__17044 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group__2_in_rule__Service__Group__17047 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__NameAssignment_1_in_rule__Service__Group__1__Impl7074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__2__Impl_in_rule__Service__Group__27104 = new BitSet(new long[]{0x00000C0000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Service__Group__3_in_rule__Service__Group__27107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_rule__Service__Group__2__Impl7135 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__3__Impl_in_rule__Service__Group__37166 = new BitSet(new long[]{0x00000C0000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Service__Group__4_in_rule__Service__Group__37169 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3__0_in_rule__Service__Group__3__Impl7196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__4__Impl_in_rule__Service__Group__47227 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group__5_in_rule__Service__Group__47230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__Service__Group__4__Impl7258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__5__Impl_in_rule__Service__Group__57289 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Service__Group__6_in_rule__Service__Group__57292 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_rule__Service__Group__5__Impl7320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__6__Impl_in_rule__Service__Group__67351 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group__7_in_rule__Service__Group__67354 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__TypeAssignment_6_in_rule__Service__Group__6__Impl7381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group__7__Impl_in_rule__Service__Group__77411 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__BodyAssignment_7_in_rule__Service__Group__7__Impl7438 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__0__Impl_in_rule__Service__Group_0__07484 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__1_in_rule__Service__Group_0__07487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__ServiceAssignment_0_0_in_rule__Service__Group_0__0__Impl7514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__1__Impl_in_rule__Service__Group_0__17544 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000600L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__2_in_rule__Service__Group_0__17547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_rule__Service__Group_0__1__Impl7575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__2__Impl_in_rule__Service__Group_0__27606 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__3_in_rule__Service__Group_0__27609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Alternatives_0_2_in_rule__Service__Group_0__2__Impl7636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_0__3__Impl_in_rule__Service__Group_0__37666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_rule__Service__Group_0__3__Impl7694 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3__0__Impl_in_rule__Service__Group_3__07733 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_rule__Service__Group_3__1_in_rule__Service__Group_3__07736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__ParamsAssignment_3_0_in_rule__Service__Group_3__0__Impl7763 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3__1__Impl_in_rule__Service__Group_3__17793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3_1__0_in_rule__Service__Group_3__1__Impl7820 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3_1__0__Impl_in_rule__Service__Group_3_1__07855 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Service__Group_3_1__1_in_rule__Service__Group_3_1__07858 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__Service__Group_3_1__0__Impl7886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__Group_3_1__1__Impl_in_rule__Service__Group_3_1__17917 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Service__ParamsAssignment_3_1_1_in_rule__Service__Group_3_1__1__Impl7944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__Group__0__Impl_in_rule__RequireDeclaration__Group__07978 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__Group__1_in_rule__RequireDeclaration__Group__07981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__TypeAssignment_0_in_rule__RequireDeclaration__Group__0__Impl8008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__Group__1__Impl_in_rule__RequireDeclaration__Group__18038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RequireDeclaration__NameAssignment_1_in_rule__RequireDeclaration__Group__1__Impl8065 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__08100 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__08103 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_47_in_rule__Import__Group__0__Impl8131 = new BitSet(new long[]{0x0000000000000002L});
@@ -49931,7 +49932,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XAssignment__Group_0__1__Impl_in_rule__XAssignment__Group_0__18284 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_0__2_in_rule__XAssignment__Group_0__18287 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__FeatureAssignment_0_1_in_rule__XAssignment__Group_0__1__Impl8314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XAssignment__Group_0__2__Impl_in_rule__XAssignment__Group_0__28344 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XAssignment__Group_0__2__Impl_in_rule__XAssignment__Group_0__28344 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_0__3_in_rule__XAssignment__Group_0__28347 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpSingleAssign_in_rule__XAssignment__Group_0__2__Impl8374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_0__3__Impl_in_rule__XAssignment__Group_0__38403 = new BitSet(new long[]{0x0000000000000002L});
@@ -49941,7 +49942,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXOrExpression_in_rule__XAssignment__Group_1__0__Impl8498 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_1__1__Impl_in_rule__XAssignment__Group_1__18527 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_1_1__0_in_rule__XAssignment__Group_1__1__Impl8554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XAssignment__Group_1_1__0__Impl_in_rule__XAssignment__Group_1_1__08589 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XAssignment__Group_1_1__0__Impl_in_rule__XAssignment__Group_1_1__08589 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_1_1__1_in_rule__XAssignment__Group_1_1__08592 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_1_1_0__0_in_rule__XAssignment__Group_1_1__0__Impl8619 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group_1_1__1__Impl_in_rule__XAssignment__Group_1_1__18649 = new BitSet(new long[]{0x0000000000000002L});
@@ -49957,7 +49958,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXAndExpression_in_rule__XOrExpression__Group__0__Impl8921 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOrExpression__Group__1__Impl_in_rule__XOrExpression__Group__18950 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOrExpression__Group_1__0_in_rule__XOrExpression__Group__1__Impl8977 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_rule__XOrExpression__Group_1__0__Impl_in_rule__XOrExpression__Group_1__09012 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XOrExpression__Group_1__0__Impl_in_rule__XOrExpression__Group_1__09012 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XOrExpression__Group_1__1_in_rule__XOrExpression__Group_1__09015 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOrExpression__Group_1_0__0_in_rule__XOrExpression__Group_1__0__Impl9042 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOrExpression__Group_1__1__Impl_in_rule__XOrExpression__Group_1__19072 = new BitSet(new long[]{0x0000000000000002L});
@@ -49973,7 +49974,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXEqualityExpression_in_rule__XAndExpression__Group__0__Impl9344 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAndExpression__Group__1__Impl_in_rule__XAndExpression__Group__19373 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAndExpression__Group_1__0_in_rule__XAndExpression__Group__1__Impl9400 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_rule__XAndExpression__Group_1__0__Impl_in_rule__XAndExpression__Group_1__09435 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XAndExpression__Group_1__0__Impl_in_rule__XAndExpression__Group_1__09435 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XAndExpression__Group_1__1_in_rule__XAndExpression__Group_1__09438 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAndExpression__Group_1_0__0_in_rule__XAndExpression__Group_1__0__Impl9465 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAndExpression__Group_1__1__Impl_in_rule__XAndExpression__Group_1__19495 = new BitSet(new long[]{0x0000000000000002L});
@@ -49989,7 +49990,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXRelationalExpression_in_rule__XEqualityExpression__Group__0__Impl9767 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XEqualityExpression__Group__1__Impl_in_rule__XEqualityExpression__Group__19796 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1__0_in_rule__XEqualityExpression__Group__1__Impl9823 = new BitSet(new long[]{0x0000000000060002L});
-    public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1__0__Impl_in_rule__XEqualityExpression__Group_1__09858 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1__0__Impl_in_rule__XEqualityExpression__Group_1__09858 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1__1_in_rule__XEqualityExpression__Group_1__09861 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1_0__0_in_rule__XEqualityExpression__Group_1__0__Impl9888 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XEqualityExpression__Group_1__1__Impl_in_rule__XEqualityExpression__Group_1__19918 = new BitSet(new long[]{0x0000000000000002L});
@@ -50005,7 +50006,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_rule__XRelationalExpression__Group__0__Impl10190 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group__1__Impl_in_rule__XRelationalExpression__Group__110219 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Alternatives_1_in_rule__XRelationalExpression__Group__1__Impl10246 = new BitSet(new long[]{0x0001000000780002L});
-    public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0__0__Impl_in_rule__XRelationalExpression__Group_1_0__010281 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0__0__Impl_in_rule__XRelationalExpression__Group_1_0__010281 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0__1_in_rule__XRelationalExpression__Group_1_0__010284 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0_0__0_in_rule__XRelationalExpression__Group_1_0__0__Impl10311 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0__1__Impl_in_rule__XRelationalExpression__Group_1_0__110341 = new BitSet(new long[]{0x0000000000000002L});
@@ -50016,7 +50017,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0_0_0__1_in_rule__XRelationalExpression__Group_1_0_0_0__010464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_0_0_0__1__Impl_in_rule__XRelationalExpression__Group_1_0_0_0__110522 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_48_in_rule__XRelationalExpression__Group_1_0_0_0__1__Impl10550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_1__0__Impl_in_rule__XRelationalExpression__Group_1_1__010585 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_1__0__Impl_in_rule__XRelationalExpression__Group_1_1__010585 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_1__1_in_rule__XRelationalExpression__Group_1_1__010588 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_1_0__0_in_rule__XRelationalExpression__Group_1_1__0__Impl10615 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XRelationalExpression__Group_1_1__1__Impl_in_rule__XRelationalExpression__Group_1_1__110645 = new BitSet(new long[]{0x0000000000000002L});
@@ -50032,7 +50033,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXAdditiveExpression_in_rule__XOtherOperatorExpression__Group__0__Impl10917 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group__1__Impl_in_rule__XOtherOperatorExpression__Group__110946 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1__0_in_rule__XOtherOperatorExpression__Group__1__Impl10973 = new BitSet(new long[]{0x0000000001800002L});
-    public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1__0__Impl_in_rule__XOtherOperatorExpression__Group_1__011008 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1__0__Impl_in_rule__XOtherOperatorExpression__Group_1__011008 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1__1_in_rule__XOtherOperatorExpression__Group_1__011011 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1_0__0_in_rule__XOtherOperatorExpression__Group_1__0__Impl11038 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XOtherOperatorExpression__Group_1__1__Impl_in_rule__XOtherOperatorExpression__Group_1__111068 = new BitSet(new long[]{0x0000000000000002L});
@@ -50048,7 +50049,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_rule__XAdditiveExpression__Group__0__Impl11340 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAdditiveExpression__Group__1__Impl_in_rule__XAdditiveExpression__Group__111369 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1__0_in_rule__XAdditiveExpression__Group__1__Impl11396 = new BitSet(new long[]{0x0000000006000002L});
-    public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1__0__Impl_in_rule__XAdditiveExpression__Group_1__011431 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1__0__Impl_in_rule__XAdditiveExpression__Group_1__011431 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1__1_in_rule__XAdditiveExpression__Group_1__011434 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1_0__0_in_rule__XAdditiveExpression__Group_1__0__Impl11461 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAdditiveExpression__Group_1__1__Impl_in_rule__XAdditiveExpression__Group_1__111491 = new BitSet(new long[]{0x0000000000000002L});
@@ -50064,7 +50065,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXUnaryOperation_in_rule__XMultiplicativeExpression__Group__0__Impl11763 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group__1__Impl_in_rule__XMultiplicativeExpression__Group__111792 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1__0_in_rule__XMultiplicativeExpression__Group__1__Impl11819 = new BitSet(new long[]{0x0000000078000002L});
-    public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1__0__Impl_in_rule__XMultiplicativeExpression__Group_1__011854 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1__0__Impl_in_rule__XMultiplicativeExpression__Group_1__011854 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1__1_in_rule__XMultiplicativeExpression__Group_1__011857 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1_0__0_in_rule__XMultiplicativeExpression__Group_1__0__Impl11884 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__Group_1__1__Impl_in_rule__XMultiplicativeExpression__Group_1__111914 = new BitSet(new long[]{0x0000000000000002L});
@@ -50077,7 +50078,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1_in_rule__XMultiplicativeExpression__Group_1_0_0__1__Impl12122 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__0__Impl_in_rule__XUnaryOperation__Group_0__012156 = new BitSet(new long[]{0x0000000086000000L});
     public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__1_in_rule__XUnaryOperation__Group_0__012159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__1__Impl_in_rule__XUnaryOperation__Group_0__112217 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__1__Impl_in_rule__XUnaryOperation__Group_0__112217 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__2_in_rule__XUnaryOperation__Group_0__112220 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XUnaryOperation__FeatureAssignment_0_1_in_rule__XUnaryOperation__Group_0__1__Impl12247 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XUnaryOperation__Group_0__2__Impl_in_rule__XUnaryOperation__Group_0__212277 = new BitSet(new long[]{0x0000000000000002L});
@@ -50087,7 +50088,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_rule__XCastedExpression__Group__0__Impl12370 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCastedExpression__Group__1__Impl_in_rule__XCastedExpression__Group__112399 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCastedExpression__Group_1__0_in_rule__XCastedExpression__Group__1__Impl12426 = new BitSet(new long[]{0x0002000000000002L});
-    public static final BitSet FOLLOW_rule__XCastedExpression__Group_1__0__Impl_in_rule__XCastedExpression__Group_1__012461 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XCastedExpression__Group_1__0__Impl_in_rule__XCastedExpression__Group_1__012461 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XCastedExpression__Group_1__1_in_rule__XCastedExpression__Group_1__012464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCastedExpression__Group_1_0__0_in_rule__XCastedExpression__Group_1__0__Impl12491 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCastedExpression__Group_1__1__Impl_in_rule__XCastedExpression__Group_1__112521 = new BitSet(new long[]{0x0000000000000002L});
@@ -50103,7 +50104,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleXPrimaryExpression_in_rule__XMemberFeatureCall__Group__0__Impl12795 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group__1__Impl_in_rule__XMemberFeatureCall__Group__112824 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Alternatives_1_in_rule__XMemberFeatureCall__Group__1__Impl12851 = new BitSet(new long[]{0x0000000100000002L,0x0000000000001800L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_0__0__Impl_in_rule__XMemberFeatureCall__Group_1_0__012886 = new BitSet(new long[]{0xF728494C864001F0L,0x0000000000008003L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_0__0__Impl_in_rule__XMemberFeatureCall__Group_1_0__012886 = new BitSet(new long[]{0xF728244C864001F0L,0x0000000000008003L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_0__1_in_rule__XMemberFeatureCall__Group_1_0__012889 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_0_0__0_in_rule__XMemberFeatureCall__Group_1_0__0__Impl12916 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_0__1__Impl_in_rule__XMemberFeatureCall__Group_1_0__112946 = new BitSet(new long[]{0x0000000000000002L});
@@ -50126,10 +50127,10 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__1__Impl_in_rule__XMemberFeatureCall__Group_1_1__113373 = new BitSet(new long[]{0x0000000000400010L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__2_in_rule__XMemberFeatureCall__Group_1_1__113376 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__0_in_rule__XMemberFeatureCall__Group_1_1__1__Impl13403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__2__Impl_in_rule__XMemberFeatureCall__Group_1_1__213434 = new BitSet(new long[]{0x0000090000000000L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__2__Impl_in_rule__XMemberFeatureCall__Group_1_1__213434 = new BitSet(new long[]{0x0000240000000000L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__3_in_rule__XMemberFeatureCall__Group_1_1__213437 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__FeatureAssignment_1_1_2_in_rule__XMemberFeatureCall__Group_1_1__2__Impl13464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__3__Impl_in_rule__XMemberFeatureCall__Group_1_1__313494 = new BitSet(new long[]{0x0000090000000000L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__3__Impl_in_rule__XMemberFeatureCall__Group_1_1__313494 = new BitSet(new long[]{0x0000240000000000L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__4_in_rule__XMemberFeatureCall__Group_1_1__313497 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__0_in_rule__XMemberFeatureCall__Group_1_1__3__Impl13524 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1__4__Impl_in_rule__XMemberFeatureCall__Group_1_1__413555 = new BitSet(new long[]{0x0000000000000002L});
@@ -50140,274 +50141,274 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_0_0__1_in_rule__XMemberFeatureCall__Group_1_1_0_0__013685 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_0_0__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_0_0__113743 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Alternatives_1_1_0_0_1_in_rule__XMemberFeatureCall__Group_1_1_0_0__1__Impl13770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__013804 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__013804 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__1_in_rule__XMemberFeatureCall__Group_1_1_1__013807 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_rule__XMemberFeatureCall__Group_1_1_1__0__Impl13835 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__113866 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__113866 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__2_in_rule__XMemberFeatureCall__Group_1_1_1__113869 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_1_in_rule__XMemberFeatureCall__Group_1_1_1__1__Impl13896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__2__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__213926 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__2__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__213926 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__3_in_rule__XMemberFeatureCall__Group_1_1_1__213929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__0_in_rule__XMemberFeatureCall__Group_1_1_1__2__Impl13956 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__0_in_rule__XMemberFeatureCall__Group_1_1_1__2__Impl13956 = new BitSet(new long[]{0x0000020000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1__3__Impl_in_rule__XMemberFeatureCall__Group_1_1_1__313987 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__XMemberFeatureCall__Group_1_1_1__3__Impl14015 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_1_2__014054 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_1_2__014054 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__1_in_rule__XMemberFeatureCall__Group_1_1_1_2__014057 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl14085 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_1_2__0__Impl14085 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_1_2__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_1_2__114116 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_1_in_rule__XMemberFeatureCall__Group_1_1_1_2__1__Impl14143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3__014177 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3__014177 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__1_in_rule__XMemberFeatureCall__Group_1_1_3__014180 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_0_in_rule__XMemberFeatureCall__Group_1_1_3__0__Impl14207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_3__114237 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_3__114237 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__2_in_rule__XMemberFeatureCall__Group_1_1_3__114240 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Alternatives_1_1_3_1_in_rule__XMemberFeatureCall__Group_1_1_3__1__Impl14267 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3__2__Impl_in_rule__XMemberFeatureCall__Group_1_1_3__214298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_3__2__Impl14326 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__014363 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_43_in_rule__XMemberFeatureCall__Group_1_1_3__2__Impl14326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__014363 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1__1_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__014366 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_0_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__0__Impl14393 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__114423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__1__Impl14450 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__014485 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0_in_rule__XMemberFeatureCall__Group_1_1_3_1_1__1__Impl14450 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__014485 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__1_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__014488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl14516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__0__Impl14516 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__1__Impl_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__114547 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_1_in_rule__XMemberFeatureCall__Group_1_1_3_1_1_1__1__Impl14574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group__0__Impl_in_rule__XClosure__Group__014608 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_rule__XClosure__Group__0__Impl_in_rule__XClosure__Group__014608 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_rule__XClosure__Group__1_in_rule__XClosure__Group__014611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group__1__Impl_in_rule__XClosure__Group__114669 = new BitSet(new long[]{0xF728494E864001F0L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XClosure__Group__1__Impl_in_rule__XClosure__Group__114669 = new BitSet(new long[]{0xF728244E864001F0L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XClosure__Group__2_in_rule__XClosure__Group__114672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_rule__XClosure__Group__1__Impl14700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group__2__Impl_in_rule__XClosure__Group__214731 = new BitSet(new long[]{0xF728494E864001F0L,0x000000000000E013L});
+    public static final BitSet FOLLOW_45_in_rule__XClosure__Group__1__Impl14700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XClosure__Group__2__Impl_in_rule__XClosure__Group__214731 = new BitSet(new long[]{0xF728244E864001F0L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XClosure__Group__3_in_rule__XClosure__Group__214734 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2__0_in_rule__XClosure__Group__2__Impl14761 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group__3__Impl_in_rule__XClosure__Group__314792 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_rule__XClosure__Group__3__Impl_in_rule__XClosure__Group__314792 = new BitSet(new long[]{0x0000400000000000L});
     public static final BitSet FOLLOW_rule__XClosure__Group__4_in_rule__XClosure__Group__314795 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__ExpressionAssignment_3_in_rule__XClosure__Group__3__Impl14822 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group__4__Impl_in_rule__XClosure__Group__414852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_rule__XClosure__Group__4__Impl14880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_rule__XClosure__Group__4__Impl14880 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2__0__Impl_in_rule__XClosure__Group_2__014921 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0__0_in_rule__XClosure__Group_2__0__Impl14948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group_2_0__0__Impl_in_rule__XClosure__Group_2_0__014980 = new BitSet(new long[]{0x0000010000000010L,0x0000000000002010L});
+    public static final BitSet FOLLOW_rule__XClosure__Group_2_0__0__Impl_in_rule__XClosure__Group_2_0__014980 = new BitSet(new long[]{0x0000040000000010L,0x0000000000002010L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0__1_in_rule__XClosure__Group_2_0__014983 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0__0_in_rule__XClosure__Group_2_0__0__Impl15010 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0__1__Impl_in_rule__XClosure__Group_2_0__115041 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__ExplicitSyntaxAssignment_2_0_1_in_rule__XClosure__Group_2_0__1__Impl15068 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0__0__Impl_in_rule__XClosure__Group_2_0_0__015102 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0__0__Impl_in_rule__XClosure__Group_2_0_0__015102 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0__1_in_rule__XClosure__Group_2_0_0__015105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__DeclaredFormalParametersAssignment_2_0_0_0_in_rule__XClosure__Group_2_0_0__0__Impl15132 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0__1__Impl_in_rule__XClosure__Group_2_0_0__115162 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__0_in_rule__XClosure__Group_2_0_0__1__Impl15189 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__0__Impl_in_rule__XClosure__Group_2_0_0_1__015224 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__0_in_rule__XClosure__Group_2_0_0__1__Impl15189 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__0__Impl_in_rule__XClosure__Group_2_0_0_1__015224 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__1_in_rule__XClosure__Group_2_0_0_1__015227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XClosure__Group_2_0_0_1__0__Impl15255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XClosure__Group_2_0_0_1__0__Impl15255 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__Group_2_0_0_1__1__Impl_in_rule__XClosure__Group_2_0_0_1__115286 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XClosure__DeclaredFormalParametersAssignment_2_0_0_1_1_in_rule__XClosure__Group_2_0_0_1__1__Impl15313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XExpressionInClosure__Group__0__Impl_in_rule__XExpressionInClosure__Group__015347 = new BitSet(new long[]{0xF728494E864001F0L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XExpressionInClosure__Group__0__Impl_in_rule__XExpressionInClosure__Group__015347 = new BitSet(new long[]{0xF728244E864001F0L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__Group__1_in_rule__XExpressionInClosure__Group__015350 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__Group__1__Impl_in_rule__XExpressionInClosure__Group__115408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XExpressionInClosure__Group_1__0_in_rule__XExpressionInClosure__Group__1__Impl15435 = new BitSet(new long[]{0xF728494E864001F2L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XExpressionInClosure__Group_1__0_in_rule__XExpressionInClosure__Group__1__Impl15435 = new BitSet(new long[]{0xF728244E864001F2L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__Group_1__0__Impl_in_rule__XExpressionInClosure__Group_1__015470 = new BitSet(new long[]{0x0004000000000000L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__Group_1__1_in_rule__XExpressionInClosure__Group_1__015473 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__ExpressionsAssignment_1_0_in_rule__XExpressionInClosure__Group_1__0__Impl15500 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XExpressionInClosure__Group_1__1__Impl_in_rule__XExpressionInClosure__Group_1__115530 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_50_in_rule__XExpressionInClosure__Group_1__1__Impl15559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group__0__Impl_in_rule__XShortClosure__Group__015596 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group__0__Impl_in_rule__XShortClosure__Group__015596 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group__1_in_rule__XShortClosure__Group__015599 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0__0_in_rule__XShortClosure__Group__0__Impl15626 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group__1__Impl_in_rule__XShortClosure__Group__115656 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__ExpressionAssignment_1_in_rule__XShortClosure__Group__1__Impl15683 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0__0__Impl_in_rule__XShortClosure__Group_0__015717 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__0_in_rule__XShortClosure__Group_0__0__Impl15744 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__0__Impl_in_rule__XShortClosure__Group_0_0__015776 = new BitSet(new long[]{0x0000010000000010L,0x0000000000002010L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__0__Impl_in_rule__XShortClosure__Group_0_0__015776 = new BitSet(new long[]{0x0000040000000010L,0x0000000000002010L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__1_in_rule__XShortClosure__Group_0_0__015779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__1__Impl_in_rule__XShortClosure__Group_0_0__115837 = new BitSet(new long[]{0x0000010000000010L,0x0000000000002010L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__1__Impl_in_rule__XShortClosure__Group_0_0__115837 = new BitSet(new long[]{0x0000040000000010L,0x0000000000002010L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__2_in_rule__XShortClosure__Group_0_0__115840 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1__0_in_rule__XShortClosure__Group_0_0__1__Impl15867 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0__2__Impl_in_rule__XShortClosure__Group_0_0__215898 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__ExplicitSyntaxAssignment_0_0_2_in_rule__XShortClosure__Group_0_0__2__Impl15925 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1__0__Impl_in_rule__XShortClosure__Group_0_0_1__015961 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1__0__Impl_in_rule__XShortClosure__Group_0_0_1__015961 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1__1_in_rule__XShortClosure__Group_0_0_1__015964 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_0_in_rule__XShortClosure__Group_0_0_1__0__Impl15991 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1__1__Impl_in_rule__XShortClosure__Group_0_0_1__116021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__0_in_rule__XShortClosure__Group_0_0_1__1__Impl16048 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__0__Impl_in_rule__XShortClosure__Group_0_0_1_1__016083 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__0_in_rule__XShortClosure__Group_0_0_1__1__Impl16048 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__0__Impl_in_rule__XShortClosure__Group_0_0_1_1__016083 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__1_in_rule__XShortClosure__Group_0_0_1_1__016086 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XShortClosure__Group_0_0_1_1__0__Impl16114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XShortClosure__Group_0_0_1_1__0__Impl16114 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__Group_0_0_1_1__1__Impl_in_rule__XShortClosure__Group_0_0_1_1__116145 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_1_in_rule__XShortClosure__Group_0_0_1_1__1__Impl16172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__0__Impl_in_rule__XParenthesizedExpression__Group__016206 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__0__Impl_in_rule__XParenthesizedExpression__Group__016206 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__1_in_rule__XParenthesizedExpression__Group__016209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XParenthesizedExpression__Group__0__Impl16237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__1__Impl_in_rule__XParenthesizedExpression__Group__116268 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XParenthesizedExpression__Group__0__Impl16237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__1__Impl_in_rule__XParenthesizedExpression__Group__116268 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__2_in_rule__XParenthesizedExpression__Group__116271 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__XParenthesizedExpression__Group__1__Impl16298 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XParenthesizedExpression__Group__2__Impl_in_rule__XParenthesizedExpression__Group__216327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XParenthesizedExpression__Group__2__Impl16355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XParenthesizedExpression__Group__2__Impl16355 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__0__Impl_in_rule__XIfExpression__Group__016392 = new BitSet(new long[]{0x0008000000000000L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__1_in_rule__XIfExpression__Group__016395 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XIfExpression__Group__1__Impl_in_rule__XIfExpression__Group__116453 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XIfExpression__Group__1__Impl_in_rule__XIfExpression__Group__116453 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__2_in_rule__XIfExpression__Group__116456 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_51_in_rule__XIfExpression__Group__1__Impl16484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XIfExpression__Group__2__Impl_in_rule__XIfExpression__Group__216515 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XIfExpression__Group__2__Impl_in_rule__XIfExpression__Group__216515 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__3_in_rule__XIfExpression__Group__216518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XIfExpression__Group__2__Impl16546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XIfExpression__Group__3__Impl_in_rule__XIfExpression__Group__316577 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XIfExpression__Group__2__Impl16546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XIfExpression__Group__3__Impl_in_rule__XIfExpression__Group__316577 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__4_in_rule__XIfExpression__Group__316580 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__IfAssignment_3_in_rule__XIfExpression__Group__3__Impl16607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XIfExpression__Group__4__Impl_in_rule__XIfExpression__Group__416637 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XIfExpression__Group__4__Impl_in_rule__XIfExpression__Group__416637 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__5_in_rule__XIfExpression__Group__416640 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XIfExpression__Group__4__Impl16668 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XIfExpression__Group__4__Impl16668 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__5__Impl_in_rule__XIfExpression__Group__516699 = new BitSet(new long[]{0x0010000000000000L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__6_in_rule__XIfExpression__Group__516702 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__ThenAssignment_5_in_rule__XIfExpression__Group__5__Impl16729 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group__6__Impl_in_rule__XIfExpression__Group__616759 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group_6__0_in_rule__XIfExpression__Group__6__Impl16786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XIfExpression__Group_6__0__Impl_in_rule__XIfExpression__Group_6__016831 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XIfExpression__Group_6__0__Impl_in_rule__XIfExpression__Group_6__016831 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group_6__1_in_rule__XIfExpression__Group_6__016834 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_52_in_rule__XIfExpression__Group_6__0__Impl16863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__Group_6__1__Impl_in_rule__XIfExpression__Group_6__116895 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XIfExpression__ElseAssignment_6_1_in_rule__XIfExpression__Group_6__1__Impl16922 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__0__Impl_in_rule__XSwitchExpression__Group__016956 = new BitSet(new long[]{0x0020000000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__1_in_rule__XSwitchExpression__Group__016959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group__1__Impl_in_rule__XSwitchExpression__Group__117017 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group__1__Impl_in_rule__XSwitchExpression__Group__117017 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__2_in_rule__XSwitchExpression__Group__117020 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_53_in_rule__XSwitchExpression__Group__1__Impl17048 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__2__Impl_in_rule__XSwitchExpression__Group__217079 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__3_in_rule__XSwitchExpression__Group__217082 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Alternatives_2_in_rule__XSwitchExpression__Group__2__Impl17109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group__3__Impl_in_rule__XSwitchExpression__Group__317139 = new BitSet(new long[]{0x0080050000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group__3__Impl_in_rule__XSwitchExpression__Group__317139 = new BitSet(new long[]{0x0080140000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__4_in_rule__XSwitchExpression__Group__317142 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_38_in_rule__XSwitchExpression__Group__3__Impl17170 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__4__Impl_in_rule__XSwitchExpression__Group__417201 = new BitSet(new long[]{0x0040008000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__5_in_rule__XSwitchExpression__Group__417204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__CasesAssignment_4_in_rule__XSwitchExpression__Group__4__Impl17233 = new BitSet(new long[]{0x0080050000000012L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__CasesAssignment_4_in_rule__XSwitchExpression__Group__4__Impl17245 = new BitSet(new long[]{0x0080050000000012L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__CasesAssignment_4_in_rule__XSwitchExpression__Group__4__Impl17233 = new BitSet(new long[]{0x0080140000000012L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__CasesAssignment_4_in_rule__XSwitchExpression__Group__4__Impl17245 = new BitSet(new long[]{0x0080140000000012L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__5__Impl_in_rule__XSwitchExpression__Group__517278 = new BitSet(new long[]{0x0040008000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__6_in_rule__XSwitchExpression__Group__517281 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__0_in_rule__XSwitchExpression__Group__5__Impl17308 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group__6__Impl_in_rule__XSwitchExpression__Group__617339 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_39_in_rule__XSwitchExpression__Group__6__Impl17367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0__0__Impl_in_rule__XSwitchExpression__Group_2_0__017412 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0__0__Impl_in_rule__XSwitchExpression__Group_2_0__017412 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0__1_in_rule__XSwitchExpression__Group_2_0__017415 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0__0_in_rule__XSwitchExpression__Group_2_0__0__Impl17442 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0__1__Impl_in_rule__XSwitchExpression__Group_2_0__117473 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__SwitchAssignment_2_0_1_in_rule__XSwitchExpression__Group_2_0__1__Impl17500 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0__0__Impl_in_rule__XSwitchExpression__Group_2_0_0__017534 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0_0__0_in_rule__XSwitchExpression__Group_2_0_0__0__Impl17561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0_0__0__Impl_in_rule__XSwitchExpression__Group_2_0_0_0__017593 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0_0__0__Impl_in_rule__XSwitchExpression__Group_2_0_0_0__017593 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0_0__1_in_rule__XSwitchExpression__Group_2_0_0_0__017596 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_0_in_rule__XSwitchExpression__Group_2_0_0_0__0__Impl17623 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_0_0_0__1__Impl_in_rule__XSwitchExpression__Group_2_0_0_0__117653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__XSwitchExpression__Group_2_0_0_0__1__Impl17681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__0__Impl_in_rule__XSwitchExpression__Group_2_1__017716 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_44_in_rule__XSwitchExpression__Group_2_0_0_0__1__Impl17681 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__0__Impl_in_rule__XSwitchExpression__Group_2_1__017716 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__1_in_rule__XSwitchExpression__Group_2_1__017719 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0__0_in_rule__XSwitchExpression__Group_2_1__0__Impl17746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__1__Impl_in_rule__XSwitchExpression__Group_2_1__117776 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__1__Impl_in_rule__XSwitchExpression__Group_2_1__117776 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__2_in_rule__XSwitchExpression__Group_2_1__117779 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__SwitchAssignment_2_1_1_in_rule__XSwitchExpression__Group_2_1__1__Impl17806 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1__2__Impl_in_rule__XSwitchExpression__Group_2_1__217836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XSwitchExpression__Group_2_1__2__Impl17864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XSwitchExpression__Group_2_1__2__Impl17864 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0__0__Impl_in_rule__XSwitchExpression__Group_2_1_0__017901 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__0_in_rule__XSwitchExpression__Group_2_1_0__0__Impl17928 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__0__Impl_in_rule__XSwitchExpression__Group_2_1_0_0__017960 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__1_in_rule__XSwitchExpression__Group_2_1_0_0__017963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XSwitchExpression__Group_2_1_0_0__0__Impl17991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__1__Impl_in_rule__XSwitchExpression__Group_2_1_0_0__118022 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XSwitchExpression__Group_2_1_0_0__0__Impl17991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__1__Impl_in_rule__XSwitchExpression__Group_2_1_0_0__118022 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__2_in_rule__XSwitchExpression__Group_2_1_0_0__118025 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_1_in_rule__XSwitchExpression__Group_2_1_0_0__1__Impl18052 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_2_1_0_0__2__Impl_in_rule__XSwitchExpression__Group_2_1_0_0__218082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__XSwitchExpression__Group_2_1_0_0__2__Impl18110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__0__Impl_in_rule__XSwitchExpression__Group_5__018147 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_44_in_rule__XSwitchExpression__Group_2_1_0_0__2__Impl18110 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__0__Impl_in_rule__XSwitchExpression__Group_5__018147 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__1_in_rule__XSwitchExpression__Group_5__018150 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_54_in_rule__XSwitchExpression__Group_5__0__Impl18178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__1__Impl_in_rule__XSwitchExpression__Group_5__118209 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__1__Impl_in_rule__XSwitchExpression__Group_5__118209 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__2_in_rule__XSwitchExpression__Group_5__118212 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__XSwitchExpression__Group_5__1__Impl18240 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_rule__XSwitchExpression__Group_5__1__Impl18240 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__Group_5__2__Impl_in_rule__XSwitchExpression__Group_5__218271 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XSwitchExpression__DefaultAssignment_5_2_in_rule__XSwitchExpression__Group_5__2__Impl18298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCasePart__Group__0__Impl_in_rule__XCasePart__Group__018334 = new BitSet(new long[]{0x0080050000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XCasePart__Group__0__Impl_in_rule__XCasePart__Group__018334 = new BitSet(new long[]{0x0080140000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XCasePart__Group__1_in_rule__XCasePart__Group__018337 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__TypeGuardAssignment_0_in_rule__XCasePart__Group__0__Impl18364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCasePart__Group__1__Impl_in_rule__XCasePart__Group__118395 = new BitSet(new long[]{0x0080050000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XCasePart__Group__1__Impl_in_rule__XCasePart__Group__118395 = new BitSet(new long[]{0x0080140000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XCasePart__Group__2_in_rule__XCasePart__Group__118398 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__Group_1__0_in_rule__XCasePart__Group__1__Impl18425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCasePart__Group__2__Impl_in_rule__XCasePart__Group__218456 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XCasePart__Group__2__Impl_in_rule__XCasePart__Group__218456 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XCasePart__Group__3_in_rule__XCasePart__Group__218459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__XCasePart__Group__2__Impl18487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_rule__XCasePart__Group__2__Impl18487 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__Group__3__Impl_in_rule__XCasePart__Group__318518 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__ThenAssignment_3_in_rule__XCasePart__Group__3__Impl18545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCasePart__Group_1__0__Impl_in_rule__XCasePart__Group_1__018583 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XCasePart__Group_1__0__Impl_in_rule__XCasePart__Group_1__018583 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XCasePart__Group_1__1_in_rule__XCasePart__Group_1__018586 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_55_in_rule__XCasePart__Group_1__0__Impl18614 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__Group_1__1__Impl_in_rule__XCasePart__Group_1__118645 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCasePart__CaseAssignment_1_1_in_rule__XCasePart__Group_1__1__Impl18672 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__0__Impl_in_rule__XForLoopExpression__Group__018706 = new BitSet(new long[]{0x0100000000000000L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__1_in_rule__XForLoopExpression__Group__018709 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__1__Impl_in_rule__XForLoopExpression__Group__118767 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__1__Impl_in_rule__XForLoopExpression__Group__118767 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__2_in_rule__XForLoopExpression__Group__118770 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_56_in_rule__XForLoopExpression__Group__1__Impl18798 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__2__Impl_in_rule__XForLoopExpression__Group__218829 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__2__Impl_in_rule__XForLoopExpression__Group__218829 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__3_in_rule__XForLoopExpression__Group__218832 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XForLoopExpression__Group__2__Impl18860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__3__Impl_in_rule__XForLoopExpression__Group__318891 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XForLoopExpression__Group__2__Impl18860 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__3__Impl_in_rule__XForLoopExpression__Group__318891 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__4_in_rule__XForLoopExpression__Group__318894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__DeclaredParamAssignment_3_in_rule__XForLoopExpression__Group__3__Impl18921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__4__Impl_in_rule__XForLoopExpression__Group__418951 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__4__Impl_in_rule__XForLoopExpression__Group__418951 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__5_in_rule__XForLoopExpression__Group__418954 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__XForLoopExpression__Group__4__Impl18982 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__5__Impl_in_rule__XForLoopExpression__Group__519013 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_44_in_rule__XForLoopExpression__Group__4__Impl18982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__5__Impl_in_rule__XForLoopExpression__Group__519013 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__6_in_rule__XForLoopExpression__Group__519016 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__ForExpressionAssignment_5_in_rule__XForLoopExpression__Group__5__Impl19043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__6__Impl_in_rule__XForLoopExpression__Group__619073 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XForLoopExpression__Group__6__Impl_in_rule__XForLoopExpression__Group__619073 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__7_in_rule__XForLoopExpression__Group__619076 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XForLoopExpression__Group__6__Impl19104 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XForLoopExpression__Group__6__Impl19104 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__Group__7__Impl_in_rule__XForLoopExpression__Group__719135 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XForLoopExpression__EachExpressionAssignment_7_in_rule__XForLoopExpression__Group__7__Impl19162 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__0__Impl_in_rule__XWhileExpression__Group__019208 = new BitSet(new long[]{0x0200000000000000L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__1_in_rule__XWhileExpression__Group__019211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XWhileExpression__Group__1__Impl_in_rule__XWhileExpression__Group__119269 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XWhileExpression__Group__1__Impl_in_rule__XWhileExpression__Group__119269 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__2_in_rule__XWhileExpression__Group__119272 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_57_in_rule__XWhileExpression__Group__1__Impl19300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XWhileExpression__Group__2__Impl_in_rule__XWhileExpression__Group__219331 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XWhileExpression__Group__2__Impl_in_rule__XWhileExpression__Group__219331 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__3_in_rule__XWhileExpression__Group__219334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XWhileExpression__Group__2__Impl19362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XWhileExpression__Group__3__Impl_in_rule__XWhileExpression__Group__319393 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XWhileExpression__Group__2__Impl19362 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XWhileExpression__Group__3__Impl_in_rule__XWhileExpression__Group__319393 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__4_in_rule__XWhileExpression__Group__319396 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XWhileExpression__PredicateAssignment_3_in_rule__XWhileExpression__Group__3__Impl19423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XWhileExpression__Group__4__Impl_in_rule__XWhileExpression__Group__419453 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XWhileExpression__Group__4__Impl_in_rule__XWhileExpression__Group__419453 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__5_in_rule__XWhileExpression__Group__419456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XWhileExpression__Group__4__Impl19484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XWhileExpression__Group__4__Impl19484 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XWhileExpression__Group__5__Impl_in_rule__XWhileExpression__Group__519515 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XWhileExpression__BodyAssignment_5_in_rule__XWhileExpression__Group__5__Impl19542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__0__Impl_in_rule__XDoWhileExpression__Group__019584 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__1_in_rule__XDoWhileExpression__Group__019587 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__1__Impl_in_rule__XDoWhileExpression__Group__119645 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__1__Impl_in_rule__XDoWhileExpression__Group__119645 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__2_in_rule__XDoWhileExpression__Group__119648 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_58_in_rule__XDoWhileExpression__Group__1__Impl19676 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__2__Impl_in_rule__XDoWhileExpression__Group__219707 = new BitSet(new long[]{0x0200000000000000L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__3_in_rule__XDoWhileExpression__Group__219710 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__BodyAssignment_2_in_rule__XDoWhileExpression__Group__2__Impl19737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__3__Impl_in_rule__XDoWhileExpression__Group__319767 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__3__Impl_in_rule__XDoWhileExpression__Group__319767 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__4_in_rule__XDoWhileExpression__Group__319770 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_57_in_rule__XDoWhileExpression__Group__3__Impl19798 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__4__Impl_in_rule__XDoWhileExpression__Group__419829 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__4__Impl_in_rule__XDoWhileExpression__Group__419829 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__5_in_rule__XDoWhileExpression__Group__419832 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XDoWhileExpression__Group__4__Impl19860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__5__Impl_in_rule__XDoWhileExpression__Group__519891 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XDoWhileExpression__Group__4__Impl19860 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__5__Impl_in_rule__XDoWhileExpression__Group__519891 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__6_in_rule__XDoWhileExpression__Group__519894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__PredicateAssignment_5_in_rule__XDoWhileExpression__Group__5__Impl19921 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XDoWhileExpression__Group__6__Impl_in_rule__XDoWhileExpression__Group__619951 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XDoWhileExpression__Group__6__Impl19979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XBlockExpression__Group__0__Impl_in_rule__XBlockExpression__Group__020024 = new BitSet(new long[]{0x0000404000000000L});
+    public static final BitSet FOLLOW_43_in_rule__XDoWhileExpression__Group__6__Impl19979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XBlockExpression__Group__0__Impl_in_rule__XBlockExpression__Group__020024 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_rule__XBlockExpression__Group__1_in_rule__XBlockExpression__Group__020027 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XBlockExpression__Group__1__Impl_in_rule__XBlockExpression__Group__120085 = new BitSet(new long[]{0xF72849CE864001F0L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XBlockExpression__Group__1__Impl_in_rule__XBlockExpression__Group__120085 = new BitSet(new long[]{0xF72824CE864001F0L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XBlockExpression__Group__2_in_rule__XBlockExpression__Group__120088 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_38_in_rule__XBlockExpression__Group__1__Impl20116 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XBlockExpression__Group__2__Impl_in_rule__XBlockExpression__Group__220147 = new BitSet(new long[]{0xF72849CE864001F0L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XBlockExpression__Group__2__Impl_in_rule__XBlockExpression__Group__220147 = new BitSet(new long[]{0xF72824CE864001F0L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XBlockExpression__Group__3_in_rule__XBlockExpression__Group__220150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XBlockExpression__Group_2__0_in_rule__XBlockExpression__Group__2__Impl20177 = new BitSet(new long[]{0xF728494E864001F2L,0x000000000000E013L});
+    public static final BitSet FOLLOW_rule__XBlockExpression__Group_2__0_in_rule__XBlockExpression__Group__2__Impl20177 = new BitSet(new long[]{0xF728244E864001F2L,0x000000000000E013L});
     public static final BitSet FOLLOW_rule__XBlockExpression__Group__3__Impl_in_rule__XBlockExpression__Group__320208 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_39_in_rule__XBlockExpression__Group__3__Impl20236 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XBlockExpression__Group_2__0__Impl_in_rule__XBlockExpression__Group_2__020275 = new BitSet(new long[]{0x0004000000000000L});
@@ -50417,7 +50418,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_50_in_rule__XBlockExpression__Group_2__1__Impl20364 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__0__Impl_in_rule__XVariableDeclaration__Group__020401 = new BitSet(new long[]{0x0000000200000000L,0x0000000000004000L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__1_in_rule__XVariableDeclaration__Group__020404 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__1__Impl_in_rule__XVariableDeclaration__Group__120462 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__1__Impl_in_rule__XVariableDeclaration__Group__120462 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__2_in_rule__XVariableDeclaration__Group__120465 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Alternatives_1_in_rule__XVariableDeclaration__Group__1__Impl20492 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group__2__Impl_in_rule__XVariableDeclaration__Group__220522 = new BitSet(new long[]{0x0000000000002000L});
@@ -50432,12 +50433,12 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XVariableDeclaration__TypeAssignment_2_0_0_0_in_rule__XVariableDeclaration__Group_2_0_0__0__Impl20737 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_2_0_0__1__Impl_in_rule__XVariableDeclaration__Group_2_0_0__120767 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__NameAssignment_2_0_0_1_in_rule__XVariableDeclaration__Group_2_0_0__1__Impl20794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_3__0__Impl_in_rule__XVariableDeclaration__Group_3__020828 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_3__0__Impl_in_rule__XVariableDeclaration__Group_3__020828 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_3__1_in_rule__XVariableDeclaration__Group_3__020831 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_13_in_rule__XVariableDeclaration__Group_3__0__Impl20859 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_3__1__Impl_in_rule__XVariableDeclaration__Group_3__120890 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__RightAssignment_3_1_in_rule__XVariableDeclaration__Group_3__1__Impl20917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmFormalParameter__Group__0__Impl_in_rule__JvmFormalParameter__Group__020951 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JvmFormalParameter__Group__0__Impl_in_rule__JvmFormalParameter__Group__020951 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__JvmFormalParameter__Group__1_in_rule__JvmFormalParameter__Group__020954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmFormalParameter__ParameterTypeAssignment_0_in_rule__JvmFormalParameter__Group__0__Impl20981 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmFormalParameter__Group__1__Impl_in_rule__JvmFormalParameter__Group__121012 = new BitSet(new long[]{0x0000000000000002L});
@@ -50455,46 +50456,46 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XFeatureCall__Group__2__Impl_in_rule__XFeatureCall__Group__221316 = new BitSet(new long[]{0x0000000400400010L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group__3_in_rule__XFeatureCall__Group__221319 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__0_in_rule__XFeatureCall__Group__2__Impl21346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group__3__Impl_in_rule__XFeatureCall__Group__321377 = new BitSet(new long[]{0x0000090000000000L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group__3__Impl_in_rule__XFeatureCall__Group__321377 = new BitSet(new long[]{0x0000240000000000L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group__4_in_rule__XFeatureCall__Group__321380 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__FeatureAssignment_3_in_rule__XFeatureCall__Group__3__Impl21407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group__4__Impl_in_rule__XFeatureCall__Group__421437 = new BitSet(new long[]{0x0000090000000000L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group__4__Impl_in_rule__XFeatureCall__Group__421437 = new BitSet(new long[]{0x0000240000000000L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group__5_in_rule__XFeatureCall__Group__421440 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__0_in_rule__XFeatureCall__Group__4__Impl21467 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group__5__Impl_in_rule__XFeatureCall__Group__521498 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__FeatureCallArgumentsAssignment_5_in_rule__XFeatureCall__Group__5__Impl21525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__0__Impl_in_rule__XFeatureCall__Group_2__021568 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__0__Impl_in_rule__XFeatureCall__Group_2__021568 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__1_in_rule__XFeatureCall__Group_2__021571 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_rule__XFeatureCall__Group_2__0__Impl21599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__1__Impl_in_rule__XFeatureCall__Group_2__121630 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__1__Impl_in_rule__XFeatureCall__Group_2__121630 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__2_in_rule__XFeatureCall__Group_2__121633 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__TypeArgumentsAssignment_2_1_in_rule__XFeatureCall__Group_2__1__Impl21660 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__2__Impl_in_rule__XFeatureCall__Group_2__221690 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__2__Impl_in_rule__XFeatureCall__Group_2__221690 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__3_in_rule__XFeatureCall__Group_2__221693 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__0_in_rule__XFeatureCall__Group_2__2__Impl21720 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__0_in_rule__XFeatureCall__Group_2__2__Impl21720 = new BitSet(new long[]{0x0000020000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2__3__Impl_in_rule__XFeatureCall__Group_2__321751 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__XFeatureCall__Group_2__3__Impl21779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__0__Impl_in_rule__XFeatureCall__Group_2_2__021818 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__0__Impl_in_rule__XFeatureCall__Group_2_2__021818 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__1_in_rule__XFeatureCall__Group_2_2__021821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XFeatureCall__Group_2_2__0__Impl21849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XFeatureCall__Group_2_2__0__Impl21849 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_2_2__1__Impl_in_rule__XFeatureCall__Group_2_2__121880 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__TypeArgumentsAssignment_2_2_1_in_rule__XFeatureCall__Group_2_2__1__Impl21907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__0__Impl_in_rule__XFeatureCall__Group_4__021941 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__0__Impl_in_rule__XFeatureCall__Group_4__021941 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__1_in_rule__XFeatureCall__Group_4__021944 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__ExplicitOperationCallAssignment_4_0_in_rule__XFeatureCall__Group_4__0__Impl21971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__1__Impl_in_rule__XFeatureCall__Group_4__122001 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__1__Impl_in_rule__XFeatureCall__Group_4__122001 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__2_in_rule__XFeatureCall__Group_4__122004 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Alternatives_4_1_in_rule__XFeatureCall__Group_4__1__Impl22031 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4__2__Impl_in_rule__XFeatureCall__Group_4__222062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XFeatureCall__Group_4__2__Impl22090 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1__0__Impl_in_rule__XFeatureCall__Group_4_1_1__022127 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_43_in_rule__XFeatureCall__Group_4__2__Impl22090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1__0__Impl_in_rule__XFeatureCall__Group_4_1_1__022127 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1__1_in_rule__XFeatureCall__Group_4_1_1__022130 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__FeatureCallArgumentsAssignment_4_1_1_0_in_rule__XFeatureCall__Group_4_1_1__0__Impl22157 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1__1__Impl_in_rule__XFeatureCall__Group_4_1_1__122187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__0_in_rule__XFeatureCall__Group_4_1_1__1__Impl22214 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__0__Impl_in_rule__XFeatureCall__Group_4_1_1_1__022249 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__0_in_rule__XFeatureCall__Group_4_1_1__1__Impl22214 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__0__Impl_in_rule__XFeatureCall__Group_4_1_1_1__022249 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__1_in_rule__XFeatureCall__Group_4_1_1_1__022252 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XFeatureCall__Group_4_1_1_1__0__Impl22280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XFeatureCall__Group_4_1_1_1__0__Impl22280 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__Group_4_1_1_1__1__Impl_in_rule__XFeatureCall__Group_4_1_1_1__122311 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFeatureCall__FeatureCallArgumentsAssignment_4_1_1_1_1_in_rule__XFeatureCall__Group_4_1_1_1__1__Impl22338 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__StaticQualifier__Group__0__Impl_in_rule__StaticQualifier__Group__022372 = new BitSet(new long[]{0x0800000000000000L});
@@ -50507,49 +50508,49 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__1__Impl_in_rule__XConstructorCall__Group__122555 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__2_in_rule__XConstructorCall__Group__122558 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_60_in_rule__XConstructorCall__Group__1__Impl22586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group__2__Impl_in_rule__XConstructorCall__Group__222617 = new BitSet(new long[]{0x0000090000400000L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group__2__Impl_in_rule__XConstructorCall__Group__222617 = new BitSet(new long[]{0x0000240000400000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__3_in_rule__XConstructorCall__Group__222620 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__ConstructorAssignment_2_in_rule__XConstructorCall__Group__2__Impl22647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group__3__Impl_in_rule__XConstructorCall__Group__322677 = new BitSet(new long[]{0x0000090000400000L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group__3__Impl_in_rule__XConstructorCall__Group__322677 = new BitSet(new long[]{0x0000240000400000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__4_in_rule__XConstructorCall__Group__322680 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__0_in_rule__XConstructorCall__Group__3__Impl22707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group__4__Impl_in_rule__XConstructorCall__Group__422738 = new BitSet(new long[]{0x0000090000400000L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group__4__Impl_in_rule__XConstructorCall__Group__422738 = new BitSet(new long[]{0x0000240000400000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__5_in_rule__XConstructorCall__Group__422741 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__0_in_rule__XConstructorCall__Group__4__Impl22768 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group__5__Impl_in_rule__XConstructorCall__Group__522799 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__ArgumentsAssignment_5_in_rule__XConstructorCall__Group__5__Impl22826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__0__Impl_in_rule__XConstructorCall__Group_3__022869 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__0__Impl_in_rule__XConstructorCall__Group_3__022869 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__1_in_rule__XConstructorCall__Group_3__022872 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_rule__XConstructorCall__Group_3__0__Impl22901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__1__Impl_in_rule__XConstructorCall__Group_3__122933 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__1__Impl_in_rule__XConstructorCall__Group_3__122933 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__2_in_rule__XConstructorCall__Group_3__122936 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__TypeArgumentsAssignment_3_1_in_rule__XConstructorCall__Group_3__1__Impl22963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__2__Impl_in_rule__XConstructorCall__Group_3__222993 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__2__Impl_in_rule__XConstructorCall__Group_3__222993 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__3_in_rule__XConstructorCall__Group_3__222996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__0_in_rule__XConstructorCall__Group_3__2__Impl23023 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__0_in_rule__XConstructorCall__Group_3__2__Impl23023 = new BitSet(new long[]{0x0000020000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3__3__Impl_in_rule__XConstructorCall__Group_3__323054 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__XConstructorCall__Group_3__3__Impl23082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__0__Impl_in_rule__XConstructorCall__Group_3_2__023121 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__0__Impl_in_rule__XConstructorCall__Group_3_2__023121 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__1_in_rule__XConstructorCall__Group_3_2__023124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XConstructorCall__Group_3_2__0__Impl23152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XConstructorCall__Group_3_2__0__Impl23152 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_3_2__1__Impl_in_rule__XConstructorCall__Group_3_2__123183 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__TypeArgumentsAssignment_3_2_1_in_rule__XConstructorCall__Group_3_2__1__Impl23210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__0__Impl_in_rule__XConstructorCall__Group_4__023244 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__0__Impl_in_rule__XConstructorCall__Group_4__023244 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__1_in_rule__XConstructorCall__Group_4__023247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XConstructorCall__Group_4__0__Impl23276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__1__Impl_in_rule__XConstructorCall__Group_4__123308 = new BitSet(new long[]{0xF7284B4C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_42_in_rule__XConstructorCall__Group_4__0__Impl23276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__1__Impl_in_rule__XConstructorCall__Group_4__123308 = new BitSet(new long[]{0xF7282C4C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__2_in_rule__XConstructorCall__Group_4__123311 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Alternatives_4_1_in_rule__XConstructorCall__Group_4__1__Impl23338 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4__2__Impl_in_rule__XConstructorCall__Group_4__223369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XConstructorCall__Group_4__2__Impl23397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1__0__Impl_in_rule__XConstructorCall__Group_4_1_1__023434 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_43_in_rule__XConstructorCall__Group_4__2__Impl23397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1__0__Impl_in_rule__XConstructorCall__Group_4_1_1__023434 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1__1_in_rule__XConstructorCall__Group_4_1_1__023437 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__ArgumentsAssignment_4_1_1_0_in_rule__XConstructorCall__Group_4_1_1__0__Impl23464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1__1__Impl_in_rule__XConstructorCall__Group_4_1_1__123494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__0_in_rule__XConstructorCall__Group_4_1_1__1__Impl23521 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__0__Impl_in_rule__XConstructorCall__Group_4_1_1_1__023556 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__0_in_rule__XConstructorCall__Group_4_1_1__1__Impl23521 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__0__Impl_in_rule__XConstructorCall__Group_4_1_1_1__023556 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__1_in_rule__XConstructorCall__Group_4_1_1_1__023559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XConstructorCall__Group_4_1_1_1__0__Impl23587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XConstructorCall__Group_4_1_1_1__0__Impl23587 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__Group_4_1_1_1__1__Impl_in_rule__XConstructorCall__Group_4_1_1_1__123618 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_1_in_rule__XConstructorCall__Group_4_1_1_1__1__Impl23645 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XBooleanLiteral__Group__0__Impl_in_rule__XBooleanLiteral__Group__023679 = new BitSet(new long[]{0x0000000800000000L,0x0000000000008000L});
@@ -50568,36 +50569,36 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XStringLiteral__Group__1_in_rule__XStringLiteral__Group__024050 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XStringLiteral__Group__1__Impl_in_rule__XStringLiteral__Group__124108 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XStringLiteral__ValueAssignment_1_in_rule__XStringLiteral__Group__1__Impl24135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__0__Impl_in_rule__XTypeLiteral__Group__024169 = new BitSet(new long[]{0x60000808000001E0L,0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__0__Impl_in_rule__XTypeLiteral__Group__024169 = new BitSet(new long[]{0x60002008000001E0L,0x0000000000008000L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__1_in_rule__XTypeLiteral__Group__024172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__1__Impl_in_rule__XTypeLiteral__Group__124230 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__1__Impl_in_rule__XTypeLiteral__Group__124230 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__2_in_rule__XTypeLiteral__Group__124233 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_62_in_rule__XTypeLiteral__Group__1__Impl24261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__2__Impl_in_rule__XTypeLiteral__Group__224292 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__3_in_rule__XTypeLiteral__Group__224295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XTypeLiteral__Group__2__Impl24323 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__3__Impl_in_rule__XTypeLiteral__Group__324354 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XTypeLiteral__Group__2__Impl24323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XTypeLiteral__Group__3__Impl_in_rule__XTypeLiteral__Group__324354 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__4_in_rule__XTypeLiteral__Group__324357 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__TypeAssignment_3_in_rule__XTypeLiteral__Group__3__Impl24384 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTypeLiteral__Group__4__Impl_in_rule__XTypeLiteral__Group__424414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XTypeLiteral__Group__4__Impl24442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XTypeLiteral__Group__4__Impl24442 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XThrowExpression__Group__0__Impl_in_rule__XThrowExpression__Group__024483 = new BitSet(new long[]{0x8000000000000000L});
     public static final BitSet FOLLOW_rule__XThrowExpression__Group__1_in_rule__XThrowExpression__Group__024486 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XThrowExpression__Group__1__Impl_in_rule__XThrowExpression__Group__124544 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XThrowExpression__Group__1__Impl_in_rule__XThrowExpression__Group__124544 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XThrowExpression__Group__2_in_rule__XThrowExpression__Group__124547 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_63_in_rule__XThrowExpression__Group__1__Impl24575 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XThrowExpression__Group__2__Impl_in_rule__XThrowExpression__Group__224606 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XThrowExpression__ExpressionAssignment_2_in_rule__XThrowExpression__Group__2__Impl24633 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XReturnExpression__Group__0__Impl_in_rule__XReturnExpression__Group__024669 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_rule__XReturnExpression__Group__1_in_rule__XReturnExpression__Group__024672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XReturnExpression__Group__1__Impl_in_rule__XReturnExpression__Group__124730 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XReturnExpression__Group__1__Impl_in_rule__XReturnExpression__Group__124730 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XReturnExpression__Group__2_in_rule__XReturnExpression__Group__124733 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_64_in_rule__XReturnExpression__Group__1__Impl24761 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XReturnExpression__Group__2__Impl_in_rule__XReturnExpression__Group__224792 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XReturnExpression__ExpressionAssignment_2_in_rule__XReturnExpression__Group__2__Impl24819 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__0__Impl_in_rule__XTryCatchFinallyExpression__Group__024856 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__1_in_rule__XTryCatchFinallyExpression__Group__024859 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__1__Impl_in_rule__XTryCatchFinallyExpression__Group__124917 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__1__Impl_in_rule__XTryCatchFinallyExpression__Group__124917 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__2_in_rule__XTryCatchFinallyExpression__Group__124920 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_65_in_rule__XTryCatchFinallyExpression__Group__1__Impl24948 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group__2__Impl_in_rule__XTryCatchFinallyExpression__Group__224979 = new BitSet(new long[]{0x0000000000000000L,0x000000000000000CL});
@@ -50611,28 +50612,28 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_0_in_rule__XTryCatchFinallyExpression__Group_3_0__0__Impl25148 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0__1__Impl_in_rule__XTryCatchFinallyExpression__Group_3_0__125181 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0_1__0_in_rule__XTryCatchFinallyExpression__Group_3_0__1__Impl25208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0_1__0__Impl_in_rule__XTryCatchFinallyExpression__Group_3_0_1__025243 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0_1__0__Impl_in_rule__XTryCatchFinallyExpression__Group_3_0_1__025243 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0_1__1_in_rule__XTryCatchFinallyExpression__Group_3_0_1__025246 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_66_in_rule__XTryCatchFinallyExpression__Group_3_0_1__0__Impl25275 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_0_1__1__Impl_in_rule__XTryCatchFinallyExpression__Group_3_0_1__125307 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_1_in_rule__XTryCatchFinallyExpression__Group_3_0_1__1__Impl25334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_1__0__Impl_in_rule__XTryCatchFinallyExpression__Group_3_1__025368 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_1__0__Impl_in_rule__XTryCatchFinallyExpression__Group_3_1__025368 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_1__1_in_rule__XTryCatchFinallyExpression__Group_3_1__025371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_66_in_rule__XTryCatchFinallyExpression__Group_3_1__0__Impl25399 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__Group_3_1__1__Impl_in_rule__XTryCatchFinallyExpression__Group_3_1__125430 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_1_in_rule__XTryCatchFinallyExpression__Group_3_1__1__Impl25457 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCatchClause__Group__0__Impl_in_rule__XCatchClause__Group__025491 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__XCatchClause__Group__0__Impl_in_rule__XCatchClause__Group__025491 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_rule__XCatchClause__Group__1_in_rule__XCatchClause__Group__025494 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_67_in_rule__XCatchClause__Group__0__Impl25523 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCatchClause__Group__1__Impl_in_rule__XCatchClause__Group__125555 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XCatchClause__Group__1__Impl_in_rule__XCatchClause__Group__125555 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XCatchClause__Group__2_in_rule__XCatchClause__Group__125558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XCatchClause__Group__1__Impl25586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCatchClause__Group__2__Impl_in_rule__XCatchClause__Group__225617 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_42_in_rule__XCatchClause__Group__1__Impl25586 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XCatchClause__Group__2__Impl_in_rule__XCatchClause__Group__225617 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_rule__XCatchClause__Group__3_in_rule__XCatchClause__Group__225620 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCatchClause__DeclaredParamAssignment_2_in_rule__XCatchClause__Group__2__Impl25647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XCatchClause__Group__3__Impl_in_rule__XCatchClause__Group__325677 = new BitSet(new long[]{0xF728494C864001F0L,0x000000000000A013L});
+    public static final BitSet FOLLOW_rule__XCatchClause__Group__3__Impl_in_rule__XCatchClause__Group__325677 = new BitSet(new long[]{0xF728244C864001F0L,0x000000000000A013L});
     public static final BitSet FOLLOW_rule__XCatchClause__Group__4_in_rule__XCatchClause__Group__325680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XCatchClause__Group__3__Impl25708 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XCatchClause__Group__3__Impl25708 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCatchClause__Group__4__Impl_in_rule__XCatchClause__Group__425739 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XCatchClause__ExpressionAssignment_4_in_rule__XCatchClause__Group__4__Impl25766 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__025806 = new BitSet(new long[]{0x0000000100000000L});
@@ -50655,44 +50656,44 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_32_in_rule__Number__Group_1_1__0__Impl26204 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Number__Group_1_1__1__Impl_in_rule__Number__Group_1_1__126235 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Number__Alternatives_1_1_1_in_rule__Number__Group_1_1__1__Impl26262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0__0__Impl_in_rule__JvmTypeReference__Group_0__026296 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0__0__Impl_in_rule__JvmTypeReference__Group_0__026296 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0__1_in_rule__JvmTypeReference__Group_0__026299 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_rule__JvmTypeReference__Group_0__0__Impl26326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0__1__Impl_in_rule__JvmTypeReference__Group_0__126355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1__0_in_rule__JvmTypeReference__Group_0__1__Impl26382 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1__0_in_rule__JvmTypeReference__Group_0__1__Impl26382 = new BitSet(new long[]{0x0000200000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1__0__Impl_in_rule__JvmTypeReference__Group_0_1__026417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__0_in_rule__JvmTypeReference__Group_0_1__0__Impl26444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__0__Impl_in_rule__JvmTypeReference__Group_0_1_0__026476 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__0__Impl_in_rule__JvmTypeReference__Group_0_1_0__026476 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__1_in_rule__JvmTypeReference__Group_0_1_0__026479 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__1__Impl_in_rule__JvmTypeReference__Group_0_1_0__126537 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__1__Impl_in_rule__JvmTypeReference__Group_0_1_0__126537 = new BitSet(new long[]{0x0000400000000000L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__2_in_rule__JvmTypeReference__Group_0_1_0__126540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_rule__JvmTypeReference__Group_0_1_0__1__Impl26568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_rule__JvmTypeReference__Group_0_1_0__1__Impl26568 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group_0_1_0__2__Impl_in_rule__JvmTypeReference__Group_0_1_0__226599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_rule__JvmTypeReference__Group_0_1_0__2__Impl26627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__0__Impl_in_rule__XFunctionTypeRef__Group__026664 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_46_in_rule__JvmTypeReference__Group_0_1_0__2__Impl26627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__0__Impl_in_rule__XFunctionTypeRef__Group__026664 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__1_in_rule__XFunctionTypeRef__Group__026667 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__0_in_rule__XFunctionTypeRef__Group__0__Impl26694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__1__Impl_in_rule__XFunctionTypeRef__Group__126725 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__1__Impl_in_rule__XFunctionTypeRef__Group__126725 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__2_in_rule__XFunctionTypeRef__Group__126728 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__XFunctionTypeRef__Group__1__Impl26756 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group__2__Impl_in_rule__XFunctionTypeRef__Group__226787 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__ReturnTypeAssignment_2_in_rule__XFunctionTypeRef__Group__2__Impl26814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__0__Impl_in_rule__XFunctionTypeRef__Group_0__026850 = new BitSet(new long[]{0x0000030000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__0__Impl_in_rule__XFunctionTypeRef__Group_0__026850 = new BitSet(new long[]{0x00000C0000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__1_in_rule__XFunctionTypeRef__Group_0__026853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XFunctionTypeRef__Group_0__0__Impl26881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__1__Impl_in_rule__XFunctionTypeRef__Group_0__126912 = new BitSet(new long[]{0x0000030000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_42_in_rule__XFunctionTypeRef__Group_0__0__Impl26881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__1__Impl_in_rule__XFunctionTypeRef__Group_0__126912 = new BitSet(new long[]{0x00000C0000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__2_in_rule__XFunctionTypeRef__Group_0__126915 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1__0_in_rule__XFunctionTypeRef__Group_0__1__Impl26942 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0__2__Impl_in_rule__XFunctionTypeRef__Group_0__226973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__XFunctionTypeRef__Group_0__2__Impl27001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1__0__Impl_in_rule__XFunctionTypeRef__Group_0_1__027038 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_43_in_rule__XFunctionTypeRef__Group_0__2__Impl27001 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1__0__Impl_in_rule__XFunctionTypeRef__Group_0_1__027038 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1__1_in_rule__XFunctionTypeRef__Group_0_1__027041 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0_in_rule__XFunctionTypeRef__Group_0_1__0__Impl27068 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1__1__Impl_in_rule__XFunctionTypeRef__Group_0_1__127098 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__0_in_rule__XFunctionTypeRef__Group_0_1__1__Impl27125 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__0__Impl_in_rule__XFunctionTypeRef__Group_0_1_1__027160 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__0_in_rule__XFunctionTypeRef__Group_0_1__1__Impl27125 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__0__Impl_in_rule__XFunctionTypeRef__Group_0_1_1__027160 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__1_in_rule__XFunctionTypeRef__Group_0_1_1__027163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XFunctionTypeRef__Group_0_1_1__0__Impl27191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__XFunctionTypeRef__Group_0_1_1__0__Impl27191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__Group_0_1_1__1__Impl_in_rule__XFunctionTypeRef__Group_0_1_1__127222 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1_in_rule__XFunctionTypeRef__Group_0_1_1__1__Impl27249 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group__0__Impl_in_rule__JvmParameterizedTypeReference__Group__027283 = new BitSet(new long[]{0x0000000000400000L});
@@ -50700,40 +50701,40 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__TypeAssignment_0_in_rule__JvmParameterizedTypeReference__Group__0__Impl27313 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group__1__Impl_in_rule__JvmParameterizedTypeReference__Group__127343 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__0_in_rule__JvmParameterizedTypeReference__Group__1__Impl27370 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__0__Impl_in_rule__JvmParameterizedTypeReference__Group_1__027405 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__0__Impl_in_rule__JvmParameterizedTypeReference__Group_1__027405 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__1_in_rule__JvmParameterizedTypeReference__Group_1__027408 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_rule__JvmParameterizedTypeReference__Group_1__0__Impl27437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__1__Impl_in_rule__JvmParameterizedTypeReference__Group_1__127469 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__1__Impl_in_rule__JvmParameterizedTypeReference__Group_1__127469 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__2_in_rule__JvmParameterizedTypeReference__Group_1__127472 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1_in_rule__JvmParameterizedTypeReference__Group_1__1__Impl27499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__2__Impl_in_rule__JvmParameterizedTypeReference__Group_1__227529 = new BitSet(new long[]{0x0000200000200000L});
+    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__2__Impl_in_rule__JvmParameterizedTypeReference__Group_1__227529 = new BitSet(new long[]{0x0000020000200000L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__3_in_rule__JvmParameterizedTypeReference__Group_1__227532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__0_in_rule__JvmParameterizedTypeReference__Group_1__2__Impl27559 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__0_in_rule__JvmParameterizedTypeReference__Group_1__2__Impl27559 = new BitSet(new long[]{0x0000020000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__3__Impl_in_rule__JvmParameterizedTypeReference__Group_1__327590 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__JvmParameterizedTypeReference__Group_1__3__Impl27618 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl_in_rule__JvmParameterizedTypeReference__Group_1_2__027657 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl_in_rule__JvmParameterizedTypeReference__Group_1_2__027657 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__1_in_rule__JvmParameterizedTypeReference__Group_1_2__027660 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl27688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__JvmParameterizedTypeReference__Group_1_2__0__Impl27688 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1_2__1__Impl_in_rule__JvmParameterizedTypeReference__Group_1_2__127719 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1_in_rule__JvmParameterizedTypeReference__Group_1_2__1__Impl27746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__0__Impl_in_rule__JvmWildcardTypeReference__Group__027780 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__0__Impl_in_rule__JvmWildcardTypeReference__Group__027780 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000030L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__1_in_rule__JvmWildcardTypeReference__Group__027783 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__1__Impl_in_rule__JvmWildcardTypeReference__Group__127841 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__2_in_rule__JvmWildcardTypeReference__Group__127844 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__JvmWildcardTypeReference__Group__1__Impl27872 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Group__2__Impl_in_rule__JvmWildcardTypeReference__Group__227903 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__Alternatives_2_in_rule__JvmWildcardTypeReference__Group__2__Impl27930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmUpperBound__Group__0__Impl_in_rule__JvmUpperBound__Group__027967 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JvmUpperBound__Group__0__Impl_in_rule__JvmUpperBound__Group__027967 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__JvmUpperBound__Group__1_in_rule__JvmUpperBound__Group__027970 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__JvmUpperBound__Group__0__Impl27998 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmUpperBound__Group__1__Impl_in_rule__JvmUpperBound__Group__128029 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmUpperBound__TypeReferenceAssignment_1_in_rule__JvmUpperBound__Group__1__Impl28056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmUpperBoundAnded__Group__0__Impl_in_rule__JvmUpperBoundAnded__Group__028090 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JvmUpperBoundAnded__Group__0__Impl_in_rule__JvmUpperBoundAnded__Group__028090 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__JvmUpperBoundAnded__Group__1_in_rule__JvmUpperBoundAnded__Group__028093 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_71_in_rule__JvmUpperBoundAnded__Group__0__Impl28121 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmUpperBoundAnded__Group__1__Impl_in_rule__JvmUpperBoundAnded__Group__128152 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmUpperBoundAnded__TypeReferenceAssignment_1_in_rule__JvmUpperBoundAnded__Group__1__Impl28179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmLowerBound__Group__0__Impl_in_rule__JvmLowerBound__Group__028213 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JvmLowerBound__Group__0__Impl_in_rule__JvmLowerBound__Group__028213 = new BitSet(new long[]{0x0000040000000010L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__Group__1_in_rule__JvmLowerBound__Group__028216 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_rule__JvmLowerBound__Group__0__Impl28244 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmLowerBound__Group__1__Impl_in_rule__JvmLowerBound__Group__128275 = new BitSet(new long[]{0x0000000000000002L});
@@ -50741,20 +50742,20 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleComponent_in_rule__ServicesFile__ComponentAssignment28343 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Component__PackageNameAssignment_128374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_rule__Component__ImportsAssignment_228405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__Component__NameAssignment_428436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleService_in_rule__Component__ServicesAssignment_628467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_rule__Service__ServiceAssignment_0_028503 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_rule__Service__GetAssignment_0_2_028547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_rule__Service__PostAssignment_0_2_128591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__Service__NameAssignment_128630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_028661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_1_128692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__Service__TypeAssignment_628723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUseDeclaration_in_rule__Service__UsesAssignment_7_128754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUseDeclaration_in_rule__Service__UsesAssignment_7_2_128785 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBlockExpression_in_rule__Service__BodyAssignment_828816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__UseDeclaration__TypeAssignment_028847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__UseDeclaration__NameAssignment_128878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_128436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequireDeclaration_in_rule__Component__RequiresAssignment_3_2_128467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__Component__NameAssignment_528498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleService_in_rule__Component__ServicesAssignment_728529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_rule__Service__ServiceAssignment_0_028565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_rule__Service__GetAssignment_0_2_028609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_rule__Service__PostAssignment_0_2_128653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__Service__NameAssignment_128692 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_028723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__Service__ParamsAssignment_3_1_128754 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__Service__TypeAssignment_628785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBlockExpression_in_rule__Service__BodyAssignment_728816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__RequireDeclaration__TypeAssignment_028847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__RequireDeclaration__NameAssignment_128878 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Import__ImportedNamespaceAssignment_128909 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__XAssignment__FeatureAssignment_0_128944 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXAssignment_in_rule__XAssignment__ValueAssignment_0_328979 = new BitSet(new long[]{0x0000000000000002L});
@@ -50785,7 +50786,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_129860 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_129891 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__XMemberFeatureCall__FeatureAssignment_1_1_229926 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_029966 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_029966 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_030005 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_030036 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_130067 = new BitSet(new long[]{0x0000000000000002L});
@@ -50832,7 +50833,7 @@ public class InternalServicesParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_2_131385 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_2_2_131416 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIdOrSuper_in_rule__XFeatureCall__FeatureAssignment_331451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__XFeatureCall__ExplicitOperationCallAssignment_4_031491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_rule__XFeatureCall__ExplicitOperationCallAssignment_4_031491 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_4_1_031530 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_4_1_1_031561 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_4_1_1_1_131592 = new BitSet(new long[]{0x0000000000000002L});

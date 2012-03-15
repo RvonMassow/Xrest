@@ -28,7 +28,6 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.Service#getUses <em>Uses</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -184,22 +183,6 @@ public interface Service extends EObject
    * @generated
    */
   void setType(JvmTypeReference value);
-
-  /**
-   * Returns the value of the '<em><b>Uses</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.xtext.services.services.UseDeclaration}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Uses</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Uses</em>' containment reference list.
-   * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Uses()
-   * @model containment="true"
-   * @generated
-   */
-  EList<UseDeclaration> getUses();
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.

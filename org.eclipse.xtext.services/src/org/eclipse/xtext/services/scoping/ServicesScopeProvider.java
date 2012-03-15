@@ -23,7 +23,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesFile;
-import org.eclipse.xtext.services.services.UseDeclaration;
+import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
@@ -152,11 +152,11 @@ public class ServicesScopeProvider extends XbaseScopeProvider {
 				XFeatureCall callToThis = XbaseFactory.eINSTANCE.createXFeatureCall();
 				callToThis.setFeature(inferredJvmType);
 				// injected extensions
-				Iterable<UseDeclaration> extensionFields = getExtensions(component);
+				Iterable<RequireDeclaration> extensionFields = getExtensions(component);
 				int extensionPriority = priority + DYNAMIC_EXTENSION_PRIORITY_OFFSET;
 				if (isThis && implicitArgument == null)
 					extensionPriority = DEFAULT_EXTENSION_PRIORITY;
-				for (UseDeclaration extensionField : extensionFields) {
+				for (RequireDeclaration extensionField : extensionFields) {
 					JvmIdentifiableElement dependencyImplicitReceiver = findImplicitReceiverFor(extensionField);
 					XMemberFeatureCall callToDependency = XbaseFactory.eINSTANCE.createXMemberFeatureCall();
 					callToDependency.setMemberCallTarget(EcoreUtil2.clone(callToThis));
@@ -177,12 +177,8 @@ public class ServicesScopeProvider extends XbaseScopeProvider {
 		}
 	}
 
-	protected Iterable<UseDeclaration> getExtensions(Component context) {
-		Set<UseDeclaration> ret = Sets.newHashSet();
-		for(Service s: context.getServices()) {
-			ret.addAll(s.getUses());
-		}
-		return ret;
+	protected Iterable<RequireDeclaration> getExtensions(Component context) {
+		return context.getRequires();
 	}
 
 	protected <T> T getFirstOrNull(Iterable<EObject> elements, Class<T> type) {
@@ -190,7 +186,7 @@ public class ServicesScopeProvider extends XbaseScopeProvider {
 		return iterator.hasNext() ? iterator.next() : null;
 	}
 
-	protected JvmIdentifiableElement findImplicitReceiverFor(UseDeclaration use) {
+	protected JvmIdentifiableElement findImplicitReceiverFor(RequireDeclaration use) {
 		Set<EObject> elements = jvmAssociations.getJvmElements(use);
 		if (!elements.isEmpty()) {
 			final JvmIdentifiableElement field = (JvmIdentifiableElement) elements.iterator().next();

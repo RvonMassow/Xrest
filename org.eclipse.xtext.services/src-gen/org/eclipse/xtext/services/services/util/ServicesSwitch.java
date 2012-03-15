@@ -96,10 +96,10 @@ public class ServicesSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ServicesPackage.USE_DECLARATION:
+      case ServicesPackage.REQUIRE_DECLARATION:
       {
-        UseDeclaration useDeclaration = (UseDeclaration)theEObject;
-        T result = caseUseDeclaration(useDeclaration);
+        RequireDeclaration requireDeclaration = (RequireDeclaration)theEObject;
+        T result = caseRequireDeclaration(requireDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,17 +163,17 @@ public class ServicesSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Use Declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Require Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Use Declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Require Declaration</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseUseDeclaration(UseDeclaration object)
+  public T caseRequireDeclaration(RequireDeclaration object)
   {
     return null;
   }

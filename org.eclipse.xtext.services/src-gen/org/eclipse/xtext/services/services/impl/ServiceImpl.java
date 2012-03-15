@@ -26,7 +26,6 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesPackage;
-import org.eclipse.xtext.services.services.UseDeclaration;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -43,7 +42,6 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -151,16 +149,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * @ordered
    */
   protected JvmTypeReference type;
-
-  /**
-   * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUses()
-   * @generated
-   * @ordered
-   */
-  protected EList<UseDeclaration> uses;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -352,20 +340,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<UseDeclaration> getUses()
-  {
-    if (uses == null)
-    {
-      uses = new EObjectContainmentEList<UseDeclaration>(UseDeclaration.class, this, ServicesPackage.SERVICE__USES);
-    }
-    return uses;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public XExpression getBody()
   {
     return body;
@@ -423,8 +397,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
       case ServicesPackage.SERVICE__TYPE:
         return basicSetType(null, msgs);
-      case ServicesPackage.SERVICE__USES:
-        return ((InternalEList<?>)getUses()).basicRemove(otherEnd, msgs);
       case ServicesPackage.SERVICE__BODY:
         return basicSetBody(null, msgs);
     }
@@ -453,8 +425,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return getParams();
       case ServicesPackage.SERVICE__TYPE:
         return getType();
-      case ServicesPackage.SERVICE__USES:
-        return getUses();
       case ServicesPackage.SERVICE__BODY:
         return getBody();
     }
@@ -491,10 +461,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
       case ServicesPackage.SERVICE__TYPE:
         setType((JvmTypeReference)newValue);
         return;
-      case ServicesPackage.SERVICE__USES:
-        getUses().clear();
-        getUses().addAll((Collection<? extends UseDeclaration>)newValue);
-        return;
       case ServicesPackage.SERVICE__BODY:
         setBody((XExpression)newValue);
         return;
@@ -530,9 +496,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
       case ServicesPackage.SERVICE__TYPE:
         setType((JvmTypeReference)null);
         return;
-      case ServicesPackage.SERVICE__USES:
-        getUses().clear();
-        return;
       case ServicesPackage.SERVICE__BODY:
         setBody((XExpression)null);
         return;
@@ -562,8 +525,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return params != null && !params.isEmpty();
       case ServicesPackage.SERVICE__TYPE:
         return type != null;
-      case ServicesPackage.SERVICE__USES:
-        return uses != null && !uses.isEmpty();
       case ServicesPackage.SERVICE__BODY:
         return body != null;
     }

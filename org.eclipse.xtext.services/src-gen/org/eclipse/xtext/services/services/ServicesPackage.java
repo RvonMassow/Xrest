@@ -116,13 +116,22 @@ public interface ServicesPackage extends EPackage
   int COMPONENT__IMPORTS = 1;
 
   /**
+   * The feature id for the '<em><b>Requires</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__REQUIRES = 2;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__NAME = 2;
+  int COMPONENT__NAME = 3;
 
   /**
    * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -131,7 +140,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT__SERVICES = 3;
+  int COMPONENT__SERVICES = 4;
 
   /**
    * The number of structural features of the '<em>Component</em>' class.
@@ -140,7 +149,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_FEATURE_COUNT = 4;
+  int COMPONENT_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ServiceImpl <em>Service</em>}' class.
@@ -207,22 +216,13 @@ public interface ServicesPackage extends EPackage
   int SERVICE__TYPE = 5;
 
   /**
-   * The feature id for the '<em><b>Uses</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SERVICE__USES = 6;
-
-  /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVICE__BODY = 7;
+  int SERVICE__BODY = 6;
 
   /**
    * The number of structural features of the '<em>Service</em>' class.
@@ -231,17 +231,17 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE_FEATURE_COUNT = 8;
+  int SERVICE_FEATURE_COUNT = 7;
 
   /**
-   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl <em>Use Declaration</em>}' class.
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl <em>Require Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.xtext.services.services.impl.UseDeclarationImpl
-   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getUseDeclaration()
+   * @see org.eclipse.xtext.services.services.impl.RequireDeclarationImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getRequireDeclaration()
    * @generated
    */
-  int USE_DECLARATION = 3;
+  int REQUIRE_DECLARATION = 3;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -250,7 +250,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int USE_DECLARATION__TYPE = 0;
+  int REQUIRE_DECLARATION__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -259,16 +259,16 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int USE_DECLARATION__NAME = 1;
+  int REQUIRE_DECLARATION__NAME = 1;
 
   /**
-   * The number of structural features of the '<em>Use Declaration</em>' class.
+   * The number of structural features of the '<em>Require Declaration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int USE_DECLARATION_FEATURE_COUNT = 2;
+  int REQUIRE_DECLARATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ImportImpl <em>Import</em>}' class.
@@ -351,6 +351,17 @@ public interface ServicesPackage extends EPackage
    * @generated
    */
   EReference getComponent_Imports();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Component#getRequires <em>Requires</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Requires</em>'.
+   * @see org.eclipse.xtext.services.services.Component#getRequires()
+   * @see #getComponent()
+   * @generated
+   */
+  EReference getComponent_Requires();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Component#getName <em>Name</em>}'.
@@ -451,17 +462,6 @@ public interface ServicesPackage extends EPackage
   EReference getService_Type();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Service#getUses <em>Uses</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Uses</em>'.
-   * @see org.eclipse.xtext.services.services.Service#getUses()
-   * @see #getService()
-   * @generated
-   */
-  EReference getService_Uses();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.Service#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -473,36 +473,36 @@ public interface ServicesPackage extends EPackage
   EReference getService_Body();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.UseDeclaration <em>Use Declaration</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.RequireDeclaration <em>Require Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Use Declaration</em>'.
-   * @see org.eclipse.xtext.services.services.UseDeclaration
+   * @return the meta object for class '<em>Require Declaration</em>'.
+   * @see org.eclipse.xtext.services.services.RequireDeclaration
    * @generated
    */
-  EClass getUseDeclaration();
+  EClass getRequireDeclaration();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.UseDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.RequireDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see org.eclipse.xtext.services.services.UseDeclaration#getType()
-   * @see #getUseDeclaration()
+   * @see org.eclipse.xtext.services.services.RequireDeclaration#getType()
+   * @see #getRequireDeclaration()
    * @generated
    */
-  EReference getUseDeclaration_Type();
+  EReference getRequireDeclaration_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.UseDeclaration#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.RequireDeclaration#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.xtext.services.services.UseDeclaration#getName()
-   * @see #getUseDeclaration()
+   * @see org.eclipse.xtext.services.services.RequireDeclaration#getName()
+   * @see #getRequireDeclaration()
    * @generated
    */
-  EAttribute getUseDeclaration_Name();
+  EAttribute getRequireDeclaration_Name();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.services.services.Import <em>Import</em>}'.
@@ -593,6 +593,14 @@ public interface ServicesPackage extends EPackage
     EReference COMPONENT__IMPORTS = eINSTANCE.getComponent_Imports();
 
     /**
+     * The meta object literal for the '<em><b>Requires</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT__REQUIRES = eINSTANCE.getComponent_Requires();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -667,14 +675,6 @@ public interface ServicesPackage extends EPackage
     EReference SERVICE__TYPE = eINSTANCE.getService_Type();
 
     /**
-     * The meta object literal for the '<em><b>Uses</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SERVICE__USES = eINSTANCE.getService_Uses();
-
-    /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -683,14 +683,14 @@ public interface ServicesPackage extends EPackage
     EReference SERVICE__BODY = eINSTANCE.getService_Body();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.UseDeclarationImpl <em>Use Declaration</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl <em>Require Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.xtext.services.services.impl.UseDeclarationImpl
-     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getUseDeclaration()
+     * @see org.eclipse.xtext.services.services.impl.RequireDeclarationImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getRequireDeclaration()
      * @generated
      */
-    EClass USE_DECLARATION = eINSTANCE.getUseDeclaration();
+    EClass REQUIRE_DECLARATION = eINSTANCE.getRequireDeclaration();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -698,7 +698,7 @@ public interface ServicesPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference USE_DECLARATION__TYPE = eINSTANCE.getUseDeclaration_Type();
+    EReference REQUIRE_DECLARATION__TYPE = eINSTANCE.getRequireDeclaration_Type();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -706,7 +706,7 @@ public interface ServicesPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute USE_DECLARATION__NAME = eINSTANCE.getUseDeclaration_Name();
+    EAttribute REQUIRE_DECLARATION__NAME = eINSTANCE.getRequireDeclaration_Name();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.ImportImpl <em>Import</em>}' class.

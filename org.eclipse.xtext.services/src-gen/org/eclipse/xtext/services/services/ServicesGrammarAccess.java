@@ -42,19 +42,29 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPackageNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
 		private final Assignment cImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
-		private final Keyword cComponentKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cNameValidIDParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cServicesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cServicesServiceParserRuleCall_6_0 = (RuleCall)cServicesAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cUsesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cRequiresAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cRequiresRequireDeclarationParserRuleCall_3_1_0 = (RuleCall)cRequiresAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cRequiresAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cRequiresRequireDeclarationParserRuleCall_3_2_1_0 = (RuleCall)cRequiresAssignment_3_2_1.eContents().get(0);
+		private final Keyword cComponentKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cNameValidIDParserRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cServicesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cServicesServiceParserRuleCall_7_0 = (RuleCall)cServicesAssignment_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Component:
-		//	"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" services+=Service* "}";
+		//	"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
+		//	requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" services+=Service* "}"
+		//"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
+		//requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -72,26 +82,50 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		//Import
 		public RuleCall getImportsImportParserRuleCall_2_0() { return cImportsImportParserRuleCall_2_0; }
 
+		//("uses" requires+=RequireDeclaration ("," requires+=RequireDeclaration)*)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"uses"
+		public Keyword getUsesKeyword_3_0() { return cUsesKeyword_3_0; }
+
+		//requires+=RequireDeclaration
+		public Assignment getRequiresAssignment_3_1() { return cRequiresAssignment_3_1; }
+
+		//RequireDeclaration
+		public RuleCall getRequiresRequireDeclarationParserRuleCall_3_1_0() { return cRequiresRequireDeclarationParserRuleCall_3_1_0; }
+
+		//("," requires+=RequireDeclaration)*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//","
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
+
+		//requires+=RequireDeclaration
+		public Assignment getRequiresAssignment_3_2_1() { return cRequiresAssignment_3_2_1; }
+
+		//RequireDeclaration
+		public RuleCall getRequiresRequireDeclarationParserRuleCall_3_2_1_0() { return cRequiresRequireDeclarationParserRuleCall_3_2_1_0; }
+
 		//"component"
-		public Keyword getComponentKeyword_3() { return cComponentKeyword_3; }
+		public Keyword getComponentKeyword_4() { return cComponentKeyword_4; }
 
 		//name=ValidID
-		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_4_0() { return cNameValidIDParserRuleCall_4_0; }
+		public RuleCall getNameValidIDParserRuleCall_5_0() { return cNameValidIDParserRuleCall_5_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		public Keyword getLeftCurlyBracketKeyword_6() { return cLeftCurlyBracketKeyword_6; }
 
 		//services+=Service*
-		public Assignment getServicesAssignment_6() { return cServicesAssignment_6; }
+		public Assignment getServicesAssignment_7() { return cServicesAssignment_7; }
 
 		//Service
-		public RuleCall getServicesServiceParserRuleCall_6_0() { return cServicesServiceParserRuleCall_6_0; }
+		public RuleCall getServicesServiceParserRuleCall_7_0() { return cServicesServiceParserRuleCall_7_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
 	}
 
 	public class ServiceElements extends AbstractParserRuleElementFinder {
@@ -121,26 +155,16 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cTypeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_6_0 = (RuleCall)cTypeAssignment_6.eContents().get(0);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cUsesKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cUsesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cUsesUseDeclarationParserRuleCall_7_1_0 = (RuleCall)cUsesAssignment_7_1.eContents().get(0);
-		private final Group cGroup_7_2 = (Group)cGroup_7.eContents().get(2);
-		private final Keyword cCommaKeyword_7_2_0 = (Keyword)cGroup_7_2.eContents().get(0);
-		private final Assignment cUsesAssignment_7_2_1 = (Assignment)cGroup_7_2.eContents().get(1);
-		private final RuleCall cUsesUseDeclarationParserRuleCall_7_2_1_0 = (RuleCall)cUsesAssignment_7_2_1.eContents().get(0);
-		private final Assignment cBodyAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cBodyXBlockExpressionParserRuleCall_8_0 = (RuleCall)cBodyAssignment_8.eContents().get(0);
+		private final Assignment cBodyAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cBodyXBlockExpressionParserRuleCall_7_0 = (RuleCall)cBodyAssignment_7.eContents().get(0);
 		
 		//Service:
 		//	(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-		//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
-		//	uses+=UseDeclaration)*)? body=XBlockExpression;
+		//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
 		//(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-		//params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
-		//uses+=UseDeclaration)*)? body=XBlockExpression
+		//params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//(service?="service" "[" (get?="GET" | post?="POST") "]")?
@@ -215,46 +239,22 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		//JvmTypeReference
 		public RuleCall getTypeJvmTypeReferenceParserRuleCall_6_0() { return cTypeJvmTypeReferenceParserRuleCall_6_0; }
 
-		//("uses" uses+=UseDeclaration ("," uses+=UseDeclaration)*)?
-		public Group getGroup_7() { return cGroup_7; }
-
-		//"uses"
-		public Keyword getUsesKeyword_7_0() { return cUsesKeyword_7_0; }
-
-		//uses+=UseDeclaration
-		public Assignment getUsesAssignment_7_1() { return cUsesAssignment_7_1; }
-
-		//UseDeclaration
-		public RuleCall getUsesUseDeclarationParserRuleCall_7_1_0() { return cUsesUseDeclarationParserRuleCall_7_1_0; }
-
-		//("," uses+=UseDeclaration)*
-		public Group getGroup_7_2() { return cGroup_7_2; }
-
-		//","
-		public Keyword getCommaKeyword_7_2_0() { return cCommaKeyword_7_2_0; }
-
-		//uses+=UseDeclaration
-		public Assignment getUsesAssignment_7_2_1() { return cUsesAssignment_7_2_1; }
-
-		//UseDeclaration
-		public RuleCall getUsesUseDeclarationParserRuleCall_7_2_1_0() { return cUsesUseDeclarationParserRuleCall_7_2_1_0; }
-
 		//body=XBlockExpression
-		public Assignment getBodyAssignment_8() { return cBodyAssignment_8; }
+		public Assignment getBodyAssignment_7() { return cBodyAssignment_7; }
 
 		//XBlockExpression
-		public RuleCall getBodyXBlockExpressionParserRuleCall_8_0() { return cBodyXBlockExpressionParserRuleCall_8_0; }
+		public RuleCall getBodyXBlockExpressionParserRuleCall_7_0() { return cBodyXBlockExpressionParserRuleCall_7_0; }
 	}
 
-	public class UseDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UseDeclaration");
+	public class RequireDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RequireDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//UseDeclaration:
+		//RequireDeclaration:
 		//	type=JvmTypeReference name=ID?;
 		public ParserRule getRule() { return rule; }
 
@@ -302,7 +302,7 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	private ServicesFileElements pServicesFile;
 	private ComponentElements pComponent;
 	private ServiceElements pService;
-	private UseDeclarationElements pUseDeclaration;
+	private RequireDeclarationElements pRequireDeclaration;
 	private ImportElements pImport;
 	
 	private final GrammarProvider grammarProvider;
@@ -337,7 +337,8 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Component:
-	//	"package" packageName=QualifiedName imports+=Import* "component" name=ValidID "{" services+=Service* "}";
+	//	"package" packageName=QualifiedName imports+=Import* ("uses" requires+=RequireDeclaration (","
+	//	requires+=RequireDeclaration)*)? "component" name=ValidID "{" services+=Service* "}";
 	public ComponentElements getComponentAccess() {
 		return (pComponent != null) ? pComponent : (pComponent = new ComponentElements());
 	}
@@ -348,8 +349,7 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Service:
 	//	(service?="service" "[" (get?="GET" | post?="POST") "]")? name=ValidID "(" (params+=FullJvmFormalParameter (","
-	//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference ("uses" uses+=UseDeclaration (","
-	//	uses+=UseDeclaration)*)? body=XBlockExpression;
+	//	params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference body=XBlockExpression;
 	public ServiceElements getServiceAccess() {
 		return (pService != null) ? pService : (pService = new ServiceElements());
 	}
@@ -358,14 +358,14 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		return getServiceAccess().getRule();
 	}
 
-	//UseDeclaration:
+	//RequireDeclaration:
 	//	type=JvmTypeReference name=ID?;
-	public UseDeclarationElements getUseDeclarationAccess() {
-		return (pUseDeclaration != null) ? pUseDeclaration : (pUseDeclaration = new UseDeclarationElements());
+	public RequireDeclarationElements getRequireDeclarationAccess() {
+		return (pRequireDeclaration != null) ? pRequireDeclaration : (pRequireDeclaration = new RequireDeclarationElements());
 	}
 	
-	public ParserRule getUseDeclarationRule() {
-		return getUseDeclarationAccess().getRule();
+	public ParserRule getRequireDeclarationRule() {
+		return getRequireDeclarationAccess().getRule();
 	}
 
 	//Import:

@@ -15,6 +15,7 @@
     <genClasses ecoreClass="Services.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/requires"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Component/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/services"/>
     </genClasses>
@@ -25,12 +26,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/uses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/body"/>
     </genClasses>
-    <genClasses ecoreClass="Services.ecore#//UseDeclaration">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//UseDeclaration/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//UseDeclaration/name"/>
+    <genClasses ecoreClass="Services.ecore#//RequireDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//RequireDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//RequireDeclaration/name"/>
     </genClasses>
     <genClasses ecoreClass="Services.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Import/importedNamespace"/>
