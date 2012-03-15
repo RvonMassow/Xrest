@@ -9,7 +9,6 @@ package org.eclipse.xtext.example.domainmodel.validation;
 
 import static com.google.common.collect.Lists.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -67,13 +66,14 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
 //    					property.getType().getQualifiedName());
 //    		}
 //    	} else 
-    		if(!Serializable.class.isAssignableFrom(clazz)) {
-    		warning("Invalid type, must be primitive, List, subclass of java.io.Serializable or Entity itself", 
-            		DomainmodelPackage.Literals.FEATURE__TYPE,
-            		ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-            		IssueCodes.INVALID_FEATURE_TYPE,
-            		property.getType().getQualifiedName());
-    	}
+//    	TODO: fix
+//    		if(!Serializable.class.isAssignableFrom(clazz)) {
+//    		warning("Invalid type, must be primitive, List, subclass of java.io.Serializable or Entity itself", 
+//            		DomainmodelPackage.Literals.FEATURE__TYPE,
+//            		ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+//            		IssueCodes.INVALID_FEATURE_TYPE,
+//            		property.getType().getQualifiedName());
+//    	}
     }
     
     @Check

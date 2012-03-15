@@ -156,14 +156,12 @@ public class ServicesScopeProvider extends XbaseScopeProvider {
 				int extensionPriority = priority + DYNAMIC_EXTENSION_PRIORITY_OFFSET;
 				if (isThis && implicitArgument == null)
 					extensionPriority = DEFAULT_EXTENSION_PRIORITY;
-//				boolean isStatic = isStaticContext(((SimpleAcceptor)acceptor).getExpression());
 				for (UseDeclaration extensionField : extensionFields) {
 					JvmIdentifiableElement dependencyImplicitReceiver = findImplicitReceiverFor(extensionField);
 					XMemberFeatureCall callToDependency = XbaseFactory.eINSTANCE.createXMemberFeatureCall();
 					callToDependency.setMemberCallTarget(EcoreUtil2.clone(callToThis));
 					callToDependency.setFeature(dependencyImplicitReceiver);
 					if (dependencyImplicitReceiver != null) {
-						// TODO replace by provider
 						ServiceUseProvider extensionFeatureProvider = provider.get();
 						extensionFeatureProvider.setContext(extensionField.getType());
 						extensionFeatureProvider.setExpectNoParameters(isThis);
