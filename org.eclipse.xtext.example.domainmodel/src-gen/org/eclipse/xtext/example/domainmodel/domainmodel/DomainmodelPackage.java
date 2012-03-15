@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel;
 
@@ -237,22 +238,13 @@ public interface DomainmodelPackage extends EPackage
   int FEATURE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE__TYPE = 1;
-
-  /**
    * The number of structural features of the '<em>Feature</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE_FEATURE_COUNT = 2;
+  int FEATURE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl <em>Property</em>}' class.
@@ -274,15 +266,6 @@ public interface DomainmodelPackage extends EPackage
   int PROPERTY__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__TYPE = FEATURE__TYPE;
-
-  /**
    * The feature id for the '<em><b>Derive</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -292,13 +275,22 @@ public interface DomainmodelPackage extends EPackage
   int PROPERTY__DERIVE = FEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__TYPE = FEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Mapped By</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__MAPPED_BY = FEATURE_FEATURE_COUNT + 1;
+  int PROPERTY__MAPPED_BY = FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -307,7 +299,7 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl <em>Operation</em>}' class.
@@ -329,31 +321,13 @@ public interface DomainmodelPackage extends EPackage
   int OPERATION__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__TYPE = FEATURE__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__PARAMS = FEATURE_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__BODY = FEATURE_FEATURE_COUNT + 1;
+  int OPERATION__BODY = FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Operation</em>' class.
@@ -362,7 +336,81 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
+  int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.ValidateImpl <em>Validate</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.ValidateImpl
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getValidate()
+   * @generated
+   */
+  int VALIDATE = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATE__NAME = OPERATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATE__BODY = OPERATION__BODY;
+
+  /**
+   * The number of structural features of the '<em>Validate</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl <em>Derive</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getDerive()
+   * @generated
+   */
+  int DERIVE = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVE__NAME = OPERATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVE__BODY = OPERATION__BODY;
+
+  /**
+   * The number of structural features of the '<em>Derive</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DERIVE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
 
 
   /**
@@ -514,17 +562,6 @@ public interface DomainmodelPackage extends EPackage
   EAttribute getFeature_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Feature#getType()
-   * @see #getFeature()
-   * @generated
-   */
-  EReference getFeature_Type();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -544,6 +581,17 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    */
   EAttribute getProperty_Derive();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Type();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getMappedBy <em>Mapped By</em>}'.
@@ -567,17 +615,6 @@ public interface DomainmodelPackage extends EPackage
   EClass getOperation();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Operation#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Operation#getParams()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Params();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Operation#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -587,6 +624,26 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    */
   EReference getOperation_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Validate <em>Validate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Validate</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Validate
+   * @generated
+   */
+  EClass getValidate();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Derive <em>Derive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Derive</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Derive
+   * @generated
+   */
+  EClass getDerive();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -736,14 +793,6 @@ public interface DomainmodelPackage extends EPackage
     EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FEATURE__TYPE = eINSTANCE.getFeature_Type();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -760,6 +809,14 @@ public interface DomainmodelPackage extends EPackage
      * @generated
      */
     EAttribute PROPERTY__DERIVE = eINSTANCE.getProperty_Derive();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
     /**
      * The meta object literal for the '<em><b>Mapped By</b></em>' reference feature.
@@ -780,20 +837,32 @@ public interface DomainmodelPackage extends EPackage
     EClass OPERATION = eINSTANCE.getOperation();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__PARAMS = eINSTANCE.getOperation_Params();
-
-    /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference OPERATION__BODY = eINSTANCE.getOperation_Body();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.ValidateImpl <em>Validate</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.ValidateImpl
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getValidate()
+     * @generated
+     */
+    EClass VALIDATE = eINSTANCE.getValidate();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl <em>Derive</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getDerive()
+     * @generated
+     */
+    EClass DERIVE = eINSTANCE.getDerive();
 
   }
 

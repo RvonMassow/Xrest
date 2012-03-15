@@ -39,11 +39,11 @@ Operation:
 	Validate | Derive;
 
 Validate:
-	'op' name='validate'
+	 name='validate'
 		body=XBlockExpression;
 
 Derive:
-	 name='derive' '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' ':' type=JvmTypeReference 
+	 name='derive' 
 		body=XBlockExpression;
 
 QualifiedNameWithWildCard :

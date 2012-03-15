@@ -2,25 +2,17 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
@@ -34,7 +26,6 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.OperationImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -43,16 +34,6 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public class OperationImpl extends FeatureImpl implements Operation
 {
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected EList<JvmFormalParameter> params;
-
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,20 +63,6 @@ public class OperationImpl extends FeatureImpl implements Operation
   protected EClass eStaticClass()
   {
     return DomainmodelPackage.Literals.OPERATION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<JvmFormalParameter> getParams()
-  {
-    if (params == null)
-    {
-      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, DomainmodelPackage.OPERATION__PARAMS);
-    }
-    return params;
   }
 
   /**
@@ -156,8 +123,6 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
-      case DomainmodelPackage.OPERATION__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
       case DomainmodelPackage.OPERATION__BODY:
         return basicSetBody(null, msgs);
     }
@@ -174,8 +139,6 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
-      case DomainmodelPackage.OPERATION__PARAMS:
-        return getParams();
       case DomainmodelPackage.OPERATION__BODY:
         return getBody();
     }
@@ -187,16 +150,11 @@ public class OperationImpl extends FeatureImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DomainmodelPackage.OPERATION__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends JvmFormalParameter>)newValue);
-        return;
       case DomainmodelPackage.OPERATION__BODY:
         setBody((XExpression)newValue);
         return;
@@ -214,9 +172,6 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
-      case DomainmodelPackage.OPERATION__PARAMS:
-        getParams().clear();
-        return;
       case DomainmodelPackage.OPERATION__BODY:
         setBody((XExpression)null);
         return;
@@ -234,8 +189,6 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
-      case DomainmodelPackage.OPERATION__PARAMS:
-        return params != null && !params.isEmpty();
       case DomainmodelPackage.OPERATION__BODY:
         return body != null;
     }

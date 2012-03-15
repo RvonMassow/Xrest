@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +17,7 @@ package org.eclipse.xtext.example.domainmodel.domainmodel;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive <em>Derive</em>}</li>
+ *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getMappedBy <em>Mapped By</em>}</li>
  * </ul>
  * </p>
@@ -50,6 +53,32 @@ public interface Property extends Feature
    * @generated
    */
   void setDerive(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(JvmTypeReference)
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage#getProperty_Type()
+   * @model containment="true"
+   * @generated
+   */
+  JvmTypeReference getType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(JvmTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Mapped By</b></em>' reference.

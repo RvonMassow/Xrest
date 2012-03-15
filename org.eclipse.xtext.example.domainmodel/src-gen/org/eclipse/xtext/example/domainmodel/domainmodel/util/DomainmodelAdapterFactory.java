@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel.util;
 
@@ -116,6 +117,16 @@ public class DomainmodelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseOperation(Operation object)
       {
         return createOperationAdapter();
+      }
+      @Override
+      public Adapter caseValidate(Validate object)
+      {
+        return createValidateAdapter();
+      }
+      @Override
+      public Adapter caseDerive(Derive object)
+      {
+        return createDeriveAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -255,6 +266,36 @@ public class DomainmodelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Validate <em>Validate</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Validate
+   * @generated
+   */
+  public Adapter createValidateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Derive <em>Derive</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Derive
+   * @generated
+   */
+  public Adapter createDeriveAdapter()
   {
     return null;
   }

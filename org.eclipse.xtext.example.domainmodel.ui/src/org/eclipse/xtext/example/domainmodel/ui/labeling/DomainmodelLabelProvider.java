@@ -58,14 +58,14 @@ public class DomainmodelLabelProvider extends DefaultEObjectLabelProvider {
 		builder.append(notNull(operation.getName()));
 		builder.append("(");
 		boolean isFirst = true;
-		for(JvmFormalParameter param: operation.getParams()) {
-			if(!isFirst)
-				builder.append(", ");
-			isFirst = false;
-			append(builder, param.getParameterType());
-		}
+//		for(JvmFormalParameter param: operation.getParams()) {
+//			if(!isFirst)
+//				builder.append(", ");
+//			isFirst = false;
+//			append(builder, param.getParameterType());
+//		}
 		builder.append(") : ");
-		append(builder, operation.getType());
+//		append(builder, operation.getType());
 		return builder.toString();
 	}
 	

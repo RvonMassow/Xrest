@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.example.domainmodel.domainmodel;
 
@@ -96,6 +97,24 @@ public interface DomainmodelFactory extends EFactory
    * @generated
    */
   Operation createOperation();
+
+  /**
+   * Returns a new object of class '<em>Validate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validate</em>'.
+   * @generated
+   */
+  Validate createValidate();
+
+  /**
+   * Returns a new object of class '<em>Derive</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Derive</em>'.
+   * @generated
+   */
+  Derive createDerive();
 
   /**
    * Returns the package supported by this factory.

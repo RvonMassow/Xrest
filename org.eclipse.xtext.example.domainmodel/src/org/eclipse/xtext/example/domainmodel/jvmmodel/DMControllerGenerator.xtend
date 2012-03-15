@@ -27,7 +27,7 @@ class DMControllerGenerator {
 				annotations += e.createPathAnnotation(
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
-				members += e.toConstructor(simpleName) [
+				members += e.toConstructor() [
 					setBody [
 						trace(e)
 						append(

@@ -85,7 +85,7 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                     String _name = p.getName();
                     JvmTypeReference _parameterType = p.getParameterType();
                     JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name, _parameterType);
-                    _parameters.add(_parameter);
+                    ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
                   }
                   EList<UseDeclaration> _uses = service.getUses();
                   Iterables.<UseDeclaration>addAll(injectedMembers, _uses);
@@ -94,7 +94,7 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                 }
               };
             JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _name, _type, _function);
-            _members.add(_method);
+            ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
           }
           for (final UseDeclaration injectedMember : injectedMembers) {
             {
@@ -117,11 +117,11 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                   public void apply(final JvmField it) {
                     EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                     JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(injectedMember, "javax.inject.Inject");
-                    _annotations.add(_annotation);
+                    ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
                   }
                 };
               JvmField _field = ServicesJvmModelInferrer.this._jvmTypesBuilder.toField(injectedMember, name, _type_2, _function_1);
-              _members_1.add(_field);
+              ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmField>operator_add(_members_1, _field);
             }
           }
         }
@@ -132,8 +132,10 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
   public void infer(final EObject component, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
     if (component instanceof Component) {
       _infer((Component)component, acceptor, isPrelinkingPhase);
+      return;
     } else if (component != null) {
       _infer(component, acceptor, isPrelinkingPhase);
+      return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(component, acceptor, isPrelinkingPhase).toString());
