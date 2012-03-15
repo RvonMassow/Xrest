@@ -7,28 +7,26 @@ package org.eclipse.xtext.example.domainmodel.domainmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.example.domainmodel.domainmodel.AbstractElement;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Validate;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Element</b></em>'.
+ * An implementation of the model object '<em><b>Validate</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AbstractElementImpl extends MinimalEObjectImpl.Container implements AbstractElement
+public class ValidateImpl extends OperationImpl implements Validate
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AbstractElementImpl()
+  protected ValidateImpl()
   {
     super();
   }
@@ -41,7 +39,7 @@ public class AbstractElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DomainmodelPackage.Literals.ABSTRACT_ELEMENT;
+    return DomainmodelPackage.Literals.VALIDATE;
   }
 
-} //AbstractElementImpl
+} //ValidateImpl

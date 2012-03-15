@@ -48762,8 +48762,8 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
     static final String DFA54_specialS =
         "\1\uffff\1\0\76\uffff}>";
     static final String[] DFA54_transitionS = {
-            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff"+
-            "\11\2\2\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff\11"+
+            "\2\2\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -49195,8 +49195,8 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
     static final String DFA78_specialS =
         "\1\uffff\1\0\76\uffff}>";
     static final String[] DFA78_transitionS = {
-            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff"+
-            "\11\2\2\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff\11"+
+            "\2\2\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -49612,8 +49612,8 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
     static final String DFA84_specialS =
         "\1\uffff\1\0\76\uffff}>";
     static final String[] DFA84_transitionS = {
-            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff"+
-            "\11\2\2\uffff\2\2\1\uffff\2\2",
+            "\5\2\5\uffff\30\2\2\uffff\2\2\2\uffff\5\2\1\1\13\2\1\uffff\11"+
+            "\2\2\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
             "",
             "",
@@ -49749,9 +49749,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
     static final String DFA88_acceptS =
         "\35\uffff\1\2\41\uffff\1\1";
     static final String DFA88_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
-        "\1\31\1\32\1\33\43\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
+        "\1\32\1\33\43\uffff}>";
     static final String[] DFA88_transitionS = {
             "\1\1\1\17\1\20\1\21\1\23\5\uffff\3\35\1\2\1\3\5\35\1\12\2\35"+
             "\1\6\1\5\4\35\1\4\2\35\1\13\1\15\2\uffff\1\10\1\35\2\uffff\5"+

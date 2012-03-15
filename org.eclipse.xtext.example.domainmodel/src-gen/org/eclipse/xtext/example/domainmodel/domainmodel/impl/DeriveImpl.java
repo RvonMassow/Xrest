@@ -7,28 +7,26 @@ package org.eclipse.xtext.example.domainmodel.domainmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.example.domainmodel.domainmodel.AbstractElement;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Derive;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Element</b></em>'.
+ * An implementation of the model object '<em><b>Derive</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AbstractElementImpl extends MinimalEObjectImpl.Container implements AbstractElement
+public class DeriveImpl extends OperationImpl implements Derive
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AbstractElementImpl()
+  protected DeriveImpl()
   {
     super();
   }
@@ -41,7 +39,7 @@ public class AbstractElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DomainmodelPackage.Literals.ABSTRACT_ELEMENT;
+    return DomainmodelPackage.Literals.DERIVE;
   }
 
-} //AbstractElementImpl
+} //DeriveImpl

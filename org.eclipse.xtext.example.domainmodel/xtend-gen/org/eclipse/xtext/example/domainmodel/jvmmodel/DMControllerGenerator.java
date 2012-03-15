@@ -49,8 +49,7 @@ public class DMControllerGenerator {
   @Inject
   private TypeReferences _typeReferences;
   
-  public Object toControllerClass(final Entity e, final JvmGenericType forType, final IJvmDeclaredTypeAcceptor acceptor) {
-    Object _xifexpression = null;
+  public void toControllerClass(final Entity e, final JvmGenericType forType, final IJvmDeclaredTypeAcceptor acceptor) {
     String _name = e.getName();
     boolean _notEquals = (!Objects.equal(_name, null));
     if (_notEquals) {
@@ -73,7 +72,7 @@ public class DMControllerGenerator {
             List<String> _map = ListExtensions.<String, String>map(_segments, _function);
             String _join = IterableExtensions.join(_map, "/");
             JvmAnnotationReference _createPathAnnotation = DMControllerGenerator.this.createPathAnnotation(e, _join);
-            _annotations.add(_createPathAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPathAnnotation);
             EList<JvmMember> _members = it.getMembers();
             final Procedure1<JvmConstructor> _function_1 = new Procedure1<JvmConstructor>() {
                 public void apply(final JvmConstructor it) {
@@ -90,30 +89,29 @@ public class DMControllerGenerator {
                 }
               };
             JvmConstructor _constructor = DMControllerGenerator.this._jvmTypesBuilder.toConstructor(e, _function_1);
-            _members.add(_constructor);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmConstructor>operator_add(_members, _constructor);
             EList<JvmMember> _members_1 = it.getMembers();
             JvmField _injectedEntityManagerFactory = DMControllerGenerator.this.injectedEntityManagerFactory(e);
-            _members_1.add(_injectedEntityManagerFactory);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmField>operator_add(_members_1, _injectedEntityManagerFactory);
             EList<JvmMember> _members_2 = it.getMembers();
             JvmOperation _createJsonPut = DMControllerGenerator.this.createJsonPut(forType, e);
-            _members_2.add(_createJsonPut);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _createJsonPut);
             EList<JvmMember> _members_3 = it.getMembers();
             JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
-            _members_3.add(_createDelete);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _createDelete);
             EList<JvmMember> _members_4 = it.getMembers();
             JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
-            _members_4.add(_createJsonGetById);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _createJsonGetById);
             EList<JvmMember> _members_5 = it.getMembers();
             JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
-            _members_5.add(_createJsonPost);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _createJsonPost);
             EList<JvmMember> _members_6 = it.getMembers();
             JvmOperation _createJsonGetAll = DMControllerGenerator.this.createJsonGetAll(forType, e);
-            _members_6.add(_createJsonGetAll);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _createJsonGetAll);
           }
         };
       _accept.initializeLater(_function);
     }
-    return _xifexpression;
   }
   
   private JvmField injectedEntityManagerFactory(final Entity e) {
@@ -137,24 +135,24 @@ public class DMControllerGenerator {
             it.setVisibility(JvmVisibility.PUBLIC);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this.createGetAnnotation(e);
-            _annotations.add(_createGetAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this.createProducesAnnotation(e, "application/json");
-            _annotations_1.add(_createProducesAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
             EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
             JvmAnnotationReference _createPathAnnotation = DMControllerGenerator.this.createPathAnnotation(e, "{id}");
-            _annotations_2.add(_createPathAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _createPathAnnotation);
             EList<JvmFormalParameter> _parameters = it.getParameters();
             JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
             final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
                 public void apply(final JvmFormalParameter it) {
                   EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                   JvmAnnotationReference _createPathParamAnnotation = DMControllerGenerator.this.createPathParamAnnotation(e, "id");
-                  _annotations.add(_createPathParamAnnotation);
+                  DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPathParamAnnotation);
                 }
               };
             JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
-            _parameters.add(_parameter);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
             final Procedure1<ITreeAppendable> _function_1 = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
@@ -213,10 +211,10 @@ public class DMControllerGenerator {
             it.setVisibility(JvmVisibility.PUBLIC);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this.createGetAnnotation(e);
-            _annotations.add(_createGetAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this.createProducesAnnotation(e, "application/json");
-            _annotations_1.add(_createProducesAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
@@ -266,10 +264,10 @@ public class DMControllerGenerator {
           it.setVisibility(JvmVisibility.PUBLIC);
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _createPostAnnotation = DMControllerGenerator.this.createPostAnnotation(e);
-          _annotations.add(_createPostAnnotation);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPostAnnotation);
           EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
           JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/x-www-form-urlencoded");
-          _annotations_1.add(_createConsumesAnnotation);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
           EList<Feature> _features = e.getFeatures();
           Iterable<Property> _filter = Iterables.<Property>filter(_features, Property.class);
           final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
@@ -289,11 +287,11 @@ public class DMControllerGenerator {
                   EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                   String _name = n.getName();
                   JvmAnnotationReference _createFormParamAnnotation = DMControllerGenerator.this.createFormParamAnnotation(e, _name);
-                  _annotations.add(_createFormParamAnnotation);
+                  DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createFormParamAnnotation);
                 }
               };
             JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, _name, _type, _function_1);
-            _parameters.add(_parameter);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
           }
           final Procedure1<ITreeAppendable> _function_2 = new Procedure1<ITreeAppendable>() {
               public void apply(final ITreeAppendable it) {
@@ -420,10 +418,10 @@ public class DMControllerGenerator {
             it.setVisibility(JvmVisibility.PUBLIC);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             JvmAnnotationReference _createPutAnnotation = DMControllerGenerator.this.createPutAnnotation(e);
-            _annotations.add(_createPutAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPutAnnotation);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _createConsumesAnnotation = DMControllerGenerator.this.createConsumesAnnotation(e, "application/json");
-            _annotations_1.add(_createConsumesAnnotation);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createConsumesAnnotation);
             EList<JvmFormalParameter> _parameters = it.getParameters();
             StringConcatenation _builder = new StringConcatenation();
             String _simpleName = t.getSimpleName();
@@ -431,7 +429,7 @@ public class DMControllerGenerator {
             _builder.append(_firstLower, "");
             String _string = _builder.toString();
             JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
-            _parameters.add(_parameter);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
@@ -479,21 +477,21 @@ public class DMControllerGenerator {
           it.setVisibility(JvmVisibility.PUBLIC);
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           JvmAnnotationReference _createDeleteAnnotation = DMControllerGenerator.this.createDeleteAnnotation(e);
-          _annotations.add(_createDeleteAnnotation);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createDeleteAnnotation);
           EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
           JvmAnnotationReference _createPathAnnotation = DMControllerGenerator.this.createPathAnnotation(e, "{id}");
-          _annotations_1.add(_createPathAnnotation);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createPathAnnotation);
           EList<JvmFormalParameter> _parameters = it.getParameters();
           JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(int.class, e);
           final Procedure1<JvmFormalParameter> _function = new Procedure1<JvmFormalParameter>() {
               public void apply(final JvmFormalParameter it) {
                 EList<JvmAnnotationReference> _annotations = it.getAnnotations();
                 JvmAnnotationReference _createPathParamAnnotation = DMControllerGenerator.this.createPathParamAnnotation(e, "id");
-                _annotations.add(_createPathParamAnnotation);
+                DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPathParamAnnotation);
               }
             };
           JvmFormalParameter _parameter = DMControllerGenerator.this._typesBuilderExtensions.toParameter(e, "id", _typeForName, _function);
-          _parameters.add(_parameter);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
           final Procedure1<ITreeAppendable> _function_1 = new Procedure1<ITreeAppendable>() {
               public void apply(final ITreeAppendable it) {
                 it.trace(e);
