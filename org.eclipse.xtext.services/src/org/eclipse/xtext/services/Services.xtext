@@ -17,7 +17,7 @@ Component:
 
 
 Service:
-	(service?='service' '[' (get?='GET' | post?='POST') ']')? name=ValidID'(' (params+=FullJvmFormalParameter(',' params+=FullJvmFormalParameter)*)? ')' 
+	(service?='service' '[' (get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE') ']')? name=ValidID'(' (params+=FullJvmFormalParameter(',' params+=FullJvmFormalParameter)*)? ')' 
 		':' type=JvmTypeReference
 		body=XBlockExpression
 ;

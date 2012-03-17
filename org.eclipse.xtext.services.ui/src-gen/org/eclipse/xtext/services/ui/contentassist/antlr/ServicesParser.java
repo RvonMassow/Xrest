@@ -221,6 +221,8 @@ public class ServicesParser extends AbstractContentAssistParser {
 					put(grammarAccess.getServiceAccess().getServiceAssignment_0_0(), "rule__Service__ServiceAssignment_0_0");
 					put(grammarAccess.getServiceAccess().getGetAssignment_0_2_0(), "rule__Service__GetAssignment_0_2_0");
 					put(grammarAccess.getServiceAccess().getPostAssignment_0_2_1(), "rule__Service__PostAssignment_0_2_1");
+					put(grammarAccess.getServiceAccess().getPutAssignment_0_2_2(), "rule__Service__PutAssignment_0_2_2");
+					put(grammarAccess.getServiceAccess().getDeleteAssignment_0_2_3(), "rule__Service__DeleteAssignment_0_2_3");
 					put(grammarAccess.getServiceAccess().getNameAssignment_1(), "rule__Service__NameAssignment_1");
 					put(grammarAccess.getServiceAccess().getParamsAssignment_3_0(), "rule__Service__ParamsAssignment_3_0");
 					put(grammarAccess.getServiceAccess().getParamsAssignment_3_1_1(), "rule__Service__ParamsAssignment_3_1_1");

@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.services.services.impl;
 
@@ -39,6 +40,8 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isGet <em>Get</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isPost <em>Post</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isPut <em>Put</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isDelete <em>Delete</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getType <em>Type</em>}</li>
@@ -109,6 +112,46 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * @ordered
    */
   protected boolean post = POST_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isPut() <em>Put</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPut()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean PUT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isPut() <em>Put</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPut()
+   * @generated
+   * @ordered
+   */
+  protected boolean put = PUT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isDelete() <em>Delete</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDelete()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean DELETE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isDelete() <em>Delete</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDelete()
+   * @generated
+   * @ordered
+   */
+  protected boolean delete = DELETE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -248,6 +291,52 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
     post = newPost;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__POST, oldPost, post));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isPut()
+  {
+    return put;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPut(boolean newPut)
+  {
+    boolean oldPut = put;
+    put = newPut;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__PUT, oldPut, put));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isDelete()
+  {
+    return delete;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDelete(boolean newDelete)
+  {
+    boolean oldDelete = delete;
+    delete = newDelete;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__DELETE, oldDelete, delete));
   }
 
   /**
@@ -419,6 +508,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return isGet();
       case ServicesPackage.SERVICE__POST:
         return isPost();
+      case ServicesPackage.SERVICE__PUT:
+        return isPut();
+      case ServicesPackage.SERVICE__DELETE:
+        return isDelete();
       case ServicesPackage.SERVICE__NAME:
         return getName();
       case ServicesPackage.SERVICE__PARAMS:
@@ -450,6 +543,12 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return;
       case ServicesPackage.SERVICE__POST:
         setPost((Boolean)newValue);
+        return;
+      case ServicesPackage.SERVICE__PUT:
+        setPut((Boolean)newValue);
+        return;
+      case ServicesPackage.SERVICE__DELETE:
+        setDelete((Boolean)newValue);
         return;
       case ServicesPackage.SERVICE__NAME:
         setName((String)newValue);
@@ -487,6 +586,12 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
       case ServicesPackage.SERVICE__POST:
         setPost(POST_EDEFAULT);
         return;
+      case ServicesPackage.SERVICE__PUT:
+        setPut(PUT_EDEFAULT);
+        return;
+      case ServicesPackage.SERVICE__DELETE:
+        setDelete(DELETE_EDEFAULT);
+        return;
       case ServicesPackage.SERVICE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -519,6 +624,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return get != GET_EDEFAULT;
       case ServicesPackage.SERVICE__POST:
         return post != POST_EDEFAULT;
+      case ServicesPackage.SERVICE__PUT:
+        return put != PUT_EDEFAULT;
+      case ServicesPackage.SERVICE__DELETE:
+        return delete != DELETE_EDEFAULT;
       case ServicesPackage.SERVICE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ServicesPackage.SERVICE__PARAMS:
@@ -548,6 +657,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
     result.append(get);
     result.append(", post: ");
     result.append(post);
+    result.append(", put: ");
+    result.append(put);
+    result.append(", delete: ");
+    result.append(delete);
     result.append(", name: ");
     result.append(name);
     result.append(')');

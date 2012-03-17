@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.services.services;
 
@@ -25,6 +26,8 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.eclipse.xtext.services.services.Service#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isGet <em>Get</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isPost <em>Post</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.Service#isPut <em>Put</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.Service#isDelete <em>Delete</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getType <em>Type</em>}</li>
@@ -115,6 +118,58 @@ public interface Service extends EObject
    * @generated
    */
   void setPost(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Put</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Put</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Put</em>' attribute.
+   * @see #setPut(boolean)
+   * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Put()
+   * @model
+   * @generated
+   */
+  boolean isPut();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.services.services.Service#isPut <em>Put</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Put</em>' attribute.
+   * @see #isPut()
+   * @generated
+   */
+  void setPut(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Delete</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Delete</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Delete</em>' attribute.
+   * @see #setDelete(boolean)
+   * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Delete()
+   * @model
+   * @generated
+   */
+  boolean isDelete();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.services.services.Service#isDelete <em>Delete</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Delete</em>' attribute.
+   * @see #isDelete()
+   * @generated
+   */
+  void setDelete(boolean value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

@@ -1101,7 +1101,7 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	/**
 	 * Constraint:
 	 *     (
-	 *         (service?='service' (get?='GET' | post?='POST'))? 
+	 *         (service?='service' (get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE'))? 
 	 *         name=ValidID 
 	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
 	 *         type=JvmTypeReference 

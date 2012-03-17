@@ -33,9 +33,10 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    	def dispatch void infer(Component component, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
    		
    		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-   		// An example based on the initial hellow world example could look like this:
+   		// An example based on the initial hello world example could look like this:
    		
    		acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater [
+   			annotations += component.toAnnotation("javax.ws.rs.Path", (component.packageName + "/" + component.name).toLowerCase.replace(".","/"))
 			for(injectedMember: component.requires ){
 				val name = { 
    					if(injectedMember.name != null)
@@ -52,10 +53,18 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    			for(service : component.services) {
    				members += service.toMethod(service.name, service.type) [
    					if(service.get) {
-						service.toAnnotation("javax.ws.rs.GET")	
+						annotations += service.toAnnotation("javax.ws.rs.GET")	
+						annotations += service.toAnnotation("javax.ws.rs.Produces", "application/json, application/xml")
    					} else if(service.post) {
-						service.toAnnotation("javax.ws.rs.POST")
+						annotations += service.toAnnotation("javax.ws.rs.POST")
+						annotations += service.toAnnotation("javax.ws.rs.Consumes", "application/json, application/xml")
+   					} else if(service.put) {
+						annotations += service.toAnnotation("javax.ws.rs.PUT")
+						annotations += service.toAnnotation("javax.ws.rs.Consumes", "application/json, application/xml")
+   					} else if(service.delete) {
+						annotations += service.toAnnotation("javax.ws.rs.DELETE")
    					}
+   					annotations += service.toAnnotation("javax.ws.rs.Path", service.name)
   					for (p : service.params) {
 						parameters += p.toParameter(p.name, p.parameterType)
 					}

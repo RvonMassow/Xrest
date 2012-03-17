@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.services.services;
 
@@ -189,13 +190,31 @@ public interface ServicesPackage extends EPackage
   int SERVICE__POST = 2;
 
   /**
+   * The feature id for the '<em><b>Put</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SERVICE__PUT = 3;
+
+  /**
+   * The feature id for the '<em><b>Delete</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SERVICE__DELETE = 4;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVICE__NAME = 3;
+  int SERVICE__NAME = 5;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -204,7 +223,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__PARAMS = 4;
+  int SERVICE__PARAMS = 6;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -213,7 +232,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__TYPE = 5;
+  int SERVICE__TYPE = 7;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -222,7 +241,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__BODY = 6;
+  int SERVICE__BODY = 8;
 
   /**
    * The number of structural features of the '<em>Service</em>' class.
@@ -231,7 +250,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE_FEATURE_COUNT = 7;
+  int SERVICE_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl <em>Require Declaration</em>}' class.
@@ -427,6 +446,28 @@ public interface ServicesPackage extends EPackage
    * @generated
    */
   EAttribute getService_Post();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#isPut <em>Put</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Put</em>'.
+   * @see org.eclipse.xtext.services.services.Service#isPut()
+   * @see #getService()
+   * @generated
+   */
+  EAttribute getService_Put();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#isDelete <em>Delete</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Delete</em>'.
+   * @see org.eclipse.xtext.services.services.Service#isDelete()
+   * @see #getService()
+   * @generated
+   */
+  EAttribute getService_Delete();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}'.
@@ -649,6 +690,22 @@ public interface ServicesPackage extends EPackage
      * @generated
      */
     EAttribute SERVICE__POST = eINSTANCE.getService_Post();
+
+    /**
+     * The meta object literal for the '<em><b>Put</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SERVICE__PUT = eINSTANCE.getService_Put();
+
+    /**
+     * The meta object literal for the '<em><b>Delete</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SERVICE__DELETE = eINSTANCE.getService_Delete();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -2004,6 +2004,18 @@ rule__Service__Alternatives_0_2
 { after(grammarAccess.getServiceAccess().getPostAssignment_0_2_1()); }
 )
 
+    |(
+{ before(grammarAccess.getServiceAccess().getPutAssignment_0_2_2()); }
+(rule__Service__PutAssignment_0_2_2)
+{ after(grammarAccess.getServiceAccess().getPutAssignment_0_2_2()); }
+)
+
+    |(
+{ before(grammarAccess.getServiceAccess().getDeleteAssignment_0_2_3()); }
+(rule__Service__DeleteAssignment_0_2_3)
+{ after(grammarAccess.getServiceAccess().getDeleteAssignment_0_2_3()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -14289,6 +14301,52 @@ rule__Service__PostAssignment_0_2_1
 )
 
 { after(grammarAccess.getServiceAccess().getPostPOSTKeyword_0_2_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Service__PutAssignment_0_2_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getServiceAccess().getPutPUTKeyword_0_2_2_0()); }
+(
+{ before(grammarAccess.getServiceAccess().getPutPUTKeyword_0_2_2_0()); }
+
+	'PUT' 
+
+{ after(grammarAccess.getServiceAccess().getPutPUTKeyword_0_2_2_0()); }
+)
+
+{ after(grammarAccess.getServiceAccess().getPutPUTKeyword_0_2_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Service__DeleteAssignment_0_2_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getServiceAccess().getDeleteDELETEKeyword_0_2_3_0()); }
+(
+{ before(grammarAccess.getServiceAccess().getDeleteDELETEKeyword_0_2_3_0()); }
+
+	'DELETE' 
+
+{ after(grammarAccess.getServiceAccess().getDeleteDELETEKeyword_0_2_3_0()); }
+)
+
+{ after(grammarAccess.getServiceAccess().getDeleteDELETEKeyword_0_2_3_0()); }
 )
 
 ;

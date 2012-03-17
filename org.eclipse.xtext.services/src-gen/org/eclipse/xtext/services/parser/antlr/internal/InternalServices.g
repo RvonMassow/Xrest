@@ -319,58 +319,68 @@ ruleService returns [EObject current=null]
 	    }
 
 )
-))	otherlv_4=']' 
+)
+    |(
+(
+		lv_put_4_0=	'PUT' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getServiceAccess().getRightSquareBracketKeyword_0_3());
+        newLeafNode(lv_put_4_0, grammarAccess.getServiceAccess().getPutPUTKeyword_0_2_2_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getServiceRule());
+	        }
+       		setWithLastConsumed($current, "put", true, "PUT");
+	    }
+
+)
+)
+    |(
+(
+		lv_delete_5_0=	'DELETE' 
+    {
+        newLeafNode(lv_delete_5_0, grammarAccess.getServiceAccess().getDeleteDELETEKeyword_0_2_3_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getServiceRule());
+	        }
+       		setWithLastConsumed($current, "delete", true, "DELETE");
+	    }
+
+)
+))	otherlv_6=']' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getServiceAccess().getRightSquareBracketKeyword_0_3());
     }
 )?(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getServiceAccess().getNameValidIDParserRuleCall_1_0()); 
 	    }
-		lv_name_5_0=ruleValidID		{
+		lv_name_7_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getServiceRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_5_0, 
+        		lv_name_7_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6='(' 
+)	otherlv_8='(' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getServiceAccess().getLeftParenthesisKeyword_2());
+    	newLeafNode(otherlv_8, grammarAccess.getServiceAccess().getLeftParenthesisKeyword_2());
     }
 ((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getServiceAccess().getParamsFullJvmFormalParameterParserRuleCall_3_0_0()); 
-	    }
-		lv_params_7_0=ruleFullJvmFormalParameter		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getServiceRule());
-	        }
-       		add(
-       			$current, 
-       			"params",
-        		lv_params_7_0, 
-        		"FullJvmFormalParameter");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_8=',' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getServiceAccess().getCommaKeyword_3_1_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getServiceAccess().getParamsFullJvmFormalParameterParserRuleCall_3_1_1_0()); 
 	    }
 		lv_params_9_0=ruleFullJvmFormalParameter		{
 	        if ($current==null) {
@@ -385,27 +395,49 @@ ruleService returns [EObject current=null]
 	    }
 
 )
-))*)?	otherlv_10=')' 
+)(	otherlv_10=',' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getServiceAccess().getRightParenthesisKeyword_4());
+    	newLeafNode(otherlv_10, grammarAccess.getServiceAccess().getCommaKeyword_3_1_0());
     }
-	otherlv_11=':' 
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getServiceAccess().getParamsFullJvmFormalParameterParserRuleCall_3_1_1_0()); 
+	    }
+		lv_params_11_0=ruleFullJvmFormalParameter		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getServiceRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_11_0, 
+        		"FullJvmFormalParameter");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*)?	otherlv_12=')' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getServiceAccess().getColonKeyword_5());
+    	newLeafNode(otherlv_12, grammarAccess.getServiceAccess().getRightParenthesisKeyword_4());
+    }
+	otherlv_13=':' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getServiceAccess().getColonKeyword_5());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getServiceAccess().getTypeJvmTypeReferenceParserRuleCall_6_0()); 
 	    }
-		lv_type_12_0=ruleJvmTypeReference		{
+		lv_type_14_0=ruleJvmTypeReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getServiceRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_12_0, 
+        		lv_type_14_0, 
         		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -416,14 +448,14 @@ ruleService returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getServiceAccess().getBodyXBlockExpressionParserRuleCall_7_0()); 
 	    }
-		lv_body_13_0=ruleXBlockExpression		{
+		lv_body_15_0=ruleXBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getServiceRule());
 	        }
        		set(
        			$current, 
        			"body",
-        		lv_body_13_0, 
+        		lv_body_15_0, 
         		"XBlockExpression");
 	        afterParserOrEnumRuleCall();
 	    }

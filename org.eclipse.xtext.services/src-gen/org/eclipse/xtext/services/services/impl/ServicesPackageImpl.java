@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.eclipse.xtext.services.services.impl;
 
@@ -258,7 +259,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Name()
+  public EAttribute getService_Put()
   {
     return (EAttribute)serviceEClass.getEStructuralFeatures().get(3);
   }
@@ -268,9 +269,29 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getService_Delete()
+  {
+    return (EAttribute)serviceEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getService_Name()
+  {
+    return (EAttribute)serviceEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getService_Params()
   {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(4);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -280,7 +301,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    */
   public EReference getService_Type()
   {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(5);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -290,7 +311,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    */
   public EReference getService_Body()
   {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(6);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -387,6 +408,8 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     createEAttribute(serviceEClass, SERVICE__SERVICE);
     createEAttribute(serviceEClass, SERVICE__GET);
     createEAttribute(serviceEClass, SERVICE__POST);
+    createEAttribute(serviceEClass, SERVICE__PUT);
+    createEAttribute(serviceEClass, SERVICE__DELETE);
     createEAttribute(serviceEClass, SERVICE__NAME);
     createEReference(serviceEClass, SERVICE__PARAMS);
     createEReference(serviceEClass, SERVICE__TYPE);
@@ -449,6 +472,8 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     initEAttribute(getService_Service(), ecorePackage.getEBoolean(), "service", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Get(), ecorePackage.getEBoolean(), "get", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Post(), ecorePackage.getEBoolean(), "post", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getService_Put(), ecorePackage.getEBoolean(), "put", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getService_Delete(), ecorePackage.getEBoolean(), "delete", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Name(), ecorePackage.getEString(), "name", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

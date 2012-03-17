@@ -59,15 +59,24 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
+          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+          String _packageName = component.getPackageName();
+          String _plus = (_packageName + "/");
+          String _name = component.getName();
+          String _plus_1 = (_plus + _name);
+          String _lowerCase = _plus_1.toLowerCase();
+          String _replace = _lowerCase.replace(".", "/");
+          JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(component, "javax.ws.rs.Path", _replace);
+          ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           EList<RequireDeclaration> _requires = component.getRequires();
           for (final RequireDeclaration injectedMember : _requires) {
             {
               String _xifexpression = null;
-              String _name = injectedMember.getName();
-              boolean _notEquals = (!Objects.equal(_name, null));
+              String _name_1 = injectedMember.getName();
+              boolean _notEquals = (!Objects.equal(_name_1, null));
               if (_notEquals) {
-                String _name_1 = injectedMember.getName();
-                _xifexpression = _name_1;
+                String _name_2 = injectedMember.getName();
+                _xifexpression = _name_2;
               } else {
                 JvmTypeReference _type = injectedMember.getType();
                 String _simpleName = _type==null?(String)null:_type.getSimpleName();
@@ -91,32 +100,63 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
           EList<Service> _services = component.getServices();
           for (final Service service : _services) {
             EList<JvmMember> _members = it.getMembers();
-            String _name = service.getName();
+            String _name_1 = service.getName();
             JvmTypeReference _type = service.getType();
             final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
                   boolean _isGet = service.isGet();
                   if (_isGet) {
-                    ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.GET");
+                    EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                    JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.GET");
+                    ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                    EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+                    JvmAnnotationReference _annotation_1 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Produces", "application/json, application/xml");
+                    ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
                   } else {
                     boolean _isPost = service.isPost();
                     if (_isPost) {
-                      ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.POST");
+                      EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
+                      JvmAnnotationReference _annotation_2 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.POST");
+                      ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_2);
+                      EList<JvmAnnotationReference> _annotations_3 = it.getAnnotations();
+                      JvmAnnotationReference _annotation_3 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Consumes", "application/json, application/xml");
+                      ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_3, _annotation_3);
+                    } else {
+                      boolean _isPut = service.isPut();
+                      if (_isPut) {
+                        EList<JvmAnnotationReference> _annotations_4 = it.getAnnotations();
+                        JvmAnnotationReference _annotation_4 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.PUT");
+                        ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_4, _annotation_4);
+                        EList<JvmAnnotationReference> _annotations_5 = it.getAnnotations();
+                        JvmAnnotationReference _annotation_5 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Consumes", "application/json, application/xml");
+                        ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_5, _annotation_5);
+                      } else {
+                        boolean _isDelete = service.isDelete();
+                        if (_isDelete) {
+                          EList<JvmAnnotationReference> _annotations_6 = it.getAnnotations();
+                          JvmAnnotationReference _annotation_6 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.DELETE");
+                          ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_6, _annotation_6);
+                        }
+                      }
                     }
                   }
+                  EList<JvmAnnotationReference> _annotations_7 = it.getAnnotations();
+                  String _name = service.getName();
+                  JvmAnnotationReference _annotation_7 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Path", _name);
+                  ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_7, _annotation_7);
                   EList<JvmFormalParameter> _params = service.getParams();
                   for (final JvmFormalParameter p : _params) {
                     EList<JvmFormalParameter> _parameters = it.getParameters();
-                    String _name = p.getName();
+                    String _name_1 = p.getName();
                     JvmTypeReference _parameterType = p.getParameterType();
-                    JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name, _parameterType);
+                    JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name_1, _parameterType);
                     ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
                   }
                   XExpression _body = service.getBody();
                   ServicesJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
                 }
               };
-            JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _name, _type, _function);
+            JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _name_1, _type, _function);
             ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
           }
         }

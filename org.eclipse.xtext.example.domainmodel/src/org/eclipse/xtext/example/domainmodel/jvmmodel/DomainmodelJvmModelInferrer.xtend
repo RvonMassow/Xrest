@@ -7,15 +7,14 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.example.domainmodel.domainmodel.Derive
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
-import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property
+import org.eclipse.xtext.example.domainmodel.domainmodel.Validate
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.example.domainmodel.domainmodel.Derive
-import org.eclipse.xtext.example.domainmodel.domainmodel.Validate
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 

@@ -12,7 +12,6 @@ import org.eclipse.xtext.example.domainmodel.generator.DMGenerator;
 import org.eclipse.xtext.example.domainmodel.generator.FixedJvmModelGenerator;
 import org.eclipse.xtext.example.domainmodel.valueconverter.DomainmodelValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 
 /**
