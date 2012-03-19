@@ -148,20 +148,22 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 							}
 						}
 					}
-					boolean overridden = false;
-					if (operationsPerErasure.containsKey(signature)) {
-						for (JvmOperation myOperation : operationsPerErasure.get(signature)) {
-							if (featureOverridesService.isOverridden(myOperation, operation, typeArgumentContext,
-									false)) {
-								overridden = true;
-								break;
+					if(operation.isAbstract()) {
+						boolean overridden = false;
+						if (operationsPerErasure.containsKey(signature)) {
+							for (JvmOperation myOperation : operationsPerErasure.get(signature)) {
+								if (featureOverridesService.isOverridden(myOperation, operation, typeArgumentContext,
+										false)) {
+									overridden = true;
+									break;
+								}
 							}
 						}
-					}
-					if (!overridden) {
-						if(operationsMissingImplementation == null)
-							operationsMissingImplementation = Lists.newArrayList();
-						operationsMissingImplementation.add(operation);
+						if (!overridden) {
+							if(operationsMissingImplementation == null)
+								operationsMissingImplementation = Lists.newArrayList();
+							operationsMissingImplementation.add(operation);
+						}
 					}
 				}
 			}

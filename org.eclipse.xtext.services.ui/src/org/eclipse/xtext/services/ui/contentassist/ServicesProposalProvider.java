@@ -3,10 +3,25 @@
 */
 package org.eclipse.xtext.services.ui.contentassist;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.services.ui.contentassist.AbstractServicesProposalProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.xbase.XbasePackage;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
+@SuppressWarnings("restriction")
 public class ServicesProposalProvider extends AbstractServicesProposalProvider {
 
+	@Override
+	public void completeComponent_Implements(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, XbasePackage.Literals.XTYPE_LITERAL__TYPE, true, getQualifiedNameValueConverter(),
+				TypeMatchFilters.all(IJavaSearchConstants.INTERFACE), acceptor);
+	}
 }
