@@ -69,8 +69,10 @@ public class ServicesParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
 					put(grammarAccess.getComponentAccess().getGroup(), "rule__Component__Group__0");
-					put(grammarAccess.getComponentAccess().getGroup_6(), "rule__Component__Group_6__0");
-					put(grammarAccess.getComponentAccess().getGroup_6_2(), "rule__Component__Group_6_2__0");
+					put(grammarAccess.getComponentAccess().getGroup_5(), "rule__Component__Group_5__0");
+					put(grammarAccess.getComponentAccess().getGroup_5_2(), "rule__Component__Group_5_2__0");
+					put(grammarAccess.getComponentAccess().getGroup_7(), "rule__Component__Group_7__0");
+					put(grammarAccess.getComponentAccess().getGroup_7_2(), "rule__Component__Group_7_2__0");
 					put(grammarAccess.getServiceAccess().getGroup(), "rule__Service__Group__0");
 					put(grammarAccess.getServiceAccess().getGroup_0(), "rule__Service__Group_0__0");
 					put(grammarAccess.getServiceAccess().getGroup_3(), "rule__Service__Group_3__0");
@@ -215,9 +217,11 @@ public class ServicesParser extends AbstractContentAssistParser {
 					put(grammarAccess.getComponentAccess().getPackageNameAssignment_1(), "rule__Component__PackageNameAssignment_1");
 					put(grammarAccess.getComponentAccess().getImportsAssignment_2(), "rule__Component__ImportsAssignment_2");
 					put(grammarAccess.getComponentAccess().getNameAssignment_4(), "rule__Component__NameAssignment_4");
-					put(grammarAccess.getComponentAccess().getRequiresAssignment_6_1(), "rule__Component__RequiresAssignment_6_1");
-					put(grammarAccess.getComponentAccess().getRequiresAssignment_6_2_1(), "rule__Component__RequiresAssignment_6_2_1");
-					put(grammarAccess.getComponentAccess().getServicesAssignment_7(), "rule__Component__ServicesAssignment_7");
+					put(grammarAccess.getComponentAccess().getImplementsAssignment_5_1(), "rule__Component__ImplementsAssignment_5_1");
+					put(grammarAccess.getComponentAccess().getImplementsAssignment_5_2_1(), "rule__Component__ImplementsAssignment_5_2_1");
+					put(grammarAccess.getComponentAccess().getRequiresAssignment_7_1(), "rule__Component__RequiresAssignment_7_1");
+					put(grammarAccess.getComponentAccess().getRequiresAssignment_7_2_1(), "rule__Component__RequiresAssignment_7_2_1");
+					put(grammarAccess.getComponentAccess().getServicesAssignment_8(), "rule__Component__ServicesAssignment_8");
 					put(grammarAccess.getServiceAccess().getServiceAssignment_0_0(), "rule__Service__ServiceAssignment_0_0");
 					put(grammarAccess.getServiceAccess().getGetAssignment_0_2_0(), "rule__Service__GetAssignment_0_2_0");
 					put(grammarAccess.getServiceAccess().getPostAssignment_0_2_1(), "rule__Service__PostAssignment_0_2_1");

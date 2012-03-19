@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.eclipse.xtext.services.services.impl;
 
@@ -22,6 +21,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Import;
 import org.eclipse.xtext.services.services.RequireDeclaration;
@@ -38,6 +39,7 @@ import org.eclipse.xtext.services.services.ServicesPackage;
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getImplements <em>Implements</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ComponentImpl#getServices <em>Services</em>}</li>
  * </ul>
@@ -96,6 +98,16 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getImplements() <em>Implements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImplements()
+   * @generated
+   * @ordered
+   */
+  protected EList<JvmParameterizedTypeReference> implements_;
 
   /**
    * The cached value of the '{@link #getRequires() <em>Requires</em>}' containment reference list.
@@ -203,6 +215,20 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<JvmParameterizedTypeReference> getImplements()
+  {
+    if (implements_ == null)
+    {
+      implements_ = new EObjectContainmentEList<JvmParameterizedTypeReference>(JvmParameterizedTypeReference.class, this, ServicesPackage.COMPONENT__IMPLEMENTS);
+    }
+    return implements_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<RequireDeclaration> getRequires()
   {
     if (requires == null)
@@ -238,6 +264,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     {
       case ServicesPackage.COMPONENT__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+      case ServicesPackage.COMPONENT__IMPLEMENTS:
+        return ((InternalEList<?>)getImplements()).basicRemove(otherEnd, msgs);
       case ServicesPackage.COMPONENT__REQUIRES:
         return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
       case ServicesPackage.COMPONENT__SERVICES:
@@ -262,6 +290,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return getImports();
       case ServicesPackage.COMPONENT__NAME:
         return getName();
+      case ServicesPackage.COMPONENT__IMPLEMENTS:
+        return getImplements();
       case ServicesPackage.COMPONENT__REQUIRES:
         return getRequires();
       case ServicesPackage.COMPONENT__SERVICES:
@@ -290,6 +320,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return;
       case ServicesPackage.COMPONENT__NAME:
         setName((String)newValue);
+        return;
+      case ServicesPackage.COMPONENT__IMPLEMENTS:
+        getImplements().clear();
+        getImplements().addAll((Collection<? extends JvmParameterizedTypeReference>)newValue);
         return;
       case ServicesPackage.COMPONENT__REQUIRES:
         getRequires().clear();
@@ -322,6 +356,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
       case ServicesPackage.COMPONENT__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case ServicesPackage.COMPONENT__IMPLEMENTS:
+        getImplements().clear();
+        return;
       case ServicesPackage.COMPONENT__REQUIRES:
         getRequires().clear();
         return;
@@ -348,6 +385,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return imports != null && !imports.isEmpty();
       case ServicesPackage.COMPONENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ServicesPackage.COMPONENT__IMPLEMENTS:
+        return implements_ != null && !implements_.isEmpty();
       case ServicesPackage.COMPONENT__REQUIRES:
         return requires != null && !requires.isEmpty();
       case ServicesPackage.COMPONENT__SERVICES:

@@ -11,6 +11,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.RequireDeclaration;
@@ -22,7 +23,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingIn
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.eclipse.xtext.xbase.typing.XbaseTypeProvider;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -37,9 +37,6 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
    */
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
-  
-  @Inject
-  private XbaseTypeProvider types;
   
   /**
    * Is called for each instance of the first argument's type contained in a resource.
@@ -68,6 +65,12 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
           String _replace = _lowerCase.replace(".", "/");
           JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(component, "javax.ws.rs.Path", _replace);
           ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+          EList<JvmParameterizedTypeReference> _implements = component.getImplements();
+          for (final JvmParameterizedTypeReference interface_ : _implements) {
+            EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+            JvmTypeReference _cloneWithProxies = ServicesJvmModelInferrer.this._jvmTypesBuilder.cloneWithProxies(interface_);
+            ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _cloneWithProxies);
+          }
           EList<RequireDeclaration> _requires = component.getRequires();
           for (final RequireDeclaration injectedMember : _requires) {
             {

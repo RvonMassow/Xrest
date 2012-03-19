@@ -9,12 +9,13 @@ ServicesFile:
 Component:
 	'package' packageName=QualifiedName
 	(imports+=Import)*
-	"component" name=ValidID '{'
-		('requires' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
+	"component" name=ValidID 
+		('conforms' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?
+		'{'
+			('requires' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
 		(services+=Service)*
-	'}'
+		'}'
 ;
-
 
 Service:
 	(service?='service' '[' (get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE') ']')? name=ValidID'(' (params+=FullJvmFormalParameter(',' params+=FullJvmFormalParameter)*)? ')' 

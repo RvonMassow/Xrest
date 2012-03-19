@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.eclipse.xtext.services.services.impl;
 
@@ -199,7 +198,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponent_Requires()
+  public EReference getComponent_Implements()
   {
     return (EReference)componentEClass.getEStructuralFeatures().get(3);
   }
@@ -209,9 +208,19 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponent_Services()
+  public EReference getComponent_Requires()
   {
     return (EReference)componentEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComponent_Services()
+  {
+    return (EReference)componentEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -401,6 +410,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     createEAttribute(componentEClass, COMPONENT__PACKAGE_NAME);
     createEReference(componentEClass, COMPONENT__IMPORTS);
     createEAttribute(componentEClass, COMPONENT__NAME);
+    createEReference(componentEClass, COMPONENT__IMPLEMENTS);
     createEReference(componentEClass, COMPONENT__REQUIRES);
     createEReference(componentEClass, COMPONENT__SERVICES);
 
@@ -465,6 +475,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     initEAttribute(getComponent_PackageName(), ecorePackage.getEString(), "packageName", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponent_Imports(), this.getImport(), null, "imports", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getComponent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComponent_Implements(), theTypesPackage.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponent_Requires(), this.getRequireDeclaration(), null, "requires", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponent_Services(), this.getService(), null, "services", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

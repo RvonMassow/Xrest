@@ -21,9 +21,8 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.services.services.Component;
-import org.eclipse.xtext.services.services.Service;
-import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.RequireDeclaration;
+import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
@@ -37,8 +36,6 @@ import org.eclipse.xtext.xbase.scoping.featurecalls.DefaultConstructorDescriptio
 import org.eclipse.xtext.xbase.scoping.featurecalls.IJvmFeatureDescriptionProvider;
 import org.eclipse.xtext.xbase.scoping.featurecalls.XConstructorProvider;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
-
-import com.google.common.collect.Sets;
 
 @SuppressWarnings("restriction")
 public class ServicesScopeProvider extends XbaseScopeProvider {
@@ -72,7 +69,6 @@ public class ServicesScopeProvider extends XbaseScopeProvider {
 		return ret;
 	}
 
-	// Phone: Hannah 0174 66 50 3222
 	@Override
 	protected IScope createImplicitFeatureCallScope(EObject call, Resource resource, IScope parent, IScope localVariableScope) {
 		JvmFeatureScopeAcceptor featureScopeDescriptions = new JvmFeatureScopeAcceptor();

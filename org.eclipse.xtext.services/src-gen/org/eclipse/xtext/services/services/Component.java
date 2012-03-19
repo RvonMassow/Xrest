@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.eclipse.xtext.services.services;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.xtext.services.services.Component#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.services.services.Component#getImplements <em>Implements</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Component#getServices <em>Services</em>}</li>
  * </ul>
@@ -99,6 +101,22 @@ public interface Component extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Implements</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmParameterizedTypeReference}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Implements</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Implements</em>' containment reference list.
+   * @see org.eclipse.xtext.services.services.ServicesPackage#getComponent_Implements()
+   * @model containment="true"
+   * @generated
+   */
+  EList<JvmParameterizedTypeReference> getImplements();
 
   /**
    * Returns the value of the '<em><b>Requires</b></em>' containment reference list.

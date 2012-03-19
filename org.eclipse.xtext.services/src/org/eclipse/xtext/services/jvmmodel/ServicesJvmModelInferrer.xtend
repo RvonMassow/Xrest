@@ -5,7 +5,6 @@ import org.eclipse.xtext.services.services.Component
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.typing.XbaseTypeProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -19,7 +18,6 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
      * convenience API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
-	@Inject extension XbaseTypeProvider types
 
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -37,6 +35,9 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    		
    		acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater [
    			annotations += component.toAnnotation("javax.ws.rs.Path", (component.packageName + "/" + component.name).toLowerCase.replace(".","/"))
+			for(interface : component.^implements) {
+				superTypes += interface.cloneWithProxies
+			}
 			for(injectedMember: component.requires ){
 				val name = { 
    					if(injectedMember.name != null)
