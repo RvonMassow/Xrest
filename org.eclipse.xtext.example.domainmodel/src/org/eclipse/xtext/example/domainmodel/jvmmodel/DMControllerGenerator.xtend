@@ -95,29 +95,18 @@ class DMControllerGenerator {
 			]
 		]
 	}
-
 	def private createJsonPost(JvmGenericType t, Entity e) {
-		e.toMethod('''post«t.simpleName»'''.toString, typeof(void).getTypeForName(e)) [
+		val ref = t.createTypeRef
+		e.toMethod('''post«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPostAnnotation()
-			annotations += e.createConsumesAnnotation("application/x-www-form-urlencoded")
-			for(n : e.features.filter(typeof(Property)).filter[!derive]) {
-				parameters += e.toParameter(n.name, n.type)[
-					annotations += e.createFormParamAnnotation(n.name)
-				]
-			}
+			annotations += e.createConsumesAnnotation("application/json")
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
 				trace(e)
-				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
+				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				append('''
-				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
-				«t.simpleName» _inst«t.simpleName» = new «t.simpleName»();
-				«FOR prop : e.features.filter(typeof(Property))»
-					«IF !prop.derive»
-						_inst«t.simpleName».set«prop.name.toFirstUpper»(«prop.name»);
-					«ENDIF»
-				«ENDFOR»
 				«IF derive != null»
 				_inst«t.simpleName».derive();
 				«ENDIF»
@@ -130,13 +119,13 @@ class DMControllerGenerator {
 				  _entityManager.getTransaction().commit();
 				  _entityManager.close();
 				}
-«««				//return _inst«t.simpleName».getId();
+				return «t.simpleName.toFirstLower».getId();
 	  			'''.toString)
 	  		]
 		]
 	}
 	
-	def private createJsonPut(JvmGenericType t, EObject e) {
+	def private createJsonPut(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
 		e.toMethod('''put«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
@@ -145,19 +134,28 @@ class DMControllerGenerator {
 			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
 				trace(e)
+				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
+				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
 				append(
 				'''
-				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
-				_entityManager.getTransaction().begin();
-				«t.simpleName» entity = _entityManager.merge(«t.simpleName.toFirstLower»);
-				_entityManager.getTransaction().commit();
-				_entityManager.close();
+				«IF derive != null»
+				_inst«t.simpleName».derive();
+				«ENDIF»
+				«IF validate != null»
+				if(_inst«t.simpleName».validate())
+				«ENDIF»
+				{
+				  _entityManager.getTransaction().begin();
+				  _entityManager.merge(_inst«t.simpleName»);
+				  _entityManager.getTransaction().commit();
+				  _entityManager.close();
+				}
 				return entity.getId();
 	  			'''.toString)
 			]
 		]
 	}
-	
+
 	def private createDelete(JvmGenericType t, EObject e) {
 		e.toMethod('''delete«t.simpleName»'''.toString, typeof(void).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
