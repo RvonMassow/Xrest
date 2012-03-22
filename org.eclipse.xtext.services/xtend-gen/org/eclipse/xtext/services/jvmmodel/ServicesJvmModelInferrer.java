@@ -13,6 +13,7 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.Service;
@@ -38,6 +39,9 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
   
+  @Inject
+  private IQualifiedNameProvider qualifiedNameProvider;
+  
   /**
    * Is called for each instance of the first argument's type contained in a resource.
    * 
@@ -58,12 +62,12 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
         public void apply(final JvmGenericType it) {
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
           String _packageName = component.getPackageName();
-          String _plus = (_packageName + "/");
+          String _lowerCase = _packageName.toLowerCase();
+          String _replace = _lowerCase.replace(".", "/");
+          String _plus = (_replace + "/");
           String _name = component.getName();
           String _plus_1 = (_plus + _name);
-          String _lowerCase = _plus_1.toLowerCase();
-          String _replace = _lowerCase.replace(".", "/");
-          JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(component, "javax.ws.rs.Path", _replace);
+          JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(component, "javax.ws.rs.Path", _plus_1);
           ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           EList<JvmParameterizedTypeReference> _implements = component.getImplements();
           for (final JvmParameterizedTypeReference interface_ : _implements) {
@@ -144,9 +148,14 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                     }
                   }
                   EList<JvmAnnotationReference> _annotations_7 = it.getAnnotations();
-                  String _name = service.getName();
-                  JvmAnnotationReference _annotation_7 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Path", _name);
-                  ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_7, _annotation_7);
+                  JvmAnnotationReference _xifexpression = null;
+                  boolean _isService = service.isService();
+                  if (_isService) {
+                    String _name = service.getName();
+                    JvmAnnotationReference _annotation_7 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Path", _name);
+                    _xifexpression = _annotation_7;
+                  }
+                  ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_7, _xifexpression);
                   EList<JvmFormalParameter> _params = service.getParams();
                   for (final JvmFormalParameter p : _params) {
                     EList<JvmFormalParameter> _parameters = it.getParameters();

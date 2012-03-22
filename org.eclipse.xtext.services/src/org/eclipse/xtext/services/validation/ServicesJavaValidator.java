@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmAnnotationTarget;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -27,6 +28,7 @@ import org.eclipse.xtext.common.types.util.TypeArgumentContextProvider;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Service;
+import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesPackage;
 import org.eclipse.xtext.services.types.TypeErasedSignature;
 import org.eclipse.xtext.validation.Check;
@@ -83,13 +85,33 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 				if((List.class).isAssignableFrom(jra.getRawType(type))) {
 					type = ((JvmGenericType)type).getTypeParameters().get(0);
 				}
-				if( type instanceof JvmAnnotationTarget) {
+			if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
 				JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
 				if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
 					error("Return type is not an XmlRootElement", ServicesPackage.Literals.SERVICE__TYPE);
 				}
 			}
+			for(int i = 0; i< service.getParams().size(); i++) {
+				JvmFormalParameter parameter = service.getParams().get(i);
+				if((List.class).isAssignableFrom(jra.getRawType(parameter.getParameterType().getType()))) {
+					type = ((JvmGenericType)type).getTypeParameters().get(0);
+				}
+				if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
+					JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
+					if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
+						error("Parameter "+ parameter.getName()+" is not an XmlRootElement or supported primitive", ServicesPackage.Literals.SERVICE__PARAMS, i);
+					}
+				}
+			}
 		}
+	}
+
+	private boolean isSupportedPrimitiveType(JvmType type) {
+		Class<?> rawType = jra.getRawType(type);
+		return boolean.class.isAssignableFrom(rawType) ||
+				int.class.isAssignableFrom(rawType) ||
+				long.class.isAssignableFrom(rawType) ||
+				String.class.isAssignableFrom(rawType);
 	}
 
 	@Check
@@ -239,5 +261,10 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 	protected <T> T getFirstOrNull(Iterable<EObject> elements, Class<T> type) {
 		Iterator<T> iterator = filter(elements, type).iterator();
 		return iterator.hasNext() ? iterator.next() : null;
+	}
+
+	@Check
+	public void checkValidPackage(Component c) {
+		
 	}
 }

@@ -5,6 +5,7 @@ import org.eclipse.xtext.services.services.Component
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -18,6 +19,7 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
      * convenience API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
+	@Inject extension IQualifiedNameProvider qualifiedNameProvider
 
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -34,7 +36,7 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    		// An example based on the initial hello world example could look like this:
    		
    		acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater [
-   			annotations += component.toAnnotation("javax.ws.rs.Path", (component.packageName + "/" + component.name).toLowerCase.replace(".","/"))
+   			annotations += component.toAnnotation("javax.ws.rs.Path", (component.packageName.toLowerCase.replace(".","/") + "/" + component.name))
 			for(interface : component.^implements) {
 				superTypes += interface.cloneWithProxies
 			}
@@ -65,7 +67,7 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    					} else if(service.delete) {
 						annotations += service.toAnnotation("javax.ws.rs.DELETE")
    					}
-   					annotations += service.toAnnotation("javax.ws.rs.Path", service.name)
+   					annotations += if(service.service) service.toAnnotation("javax.ws.rs.Path", service.name)
   					for (p : service.params) {
 						parameters += p.toParameter(p.name, p.parameterType)
 					}
