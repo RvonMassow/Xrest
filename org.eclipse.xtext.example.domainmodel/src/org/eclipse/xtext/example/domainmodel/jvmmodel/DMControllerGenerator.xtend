@@ -11,7 +11,8 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import javax.xml.bind.JAXBElement
 
 class DMControllerGenerator {
 
@@ -31,7 +32,7 @@ class DMControllerGenerator {
 						trace(e)
 						append(
 							'''
-							this._emf = javax.persistence.Persistence.createEntityManagerFactory("messageboard");
+							this._dao = new «e.fullyQualifiedName.toString»Dao();
 							'''
 						)
 					]
@@ -47,7 +48,7 @@ class DMControllerGenerator {
 	}
 
 	def private injectedEntityManagerFactory(Entity e) {
-		e.toField("_emf", "javax.persistence.EntityManagerFactory".getTypeForName(e))
+		e.toField("_dao", (e.fullyQualifiedName.toString + "Dao").getTypeForName(e))
 	}
 
 	def private createJsonGetById(JvmGenericType t, EObject e) {
@@ -63,11 +64,7 @@ class DMControllerGenerator {
 			setBody [
 				trace(e)
 				append('''
-				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
-				_entityManager.getTransaction().begin();
-				«t.simpleName» «t.simpleName.toFirstLower» = _entityManager.find(«t.simpleName».class, id);
-				_entityManager.getTransaction().commit();
-				_entityManager.close();
+				«t.simpleName» «t.simpleName.toFirstLower» = _dao.find«t.simpleName»ById(id);
 				return «t.simpleName.toFirstLower»;
 	  			'''.toString)
 			]
@@ -83,29 +80,27 @@ class DMControllerGenerator {
 			setBody [
 				trace(e)
 				append('''
-				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
-				_entityManager.getTransaction().begin();
-				javax.persistence.Query _q = _entityManager.createQuery("select results from «t.simpleName» results");
-				java.util.List<«t.simpleName»> _results = _q.getResultList();
-				_entityManager.getTransaction().commit();
-				_entityManager.close();
+				java.util.List<«t.simpleName»> _results = _dao.findAll«t.simpleName»s();
 				return _results;
-	  			'''.toString)
+				'''.toString)
 			]
 		]
 	}
+	
 	def private createJsonPost(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
 		e.toMethod('''post«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPostAnnotation()
 			annotations += e.createConsumesAnnotation("application/json")
-			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, typeof(JAXBElement).getTypeForName(e, ref))
 			setBody [
 				trace(e)
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
 				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				append('''
+				«t.simpleName» _inst«t.simpleName» = «t.simpleName.toFirstLower».getValue();
+				int id = -1; 
 				«IF derive != null»
 				_inst«t.simpleName».derive();
 				«ENDIF»
@@ -113,12 +108,9 @@ class DMControllerGenerator {
 				if(_inst«t.simpleName».validate())
 				«ENDIF»
 				{
-				  _entityManager.getTransaction().begin();
-				  _entityManager.persist(_inst«t.simpleName»);
-				  _entityManager.getTransaction().commit();
-				  _entityManager.close();
+				  id = _dao.create«t.simpleName»(_inst«t.simpleName»);
 				}
-				return «t.simpleName.toFirstLower».getId();
+				return id;
 	  			'''.toString)
 	  		]
 		]
@@ -130,13 +122,14 @@ class DMControllerGenerator {
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPutAnnotation()
 			annotations += e.createConsumesAnnotation("application/json")
-			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, typeof(JAXBElement).getTypeForName(e, ref))
 			setBody [
 				trace(e)
-				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
-				append(
-				'''
+				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
+				append('''
+				«t.simpleName» _inst«t.simpleName» = «t.simpleName.toFirstLower».getValue();
+				int id = -1; 
 				«IF derive != null»
 				_inst«t.simpleName».derive();
 				«ENDIF»
@@ -144,14 +137,11 @@ class DMControllerGenerator {
 				if(_inst«t.simpleName».validate())
 				«ENDIF»
 				{
-				  _entityManager.getTransaction().begin();
-				  _entityManager.merge(_inst«t.simpleName»);
-				  _entityManager.getTransaction().commit();
-				  _entityManager.close();
+				  id = _dao.modify«t.simpleName»(_inst«t.simpleName»);
 				}
-				return entity.getId();
+				return id;
 	  			'''.toString)
-			]
+	  		]
 		]
 	}
 
@@ -167,12 +157,7 @@ class DMControllerGenerator {
 				trace(e)
 				append(
 				'''
-				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
-				_entityManager.getTransaction().begin();
-				«t.simpleName» _«t.simpleName.toFirstLower» = _entityManager.find(«t.simpleName».class, id);
-				_entityManager.remove(_«t.simpleName.toFirstLower»);
-				_entityManager.getTransaction().commit();
-				_entityManager.close();
+				_dao.delete«t.simpleName»(id);
 	  			'''.toString)
 	  		]
 	  	]

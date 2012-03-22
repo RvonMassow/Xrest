@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.List;
+import javax.xml.bind.JAXBElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -79,8 +80,12 @@ public class DMControllerGenerator {
                       public void apply(final ITreeAppendable it) {
                         it.trace(e);
                         StringConcatenation _builder = new StringConcatenation();
-                        _builder.append("this._emf = javax.persistence.Persistence.createEntityManagerFactory(\"messageboard\");");
-                        _builder.newLine();
+                        _builder.append("this._dao = new ");
+                        QualifiedName _fullyQualifiedName = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
+                        String _string = _fullyQualifiedName.toString();
+                        _builder.append(_string, "");
+                        _builder.append("Dao();");
+                        _builder.newLineIfNotEmpty();
                         it.append(_builder);
                       }
                     };
@@ -114,8 +119,11 @@ public class DMControllerGenerator {
   }
   
   private JvmField injectedEntityManagerFactory(final Entity e) {
-    JvmTypeReference _typeForName = this._typeReferences.getTypeForName("javax.persistence.EntityManagerFactory", e);
-    JvmField _field = this._jvmTypesBuilder.toField(e, "_emf", _typeForName);
+    QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
+    String _string = _fullyQualifiedName.toString();
+    String _plus = (_string + "Dao");
+    JvmTypeReference _typeForName = this._typeReferences.getTypeForName(_plus, e);
+    JvmField _field = this._jvmTypesBuilder.toField(e, "_dao", _typeForName);
     return _field;
   }
   
@@ -156,25 +164,17 @@ public class DMControllerGenerator {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
                   StringConcatenation _builder = new StringConcatenation();
-                  _builder.append("javax.persistence.EntityManager _entityManager = _emf.createEntityManager();");
-                  _builder.newLine();
-                  _builder.append("_entityManager.getTransaction().begin();");
-                  _builder.newLine();
                   String _simpleName = t.getSimpleName();
                   _builder.append(_simpleName, "");
                   _builder.append(" ");
                   String _simpleName_1 = t.getSimpleName();
                   String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
                   _builder.append(_firstLower, "");
-                  _builder.append(" = _entityManager.find(");
+                  _builder.append(" = _dao.find");
                   String _simpleName_2 = t.getSimpleName();
                   _builder.append(_simpleName_2, "");
-                  _builder.append(".class, id);");
+                  _builder.append("ById(id);");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("_entityManager.getTransaction().commit();");
-                  _builder.newLine();
-                  _builder.append("_entityManager.close();");
-                  _builder.newLine();
                   _builder.append("return ");
                   String _simpleName_3 = t.getSimpleName();
                   String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_3);
@@ -218,24 +218,14 @@ public class DMControllerGenerator {
                 public void apply(final ITreeAppendable it) {
                   it.trace(e);
                   StringConcatenation _builder = new StringConcatenation();
-                  _builder.append("javax.persistence.EntityManager _entityManager = _emf.createEntityManager();");
-                  _builder.newLine();
-                  _builder.append("_entityManager.getTransaction().begin();");
-                  _builder.newLine();
-                  _builder.append("javax.persistence.Query _q = _entityManager.createQuery(\"select results from ");
+                  _builder.append("java.util.List<");
                   String _simpleName = t.getSimpleName();
                   _builder.append(_simpleName, "");
-                  _builder.append(" results\");");
-                  _builder.newLineIfNotEmpty();
-                  _builder.append("java.util.List<");
+                  _builder.append("> _results = _dao.findAll");
                   String _simpleName_1 = t.getSimpleName();
                   _builder.append(_simpleName_1, "");
-                  _builder.append("> _results = _q.getResultList();");
+                  _builder.append("s();");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("_entityManager.getTransaction().commit();");
-                  _builder.newLine();
-                  _builder.append("_entityManager.close();");
-                  _builder.newLine();
                   _builder.append("return _results;");
                   _builder.newLine();
                   String _string = _builder.toString();
@@ -276,7 +266,8 @@ public class DMControllerGenerator {
             String _firstLower = StringExtensions.toFirstLower(_simpleName);
             _builder.append(_firstLower, "");
             String _string = _builder.toString();
-            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+            JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(JAXBElement.class, e, ref);
+            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, _typeForName);
             DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable it) {
@@ -302,12 +293,25 @@ public class DMControllerGenerator {
                     };
                   final Operation derive = IterableExtensions.<Operation>findFirst(_filter_1, _function_1);
                   StringConcatenation _builder = new StringConcatenation();
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append(" _inst");
+                  String _simpleName_1 = t.getSimpleName();
+                  _builder.append(_simpleName_1, "");
+                  _builder.append(" = ");
+                  String _simpleName_2 = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName_2);
+                  _builder.append(_firstLower, "");
+                  _builder.append(".getValue();");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("int id = -1; ");
+                  _builder.newLine();
                   {
                     boolean _notEquals = (!Objects.equal(derive, null));
                     if (_notEquals) {
                       _builder.append("_inst");
-                      String _simpleName = t.getSimpleName();
-                      _builder.append(_simpleName, "");
+                      String _simpleName_3 = t.getSimpleName();
+                      _builder.append(_simpleName_3, "");
                       _builder.append(".derive();");
                       _builder.newLineIfNotEmpty();
                     }
@@ -316,8 +320,8 @@ public class DMControllerGenerator {
                     boolean _notEquals_1 = (!Objects.equal(validate, null));
                     if (_notEquals_1) {
                       _builder.append("if(_inst");
-                      String _simpleName_1 = t.getSimpleName();
-                      _builder.append(_simpleName_1, "");
+                      String _simpleName_4 = t.getSimpleName();
+                      _builder.append(_simpleName_4, "");
                       _builder.append(".validate())");
                       _builder.newLineIfNotEmpty();
                     }
@@ -325,28 +329,18 @@ public class DMControllerGenerator {
                   _builder.append("{");
                   _builder.newLine();
                   _builder.append("  ");
-                  _builder.append("_entityManager.getTransaction().begin();");
-                  _builder.newLine();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.persist(_inst");
-                  String _simpleName_2 = t.getSimpleName();
-                  _builder.append(_simpleName_2, "  ");
+                  _builder.append("id = _dao.create");
+                  String _simpleName_5 = t.getSimpleName();
+                  _builder.append(_simpleName_5, "  ");
+                  _builder.append("(_inst");
+                  String _simpleName_6 = t.getSimpleName();
+                  _builder.append(_simpleName_6, "  ");
                   _builder.append(");");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.getTransaction().commit();");
-                  _builder.newLine();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.close();");
-                  _builder.newLine();
                   _builder.append("}");
                   _builder.newLine();
-                  _builder.append("return ");
-                  String _simpleName_3 = t.getSimpleName();
-                  String _firstLower = StringExtensions.toFirstLower(_simpleName_3);
-                  _builder.append(_firstLower, "");
-                  _builder.append(".getId();");
-                  _builder.newLineIfNotEmpty();
+                  _builder.append("return id;");
+                  _builder.newLine();
                   String _string = _builder.toString();
                   it.append(_string);
                 }
@@ -385,7 +379,8 @@ public class DMControllerGenerator {
             String _firstLower = StringExtensions.toFirstLower(_simpleName);
             _builder.append(_firstLower, "");
             String _string = _builder.toString();
-            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, ref);
+            JvmTypeReference _typeForName = DMControllerGenerator.this._typeReferences.getTypeForName(JAXBElement.class, e, ref);
+            JvmFormalParameter _parameter = DMControllerGenerator.this._jvmTypesBuilder.toParameter(e, _string, _typeForName);
             DMControllerGenerator.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable it) {
@@ -395,28 +390,41 @@ public class DMControllerGenerator {
                   final Function1<Operation,Boolean> _function = new Function1<Operation,Boolean>() {
                       public Boolean apply(final Operation it) {
                         String _name = it.getName();
-                        boolean _equals = Objects.equal(_name, "derive");
+                        boolean _equals = Objects.equal(_name, "validate");
                         return Boolean.valueOf(_equals);
                       }
                     };
-                  final Operation derive = IterableExtensions.<Operation>findFirst(_filter, _function);
+                  final Operation validate = IterableExtensions.<Operation>findFirst(_filter, _function);
                   EList<Feature> _features_1 = e.getFeatures();
                   Iterable<Operation> _filter_1 = Iterables.<Operation>filter(_features_1, Operation.class);
                   final Function1<Operation,Boolean> _function_1 = new Function1<Operation,Boolean>() {
                       public Boolean apply(final Operation it) {
                         String _name = it.getName();
-                        boolean _equals = Objects.equal(_name, "validate");
+                        boolean _equals = Objects.equal(_name, "derive");
                         return Boolean.valueOf(_equals);
                       }
                     };
-                  final Operation validate = IterableExtensions.<Operation>findFirst(_filter_1, _function_1);
+                  final Operation derive = IterableExtensions.<Operation>findFirst(_filter_1, _function_1);
                   StringConcatenation _builder = new StringConcatenation();
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append(" _inst");
+                  String _simpleName_1 = t.getSimpleName();
+                  _builder.append(_simpleName_1, "");
+                  _builder.append(" = ");
+                  String _simpleName_2 = t.getSimpleName();
+                  String _firstLower = StringExtensions.toFirstLower(_simpleName_2);
+                  _builder.append(_firstLower, "");
+                  _builder.append(".getValue();");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("int id = -1; ");
+                  _builder.newLine();
                   {
                     boolean _notEquals = (!Objects.equal(derive, null));
                     if (_notEquals) {
                       _builder.append("_inst");
-                      String _simpleName = t.getSimpleName();
-                      _builder.append(_simpleName, "");
+                      String _simpleName_3 = t.getSimpleName();
+                      _builder.append(_simpleName_3, "");
                       _builder.append(".derive();");
                       _builder.newLineIfNotEmpty();
                     }
@@ -425,8 +433,8 @@ public class DMControllerGenerator {
                     boolean _notEquals_1 = (!Objects.equal(validate, null));
                     if (_notEquals_1) {
                       _builder.append("if(_inst");
-                      String _simpleName_1 = t.getSimpleName();
-                      _builder.append(_simpleName_1, "");
+                      String _simpleName_4 = t.getSimpleName();
+                      _builder.append(_simpleName_4, "");
                       _builder.append(".validate())");
                       _builder.newLineIfNotEmpty();
                     }
@@ -434,23 +442,17 @@ public class DMControllerGenerator {
                   _builder.append("{");
                   _builder.newLine();
                   _builder.append("  ");
-                  _builder.append("_entityManager.getTransaction().begin();");
-                  _builder.newLine();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.merge(_inst");
-                  String _simpleName_2 = t.getSimpleName();
-                  _builder.append(_simpleName_2, "  ");
+                  _builder.append("id = _dao.modify");
+                  String _simpleName_5 = t.getSimpleName();
+                  _builder.append(_simpleName_5, "  ");
+                  _builder.append("(_inst");
+                  String _simpleName_6 = t.getSimpleName();
+                  _builder.append(_simpleName_6, "  ");
                   _builder.append(");");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.getTransaction().commit();");
-                  _builder.newLine();
-                  _builder.append("  ");
-                  _builder.append("_entityManager.close();");
-                  _builder.newLine();
                   _builder.append("}");
                   _builder.newLine();
-                  _builder.append("return entity.getId();");
+                  _builder.append("return id;");
                   _builder.newLine();
                   String _string = _builder.toString();
                   it.append(_string);
@@ -496,31 +498,11 @@ public class DMControllerGenerator {
               public void apply(final ITreeAppendable it) {
                 it.trace(e);
                 StringConcatenation _builder = new StringConcatenation();
-                _builder.append("javax.persistence.EntityManager _entityManager = _emf.createEntityManager();");
-                _builder.newLine();
-                _builder.append("_entityManager.getTransaction().begin();");
-                _builder.newLine();
+                _builder.append("_dao.delete");
                 String _simpleName = t.getSimpleName();
                 _builder.append(_simpleName, "");
-                _builder.append(" _");
-                String _simpleName_1 = t.getSimpleName();
-                String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
-                _builder.append(_firstLower, "");
-                _builder.append(" = _entityManager.find(");
-                String _simpleName_2 = t.getSimpleName();
-                _builder.append(_simpleName_2, "");
-                _builder.append(".class, id);");
+                _builder.append("(id);");
                 _builder.newLineIfNotEmpty();
-                _builder.append("_entityManager.remove(_");
-                String _simpleName_3 = t.getSimpleName();
-                String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_3);
-                _builder.append(_firstLower_1, "");
-                _builder.append(");");
-                _builder.newLineIfNotEmpty();
-                _builder.append("_entityManager.getTransaction().commit();");
-                _builder.newLine();
-                _builder.append("_entityManager.close();");
-                _builder.newLine();
                 String _string = _builder.toString();
                 it.append(_string);
               }

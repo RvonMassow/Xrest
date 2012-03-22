@@ -25,6 +25,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Validate;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.DMControllerGenerator;
+import org.eclipse.xtext.example.domainmodel.jvmmodel.DMDaoGenerator;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.TypesBuilderExtensions;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -49,6 +50,9 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   private DMControllerGenerator _dMControllerGenerator;
   
   @Inject
+  private DMDaoGenerator _dMDaoGenerator;
+  
+  @Inject
   private TypeReferences _typeReferences;
   
   @Inject
@@ -57,6 +61,7 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
   protected void _infer(final Entity e, final IJvmDeclaredTypeAcceptor acceptor, final boolean prelinkingPhase) {
     final JvmGenericType entityClass = this.toEntityClass(e, acceptor, prelinkingPhase);
     this._dMControllerGenerator.toControllerClass(e, entityClass, acceptor);
+    this._dMDaoGenerator.toDaoClass(e, entityClass, acceptor);
   }
   
   private JvmGenericType toEntityClass(final Entity e, final IJvmDeclaredTypeAcceptor acceptor, final boolean prelinkingPhase) {

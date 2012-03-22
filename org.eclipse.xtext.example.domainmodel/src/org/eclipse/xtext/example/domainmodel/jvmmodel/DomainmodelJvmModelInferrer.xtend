@@ -21,12 +21,14 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	@Inject extension DMControllerGenerator
+	@Inject extension DMDaoGenerator
 	@Inject extension TypeReferences
 	@Inject extension TypesBuilderExtensions
 
 	def dispatch void infer(Entity e, IJvmDeclaredTypeAcceptor acceptor, boolean prelinkingPhase) {
 		val entityClass = e.toEntityClass(acceptor, prelinkingPhase)
 		e.toControllerClass(entityClass, acceptor)
+		e.toDaoClass(entityClass, acceptor)
 	}
 
 	def private toEntityClass(Entity e, IJvmDeclaredTypeAcceptor acceptor, boolean prelinkingPhase) {
