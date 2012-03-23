@@ -1,11 +1,11 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel;
 
 import com.google.common.base.Objects;
-import com.google.inject.Inject;
 import java.util.List;
+import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -17,12 +17,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
+import org.eclipse.xtext.example.domainmodel.jvmmodel.AnnotationExtensions;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -36,6 +38,9 @@ public class DMDaoGenerator {
   
   @Inject
   private TypeReferences _typeReferences;
+  
+  @Inject
+  private AnnotationExtensions _annotationExtensions;
   
   public void toDaoClass(final Entity e, final JvmGenericType forType, final IJvmDeclaredTypeAcceptor acceptor) {
     String _name = e.getName();
@@ -51,6 +56,9 @@ public class DMDaoGenerator {
             EList<JvmMember> _members = it.getMembers();
             final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
                 public void apply(final JvmConstructor it) {
+                  EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                  JvmAnnotationReference _createInjectAnnotation = DMDaoGenerator.this._annotationExtensions.createInjectAnnotation(it);
+                  DMDaoGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createInjectAnnotation);
                   final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                       public void apply(final ITreeAppendable it) {
                         it.trace(e);
@@ -83,6 +91,7 @@ public class DMDaoGenerator {
             EList<JvmMember> _members_6 = it.getMembers();
             JvmOperation _createDelete = DMDaoGenerator.this.createDelete(forType, e);
             DMDaoGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _createDelete);
+            final Pair<String,String> p = Pair.<String, String>of("name", "bj\u00F6rn");
           }
         };
       _accept.initializeLater(_function);
@@ -95,7 +104,7 @@ public class DMDaoGenerator {
     return _field;
   }
   
-  private JvmOperation createFindById(final JvmGenericType t, final EObject e) {
+  private JvmOperation createFindById(final JvmGenericType t, final Entity e) {
     JvmOperation _xblockexpression = null;
     {
       final JvmParameterizedTypeReference ref = this._typeReferences.createTypeRef(t);
@@ -154,7 +163,7 @@ public class DMDaoGenerator {
     return _xblockexpression;
   }
   
-  private JvmOperation createFindAll(final JvmGenericType t, final EObject e) {
+  private JvmOperation createFindAll(final JvmGenericType t, final Entity e) {
     JvmOperation _xblockexpression = null;
     {
       JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);

@@ -1,6 +1,6 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
-import com.google.inject.Inject
+import javax.inject.Inject
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -15,11 +15,13 @@ class DMDaoGenerator {
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	@Inject extension TypeReferences
+	@Inject extension AnnotationExtensions
 	
 	def toDaoClass(Entity e, JvmGenericType forType, IJvmDeclaredTypeAcceptor acceptor) {
 		if(e.name != null) {
 			acceptor.accept(e.toClass(e.fullyQualifiedName.toString + "Dao")).initializeLater [
 				members += e.toConstructor() [
+					annotations += createInjectAnnotation
 					setBody [
 						trace(e)
 						append(
@@ -35,6 +37,7 @@ class DMDaoGenerator {
 				members += createCreate(forType, e)
 				members += createModify(forType, e)
 				members += createDelete(forType, e)
+				val p = "name" -> "björn"
 			]
 		}
 	}
@@ -43,7 +46,7 @@ class DMDaoGenerator {
 		e.toField("_emf", "javax.persistence.EntityManagerFactory".getTypeForName(e))
 	}
 	
-	def private createFindById(JvmGenericType t, EObject e){
+	def private createFindById(JvmGenericType t, Entity e){
 		val ref = t.createTypeRef
 		e.toMethod('''find«t.simpleName»ById'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
@@ -62,7 +65,7 @@ class DMDaoGenerator {
 		]
 	}
 	
-	def private createFindAll(JvmGenericType t, EObject e) {
+	def private createFindAll(JvmGenericType t, Entity e) {
 		val tRet = typeof(List).getTypeForName(e, t.createTypeRef)
 		e.toMethod('''findAll«t.simpleName»s'''.toString, tRet) [
 			visibility = JvmVisibility::PUBLIC

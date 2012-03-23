@@ -20,6 +20,7 @@ class DMControllerGenerator {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension TypesBuilderExtensions
 	@Inject extension TypeReferences
+	@Inject extension AnnotationExtensions
 
 	def toControllerClass(Entity e, JvmGenericType forType, IJvmDeclaredTypeAcceptor acceptor) {
 		if(e.name != null) {
@@ -48,10 +49,12 @@ class DMControllerGenerator {
 	}
 
 	def private injectedEntityManagerFactory(Entity e) {
-		e.toField("_dao", (e.fullyQualifiedName.toString + "Dao").getTypeForName(e))
+		e.toField("_dao", (e.fullyQualifiedName.toString + "Dao").getTypeForName(e)) [
+			annotations += createInjectAnnotation
+		]
 	}
 
-	def private createJsonGetById(JvmGenericType t, EObject e) {
+	def private createJsonGetById(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
 		e.toMethod('''get«t.simpleName»AsJSON'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
@@ -71,7 +74,7 @@ class DMControllerGenerator {
 		]
 	}
 
-	def private createJsonGetAll(JvmGenericType t, EObject e) {
+	def private createJsonGetAll(JvmGenericType t, Entity e) {
 		val tRet = typeof(List).getTypeForName(e, t.createTypeRef)
 		e.toMethod('''get«t.simpleName»AllAsJSON'''.toString, tRet) [
 			visibility = JvmVisibility::PUBLIC
@@ -145,7 +148,7 @@ class DMControllerGenerator {
 		]
 	}
 
-	def private createDelete(JvmGenericType t, EObject e) {
+	def private createDelete(JvmGenericType t, Entity e) {
 		e.toMethod('''delete«t.simpleName»'''.toString, typeof(void).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createDeleteAnnotation()
@@ -167,38 +170,4 @@ class DMControllerGenerator {
 //		createDOMTemplate(null, null)
 //	}
 
-	def createGetAnnotation(EObject it) {
-		toAnnotation("javax.ws.rs.GET")
-	}
-	
-	def createPostAnnotation(EObject it) {
-		toAnnotation("javax.ws.rs.POST")
-	}
-	
-	def createPutAnnotation(EObject it) {
-		toAnnotation("javax.ws.rs.PUT")
-	}
-	
-	def createDeleteAnnotation(EObject it) {
-		toAnnotation("javax.ws.rs.DELETE")
-	}
-
-	def createPathAnnotation(EObject it, String param) {
-		toAnnotation("javax.ws.rs.Path", param)
-	}
-	def createPathParamAnnotation(EObject it, String name) {
-		toAnnotation("javax.ws.rs.PathParam", name)
-	}
-
-	def createFormParamAnnotation(EObject it, String name) {
-		toAnnotation("javax.ws.rs.FormParam", name)
-	}
-
-	def createProducesAnnotation(EObject it, String mime) {
-		toAnnotation("javax.ws.rs.Produces", mime)
-	}
-	
-	def createConsumesAnnotation(EObject it, String mime) {
-		toAnnotation("javax.ws.rs.Consumes", mime)
-	}
 }
