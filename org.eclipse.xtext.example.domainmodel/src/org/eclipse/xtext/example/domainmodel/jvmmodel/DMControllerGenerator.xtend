@@ -27,16 +27,6 @@ class DMControllerGenerator {
 				annotations += e.createPathAnnotation(
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
-				members += e.toConstructor() [
-					setBody [
-						trace(e)
-						append(
-							'''
-							this._dao = new «e.fullyQualifiedName.toString»Dao();
-							'''
-						)
-					]
-				]
 				members += injectedEntityManagerFactory(e)
 				members += createJsonPut(forType, e)
 				members += createDelete(forType, e)

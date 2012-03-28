@@ -8,7 +8,6 @@ import javax.xml.bind.JAXBElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -77,44 +76,23 @@ public class DMControllerGenerator {
             JvmAnnotationReference _createPathAnnotation = DMControllerGenerator.this._annotationExtensions.createPathAnnotation(e, _join);
             DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createPathAnnotation);
             EList<JvmMember> _members = it.getMembers();
-            final Procedure1<JvmConstructor> _function_1 = new Procedure1<JvmConstructor>() {
-                public void apply(final JvmConstructor it) {
-                  final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                      public void apply(final ITreeAppendable it) {
-                        it.trace(e);
-                        StringConcatenation _builder = new StringConcatenation();
-                        _builder.append("this._dao = new ");
-                        QualifiedName _fullyQualifiedName = DMControllerGenerator.this._iQualifiedNameProvider.getFullyQualifiedName(e);
-                        String _string = _fullyQualifiedName.toString();
-                        _builder.append(_string, "");
-                        _builder.append("Dao();");
-                        _builder.newLineIfNotEmpty();
-                        it.append(_builder);
-                      }
-                    };
-                  DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
-                }
-              };
-            JvmConstructor _constructor = DMControllerGenerator.this._jvmTypesBuilder.toConstructor(e, _function_1);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmConstructor>operator_add(_members, _constructor);
-            EList<JvmMember> _members_1 = it.getMembers();
             JvmField _injectedEntityManagerFactory = DMControllerGenerator.this.injectedEntityManagerFactory(e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmField>operator_add(_members_1, _injectedEntityManagerFactory);
-            EList<JvmMember> _members_2 = it.getMembers();
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmField>operator_add(_members, _injectedEntityManagerFactory);
+            EList<JvmMember> _members_1 = it.getMembers();
             JvmOperation _createJsonPut = DMControllerGenerator.this.createJsonPut(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _createJsonPut);
-            EList<JvmMember> _members_3 = it.getMembers();
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _createJsonPut);
+            EList<JvmMember> _members_2 = it.getMembers();
             JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _createDelete);
-            EList<JvmMember> _members_4 = it.getMembers();
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _createDelete);
+            EList<JvmMember> _members_3 = it.getMembers();
             JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _createJsonGetById);
-            EList<JvmMember> _members_5 = it.getMembers();
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _createJsonGetById);
+            EList<JvmMember> _members_4 = it.getMembers();
             JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _createJsonPost);
-            EList<JvmMember> _members_6 = it.getMembers();
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _createJsonPost);
+            EList<JvmMember> _members_5 = it.getMembers();
             JvmOperation _createJsonGetAll = DMControllerGenerator.this.createJsonGetAll(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _createJsonGetAll);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _createJsonGetAll);
           }
         };
       _accept.initializeLater(_function);
