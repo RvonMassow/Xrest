@@ -2,8 +2,8 @@ package org.eclipse.xtext.example.domainmodel.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 import java.util.List;
+import javax.inject.Inject;
 import javax.xml.bind.JAXBElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -129,7 +129,7 @@ public class DMControllerGenerator {
     final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
         public void apply(final JvmField it) {
           EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-          JvmAnnotationReference _createInjectAnnotation = DMControllerGenerator.this._annotationExtensions.createInjectAnnotation(it);
+          JvmAnnotationReference _createInjectAnnotation = DMControllerGenerator.this._annotationExtensions.createInjectAnnotation(e);
           DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createInjectAnnotation);
         }
       };

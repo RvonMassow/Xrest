@@ -1,9 +1,9 @@
 
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
-import com.google.inject.Inject
 import java.util.List
-import org.eclipse.emf.ecore.EObject
+import javax.inject.Inject
+import javax.xml.bind.JAXBElement
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
@@ -11,8 +11,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import javax.xml.bind.JAXBElement
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class DMControllerGenerator {
 
@@ -50,7 +49,7 @@ class DMControllerGenerator {
 
 	def private injectedEntityManagerFactory(Entity e) {
 		e.toField("_dao", (e.fullyQualifiedName.toString + "Dao").getTypeForName(e)) [
-			annotations += createInjectAnnotation
+			annotations += e.createInjectAnnotation
 		]
 	}
 

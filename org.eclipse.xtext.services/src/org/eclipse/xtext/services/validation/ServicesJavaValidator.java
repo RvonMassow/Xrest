@@ -28,7 +28,6 @@ import org.eclipse.xtext.common.types.util.TypeArgumentContextProvider;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Service;
-import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesPackage;
 import org.eclipse.xtext.services.types.TypeErasedSignature;
 import org.eclipse.xtext.validation.Check;
@@ -88,7 +87,7 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 			if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
 				JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
 				if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
-					error("Return type is not an XmlRootElement", ServicesPackage.Literals.SERVICE__TYPE);
+					error("Return type is not an XmlRootElement, supported primitive type (long, int, boolean, String) or a List of those", ServicesPackage.Literals.SERVICE__TYPE);
 				}
 			}
 			for(int i = 0; i< service.getParams().size(); i++) {
