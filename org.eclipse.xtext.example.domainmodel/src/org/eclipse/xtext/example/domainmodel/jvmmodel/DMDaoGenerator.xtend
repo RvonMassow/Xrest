@@ -1,27 +1,26 @@
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
+import java.util.List
 import javax.inject.Inject
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.emf.ecore.EObjectimport org.eclipse.xtext.common.types.JvmVisibility
-import java.util.List
+import org.eclipse.xtext.xbase.lib.Pair
 
 class DMDaoGenerator {
 	
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	@Inject extension TypeReferences
-	@Inject extension AnnotationExtensions
 	
 	def toDaoClass(Entity e, JvmGenericType forType, IJvmDeclaredTypeAcceptor acceptor) {
 		if(e.name != null) {
 			acceptor.accept(e.toClass(e.fullyQualifiedName.toString + "Dao")).initializeLater [
 				members += e.toConstructor() [
-					annotations += createInjectAnnotation
 					setBody [
 						trace(e)
 						append(
@@ -37,7 +36,8 @@ class DMDaoGenerator {
 				members += createCreate(forType, e)
 				members += createModify(forType, e)
 				members += createDelete(forType, e)
-				val p = "name" -> "björn"
+				members += createFind(forType, e)
+				members += createQuery(forType, e)
 			]
 		}
 	}
@@ -74,7 +74,7 @@ class DMDaoGenerator {
 				append('''
 				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
 				_entityManager.getTransaction().begin();
-				javax.persistence.Query _q = _entityManager.createQuery("select results from «t.simpleName» results");
+				javax.persistence.TypedQuery<«t.simpleName»> _q = _entityManager.createQuery("select results from «t.simpleName» results", «t.simpleName».class);
 				java.util.List<«t.simpleName»> _results = _q.getResultList();
 				_entityManager.getTransaction().commit();
 				_entityManager.close();
@@ -105,7 +105,7 @@ class DMDaoGenerator {
 	
 	def private createModify(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
-		e.toMethod('''modify«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
+		e.toMethod('''modify«t.simpleName»'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
 			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
@@ -116,7 +116,7 @@ class DMDaoGenerator {
 				_entityManager.merge(«t.simpleName.toFirstLower»);
 				_entityManager.getTransaction().commit();
 				_entityManager.close();
-				return «t.simpleName.toFirstLower».getId();
+				return «t.simpleName.toFirstLower»;
 	  			'''.toString)
 	  		]
 		]
@@ -135,6 +135,54 @@ class DMDaoGenerator {
 				_entityManager.remove(_«t.simpleName.toFirstLower»);
 				_entityManager.getTransaction().commit();
 				_entityManager.close();
+	  			'''.toString)
+	  		]
+		]
+	}
+	
+	def private createFind(JvmGenericType t, Entity e){
+		val p = typeof(Pair).getTypeForName(e, typeof(String).getTypeForName(e), typeof(String).getTypeForName(e))
+		e.toMethod('''find'''.toString, typeof(List).getTypeForName(e, t.createTypeRef())) [
+			visibility = JvmVisibility::PUBLIC
+			parameters += e.toParameter("query", typeof(String).getTypeForName(e))
+			parameters += e.toParameter("args", typeof(List).getTypeForName(e, p))
+			setBody [
+				trace(e)
+				append('''
+				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
+				_entityManager.getTransaction().begin();
+				javax.persistence.Query _q = _entityManager.createQuery(query);
+				for(int i = 0; i < args.size(); i++){
+					_q.setParameter(args.get(i).getKey(), String.valueOf(args.get(i).getValue()));  
+				}
+				List<?> _result = _q.getResultList();
+				_entityManager.getTransaction().commit();
+				_entityManager.close();
+				return _result;
+	 			'''.toString)
+	 		]
+		]
+	}	
+	
+	
+	def private createQuery(JvmGenericType t, Entity e){
+		val p = typeof(Pair).getTypeForName(e, typeof(String).getTypeForName(e), typeof(String).getTypeForName(e))
+		e.toMethod('''find«t.simpleName»ByMatchingPairs'''.toString, typeof(List).getTypeForName(e, t.createTypeRef())) [
+			visibility = JvmVisibility::PUBLIC
+			parameters += e.toParameter("pairs", typeof(List).getTypeForName(e, p))
+			setBody [
+				trace(e)
+				append('''
+				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
+				_entityManager.getTransaction().begin();
+				javax.persistence.TypedQuery<«t.simpleName»> q = _entityManager.createQuery(
+					"Select m " +
+					"From «t.simpleName» m " +
+					"Where `" + pairs.get(0).getKey() + "` = '" + pairs.get(0).getValue() + "'"
+					 , «t.simpleName».class);
+				_entityManager.getTransaction().commit();
+				_entityManager.close();
+				return q.getResultList();
 	  			'''.toString)
 	  		]
 		]

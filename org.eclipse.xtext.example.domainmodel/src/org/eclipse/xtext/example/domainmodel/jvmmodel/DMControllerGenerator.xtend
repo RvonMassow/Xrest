@@ -1,9 +1,7 @@
 
 package org.eclipse.xtext.example.domainmodel.jvmmodel
 
-import java.util.List
 import javax.inject.Inject
-import javax.xml.bind.JAXBElement
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
@@ -11,7 +9,8 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+
 
 class DMControllerGenerator {
 
@@ -27,7 +26,8 @@ class DMControllerGenerator {
 				annotations += e.createPathAnnotation(
 					e.fullyQualifiedName.segments.map[toLowerCase].join("/")
 				)
-				members += injectedEntityManagerFactory(e)
+				members += injectedDaoClass(e)
+				members += injectedUriInfo(e)
 				members += createJsonPut(forType, e)
 				members += createDelete(forType, e)
 				members += createJsonGetById(forType, e)
@@ -37,15 +37,20 @@ class DMControllerGenerator {
 		}
 	}
 
-	def private injectedEntityManagerFactory(Entity e) {
+	def private injectedDaoClass(Entity e) {
 		e.toField("_dao", (e.fullyQualifiedName.toString + "Dao").getTypeForName(e)) [
 			annotations += e.createInjectAnnotation
 		]
 	}
+	
+	def private injectedUriInfo(Entity e) {
+		e.toField("_uriInfo", ("javax.ws.rs.core.UriInfo").getTypeForName(e)) [
+			annotations += e.createContextAnnotation
+		]
+	}
 
 	def private createJsonGetById(JvmGenericType t, Entity e) {
-		val ref = t.createTypeRef
-		e.toMethod('''get«t.simpleName»AsJSON'''.toString, ref) [
+		e.toMethod('''get«t.simpleName»AsJSON'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")
@@ -57,15 +62,17 @@ class DMControllerGenerator {
 				trace(e)
 				append('''
 				«t.simpleName» «t.simpleName.toFirstLower» = _dao.find«t.simpleName»ById(id);
-				return «t.simpleName.toFirstLower»;
-	  			'''.toString)
+				if(«t.simpleName.toFirstLower» == null){
+					return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
+				}
+				return Response.ok(«t.simpleName.toFirstLower»).build();
+				'''.toString)
 			]
 		]
 	}
 
 	def private createJsonGetAll(JvmGenericType t, Entity e) {
-		val tRet = typeof(List).getTypeForName(e, t.createTypeRef)
-		e.toMethod('''get«t.simpleName»AllAsJSON'''.toString, tRet) [
+		e.toMethod('''get«t.simpleName»AllAsJSON'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")
@@ -73,7 +80,7 @@ class DMControllerGenerator {
 				trace(e)
 				append('''
 				java.util.List<«t.simpleName»> _results = _dao.findAll«t.simpleName»s();
-				return _results;
+				return Response.ok(_results).build();
 				'''.toString)
 			]
 		]
@@ -81,28 +88,28 @@ class DMControllerGenerator {
 	
 	def private createJsonPost(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
-		e.toMethod('''post«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
+		e.toMethod('''post«t.simpleName»'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPostAnnotation()
 			annotations += e.createConsumesAnnotation("application/json")
-			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, typeof(JAXBElement).getTypeForName(e, ref))
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
 				trace(e)
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
 				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				append('''
-				«t.simpleName» _inst«t.simpleName» = «t.simpleName.toFirstLower».getValue();
-				int id = -1; 
 				«IF derive != null»
-				_inst«t.simpleName».derive();
+				«t.simpleName.toFirstLower».derive();
 				«ENDIF»
 				«IF validate != null»
-				if(_inst«t.simpleName».validate())
+				if(«t.simpleName.toFirstLower».validate())
 				«ENDIF»
 				{
-				  id = _dao.create«t.simpleName»(_inst«t.simpleName»);
+				int id = _dao.create«t.simpleName»(«t.simpleName.toFirstLower»);
+				java.net.URI location = _uriInfo.getAbsolutePathBuilder().path("" + id).build();
+				return Response.created(location).build();
 				}
-				return id;
+				return Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
 	  			'''.toString)
 	  		]
 		]
@@ -110,35 +117,39 @@ class DMControllerGenerator {
 	
 	def private createJsonPut(JvmGenericType t, Entity e) {
 		val ref = t.createTypeRef
-		e.toMethod('''put«t.simpleName»'''.toString, typeof(int).getTypeForName(e)) [
+		e.toMethod('''put«t.simpleName»'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createPutAnnotation()
 			annotations += e.createConsumesAnnotation("application/json")
-			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, typeof(JAXBElement).getTypeForName(e, ref))
+			parameters += e.toParameter('''«t.simpleName.toFirstLower»'''.toString, ref)
 			setBody [
 				trace(e)
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
 				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				append('''
-				«t.simpleName» _inst«t.simpleName» = «t.simpleName.toFirstLower».getValue();
-				int id = -1; 
 				«IF derive != null»
-				_inst«t.simpleName».derive();
+				«t.simpleName.toFirstLower».derive();
 				«ENDIF»
 				«IF validate != null»
-				if(_inst«t.simpleName».validate())
+				if(«t.simpleName.toFirstLower».validate())
 				«ENDIF»
 				{
-				  id = _dao.modify«t.simpleName»(_inst«t.simpleName»);
+					try{
+						«t.simpleName» modified«t.simpleName» = _dao.modify«t.simpleName»(«t.simpleName.toFirstLower»);
+				  		return Response.ok(modified«t.simpleName»).build();
+				  	}
+				  	catch(IllegalArgumentException e){
+				  		return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
+				  	}
 				}
-				return id;
+				return Response.status(javax.ws.rs.core.Response.Status.NOT_MODIFIED).build();
 	  			'''.toString)
 	  		]
 		]
 	}
 
 	def private createDelete(JvmGenericType t, Entity e) {
-		e.toMethod('''delete«t.simpleName»'''.toString, typeof(void).getTypeForName(e)) [
+		e.toMethod('''delete«t.simpleName»'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createDeleteAnnotation()
 			annotations += e.createPathAnnotation("{id}")
@@ -149,8 +160,14 @@ class DMControllerGenerator {
 				trace(e)
 				append(
 				'''
-				_dao.delete«t.simpleName»(id);
-	  			'''.toString)
+				try{
+					_dao.delete«t.simpleName»(id);
+					return Response.noContent().build();
+				}
+				catch(IllegalArgumentException e){
+				  		return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
+				}
+				'''.toString)
 	  		]
 	  	]
 	}

@@ -46,4 +46,8 @@ class AnnotationExtensions {
 	def createConsumesAnnotation(EObject it, String mime) {
 		toAnnotation("javax.ws.rs.Consumes", mime)
 	}
+	
+	def createContextAnnotation(EObject it) {
+		toAnnotation("javax.ws.rs.core.Context")
+	}
 }

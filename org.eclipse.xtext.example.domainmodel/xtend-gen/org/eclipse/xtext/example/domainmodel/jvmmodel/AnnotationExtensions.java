@@ -59,4 +59,9 @@ public class AnnotationExtensions {
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.Consumes", mime);
     return _annotation;
   }
+  
+  public JvmAnnotationReference createContextAnnotation(final EObject it) {
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(it, "javax.ws.rs.core.Context");
+    return _annotation;
+  }
 }
