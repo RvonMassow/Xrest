@@ -142,7 +142,7 @@ class DMDaoGenerator {
 	
 	def private createFind(JvmGenericType t, Entity e){
 		val p = typeof(Pair).getTypeForName(e, typeof(String).getTypeForName(e), typeof(String).getTypeForName(e))
-		e.toMethod('''find'''.toString, typeof(List).getTypeForName(e, t.createTypeRef())) [
+		e.toMethod('''find'''.toString, typeof(List).getTypeForName(e)) [
 			visibility = JvmVisibility::PUBLIC
 			parameters += e.toParameter("query", typeof(String).getTypeForName(e))
 			parameters += e.toParameter("args", typeof(List).getTypeForName(e, p))
@@ -173,16 +173,20 @@ class DMDaoGenerator {
 			setBody [
 				trace(e)
 				append('''
+				String query = "Select m From «t.simpleName» m Where";
+				for(int i = 0 ; i < pairs.size() ; i++) {
+					query += " m." + pairs.get(i).getKey() +  " = '" + pairs.get(0).getValue() + "'";
+					if(i < pairs.size() - 1) {
+						query += " and";
+					}
+				}
 				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
 				_entityManager.getTransaction().begin();
-				javax.persistence.TypedQuery<«t.simpleName»> q = _entityManager.createQuery(
-					"Select m " +
-					"From «t.simpleName» m " +
-					"Where `" + pairs.get(0).getKey() + "` = '" + pairs.get(0).getValue() + "'"
-					 , «t.simpleName».class);
+				javax.persistence.TypedQuery<«t.simpleName»> q = _entityManager.createQuery(query, «t.simpleName».class);
+				List<«t.simpleName»> _results = q.getResultList();
 				_entityManager.getTransaction().commit();
 				_entityManager.close();
-				return q.getResultList();
+				return _results;
 	  			'''.toString)
 	  		]
 		]

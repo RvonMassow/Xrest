@@ -78,20 +78,23 @@ public class DMControllerGenerator {
             JvmField _injectedDaoClass = DMControllerGenerator.this.injectedDaoClass(e);
             DMControllerGenerator.this._jvmTypesBuilder.<JvmField>operator_add(_members, _injectedDaoClass);
             EList<JvmMember> _members_1 = it.getMembers();
-            JvmOperation _createJsonPut = DMControllerGenerator.this.createJsonPut(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _createJsonPut);
+            JvmField _injectedUriInfo = DMControllerGenerator.this.injectedUriInfo(e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmField>operator_add(_members_1, _injectedUriInfo);
             EList<JvmMember> _members_2 = it.getMembers();
-            JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _createDelete);
+            JvmOperation _createJsonPut = DMControllerGenerator.this.createJsonPut(forType, e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _createJsonPut);
             EList<JvmMember> _members_3 = it.getMembers();
-            JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _createJsonGetById);
+            JvmOperation _createDelete = DMControllerGenerator.this.createDelete(forType, e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _createDelete);
             EList<JvmMember> _members_4 = it.getMembers();
-            JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _createJsonPost);
+            JvmOperation _createJsonGetById = DMControllerGenerator.this.createJsonGetById(forType, e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _createJsonGetById);
             EList<JvmMember> _members_5 = it.getMembers();
+            JvmOperation _createJsonPost = DMControllerGenerator.this.createJsonPost(forType, e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _createJsonPost);
+            EList<JvmMember> _members_6 = it.getMembers();
             JvmOperation _createJsonGetAll = DMControllerGenerator.this.createJsonGetAll(forType, e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _createJsonGetAll);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _createJsonGetAll);
           }
         };
       _accept.initializeLater(_function);
@@ -99,32 +102,32 @@ public class DMControllerGenerator {
   }
   
   private JvmField injectedDaoClass(final Entity e) {
-    JvmField _xblockexpression = null;
-    {
-      QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
-      String _string = _fullyQualifiedName.toString();
-      String _plus = (_string + "Dao");
-      JvmTypeReference _typeForName = this._typeReferences.getTypeForName(_plus, e);
-      final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
-          public void apply(final JvmField it) {
-            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-            JvmAnnotationReference _createInjectAnnotation = DMControllerGenerator.this._annotationExtensions.createInjectAnnotation(e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createInjectAnnotation);
-          }
-        };
-      this._jvmTypesBuilder.toField(e, "_dao", _typeForName, _function);
-      JvmTypeReference _typeForName_1 = this._typeReferences.getTypeForName("javax.ws.rs.core.UriInfo", e);
-      final Procedure1<JvmField> _function_1 = new Procedure1<JvmField>() {
-          public void apply(final JvmField it) {
-            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-            JvmAnnotationReference _createContextAnnotation = DMControllerGenerator.this._annotationExtensions.createContextAnnotation(e);
-            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createContextAnnotation);
-          }
-        };
-      JvmField _field = this._jvmTypesBuilder.toField(e, "_uriInfo", _typeForName_1, _function_1);
-      _xblockexpression = (_field);
-    }
-    return _xblockexpression;
+    QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
+    String _string = _fullyQualifiedName.toString();
+    String _plus = (_string + "Dao");
+    JvmTypeReference _typeForName = this._typeReferences.getTypeForName(_plus, e);
+    final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+        public void apply(final JvmField it) {
+          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+          JvmAnnotationReference _createInjectAnnotation = DMControllerGenerator.this._annotationExtensions.createInjectAnnotation(e);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createInjectAnnotation);
+        }
+      };
+    JvmField _field = this._jvmTypesBuilder.toField(e, "_dao", _typeForName, _function);
+    return _field;
+  }
+  
+  private JvmField injectedUriInfo(final Entity e) {
+    JvmTypeReference _typeForName = this._typeReferences.getTypeForName("javax.ws.rs.core.UriInfo", e);
+    final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+        public void apply(final JvmField it) {
+          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+          JvmAnnotationReference _createContextAnnotation = DMControllerGenerator.this._annotationExtensions.createContextAnnotation(e);
+          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createContextAnnotation);
+        }
+      };
+    JvmField _field = this._jvmTypesBuilder.toField(e, "_uriInfo", _typeForName, _function);
+    return _field;
   }
   
   private JvmOperation createJsonGetById(final JvmGenericType t, final Entity e) {
@@ -313,10 +316,10 @@ public class DMControllerGenerator {
                       _builder.append(_firstLower_1, "");
                       _builder.append(".validate())");
                       _builder.newLineIfNotEmpty();
+                      _builder.append("{");
+                      _builder.newLine();
                     }
                   }
-                  _builder.append("{");
-                  _builder.newLine();
                   _builder.append("int id = _dao.create");
                   String _simpleName_2 = t.getSimpleName();
                   _builder.append(_simpleName_2, "");
@@ -330,10 +333,15 @@ public class DMControllerGenerator {
                   _builder.newLine();
                   _builder.append("return Response.created(location).build();");
                   _builder.newLine();
-                  _builder.append("}");
-                  _builder.newLine();
-                  _builder.append("return Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();");
-                  _builder.newLine();
+                  {
+                    boolean _notEquals_2 = (!Objects.equal(validate, null));
+                    if (_notEquals_2) {
+                      _builder.append("}");
+                      _builder.newLine();
+                      _builder.append("return Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();");
+                      _builder.newLine();
+                    }
+                  }
                   String _string = _builder.toString();
                   it.append(_string);
                 }
@@ -417,50 +425,51 @@ public class DMControllerGenerator {
                       _builder.append(_firstLower_1, "");
                       _builder.append(".validate())");
                       _builder.newLineIfNotEmpty();
+                      _builder.append("{");
+                      _builder.newLine();
                     }
                   }
-                  _builder.append("{");
-                  _builder.newLine();
-                  _builder.append("\t");
                   _builder.append("try{");
                   _builder.newLine();
-                  _builder.append("\t\t");
+                  _builder.append("\t");
                   String _simpleName_2 = t.getSimpleName();
-                  _builder.append(_simpleName_2, "		");
+                  _builder.append(_simpleName_2, "	");
                   _builder.append(" modified");
                   String _simpleName_3 = t.getSimpleName();
-                  _builder.append(_simpleName_3, "		");
+                  _builder.append(_simpleName_3, "	");
                   _builder.append(" = _dao.modify");
                   String _simpleName_4 = t.getSimpleName();
-                  _builder.append(_simpleName_4, "		");
+                  _builder.append(_simpleName_4, "	");
                   _builder.append("(");
                   String _simpleName_5 = t.getSimpleName();
                   String _firstLower_2 = StringExtensions.toFirstLower(_simpleName_5);
-                  _builder.append(_firstLower_2, "		");
+                  _builder.append(_firstLower_2, "	");
                   _builder.append(");");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("  \t\t");
+                  _builder.append("\t");
                   _builder.append("return Response.ok(modified");
                   String _simpleName_6 = t.getSimpleName();
-                  _builder.append(_simpleName_6, "  		");
+                  _builder.append(_simpleName_6, "	");
                   _builder.append(").build();");
                   _builder.newLineIfNotEmpty();
-                  _builder.append("  \t");
                   _builder.append("}");
                   _builder.newLine();
-                  _builder.append("  \t");
                   _builder.append("catch(IllegalArgumentException e){");
                   _builder.newLine();
-                  _builder.append("  \t\t");
+                  _builder.append("\t");
                   _builder.append("return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();");
                   _builder.newLine();
-                  _builder.append("  \t");
                   _builder.append("}");
                   _builder.newLine();
-                  _builder.append("}");
-                  _builder.newLine();
-                  _builder.append("return Response.status(javax.ws.rs.core.Response.Status.NOT_MODIFIED).build();");
-                  _builder.newLine();
+                  {
+                    boolean _notEquals_2 = (!Objects.equal(validate, null));
+                    if (_notEquals_2) {
+                      _builder.append("}");
+                      _builder.newLine();
+                      _builder.append("return Response.status(javax.ws.rs.core.Response.Status.NOT_MODIFIED).build();");
+                      _builder.newLine();
+                    }
+                  }
                   String _string = _builder.toString();
                   it.append(_string);
                 }

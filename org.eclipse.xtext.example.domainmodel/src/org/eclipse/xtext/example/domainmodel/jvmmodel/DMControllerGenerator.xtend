@@ -103,14 +103,16 @@ class DMControllerGenerator {
 				«ENDIF»
 				«IF validate != null»
 				if(«t.simpleName.toFirstLower».validate())
-				«ENDIF»
 				{
+				«ENDIF»
 				int id = _dao.create«t.simpleName»(«t.simpleName.toFirstLower»);
 				java.net.URI location = _uriInfo.getAbsolutePathBuilder().path("" + id).build();
 				return Response.created(location).build();
+				«IF validate != null»
 				}
 				return Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
-	  			'''.toString)
+	  			«ENDIF»
+				'''.toString)
 	  		]
 		]
 	}
@@ -132,18 +134,20 @@ class DMControllerGenerator {
 				«ENDIF»
 				«IF validate != null»
 				if(«t.simpleName.toFirstLower».validate())
-				«ENDIF»
 				{
-					try{
-						«t.simpleName» modified«t.simpleName» = _dao.modify«t.simpleName»(«t.simpleName.toFirstLower»);
-				  		return Response.ok(modified«t.simpleName»).build();
-				  	}
-				  	catch(IllegalArgumentException e){
-				  		return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
-				  	}
+				«ENDIF»
+				try{
+					«t.simpleName» modified«t.simpleName» = _dao.modify«t.simpleName»(«t.simpleName.toFirstLower»);
+					return Response.ok(modified«t.simpleName»).build();
+				}
+				catch(IllegalArgumentException e){
+					return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
+				}
+				«IF validate != null»
 				}
 				return Response.status(javax.ws.rs.core.Response.Status.NOT_MODIFIED).build();
-	  			'''.toString)
+	  			«ENDIF»
+				'''.toString)
 	  		]
 		]
 	}
