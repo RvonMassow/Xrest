@@ -25,7 +25,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#isDerive <em>Derive</em>}</li>
+ *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.PropertyImpl#getMappedBy <em>Mapped By</em>}</li>
  * </ul>
@@ -36,24 +36,24 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 public class PropertyImpl extends FeatureImpl implements Property
 {
   /**
-   * The default value of the '{@link #isDerive() <em>Derive</em>}' attribute.
+   * The default value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isDerive()
+   * @see #isGenerated()
    * @generated
    * @ordered
    */
-  protected static final boolean DERIVE_EDEFAULT = false;
+  protected static final boolean GENERATED_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isDerive() <em>Derive</em>}' attribute.
+   * The cached value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isDerive()
+   * @see #isGenerated()
    * @generated
    * @ordered
    */
-  protected boolean derive = DERIVE_EDEFAULT;
+  protected boolean generated = GENERATED_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -101,9 +101,9 @@ public class PropertyImpl extends FeatureImpl implements Property
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isDerive()
+  public boolean isGenerated()
   {
-    return derive;
+    return generated;
   }
 
   /**
@@ -111,12 +111,12 @@ public class PropertyImpl extends FeatureImpl implements Property
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDerive(boolean newDerive)
+  public void setGenerated(boolean newGenerated)
   {
-    boolean oldDerive = derive;
-    derive = newDerive;
+    boolean oldGenerated = generated;
+    generated = newGenerated;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DomainmodelPackage.PROPERTY__DERIVE, oldDerive, derive));
+      eNotify(new ENotificationImpl(this, Notification.SET, DomainmodelPackage.PROPERTY__GENERATED, oldGenerated, generated));
   }
 
   /**
@@ -236,8 +236,8 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
-      case DomainmodelPackage.PROPERTY__DERIVE:
-        return isDerive();
+      case DomainmodelPackage.PROPERTY__GENERATED:
+        return isGenerated();
       case DomainmodelPackage.PROPERTY__TYPE:
         return getType();
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
@@ -257,8 +257,8 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
-      case DomainmodelPackage.PROPERTY__DERIVE:
-        setDerive((Boolean)newValue);
+      case DomainmodelPackage.PROPERTY__GENERATED:
+        setGenerated((Boolean)newValue);
         return;
       case DomainmodelPackage.PROPERTY__TYPE:
         setType((JvmTypeReference)newValue);
@@ -280,8 +280,8 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
-      case DomainmodelPackage.PROPERTY__DERIVE:
-        setDerive(DERIVE_EDEFAULT);
+      case DomainmodelPackage.PROPERTY__GENERATED:
+        setGenerated(GENERATED_EDEFAULT);
         return;
       case DomainmodelPackage.PROPERTY__TYPE:
         setType((JvmTypeReference)null);
@@ -303,8 +303,8 @@ public class PropertyImpl extends FeatureImpl implements Property
   {
     switch (featureID)
     {
-      case DomainmodelPackage.PROPERTY__DERIVE:
-        return derive != DERIVE_EDEFAULT;
+      case DomainmodelPackage.PROPERTY__GENERATED:
+        return generated != GENERATED_EDEFAULT;
       case DomainmodelPackage.PROPERTY__TYPE:
         return type != null;
       case DomainmodelPackage.PROPERTY__MAPPED_BY:
@@ -324,8 +324,8 @@ public class PropertyImpl extends FeatureImpl implements Property
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (derive: ");
-    result.append(derive);
+    result.append(" (generated: ");
+    result.append(generated);
     result.append(')');
     return result.toString();
   }

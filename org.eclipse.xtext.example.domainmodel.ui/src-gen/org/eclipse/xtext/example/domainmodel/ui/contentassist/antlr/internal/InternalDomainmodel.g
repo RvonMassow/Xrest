@@ -2239,11 +2239,11 @@ rule__ValidID__Alternatives
 )
 
     |(
-{ before(grammarAccess.getValidIDAccess().getDeriveKeyword_1()); }
+{ before(grammarAccess.getValidIDAccess().getGeneratedKeyword_1()); }
 
-	'derive' 
+	'generated' 
 
-{ after(grammarAccess.getValidIDAccess().getDeriveKeyword_1()); }
+{ after(grammarAccess.getValidIDAccess().getGeneratedKeyword_1()); }
 )
 
     |(
@@ -3563,9 +3563,9 @@ rule__Property__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getPropertyAccess().getDeriveAssignment_0()); }
-(rule__Property__DeriveAssignment_0)?
-{ after(grammarAccess.getPropertyAccess().getDeriveAssignment_0()); }
+{ before(grammarAccess.getPropertyAccess().getGeneratedAssignment_0()); }
+(rule__Property__GeneratedAssignment_0)?
+{ after(grammarAccess.getPropertyAccess().getGeneratedAssignment_0()); }
 )
 
 ;
@@ -14350,22 +14350,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Property__DeriveAssignment_0
+rule__Property__GeneratedAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0()); }
+{ before(grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0()); }
 (
-{ before(grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0()); }
+{ before(grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0()); }
 
-	'derive' 
+	'generated' 
 
-{ after(grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0()); }
+{ after(grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0()); }
 )
 
-{ after(grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0()); }
+{ after(grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0()); }
 )
 
 ;
@@ -14466,16 +14466,16 @@ rule__Derive__NameAssignment_0
     }
 :
 (
-{ before(grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0()); }
+{ before(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
 (
-{ before(grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0()); }
+{ before(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
 
-	'derive' 
+	'generate' 
 
-{ after(grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0()); }
+{ after(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
 )
 
-{ after(grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0()); }
+{ after(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
 )
 
 ;

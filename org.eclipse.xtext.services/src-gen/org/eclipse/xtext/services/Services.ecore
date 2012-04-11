@@ -21,15 +21,11 @@
         eType="#//Service" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Service">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="get" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="post" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="put" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
-        eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Path" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
@@ -42,5 +38,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Path">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="segments" upperBound="-1"
+        eType="#//PathSegment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PathSegment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterSegment" eSuperTypes="#//PathSegment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="param" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleSegment" eSuperTypes="#//PathSegment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -103,6 +103,26 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
+      public Adapter casePath(Path object)
+      {
+        return createPathAdapter();
+      }
+      @Override
+      public Adapter casePathSegment(PathSegment object)
+      {
+        return createPathSegmentAdapter();
+      }
+      @Override
+      public Adapter caseParameterSegment(ParameterSegment object)
+      {
+        return createParameterSegmentAdapter();
+      }
+      @Override
+      public Adapter caseSimpleSegment(SimpleSegment object)
+      {
+        return createSimpleSegmentAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -195,6 +215,66 @@ public class ServicesAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.Path <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.Path
+   * @generated
+   */
+  public Adapter createPathAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.PathSegment <em>Path Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.PathSegment
+   * @generated
+   */
+  public Adapter createPathSegmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.ParameterSegment <em>Parameter Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.ParameterSegment
+   * @generated
+   */
+  public Adapter createParameterSegmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.services.services.SimpleSegment <em>Simple Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.services.services.SimpleSegment
+   * @generated
+   */
+  public Adapter createSimpleSegmentAdapter()
   {
     return null;
   }

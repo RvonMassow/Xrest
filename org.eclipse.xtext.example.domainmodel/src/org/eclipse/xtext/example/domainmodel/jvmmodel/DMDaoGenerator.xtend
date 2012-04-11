@@ -48,7 +48,7 @@ class DMDaoGenerator {
 	
 	def private createFindById(JvmGenericType t, Entity e){
 		val ref = t.createTypeRef
-		e.toMethod('''find«t.simpleName»ById'''.toString, ref) [
+		e.toMethod('''retrieve«t.simpleName»ById'''.toString, ref) [
 			visibility = JvmVisibility::PUBLIC
 			parameters += e.toParameter("id", typeof(int).getTypeForName(e))
 			setBody [
@@ -67,7 +67,7 @@ class DMDaoGenerator {
 	
 	def private createFindAll(JvmGenericType t, Entity e) {
 		val tRet = typeof(List).getTypeForName(e, t.createTypeRef)
-		e.toMethod('''findAll«t.simpleName»s'''.toString, tRet) [
+		e.toMethod('''retrieveAll«t.simpleName»s'''.toString, tRet) [
 			visibility = JvmVisibility::PUBLIC
 			setBody [
 				trace(e)
@@ -142,7 +142,7 @@ class DMDaoGenerator {
 	
 	def private createFind(JvmGenericType t, Entity e){
 		val p = typeof(Pair).getTypeForName(e, typeof(String).getTypeForName(e), typeof(String).getTypeForName(e))
-		e.toMethod('''find'''.toString, typeof(List).getTypeForName(e)) [
+		e.toMethod('''retrieve'''.toString, typeof(List).getTypeForName(e, t.createTypeRef())) [
 			visibility = JvmVisibility::PUBLIC
 			parameters += e.toParameter("query", typeof(String).getTypeForName(e))
 			parameters += e.toParameter("args", typeof(List).getTypeForName(e, p))
@@ -151,11 +151,11 @@ class DMDaoGenerator {
 				append('''
 				javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
 				_entityManager.getTransaction().begin();
-				javax.persistence.Query _q = _entityManager.createQuery(query);
+				javax.persistence.TypedQuery<«t.simpleName»> _q = _entityManager.createQuery(query, «t.simpleName».class);
 				for(int i = 0; i < args.size(); i++){
 					_q.setParameter(args.get(i).getKey(), String.valueOf(args.get(i).getValue()));  
 				}
-				List<?> _result = _q.getResultList();
+				List<«t.simpleName»> _result = _q.getResultList();
 				_entityManager.getTransaction().commit();
 				_entityManager.close();
 				return _result;

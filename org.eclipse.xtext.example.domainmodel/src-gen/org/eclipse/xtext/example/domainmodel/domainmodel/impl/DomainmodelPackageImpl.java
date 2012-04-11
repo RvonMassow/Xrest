@@ -328,7 +328,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Derive()
+  public EAttribute getProperty_Generated()
   {
     return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
   }
@@ -444,7 +444,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     createEAttribute(featureEClass, FEATURE__NAME);
 
     propertyEClass = createEClass(PROPERTY);
-    createEAttribute(propertyEClass, PROPERTY__DERIVE);
+    createEAttribute(propertyEClass, PROPERTY__GENERATED);
     createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__MAPPED_BY);
 
@@ -519,7 +519,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProperty_Derive(), ecorePackage.getEBoolean(), "derive", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProperty_Generated(), ecorePackage.getEBoolean(), "generated", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_MappedBy(), this.getProperty(), null, "mappedBy", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

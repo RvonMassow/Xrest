@@ -23,11 +23,14 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Import;
+import org.eclipse.xtext.services.services.ParameterSegment;
+import org.eclipse.xtext.services.services.Path;
 import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesGrammarAccess;
 import org.eclipse.xtext.services.services.ServicesPackage;
+import org.eclipse.xtext.services.services.SimpleSegment;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -105,6 +108,19 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 					return; 
 				}
 				else break;
+			case ServicesPackage.PARAMETER_SEGMENT:
+				if(context == grammarAccess.getParameterSegmentRule() ||
+				   context == grammarAccess.getPathSegmentRule()) {
+					sequence_ParameterSegment(context, (ParameterSegment) semanticObject); 
+					return; 
+				}
+				else break;
+			case ServicesPackage.PATH:
+				if(context == grammarAccess.getPathRule()) {
+					sequence_Path(context, (Path) semanticObject); 
+					return; 
+				}
+				else break;
 			case ServicesPackage.REQUIRE_DECLARATION:
 				if(context == grammarAccess.getRequireDeclarationRule()) {
 					sequence_RequireDeclaration(context, (RequireDeclaration) semanticObject); 
@@ -123,6 +139,13 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 					return; 
 				}
 				else break;
+			case ServicesPackage.SIMPLE_SEGMENT:
+				if(context == grammarAccess.getPathSegmentRule() ||
+				   context == grammarAccess.getSimpleSegmentRule()) {
+					sequence_SimpleSegment(context, (SimpleSegment) semanticObject); 
+					return; 
+				}
+				else break;
 			}
 		else if(semanticObject.eClass().getEPackage() == TypesPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case TypesPackage.JVM_FORMAL_PARAMETER:
@@ -132,6 +155,10 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 				}
 				else if(context == grammarAccess.getJvmFormalParameterRule()) {
 					sequence_JvmFormalParameter(context, (JvmFormalParameter) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getParameterRule()) {
+					sequence_Parameter(context, (JvmFormalParameter) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1098,6 +1125,40 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	
 	/**
 	 * Constraint:
+	 *     param=Parameter
+	 */
+	protected void sequence_ParameterSegment(EObject context, ParameterSegment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ServicesPackage.Literals.PARAMETER_SEGMENT__PARAM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ServicesPackage.Literals.PARAMETER_SEGMENT__PARAM));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParameterSegmentAccess().getParamParameterParserRuleCall_1_0(), semanticObject.getParam());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ValidID parameterType=JvmTypeReference)
+	 */
+	protected void sequence_Parameter(EObject context, JvmFormalParameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (segments+=PathSegment segments+=PathSegment*)
+	 */
+	protected void sequence_Path(EObject context, Path semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (type=JvmTypeReference name=ID?)
 	 */
 	protected void sequence_RequireDeclaration(EObject context, RequireDeclaration semanticObject) {
@@ -1107,13 +1168,7 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (service?='service' (get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE'))? 
-	 *         name=ValidID 
-	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
-	 *         type=JvmTypeReference 
-	 *         body=XBlockExpression
-	 *     )
+	 *     ((get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE')? name=Path type=JvmTypeReference body=XBlockExpression)
 	 */
 	protected void sequence_Service(EObject context, Service semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1132,6 +1187,22 @@ public class AbstractServicesSemanticSequencer extends AbstractSemanticSequencer
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getServicesFileAccess().getComponentComponentParserRuleCall_0(), semanticObject.getComponent());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ValidID
+	 */
+	protected void sequence_SimpleSegment(EObject context, SimpleSegment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ServicesPackage.Literals.SIMPLE_SEGMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ServicesPackage.Literals.SIMPLE_SEGMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSimpleSegmentAccess().getNameValidIDParserRuleCall_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

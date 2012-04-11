@@ -265,13 +265,13 @@ public interface DomainmodelPackage extends EPackage
   int PROPERTY__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Derive</b></em>' attribute.
+   * The feature id for the '<em><b>Generated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__DERIVE = FEATURE_FEATURE_COUNT + 0;
+  int PROPERTY__GENERATED = FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -571,15 +571,15 @@ public interface DomainmodelPackage extends EPackage
   EClass getProperty();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive <em>Derive</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isGenerated <em>Generated</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Derive</em>'.
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive()
+   * @return the meta object for the attribute '<em>Generated</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Property#isGenerated()
    * @see #getProperty()
    * @generated
    */
-  EAttribute getProperty_Derive();
+  EAttribute getProperty_Generated();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType <em>Type</em>}'.
@@ -802,12 +802,12 @@ public interface DomainmodelPackage extends EPackage
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '<em><b>Derive</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Generated</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY__DERIVE = eINSTANCE.getProperty_Derive();
+    EAttribute PROPERTY__GENERATED = eINSTANCE.getProperty_Generated();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.

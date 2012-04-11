@@ -12,25 +12,17 @@ import static com.google.common.collect.Lists.*;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.util.JavaReflectAccess;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
 import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.validation.XbaseJavaValidator;
 
-import com.google.inject.Inject;
-
 public class DomainmodelJavaValidator extends XbaseJavaValidator {
-
-	@Inject 
-	private JavaReflectAccess jra;
 
     @Check
     public void checkTypeNameStartsWithCapital(final Entity entity) {
@@ -52,28 +44,6 @@ public class DomainmodelJavaValidator extends XbaseJavaValidator {
             		IssueCodes.INVALID_FEATURE_NAME, 
             		feature.getName());
         }
-    }
-
-    @Check
-    public void checkFeatureTypeCompatible(final Property property) {
-    	final JvmTypeReference type = property.getType();
-    	final Class<?> clazz = jra.getRawType(type.getType());
-//    	if(!List.class.isAssignableFrom(clazz)){
-//    		if(property.getMappedBy() == null) {
-//    			error("Multiplicity many relations need to define an opposite for database mappings",
-//    					DomainmodelPackage.Literals.PROPERTY__MAPPED_BY,
-//    					IssueCodes.INVALID_MAPPING,
-//    					property.getType().getQualifiedName());
-//    		}
-//    	} else 
-//    	TODO: fix
-//    		if(!Serializable.class.isAssignableFrom(clazz)) {
-//    		warning("Invalid type, must be primitive, List, subclass of java.io.Serializable or Entity itself", 
-//            		DomainmodelPackage.Literals.FEATURE__TYPE,
-//            		ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-//            		IssueCodes.INVALID_FEATURE_TYPE,
-//            		property.getType().getQualifiedName());
-//    	}
     }
     
     @Check

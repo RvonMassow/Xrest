@@ -411,16 +411,16 @@ ruleProperty returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_derive_0_0=	'derive' 
+		lv_generated_0_0=	'generated' 
     {
-        newLeafNode(lv_derive_0_0, grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0());
+        newLeafNode(lv_generated_0_0, grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getPropertyRule());
 	        }
-       		setWithLastConsumed($current, "derive", true, "derive");
+       		setWithLastConsumed($current, "generated", true, "generated");
 	    }
 
 )
@@ -600,16 +600,16 @@ ruleDerive returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_name_0_0=	'derive' 
+		lv_name_0_0=	'generate' 
     {
-        newLeafNode(lv_name_0_0, grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0());
+        newLeafNode(lv_name_0_0, grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getDeriveRule());
 	        }
-       		setWithLastConsumed($current, "name", lv_name_0_0, "derive");
+       		setWithLastConsumed($current, "name", lv_name_0_0, "generate");
 	    }
 
 )
@@ -705,10 +705,10 @@ ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
     }
 
     |
-	kw='derive' 
+	kw='generated' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getValidIDAccess().getDeriveKeyword_1()); 
+        newLeafNode(kw, grammarAccess.getValidIDAccess().getGeneratedKeyword_1()); 
     }
 
     |

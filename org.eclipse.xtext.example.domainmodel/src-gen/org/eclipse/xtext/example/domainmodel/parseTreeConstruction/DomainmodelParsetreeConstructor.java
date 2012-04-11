@@ -984,13 +984,13 @@ protected class Feature_OperationParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Property ****************
  *
  * Property:
- * 	derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+ * 	generated?="generated"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
  * 
  * ;
  *
  **/
 
-// derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+// generated?="generated"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 protected class Property_Group extends GroupToken {
 	
 	public Property_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1020,16 +1020,16 @@ protected class Property_Group extends GroupToken {
 
 }
 
-// derive?="derive"?
-protected class Property_DeriveAssignment_0 extends AssignmentToken  {
+// generated?="generated"?
+protected class Property_GeneratedAssignment_0 extends AssignmentToken  {
 	
-	public Property_DeriveAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Property_GeneratedAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDeriveAssignment_0();
+		return grammarAccess.getPropertyAccess().getGeneratedAssignment_0();
 	}
 
     @Override
@@ -1041,11 +1041,11 @@ protected class Property_DeriveAssignment_0 extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("derive",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("derive");
+		if((value = eObjectConsumer.getConsumable("generated",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("generated");
 		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getPropertyAccess().getDeriveDeriveKeyword_0_0();
+			element = grammarAccess.getPropertyAccess().getGeneratedGeneratedKeyword_0_0();
 			return obj;
 		}
 		return null;
@@ -1068,7 +1068,7 @@ protected class Property_NameAssignment_1 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Property_DeriveAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Property_GeneratedAssignment_0(lastRuleCallOrigin, this, 0, inst);
 			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index - 1, inst);
 		}	
 	}
@@ -1477,11 +1477,11 @@ protected class Validate_BodyAssignment_1 extends AssignmentToken  {
 /************ begin Rule Derive ****************
  *
  * Derive:
- * 	name="derive" body=XBlockExpression;
+ * 	name="generate" body=XBlockExpression;
  *
  **/
 
-// name="derive" body=XBlockExpression
+// name="generate" body=XBlockExpression
 protected class Derive_Group extends GroupToken {
 	
 	public Derive_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1510,7 +1510,7 @@ protected class Derive_Group extends GroupToken {
 
 }
 
-// name="derive"
+// name="generate"
 protected class Derive_NameAssignment_0 extends AssignmentToken  {
 	
 	public Derive_NameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1533,9 +1533,9 @@ protected class Derive_NameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getDeriveAccess().getNameDeriveKeyword_0_0();
+			element = grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0();
 			return obj;
 		}
 		return null;

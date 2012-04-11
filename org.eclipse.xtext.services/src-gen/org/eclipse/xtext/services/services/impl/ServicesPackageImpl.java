@@ -16,11 +16,15 @@ import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.Import;
+import org.eclipse.xtext.services.services.ParameterSegment;
+import org.eclipse.xtext.services.services.Path;
+import org.eclipse.xtext.services.services.PathSegment;
 import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesFactory;
 import org.eclipse.xtext.services.services.ServicesFile;
 import org.eclipse.xtext.services.services.ServicesPackage;
+import org.eclipse.xtext.services.services.SimpleSegment;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
@@ -66,6 +70,34 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * @generated
    */
   private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pathEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pathSegmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterSegmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass simpleSegmentEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -238,7 +270,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Service()
+  public EAttribute getService_Get()
   {
     return (EAttribute)serviceEClass.getEStructuralFeatures().get(0);
   }
@@ -248,7 +280,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Get()
+  public EAttribute getService_Post()
   {
     return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
   }
@@ -258,7 +290,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Post()
+  public EAttribute getService_Put()
   {
     return (EAttribute)serviceEClass.getEStructuralFeatures().get(2);
   }
@@ -268,7 +300,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Put()
+  public EAttribute getService_Delete()
   {
     return (EAttribute)serviceEClass.getEStructuralFeatures().get(3);
   }
@@ -278,29 +310,9 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getService_Delete()
+  public EReference getService_Name()
   {
-    return (EAttribute)serviceEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getService_Name()
-  {
-    return (EAttribute)serviceEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getService_Params()
-  {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(6);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -310,7 +322,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    */
   public EReference getService_Type()
   {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(7);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -320,7 +332,7 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    */
   public EReference getService_Body()
   {
-    return (EReference)serviceEClass.getEStructuralFeatures().get(8);
+    return (EReference)serviceEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -378,6 +390,76 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getPath()
+  {
+    return pathEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPath_Segments()
+  {
+    return (EReference)pathEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPathSegment()
+  {
+    return pathSegmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameterSegment()
+  {
+    return parameterSegmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameterSegment_Param()
+  {
+    return (EReference)parameterSegmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSimpleSegment()
+  {
+    return simpleSegmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSimpleSegment_Name()
+  {
+    return (EAttribute)simpleSegmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ServicesFactory getServicesFactory()
   {
     return (ServicesFactory)getEFactoryInstance();
@@ -415,13 +497,11 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     createEReference(componentEClass, COMPONENT__SERVICES);
 
     serviceEClass = createEClass(SERVICE);
-    createEAttribute(serviceEClass, SERVICE__SERVICE);
     createEAttribute(serviceEClass, SERVICE__GET);
     createEAttribute(serviceEClass, SERVICE__POST);
     createEAttribute(serviceEClass, SERVICE__PUT);
     createEAttribute(serviceEClass, SERVICE__DELETE);
-    createEAttribute(serviceEClass, SERVICE__NAME);
-    createEReference(serviceEClass, SERVICE__PARAMS);
+    createEReference(serviceEClass, SERVICE__NAME);
     createEReference(serviceEClass, SERVICE__TYPE);
     createEReference(serviceEClass, SERVICE__BODY);
 
@@ -431,6 +511,17 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
+
+    pathEClass = createEClass(PATH);
+    createEReference(pathEClass, PATH__SEGMENTS);
+
+    pathSegmentEClass = createEClass(PATH_SEGMENT);
+
+    parameterSegmentEClass = createEClass(PARAMETER_SEGMENT);
+    createEReference(parameterSegmentEClass, PARAMETER_SEGMENT__PARAM);
+
+    simpleSegmentEClass = createEClass(SIMPLE_SEGMENT);
+    createEAttribute(simpleSegmentEClass, SIMPLE_SEGMENT__NAME);
   }
 
   /**
@@ -466,6 +557,8 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    parameterSegmentEClass.getESuperTypes().add(this.getPathSegment());
+    simpleSegmentEClass.getESuperTypes().add(this.getPathSegment());
 
     // Initialize classes and features; add operations and parameters
     initEClass(servicesFileEClass, ServicesFile.class, "ServicesFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -480,13 +573,11 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
     initEReference(getComponent_Services(), this.getService(), null, "services", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getService_Service(), ecorePackage.getEBoolean(), "service", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Get(), ecorePackage.getEBoolean(), "get", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Post(), ecorePackage.getEBoolean(), "post", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Put(), ecorePackage.getEBoolean(), "put", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getService_Delete(), ecorePackage.getEBoolean(), "delete", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getService_Name(), ecorePackage.getEString(), "name", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getService_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getService_Name(), this.getPath(), null, "name", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getService_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -496,6 +587,17 @@ public class ServicesPackageImpl extends EPackageImpl implements ServicesPackage
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPath_Segments(), this.getPathSegment(), null, "segments", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(pathSegmentEClass, PathSegment.class, "PathSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(parameterSegmentEClass, ParameterSegment.class, "ParameterSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameterSegment_Param(), theTypesPackage.getJvmFormalParameter(), null, "param", null, 0, 1, ParameterSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(simpleSegmentEClass, SimpleSegment.class, "SimpleSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSimpleSegment_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimpleSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

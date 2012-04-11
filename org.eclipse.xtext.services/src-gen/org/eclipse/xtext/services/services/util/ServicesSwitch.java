@@ -110,6 +110,36 @@ public class ServicesSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ServicesPackage.PATH:
+      {
+        Path path = (Path)theEObject;
+        T result = casePath(path);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ServicesPackage.PATH_SEGMENT:
+      {
+        PathSegment pathSegment = (PathSegment)theEObject;
+        T result = casePathSegment(pathSegment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ServicesPackage.PARAMETER_SEGMENT:
+      {
+        ParameterSegment parameterSegment = (ParameterSegment)theEObject;
+        T result = caseParameterSegment(parameterSegment);
+        if (result == null) result = casePathSegment(parameterSegment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ServicesPackage.SIMPLE_SEGMENT:
+      {
+        SimpleSegment simpleSegment = (SimpleSegment)theEObject;
+        T result = caseSimpleSegment(simpleSegment);
+        if (result == null) result = casePathSegment(simpleSegment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -190,6 +220,70 @@ public class ServicesSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Path</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Path</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePath(Path object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Path Segment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Path Segment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePathSegment(PathSegment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Segment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Segment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterSegment(ParameterSegment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Segment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Segment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleSegment(SimpleSegment object)
   {
     return null;
   }

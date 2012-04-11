@@ -21,13 +21,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Component/services"/>
     </genClasses>
     <genClasses ecoreClass="Services.ecore#//Service">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/service"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/get"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/post"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/put"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/delete"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Service/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Service/body"/>
     </genClasses>
@@ -37,6 +35,16 @@
     </genClasses>
     <genClasses ecoreClass="Services.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="Services.ecore#//Path">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//Path/segments"/>
+    </genClasses>
+    <genClasses ecoreClass="Services.ecore#//PathSegment"/>
+    <genClasses ecoreClass="Services.ecore#//ParameterSegment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Services.ecore#//ParameterSegment/param"/>
+    </genClasses>
+    <genClasses ecoreClass="Services.ecore#//SimpleSegment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Services.ecore#//SimpleSegment/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

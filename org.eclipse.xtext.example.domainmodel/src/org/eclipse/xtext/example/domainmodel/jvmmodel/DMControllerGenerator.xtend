@@ -61,7 +61,7 @@ class DMControllerGenerator {
 			setBody [
 				trace(e)
 				append('''
-				«t.simpleName» «t.simpleName.toFirstLower» = _dao.find«t.simpleName»ById(id);
+				«t.simpleName» «t.simpleName.toFirstLower» = _dao.retrieve«t.simpleName»ById(id);
 				if(«t.simpleName.toFirstLower» == null){
 					return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
 				}
@@ -72,15 +72,18 @@ class DMControllerGenerator {
 	}
 
 	def private createJsonGetAll(JvmGenericType t, Entity e) {
-		e.toMethod('''get«t.simpleName»AllAsJSON'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
+		val type = 'java.util.List'.getTypeForName(e, t.createTypeRef)
+//		type.typeParameters.remove(0);
+//		type.typeParameters += 
+		e.toMethod('''get«t.simpleName»AllAsJSON'''.toString, type) [
 			visibility = JvmVisibility::PUBLIC
 			annotations += e.createGetAnnotation()
 			annotations += e.createProducesAnnotation("application/json")
 			setBody [
 				trace(e)
 				append('''
-				java.util.List<«t.simpleName»> _results = _dao.findAll«t.simpleName»s();
-				return Response.ok(_results).build();
+				java.util.List<«t.simpleName»> _results = _dao.retrieveAll«t.simpleName»s();
+				return _results;
 				'''.toString)
 			]
 		]
@@ -96,10 +99,10 @@ class DMControllerGenerator {
 			setBody [
 				trace(e)
 				val validate = e.features.filter(typeof(Operation)).findFirst[name == "validate"]
-				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
+				val derive = e.features.filter(typeof(Operation)).findFirst[name == "generate"]
 				append('''
 				«IF derive != null»
-				«t.simpleName.toFirstLower».derive();
+				«t.simpleName.toFirstLower».generate();
 				«ENDIF»
 				«IF validate != null»
 				if(«t.simpleName.toFirstLower».validate())
@@ -111,8 +114,8 @@ class DMControllerGenerator {
 				«IF validate != null»
 				}
 				return Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
-	  			«ENDIF»
-				'''.toString)
+				«ENDIF»
+	  			'''.toString)
 	  		]
 		]
 	}
@@ -130,7 +133,7 @@ class DMControllerGenerator {
 				val derive = e.features.filter(typeof(Operation)).findFirst[name == "derive"]
 				append('''
 				«IF derive != null»
-				«t.simpleName.toFirstLower».derive();
+				«t.simpleName.toFirstLower».generate();
 				«ENDIF»
 				«IF validate != null»
 				if(«t.simpleName.toFirstLower».validate())
@@ -146,8 +149,8 @@ class DMControllerGenerator {
 				«IF validate != null»
 				}
 				return Response.status(javax.ws.rs.core.Response.Status.NOT_MODIFIED).build();
-	  			«ENDIF»
-				'''.toString)
+				«ENDIF»
+	  			'''.toString)
 	  		]
 		]
 	}

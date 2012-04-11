@@ -201,8 +201,8 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	public class PropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDeriveAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cDeriveDeriveKeyword_0_0 = (Keyword)cDeriveAssignment_0.eContents().get(0);
+		private final Assignment cGeneratedAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cGeneratedGeneratedKeyword_0_0 = (Keyword)cGeneratedAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -215,19 +215,19 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMappedByPropertyQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cMappedByPropertyCrossReference_4_1_0.eContents().get(1);
 		
 		//Property:
-		//	derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+		//	generated?="generated"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 		//
 		//;
 		public ParserRule getRule() { return rule; }
 
-		//derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+		//generated?="generated"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 		public Group getGroup() { return cGroup; }
 
-		//derive?="derive"?
-		public Assignment getDeriveAssignment_0() { return cDeriveAssignment_0; }
+		//generated?="generated"?
+		public Assignment getGeneratedAssignment_0() { return cGeneratedAssignment_0; }
 
-		//"derive"
-		public Keyword getDeriveDeriveKeyword_0_0() { return cDeriveDeriveKeyword_0_0; }
+		//"generated"
+		public Keyword getGeneratedGeneratedKeyword_0_0() { return cGeneratedGeneratedKeyword_0_0; }
 
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -312,22 +312,22 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Derive");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameDeriveKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Keyword cNameGenerateKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
 		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
 		
 		//Derive:
-		//	name="derive" body=XBlockExpression;
+		//	name="generate" body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//name="derive" body=XBlockExpression
+		//name="generate" body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
-		//name="derive"
+		//name="generate"
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
-		//"derive"
-		public Keyword getNameDeriveKeyword_0_0() { return cNameDeriveKeyword_0_0; }
+		//"generate"
+		public Keyword getNameGenerateKeyword_0_0() { return cNameGenerateKeyword_0_0; }
 
 		//body=XBlockExpression
 		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
@@ -368,21 +368,21 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidID");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final Keyword cDeriveKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cGeneratedKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cValidateKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//ValidID:
-		//	ID | "derive" | "validate";
+		//	ID | "generated" | "validate";
 		public ParserRule getRule() { return rule; }
 
-		//ID | "derive" | "validate"
+		//ID | "generated" | "validate"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//"derive"
-		public Keyword getDeriveKeyword_1() { return cDeriveKeyword_1; }
+		//"generated"
+		public Keyword getGeneratedKeyword_1() { return cGeneratedKeyword_1; }
 
 		//"validate"
 		public Keyword getValidateKeyword_2() { return cValidateKeyword_2; }
@@ -484,7 +484,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	derive?="derive"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+	//	generated?="generated"? name=ValidID ":" type=JvmTypeReference ("->" mappedBy=[Property|QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 	//
 	//;
 	public PropertyElements getPropertyAccess() {
@@ -516,7 +516,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Derive:
-	//	name="derive" body=XBlockExpression;
+	//	name="generate" body=XBlockExpression;
 	public DeriveElements getDeriveAccess() {
 		return (pDerive != null) ? pDerive : (pDerive = new DeriveElements());
 	}
@@ -536,7 +536,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidID:
-	//	ID | "derive" | "validate";
+	//	ID | "generated" | "validate";
 	public ValidIDElements getValidIDAccess() {
 		return (pValidID != null) ? pValidID : (pValidID = new ValidIDElements());
 	}

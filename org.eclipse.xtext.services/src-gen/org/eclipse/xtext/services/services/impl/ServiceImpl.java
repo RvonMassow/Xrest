@@ -5,12 +5,8 @@
  */
 package org.eclipse.xtext.services.services.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -18,12 +14,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.services.services.Path;
 import org.eclipse.xtext.services.services.Service;
 import org.eclipse.xtext.services.services.ServicesPackage;
 
@@ -36,13 +29,11 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isGet <em>Get</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isPost <em>Post</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isPut <em>Put</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#isDelete <em>Delete</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.impl.ServiceImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -52,26 +43,6 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 {
-  /**
-   * The default value of the '{@link #isService() <em>Service</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isService()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean SERVICE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isService() <em>Service</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isService()
-   * @generated
-   * @ordered
-   */
-  protected boolean service = SERVICE_EDEFAULT;
-
   /**
    * The default value of the '{@link #isGet() <em>Get</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -153,34 +124,14 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   protected boolean delete = DELETE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected EList<JvmFormalParameter> params;
+  protected Path name;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -221,29 +172,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   protected EClass eStaticClass()
   {
     return ServicesPackage.Literals.SERVICE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean isService()
-  {
-    return service;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setService(boolean newService)
-  {
-    boolean oldService = service;
-    service = newService;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__SERVICE, oldService, service));
   }
 
   /**
@@ -343,7 +271,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public Path getName()
   {
     return name;
   }
@@ -353,12 +281,16 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public NotificationChain basicSetName(Path newName, NotificationChain msgs)
   {
-    String oldName = name;
+    Path oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__NAME, oldName, newName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -366,13 +298,20 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<JvmFormalParameter> getParams()
+  public void setName(Path newName)
   {
-    if (params == null)
+    if (newName != name)
     {
-      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, ServicesPackage.SERVICE__PARAMS);
+      NotificationChain msgs = null;
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.SERVICE__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicesPackage.SERVICE__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return params;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ServicesPackage.SERVICE__NAME, newName, newName));
   }
 
   /**
@@ -481,8 +420,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   {
     switch (featureID)
     {
-      case ServicesPackage.SERVICE__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
+      case ServicesPackage.SERVICE__NAME:
+        return basicSetName(null, msgs);
       case ServicesPackage.SERVICE__TYPE:
         return basicSetType(null, msgs);
       case ServicesPackage.SERVICE__BODY:
@@ -501,8 +440,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   {
     switch (featureID)
     {
-      case ServicesPackage.SERVICE__SERVICE:
-        return isService();
       case ServicesPackage.SERVICE__GET:
         return isGet();
       case ServicesPackage.SERVICE__POST:
@@ -513,8 +450,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         return isDelete();
       case ServicesPackage.SERVICE__NAME:
         return getName();
-      case ServicesPackage.SERVICE__PARAMS:
-        return getParams();
       case ServicesPackage.SERVICE__TYPE:
         return getType();
       case ServicesPackage.SERVICE__BODY:
@@ -528,15 +463,11 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ServicesPackage.SERVICE__SERVICE:
-        setService((Boolean)newValue);
-        return;
       case ServicesPackage.SERVICE__GET:
         setGet((Boolean)newValue);
         return;
@@ -550,11 +481,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         setDelete((Boolean)newValue);
         return;
       case ServicesPackage.SERVICE__NAME:
-        setName((String)newValue);
-        return;
-      case ServicesPackage.SERVICE__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends JvmFormalParameter>)newValue);
+        setName((Path)newValue);
         return;
       case ServicesPackage.SERVICE__TYPE:
         setType((JvmTypeReference)newValue);
@@ -576,9 +503,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   {
     switch (featureID)
     {
-      case ServicesPackage.SERVICE__SERVICE:
-        setService(SERVICE_EDEFAULT);
-        return;
       case ServicesPackage.SERVICE__GET:
         setGet(GET_EDEFAULT);
         return;
@@ -592,10 +516,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
         setDelete(DELETE_EDEFAULT);
         return;
       case ServicesPackage.SERVICE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case ServicesPackage.SERVICE__PARAMS:
-        getParams().clear();
+        setName((Path)null);
         return;
       case ServicesPackage.SERVICE__TYPE:
         setType((JvmTypeReference)null);
@@ -617,8 +538,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
   {
     switch (featureID)
     {
-      case ServicesPackage.SERVICE__SERVICE:
-        return service != SERVICE_EDEFAULT;
       case ServicesPackage.SERVICE__GET:
         return get != GET_EDEFAULT;
       case ServicesPackage.SERVICE__POST:
@@ -628,9 +547,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
       case ServicesPackage.SERVICE__DELETE:
         return delete != DELETE_EDEFAULT;
       case ServicesPackage.SERVICE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ServicesPackage.SERVICE__PARAMS:
-        return params != null && !params.isEmpty();
+        return name != null;
       case ServicesPackage.SERVICE__TYPE:
         return type != null;
       case ServicesPackage.SERVICE__BODY:
@@ -650,9 +567,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (service: ");
-    result.append(service);
-    result.append(", get: ");
+    result.append(" (get: ");
     result.append(get);
     result.append(", post: ");
     result.append(post);
@@ -660,8 +575,6 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
     result.append(put);
     result.append(", delete: ");
     result.append(delete);
-    result.append(", name: ");
-    result.append(name);
     result.append(')');
     return result.toString();
   }

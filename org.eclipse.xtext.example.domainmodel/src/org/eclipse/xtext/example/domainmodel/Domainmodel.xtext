@@ -32,7 +32,7 @@ Feature:
 	Property | Operation;
 
 Property:
-	(derive?='derive')? name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
+	(generated?='generated')? name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])? // ('setBy' method=[Operation|QualifiedName])?;
 ;
 
 Operation:
@@ -43,12 +43,12 @@ Validate:
 		body=XBlockExpression;
 
 Derive:
-	 name='derive' 
+	 name='generate' 
 		body=XBlockExpression;
 
 QualifiedNameWithWildCard :
 	QualifiedName  ('.' '*')?;
 
 ValidID:
-	(ID | 'derive' | 'validate')
+	(ID | 'generated' | 'validate')
 ;

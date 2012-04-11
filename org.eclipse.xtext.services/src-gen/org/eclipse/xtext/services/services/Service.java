@@ -5,11 +5,8 @@
  */
 package org.eclipse.xtext.services.services;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
@@ -22,13 +19,11 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.xtext.services.services.Service#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isGet <em>Get</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isPost <em>Post</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isPut <em>Put</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#isDelete <em>Delete</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.xtext.services.services.Service#getParams <em>Params</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.services.services.Service#getBody <em>Body</em>}</li>
  * </ul>
@@ -40,32 +35,6 @@ import org.eclipse.xtext.xbase.XExpression;
  */
 public interface Service extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Service</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Service</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Service</em>' attribute.
-   * @see #setService(boolean)
-   * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Service()
-   * @model
-   * @generated
-   */
-  boolean isService();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.xtext.services.services.Service#isService <em>Service</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Service</em>' attribute.
-   * @see #isService()
-   * @generated
-   */
-  void setService(boolean value);
-
   /**
    * Returns the value of the '<em><b>Get</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -171,46 +140,30 @@ public interface Service extends EObject
   void setDelete(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
+   * @return the value of the '<em>Name</em>' containment reference.
+   * @see #setName(Path)
    * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmFormalParameter}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' containment reference list.
-   * @see org.eclipse.xtext.services.services.ServicesPackage#getService_Params()
    * @model containment="true"
    * @generated
    */
-  EList<JvmFormalParameter> getParams();
+  Path getName();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' containment reference.
+   * @see #getName()
+   * @generated
+   */
+  void setName(Path value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

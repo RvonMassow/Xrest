@@ -13,8 +13,6 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.common.types.JvmAnnotationTarget;
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -76,34 +74,34 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 		}
 	}
 
-	@Check
-	public void checkServiceArguments(Service service) {
-		if(service.isService()) {
-			JvmType type = service.getType().getType();
-			if(type != null)
-				if((List.class).isAssignableFrom(jra.getRawType(type))) {
-					type = ((JvmGenericType)type).getTypeParameters().get(0);
-				}
-			if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
-				JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
-				if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
-					error("Return type is not an XmlRootElement, supported primitive type (long, int, boolean, String) or a List of those", ServicesPackage.Literals.SERVICE__TYPE);
-				}
-			}
-			for(int i = 0; i< service.getParams().size(); i++) {
-				JvmFormalParameter parameter = service.getParams().get(i);
-				if((List.class).isAssignableFrom(jra.getRawType(parameter.getParameterType().getType()))) {
-					type = ((JvmGenericType)type).getTypeParameters().get(0);
-				}
-				if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
-					JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
-					if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
-						error("Parameter "+ parameter.getName()+" is not an XmlRootElement or supported primitive", ServicesPackage.Literals.SERVICE__PARAMS, i);
-					}
-				}
-			}
-		}
-	}
+//	@Check
+//	public void checkServiceArguments(Service service) {
+//		if(service.isService()) {
+//			JvmType type = service.getType().getType();
+//			if(type != null)
+//				if((List.class).isAssignableFrom(jra.getRawType(type))) {
+//					type = ((JvmGenericType)type).getTypeParameters().get(0);
+//				}
+//			if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
+//				JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
+//				if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
+//					error("Return type is not an XmlRootElement, supported primitive type (long, int, boolean, String) or a List of those", ServicesPackage.Literals.SERVICE__TYPE);
+//				}
+//			}
+//			for(int i = 0; i< service.getParams().size(); i++) {
+//				JvmFormalParameter parameter = service.getParams().get(i);
+//				if((List.class).isAssignableFrom(jra.getRawType(parameter.getParameterType().getType()))) {
+//					type = ((JvmGenericType)type).getTypeParameters().get(0);
+//				}
+//				if(type instanceof JvmAnnotationTarget && !isSupportedPrimitiveType(type)) {
+//					JvmAnnotationTarget targetType = (JvmAnnotationTarget)type;
+//					if(!targetType.getAnnotations().contains(types.findDeclaredType("javax.xml.bind.annotation.XmlRootElement", service))) {
+//						error("Parameter "+ parameter.getName()+" is not an XmlRootElement or supported primitive", ServicesPackage.Literals.SERVICE__PARAMS, i);
+//					}
+//				}
+//			}
+//		}
+//	}
 
 	private boolean isSupportedPrimitiveType(JvmType type) {
 		Class<?> rawType = jra.getRawType(type);
@@ -230,32 +228,32 @@ public class ServicesJavaValidator extends AbstractServicesJavaValidator {
 						toArray(uris, String.class));
 	}
 	
-	@Check
-	protected void checkFunctionOverride(Service service) {
-		JvmOperation operation = getFirstOrNull(jvmModelAssociator.getJvmElements(service), JvmOperation.class);
-		JvmOperation overriddenOperation = overridesService.findOverriddenOperation(service);
-		if(overriddenOperation != null) {
-			if (!service.isService())
-				error("The internal service " + operation.getSimpleName() +" of type "+operation.getDeclaringType().getSimpleName()+" must be a service.", service,
-						ServicesPackage.Literals.SERVICE__NAME, ServicesIssueCodes.SERVICE_EXPECTED);
-			JvmOperation inferredOperation = overridesService.getDirectlyInferredOperation(service);
-			for(JvmTypeReference unhandledException: findUnhandledExceptions(service, Collections.<JvmTypeReference>emptyList(),overriddenOperation.getExceptions()))
-				error("Services can not throw exceptions: " + unhandledException.getSimpleName() + " thrown by " + overriddenOperation.getQualifiedName()
-						, ServicesPackage.Literals.SERVICE__NAME);
-			if (service.getType() == types.createTypeRef(types.findDeclaredType(void.class, service))) {
-				return;
-			}
-			ITypeArgumentContext typeArgumentContext = typeArgumentContextProvider
-					.getTypeArgumentContext(new TypeArgumentContextProvider.ReceiverRequest(getTypeRefs().createTypeRef(
-							inferredOperation.getDeclaringType())));
-			JvmTypeReference returnTypeUpperBound = typeArgumentContext.getUpperBound(overriddenOperation.getReturnType(),
-					service);
-			if (!isConformant(returnTypeUpperBound, service.getType())) {
-				error("The return type is incompatible with " + overriddenOperation.getIdentifier(), service,
-						ServicesPackage.Literals.SERVICE__TYPE, ServicesIssueCodes.INCOMPATIBLE_RETURN_TYPE);
-			}
-		}
-	}
+//	@Check
+//	protected void checkFunctionOverride(Service service) {
+//		JvmOperation operation = getFirstOrNull(jvmModelAssociator.getJvmElements(service), JvmOperation.class);
+//		JvmOperation overriddenOperation = overridesService.findOverriddenOperation(service);
+//		if(overriddenOperation != null) {
+////			if (!service.isService())
+////				error("The internal service " + operation.getSimpleName() +" of type "+operation.getDeclaringType().getSimpleName()+" must be a service.", service,
+////						ServicesPackage.Literals.SERVICE__NAME, ServicesIssueCodes.SERVICE_EXPECTED);
+//			JvmOperation inferredOperation = overridesService.getDirectlyInferredOperation(service);
+//			for(JvmTypeReference unhandledException: findUnhandledExceptions(service, Collections.<JvmTypeReference>emptyList(),overriddenOperation.getExceptions()))
+//				error("Services can not throw exceptions: " + unhandledException.getSimpleName() + " thrown by " + overriddenOperation.getQualifiedName()
+//						, ServicesPackage.Literals.SERVICE__NAME);
+//			if (service.getType() == types.createTypeRef(types.findDeclaredType(void.class, service))) {
+//				return;
+//			}
+//			ITypeArgumentContext typeArgumentContext = typeArgumentContextProvider
+//					.getTypeArgumentContext(new TypeArgumentContextProvider.ReceiverRequest(getTypeRefs().createTypeRef(
+//							inferredOperation.getDeclaringType())));
+//			JvmTypeReference returnTypeUpperBound = typeArgumentContext.getUpperBound(overriddenOperation.getReturnType(),
+//					service);
+//			if (!isConformant(returnTypeUpperBound, service.getType())) {
+//				error("The return type is incompatible with " + overriddenOperation.getIdentifier(), service,
+//						ServicesPackage.Literals.SERVICE__TYPE, ServicesIssueCodes.INCOMPATIBLE_RETURN_TYPE);
+//			}
+//		}
+//	}
 
 	protected <T> T getFirstOrNull(Iterable<EObject> elements, Class<T> type) {
 		Iterator<T> iterator = filter(elements, type).iterator();

@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject
 
 class AnnotationExtensions {
 	@Inject extension JvmTypesBuilder
-	
+
 	def createGetAnnotation(EObject it) {
 		toAnnotation("javax.ws.rs.GET")
 	}

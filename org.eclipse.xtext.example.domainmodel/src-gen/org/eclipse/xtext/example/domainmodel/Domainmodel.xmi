@@ -85,8 +85,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.xtext.org/example/Domainmodel#//Property"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="derive" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="derive"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="generated" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="generated"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
@@ -136,7 +136,7 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:Keyword" value="derive"/>
+          <terminal xsi:type="xtext:Keyword" value="generate"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="body" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.34"/>
@@ -161,7 +161,7 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
-        <elements xsi:type="xtext:Keyword" value="derive"/>
+        <elements xsi:type="xtext:Keyword" value="generated"/>
         <elements xsi:type="xtext:Keyword" value="validate"/>
       </alternatives>
     </rules>

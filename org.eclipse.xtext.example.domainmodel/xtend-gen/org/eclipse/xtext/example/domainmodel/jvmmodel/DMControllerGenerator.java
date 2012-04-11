@@ -171,7 +171,7 @@ public class DMControllerGenerator {
                 String _simpleName_1 = t.getSimpleName();
                 String _firstLower = StringExtensions.toFirstLower(_simpleName_1);
                 _builder.append(_firstLower, "");
-                _builder.append(" = _dao.find");
+                _builder.append(" = _dao.retrieve");
                 String _simpleName_2 = t.getSimpleName();
                 _builder.append(_simpleName_2, "");
                 _builder.append("ById(id);");
@@ -205,45 +205,50 @@ public class DMControllerGenerator {
   }
   
   private JvmOperation createJsonGetAll(final JvmGenericType t, final Entity e) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("get");
-    String _simpleName = t.getSimpleName();
-    _builder.append(_simpleName, "");
-    _builder.append("AllAsJSON");
-    String _string = _builder.toString();
-    JvmTypeReference _typeForName = this._typeReferences.getTypeForName("javax.ws.rs.core.Response", e);
-    final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-        public void apply(final JvmOperation it) {
-          it.setVisibility(JvmVisibility.PUBLIC);
-          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-          JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this._annotationExtensions.createGetAnnotation(e);
-          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
-          EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-          JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this._annotationExtensions.createProducesAnnotation(e, "application/json");
-          DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
-          final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-              public void apply(final ITreeAppendable it) {
-                it.trace(e);
-                StringConcatenation _builder = new StringConcatenation();
-                _builder.append("java.util.List<");
-                String _simpleName = t.getSimpleName();
-                _builder.append(_simpleName, "");
-                _builder.append("> _results = _dao.findAll");
-                String _simpleName_1 = t.getSimpleName();
-                _builder.append(_simpleName_1, "");
-                _builder.append("s();");
-                _builder.newLineIfNotEmpty();
-                _builder.append("return Response.ok(_results).build();");
-                _builder.newLine();
-                String _string = _builder.toString();
-                it.append(_string);
-              }
-            };
-          DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
-        }
-      };
-    JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, _typeForName, _function);
-    return _method;
+    JvmOperation _xblockexpression = null;
+    {
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
+      final JvmTypeReference type = this._typeReferences.getTypeForName("java.util.List", e, _createTypeRef);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("get");
+      String _simpleName = t.getSimpleName();
+      _builder.append(_simpleName, "");
+      _builder.append("AllAsJSON");
+      String _string = _builder.toString();
+      final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+          public void apply(final JvmOperation it) {
+            it.setVisibility(JvmVisibility.PUBLIC);
+            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+            JvmAnnotationReference _createGetAnnotation = DMControllerGenerator.this._annotationExtensions.createGetAnnotation(e);
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _createGetAnnotation);
+            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
+            JvmAnnotationReference _createProducesAnnotation = DMControllerGenerator.this._annotationExtensions.createProducesAnnotation(e, "application/json");
+            DMControllerGenerator.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _createProducesAnnotation);
+            final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  it.trace(e);
+                  StringConcatenation _builder = new StringConcatenation();
+                  _builder.append("java.util.List<");
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append("> _results = _dao.retrieveAll");
+                  String _simpleName_1 = t.getSimpleName();
+                  _builder.append(_simpleName_1, "");
+                  _builder.append("s();");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("return _results;");
+                  _builder.newLine();
+                  String _string = _builder.toString();
+                  it.append(_string);
+                }
+              };
+            DMControllerGenerator.this._jvmTypesBuilder.setBody(it, _function);
+          }
+        };
+      JvmOperation _method = this._jvmTypesBuilder.toMethod(e, _string, type, _function);
+      _xblockexpression = (_method);
+    }
+    return _xblockexpression;
   }
   
   private JvmOperation createJsonPost(final JvmGenericType t, final Entity e) {
@@ -291,7 +296,7 @@ public class DMControllerGenerator {
                   final Function1<Operation,Boolean> _function_1 = new Function1<Operation,Boolean>() {
                       public Boolean apply(final Operation it) {
                         String _name = it.getName();
-                        boolean _equals = Objects.equal(_name, "derive");
+                        boolean _equals = Objects.equal(_name, "generate");
                         return Boolean.valueOf(_equals);
                       }
                     };
@@ -303,7 +308,7 @@ public class DMControllerGenerator {
                       String _simpleName = t.getSimpleName();
                       String _firstLower = StringExtensions.toFirstLower(_simpleName);
                       _builder.append(_firstLower, "");
-                      _builder.append(".derive();");
+                      _builder.append(".generate();");
                       _builder.newLineIfNotEmpty();
                     }
                   }
@@ -412,7 +417,7 @@ public class DMControllerGenerator {
                       String _simpleName = t.getSimpleName();
                       String _firstLower = StringExtensions.toFirstLower(_simpleName);
                       _builder.append(_firstLower, "");
-                      _builder.append(".derive();");
+                      _builder.append(".generate();");
                       _builder.newLineIfNotEmpty();
                     }
                   }

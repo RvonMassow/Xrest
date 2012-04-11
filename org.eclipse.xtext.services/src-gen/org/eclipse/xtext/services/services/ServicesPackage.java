@@ -171,22 +171,13 @@ public interface ServicesPackage extends EPackage
   int SERVICE = 2;
 
   /**
-   * The feature id for the '<em><b>Service</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SERVICE__SERVICE = 0;
-
-  /**
    * The feature id for the '<em><b>Get</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVICE__GET = 1;
+  int SERVICE__GET = 0;
 
   /**
    * The feature id for the '<em><b>Post</b></em>' attribute.
@@ -195,7 +186,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__POST = 2;
+  int SERVICE__POST = 1;
 
   /**
    * The feature id for the '<em><b>Put</b></em>' attribute.
@@ -204,7 +195,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__PUT = 3;
+  int SERVICE__PUT = 2;
 
   /**
    * The feature id for the '<em><b>Delete</b></em>' attribute.
@@ -213,25 +204,16 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__DELETE = 4;
+  int SERVICE__DELETE = 3;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVICE__NAME = 5;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SERVICE__PARAMS = 6;
+  int SERVICE__NAME = 4;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -240,7 +222,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__TYPE = 7;
+  int SERVICE__TYPE = 5;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -249,7 +231,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE__BODY = 8;
+  int SERVICE__BODY = 6;
 
   /**
    * The number of structural features of the '<em>Service</em>' class.
@@ -258,7 +240,7 @@ public interface ServicesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVICE_FEATURE_COUNT = 9;
+  int SERVICE_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.RequireDeclarationImpl <em>Require Declaration</em>}' class.
@@ -324,6 +306,109 @@ public interface ServicesPackage extends EPackage
    * @ordered
    */
   int IMPORT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.PathImpl <em>Path</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.PathImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getPath()
+   * @generated
+   */
+  int PATH = 5;
+
+  /**
+   * The feature id for the '<em><b>Segments</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PATH__SEGMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Path</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PATH_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.PathSegmentImpl <em>Path Segment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.PathSegmentImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getPathSegment()
+   * @generated
+   */
+  int PATH_SEGMENT = 6;
+
+  /**
+   * The number of structural features of the '<em>Path Segment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PATH_SEGMENT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.ParameterSegmentImpl <em>Parameter Segment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.ParameterSegmentImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getParameterSegment()
+   * @generated
+   */
+  int PARAMETER_SEGMENT = 7;
+
+  /**
+   * The feature id for the '<em><b>Param</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_SEGMENT__PARAM = PATH_SEGMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Parameter Segment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_SEGMENT_FEATURE_COUNT = PATH_SEGMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.services.services.impl.SimpleSegmentImpl <em>Simple Segment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.services.services.impl.SimpleSegmentImpl
+   * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getSimpleSegment()
+   * @generated
+   */
+  int SIMPLE_SEGMENT = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SEGMENT__NAME = PATH_SEGMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Simple Segment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SEGMENT_FEATURE_COUNT = PATH_SEGMENT_FEATURE_COUNT + 1;
 
 
   /**
@@ -434,17 +519,6 @@ public interface ServicesPackage extends EPackage
   EClass getService();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#isService <em>Service</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Service</em>'.
-   * @see org.eclipse.xtext.services.services.Service#isService()
-   * @see #getService()
-   * @generated
-   */
-  EAttribute getService_Service();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#isGet <em>Get</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -489,26 +563,15 @@ public interface ServicesPackage extends EPackage
   EAttribute getService_Delete();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.Service#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
+   * @return the meta object for the containment reference '<em>Name</em>'.
    * @see org.eclipse.xtext.services.services.Service#getName()
    * @see #getService()
    * @generated
    */
-  EAttribute getService_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Service#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see org.eclipse.xtext.services.services.Service#getParams()
-   * @see #getService()
-   * @generated
-   */
-  EReference getService_Params();
+  EReference getService_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.Service#getType <em>Type</em>}'.
@@ -584,6 +647,79 @@ public interface ServicesPackage extends EPackage
    * @generated
    */
   EAttribute getImport_ImportedNamespace();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.Path <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Path</em>'.
+   * @see org.eclipse.xtext.services.services.Path
+   * @generated
+   */
+  EClass getPath();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.services.services.Path#getSegments <em>Segments</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Segments</em>'.
+   * @see org.eclipse.xtext.services.services.Path#getSegments()
+   * @see #getPath()
+   * @generated
+   */
+  EReference getPath_Segments();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.PathSegment <em>Path Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Path Segment</em>'.
+   * @see org.eclipse.xtext.services.services.PathSegment
+   * @generated
+   */
+  EClass getPathSegment();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.ParameterSegment <em>Parameter Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter Segment</em>'.
+   * @see org.eclipse.xtext.services.services.ParameterSegment
+   * @generated
+   */
+  EClass getParameterSegment();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.services.services.ParameterSegment#getParam <em>Param</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Param</em>'.
+   * @see org.eclipse.xtext.services.services.ParameterSegment#getParam()
+   * @see #getParameterSegment()
+   * @generated
+   */
+  EReference getParameterSegment_Param();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.services.services.SimpleSegment <em>Simple Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Simple Segment</em>'.
+   * @see org.eclipse.xtext.services.services.SimpleSegment
+   * @generated
+   */
+  EClass getSimpleSegment();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.services.services.SimpleSegment#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.xtext.services.services.SimpleSegment#getName()
+   * @see #getSimpleSegment()
+   * @generated
+   */
+  EAttribute getSimpleSegment_Name();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -695,14 +831,6 @@ public interface ServicesPackage extends EPackage
     EClass SERVICE = eINSTANCE.getService();
 
     /**
-     * The meta object literal for the '<em><b>Service</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SERVICE__SERVICE = eINSTANCE.getService_Service();
-
-    /**
      * The meta object literal for the '<em><b>Get</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -735,20 +863,12 @@ public interface ServicesPackage extends EPackage
     EAttribute SERVICE__DELETE = eINSTANCE.getService_Delete();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SERVICE__NAME = eINSTANCE.getService_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SERVICE__PARAMS = eINSTANCE.getService_Params();
+    EReference SERVICE__NAME = eINSTANCE.getService_Name();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -809,6 +929,70 @@ public interface ServicesPackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.PathImpl <em>Path</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.PathImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getPath()
+     * @generated
+     */
+    EClass PATH = eINSTANCE.getPath();
+
+    /**
+     * The meta object literal for the '<em><b>Segments</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PATH__SEGMENTS = eINSTANCE.getPath_Segments();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.PathSegmentImpl <em>Path Segment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.PathSegmentImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getPathSegment()
+     * @generated
+     */
+    EClass PATH_SEGMENT = eINSTANCE.getPathSegment();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.ParameterSegmentImpl <em>Parameter Segment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.ParameterSegmentImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getParameterSegment()
+     * @generated
+     */
+    EClass PARAMETER_SEGMENT = eINSTANCE.getParameterSegment();
+
+    /**
+     * The meta object literal for the '<em><b>Param</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER_SEGMENT__PARAM = eINSTANCE.getParameterSegment_Param();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.services.services.impl.SimpleSegmentImpl <em>Simple Segment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.services.services.impl.SimpleSegmentImpl
+     * @see org.eclipse.xtext.services.services.impl.ServicesPackageImpl#getSimpleSegment()
+     * @generated
+     */
+    EClass SIMPLE_SEGMENT = eINSTANCE.getSimpleSegment();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIMPLE_SEGMENT__NAME = eINSTANCE.getSimpleSegment_Name();
 
   }
 

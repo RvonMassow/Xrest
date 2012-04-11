@@ -165,137 +165,78 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	public class ServiceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Service");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Assignment cServiceAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final Keyword cServiceServiceKeyword_0_0_0 = (Keyword)cServiceAssignment_0_0.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Alternatives cAlternatives_0_2 = (Alternatives)cGroup_0.eContents().get(2);
-		private final Assignment cGetAssignment_0_2_0 = (Assignment)cAlternatives_0_2.eContents().get(0);
-		private final Keyword cGetGETKeyword_0_2_0_0 = (Keyword)cGetAssignment_0_2_0.eContents().get(0);
-		private final Assignment cPostAssignment_0_2_1 = (Assignment)cAlternatives_0_2.eContents().get(1);
-		private final Keyword cPostPOSTKeyword_0_2_1_0 = (Keyword)cPostAssignment_0_2_1.eContents().get(0);
-		private final Assignment cPutAssignment_0_2_2 = (Assignment)cAlternatives_0_2.eContents().get(2);
-		private final Keyword cPutPUTKeyword_0_2_2_0 = (Keyword)cPutAssignment_0_2_2.eContents().get(0);
-		private final Assignment cDeleteAssignment_0_2_3 = (Assignment)cAlternatives_0_2.eContents().get(3);
-		private final Keyword cDeleteDELETEKeyword_0_2_3_0 = (Keyword)cDeleteAssignment_0_2_3.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cGetAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cGetGETKeyword_0_0_0 = (Keyword)cGetAssignment_0_0.eContents().get(0);
+		private final Assignment cPostAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final Keyword cPostPOSTKeyword_0_1_0 = (Keyword)cPostAssignment_0_1.eContents().get(0);
+		private final Assignment cPutAssignment_0_2 = (Assignment)cAlternatives_0.eContents().get(2);
+		private final Keyword cPutPUTKeyword_0_2_0 = (Keyword)cPutAssignment_0_2.eContents().get(0);
+		private final Assignment cDeleteAssignment_0_3 = (Assignment)cAlternatives_0.eContents().get(3);
+		private final Keyword cDeleteDELETEKeyword_0_3_0 = (Keyword)cDeleteAssignment_0_3.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_3_0_0 = (RuleCall)cParamsAssignment_3_0.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final Keyword cCommaKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Assignment cParamsAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
-		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_3_1_1_0 = (RuleCall)cParamsAssignment_3_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cColonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cTypeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_6_0 = (RuleCall)cTypeAssignment_6.eContents().get(0);
-		private final Assignment cBodyAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cBodyXBlockExpressionParserRuleCall_7_0 = (RuleCall)cBodyAssignment_7.eContents().get(0);
+		private final RuleCall cNamePathParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Assignment cBodyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBodyXBlockExpressionParserRuleCall_4_0 = (RuleCall)cBodyAssignment_4.eContents().get(0);
 		
 		//Service:
-		//	(service?="service" "[" (get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE") "]")? name=ValidID "("
-		//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference
+		//	(get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE")? name=Path ":" type=JvmTypeReference
 		//	body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//(service?="service" "[" (get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE") "]")? name=ValidID "("
-		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference
-		//body=XBlockExpression
+		//(get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE")? name=Path ":" type=JvmTypeReference body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
-		//(service?="service" "[" (get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE") "]")?
-		public Group getGroup_0() { return cGroup_0; }
-
-		//service?="service"
-		public Assignment getServiceAssignment_0_0() { return cServiceAssignment_0_0; }
-
-		//"service"
-		public Keyword getServiceServiceKeyword_0_0_0() { return cServiceServiceKeyword_0_0_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_0_1() { return cLeftSquareBracketKeyword_0_1; }
-
-		//get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE"
-		public Alternatives getAlternatives_0_2() { return cAlternatives_0_2; }
+		//(get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE")?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//get?="GET"
-		public Assignment getGetAssignment_0_2_0() { return cGetAssignment_0_2_0; }
+		public Assignment getGetAssignment_0_0() { return cGetAssignment_0_0; }
 
 		//"GET"
-		public Keyword getGetGETKeyword_0_2_0_0() { return cGetGETKeyword_0_2_0_0; }
+		public Keyword getGetGETKeyword_0_0_0() { return cGetGETKeyword_0_0_0; }
 
 		//post?="POST"
-		public Assignment getPostAssignment_0_2_1() { return cPostAssignment_0_2_1; }
+		public Assignment getPostAssignment_0_1() { return cPostAssignment_0_1; }
 
 		//"POST"
-		public Keyword getPostPOSTKeyword_0_2_1_0() { return cPostPOSTKeyword_0_2_1_0; }
+		public Keyword getPostPOSTKeyword_0_1_0() { return cPostPOSTKeyword_0_1_0; }
 
 		//put?="PUT"
-		public Assignment getPutAssignment_0_2_2() { return cPutAssignment_0_2_2; }
+		public Assignment getPutAssignment_0_2() { return cPutAssignment_0_2; }
 
 		//"PUT"
-		public Keyword getPutPUTKeyword_0_2_2_0() { return cPutPUTKeyword_0_2_2_0; }
+		public Keyword getPutPUTKeyword_0_2_0() { return cPutPUTKeyword_0_2_0; }
 
 		//delete?="DELETE"
-		public Assignment getDeleteAssignment_0_2_3() { return cDeleteAssignment_0_2_3; }
+		public Assignment getDeleteAssignment_0_3() { return cDeleteAssignment_0_3; }
 
 		//"DELETE"
-		public Keyword getDeleteDELETEKeyword_0_2_3_0() { return cDeleteDELETEKeyword_0_2_3_0; }
+		public Keyword getDeleteDELETEKeyword_0_3_0() { return cDeleteDELETEKeyword_0_3_0; }
 
-		//"]"
-		public Keyword getRightSquareBracketKeyword_0_3() { return cRightSquareBracketKeyword_0_3; }
-
-		//name=ValidID
+		//name=Path
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
-
-		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)?
-		public Group getGroup_3() { return cGroup_3; }
-
-		//params+=FullJvmFormalParameter
-		public Assignment getParamsAssignment_3_0() { return cParamsAssignment_3_0; }
-
-		//FullJvmFormalParameter
-		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_3_0_0() { return cParamsFullJvmFormalParameterParserRuleCall_3_0_0; }
-
-		//("," params+=FullJvmFormalParameter)*
-		public Group getGroup_3_1() { return cGroup_3_1; }
-
-		//","
-		public Keyword getCommaKeyword_3_1_0() { return cCommaKeyword_3_1_0; }
-
-		//params+=FullJvmFormalParameter
-		public Assignment getParamsAssignment_3_1_1() { return cParamsAssignment_3_1_1; }
-
-		//FullJvmFormalParameter
-		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_3_1_1_0() { return cParamsFullJvmFormalParameterParserRuleCall_3_1_1_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		//Path
+		public RuleCall getNamePathParserRuleCall_1_0() { return cNamePathParserRuleCall_1_0; }
 
 		//":"
-		public Keyword getColonKeyword_5() { return cColonKeyword_5; }
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//type=JvmTypeReference
-		public Assignment getTypeAssignment_6() { return cTypeAssignment_6; }
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_6_0() { return cTypeJvmTypeReferenceParserRuleCall_6_0; }
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_3_0() { return cTypeJvmTypeReferenceParserRuleCall_3_0; }
 
 		//body=XBlockExpression
-		public Assignment getBodyAssignment_7() { return cBodyAssignment_7; }
+		public Assignment getBodyAssignment_4() { return cBodyAssignment_4; }
 
 		//XBlockExpression
-		public RuleCall getBodyXBlockExpressionParserRuleCall_7_0() { return cBodyXBlockExpressionParserRuleCall_7_0; }
+		public RuleCall getBodyXBlockExpressionParserRuleCall_4_0() { return cBodyXBlockExpressionParserRuleCall_4_0; }
 	}
 
 	public class RequireDeclarationElements extends AbstractParserRuleElementFinder {
@@ -349,6 +290,138 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportedNamespaceQualifiedNameParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameParserRuleCall_1_0; }
 	}
+
+	public class PathElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Path");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cSegmentsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cSegmentsPathSegmentParserRuleCall_0_0 = (RuleCall)cSegmentsAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSolidusKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSegmentsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSegmentsPathSegmentParserRuleCall_1_1_0 = (RuleCall)cSegmentsAssignment_1_1.eContents().get(0);
+		
+		//Path:
+		//	segments+=PathSegment ("/" segments+=PathSegment)*;
+		public ParserRule getRule() { return rule; }
+
+		//segments+=PathSegment ("/" segments+=PathSegment)*
+		public Group getGroup() { return cGroup; }
+
+		//segments+=PathSegment
+		public Assignment getSegmentsAssignment_0() { return cSegmentsAssignment_0; }
+
+		//PathSegment
+		public RuleCall getSegmentsPathSegmentParserRuleCall_0_0() { return cSegmentsPathSegmentParserRuleCall_0_0; }
+
+		//("/" segments+=PathSegment)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"/"
+		public Keyword getSolidusKeyword_1_0() { return cSolidusKeyword_1_0; }
+
+		//segments+=PathSegment
+		public Assignment getSegmentsAssignment_1_1() { return cSegmentsAssignment_1_1; }
+
+		//PathSegment
+		public RuleCall getSegmentsPathSegmentParserRuleCall_1_1_0() { return cSegmentsPathSegmentParserRuleCall_1_1_0; }
+	}
+
+	public class PathSegmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PathSegment");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cParameterSegmentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSimpleSegmentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//PathSegment:
+		//	ParameterSegment | SimpleSegment;
+		public ParserRule getRule() { return rule; }
+
+		//ParameterSegment | SimpleSegment
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ParameterSegment
+		public RuleCall getParameterSegmentParserRuleCall_0() { return cParameterSegmentParserRuleCall_0; }
+
+		//SimpleSegment
+		public RuleCall getSimpleSegmentParserRuleCall_1() { return cSimpleSegmentParserRuleCall_1; }
+	}
+
+	public class ParameterSegmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParameterSegment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cParamAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cParamParameterParserRuleCall_1_0 = (RuleCall)cParamAssignment_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//ParameterSegment:
+		//	"{" param=Parameter "}";
+		public ParserRule getRule() { return rule; }
+
+		//"{" param=Parameter "}"
+		public Group getGroup() { return cGroup; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+
+		//param=Parameter
+		public Assignment getParamAssignment_1() { return cParamAssignment_1; }
+
+		//Parameter
+		public RuleCall getParamParameterParserRuleCall_1_0() { return cParamParameterParserRuleCall_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+
+	public class ParameterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cParameterTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cParameterTypeJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cParameterTypeAssignment_2.eContents().get(0);
+		
+		//Parameter returns types::JvmFormalParameter:
+		//	name=ValidID ":" parameterType=JvmTypeReference;
+		public ParserRule getRule() { return rule; }
+
+		//name=ValidID ":" parameterType=JvmTypeReference
+		public Group getGroup() { return cGroup; }
+
+		//name=ValidID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
+
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+
+		//parameterType=JvmTypeReference
+		public Assignment getParameterTypeAssignment_2() { return cParameterTypeAssignment_2; }
+
+		//JvmTypeReference
+		public RuleCall getParameterTypeJvmTypeReferenceParserRuleCall_2_0() { return cParameterTypeJvmTypeReferenceParserRuleCall_2_0; }
+	}
+
+	public class SimpleSegmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleSegment");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameValidIDParserRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//SimpleSegment:
+		//	name=ValidID;
+		public ParserRule getRule() { return rule; }
+
+		//name=ValidID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_0() { return cNameValidIDParserRuleCall_0; }
+	}
 	
 	
 	private ServicesFileElements pServicesFile;
@@ -356,6 +429,11 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	private ServiceElements pService;
 	private RequireDeclarationElements pRequireDeclaration;
 	private ImportElements pImport;
+	private PathElements pPath;
+	private PathSegmentElements pPathSegment;
+	private ParameterSegmentElements pParameterSegment;
+	private ParameterElements pParameter;
+	private SimpleSegmentElements pSimpleSegment;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -401,8 +479,7 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Service:
-	//	(service?="service" "[" (get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE") "]")? name=ValidID "("
-	//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" ":" type=JvmTypeReference
+	//	(get?="GET" | post?="POST" | put?="PUT" | delete?="DELETE")? name=Path ":" type=JvmTypeReference
 	//	body=XBlockExpression;
 	public ServiceElements getServiceAccess() {
 		return (pService != null) ? pService : (pService = new ServiceElements());
@@ -430,6 +507,56 @@ public class ServicesGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getImportRule() {
 		return getImportAccess().getRule();
+	}
+
+	//Path:
+	//	segments+=PathSegment ("/" segments+=PathSegment)*;
+	public PathElements getPathAccess() {
+		return (pPath != null) ? pPath : (pPath = new PathElements());
+	}
+	
+	public ParserRule getPathRule() {
+		return getPathAccess().getRule();
+	}
+
+	//PathSegment:
+	//	ParameterSegment | SimpleSegment;
+	public PathSegmentElements getPathSegmentAccess() {
+		return (pPathSegment != null) ? pPathSegment : (pPathSegment = new PathSegmentElements());
+	}
+	
+	public ParserRule getPathSegmentRule() {
+		return getPathSegmentAccess().getRule();
+	}
+
+	//ParameterSegment:
+	//	"{" param=Parameter "}";
+	public ParameterSegmentElements getParameterSegmentAccess() {
+		return (pParameterSegment != null) ? pParameterSegment : (pParameterSegment = new ParameterSegmentElements());
+	}
+	
+	public ParserRule getParameterSegmentRule() {
+		return getParameterSegmentAccess().getRule();
+	}
+
+	//Parameter returns types::JvmFormalParameter:
+	//	name=ValidID ":" parameterType=JvmTypeReference;
+	public ParameterElements getParameterAccess() {
+		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
+	}
+	
+	public ParserRule getParameterRule() {
+		return getParameterAccess().getRule();
+	}
+
+	//SimpleSegment:
+	//	name=ValidID;
+	public SimpleSegmentElements getSimpleSegmentAccess() {
+		return (pSimpleSegment != null) ? pSimpleSegment : (pSimpleSegment = new SimpleSegmentElements());
+	}
+	
+	public ParserRule getSimpleSegmentRule() {
+		return getSimpleSegmentAccess().getRule();
 	}
 
 	//XExpression:

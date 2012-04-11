@@ -38,13 +38,13 @@ public class ServiceOverridesService {
 
 	@Inject
 	private JvmModelAssociator jvmModelAssociator;
-	
-	public JvmOperation findOverriddenOperation(Service service) {
-		JvmOperation inferredOperation = getDirectlyInferredOperation(service);
-		if (inferredOperation == null)
-			return null;
-		return findOverriddenOperation(inferredOperation);
-	}
+//	
+//	public JvmOperation findOverriddenOperation(Service service) {
+//		JvmOperation inferredOperation = getDirectlyInferredOperation(service);
+//		if (inferredOperation == null)
+//			return null;
+//		return findOverriddenOperation(inferredOperation);
+//	}
 
 	public JvmOperation findOverriddenOperation(JvmOperation operation) {
 		final JvmTypeReference typeRef = typeReferences.createTypeRef(operation.getDeclaringType());
@@ -73,22 +73,22 @@ public class ServiceOverridesService {
 		return result;
 	}
 	
-	public JvmTypeReference getOverriddenReturnType(Service service) {
-		JvmOperation operation = findOverriddenOperation(service);
-		if (operation==null)
-			return null;
-		return operation.getReturnType();
-	}
+//	public JvmTypeReference getOverriddenReturnType(Service service) {
+//		JvmOperation operation = findOverriddenOperation(service);
+//		if (operation==null)
+//			return null;
+//		return operation.getReturnType();
+//	}
 
 
-	public JvmOperation getDirectlyInferredOperation(Service service) {
-		final Iterable<JvmOperation> jvmElements = filter(jvmModelAssociator.getJvmElements(service), JvmOperation.class);
-		String expectedName = service.getName();
-		for (JvmOperation jvmOperation : jvmElements) {
-			if (jvmOperation.getSimpleName().equals(expectedName)) {
-				return jvmOperation;
-			}
-		}
-		return null;
-	}
+//	public JvmOperation getDirectlyInferredOperation(Service service) {
+//		final Iterable<JvmOperation> jvmElements = filter(jvmModelAssociator.getJvmElements(service), JvmOperation.class);
+//		String expectedName = service.getName();
+//		for (JvmOperation jvmOperation : jvmElements) {
+//			if (jvmOperation.getSimpleName().equals(expectedName)) {
+//				return jvmOperation;
+//			}
+//		}
+//		return null;
+//	}
 }

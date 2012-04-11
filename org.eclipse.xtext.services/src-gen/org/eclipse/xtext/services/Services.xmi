@@ -4,6 +4,9 @@
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="services">
       <ePackage href="http://www.eclipse.org/xtext/services/Services#/"/>
     </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
+      <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
+    </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="ServicesFile">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//ServicesFile"/>
@@ -64,43 +67,23 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//Service"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" feature="service" operator="?=">
-            <terminal xsi:type="xtext:Keyword" value="service"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Assignment" feature="get" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="GET"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="["/>
-          <elements xsi:type="xtext:Alternatives">
-            <elements xsi:type="xtext:Assignment" feature="get" operator="?=">
-              <terminal xsi:type="xtext:Keyword" value="GET"/>
-            </elements>
-            <elements xsi:type="xtext:Assignment" feature="post" operator="?=">
-              <terminal xsi:type="xtext:Keyword" value="POST"/>
-            </elements>
-            <elements xsi:type="xtext:Assignment" feature="put" operator="?=">
-              <terminal xsi:type="xtext:Keyword" value="PUT"/>
-            </elements>
-            <elements xsi:type="xtext:Assignment" feature="delete" operator="?=">
-              <terminal xsi:type="xtext:Keyword" value="DELETE"/>
-            </elements>
+          <elements xsi:type="xtext:Assignment" feature="post" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="POST"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="]"/>
+          <elements xsi:type="xtext:Assignment" feature="put" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="PUT"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="delete" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="DELETE"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.38"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.38"/>
-            </elements>
-          </elements>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
         <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
@@ -132,6 +115,65 @@
         <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
         </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Path">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//Path"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="segments" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="/"/>
+          <elements xsi:type="xtext:Assignment" feature="segments" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PathSegment">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//PathSegment"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParameterSegment">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//ParameterSegment"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" feature="param" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Parameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmFormalParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="parameterType" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SimpleSegment">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/services/Services#//SimpleSegment"/>
+      </type>
+      <alternatives xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
       </alternatives>
     </rules>
   </xtext:Grammar>

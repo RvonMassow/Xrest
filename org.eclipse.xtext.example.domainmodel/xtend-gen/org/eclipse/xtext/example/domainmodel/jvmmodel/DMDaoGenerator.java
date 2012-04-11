@@ -106,7 +106,7 @@ public class DMDaoGenerator {
     {
       final JvmParameterizedTypeReference ref = this._typeReferences.createTypeRef(t);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("find");
+      _builder.append("retrieve");
       String _simpleName = t.getSimpleName();
       _builder.append(_simpleName, "");
       _builder.append("ById");
@@ -166,7 +166,7 @@ public class DMDaoGenerator {
       JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
       final JvmTypeReference tRet = this._typeReferences.getTypeForName(List.class, e, _createTypeRef);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("findAll");
+      _builder.append("retrieveAll");
       String _simpleName = t.getSimpleName();
       _builder.append(_simpleName, "");
       _builder.append("s");
@@ -393,9 +393,10 @@ public class DMDaoGenerator {
       JvmTypeReference _typeForName_1 = this._typeReferences.getTypeForName(String.class, e);
       final JvmTypeReference p = this._typeReferences.getTypeForName(Pair.class, e, _typeForName, _typeForName_1);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("find");
+      _builder.append("retrieve");
       String _string = _builder.toString();
-      JvmTypeReference _typeForName_2 = this._typeReferences.getTypeForName(List.class, e);
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(t);
+      JvmTypeReference _typeForName_2 = this._typeReferences.getTypeForName(List.class, e, _createTypeRef);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
             it.setVisibility(JvmVisibility.PUBLIC);
@@ -415,8 +416,14 @@ public class DMDaoGenerator {
                   _builder.newLine();
                   _builder.append("_entityManager.getTransaction().begin();");
                   _builder.newLine();
-                  _builder.append("javax.persistence.Query _q = _entityManager.createQuery(query);");
-                  _builder.newLine();
+                  _builder.append("javax.persistence.TypedQuery<");
+                  String _simpleName = t.getSimpleName();
+                  _builder.append(_simpleName, "");
+                  _builder.append("> _q = _entityManager.createQuery(query, ");
+                  String _simpleName_1 = t.getSimpleName();
+                  _builder.append(_simpleName_1, "");
+                  _builder.append(".class);");
+                  _builder.newLineIfNotEmpty();
                   _builder.append("for(int i = 0; i < args.size(); i++){");
                   _builder.newLine();
                   _builder.append("\t");
@@ -424,8 +431,11 @@ public class DMDaoGenerator {
                   _builder.newLine();
                   _builder.append("}");
                   _builder.newLine();
-                  _builder.append("List<?> _result = _q.getResultList();");
-                  _builder.newLine();
+                  _builder.append("List<");
+                  String _simpleName_2 = t.getSimpleName();
+                  _builder.append(_simpleName_2, "");
+                  _builder.append("> _result = _q.getResultList();");
+                  _builder.newLineIfNotEmpty();
                   _builder.append("_entityManager.getTransaction().commit();");
                   _builder.newLine();
                   _builder.append("_entityManager.close();");

@@ -71,6 +71,42 @@ public interface ServicesFactory extends EFactory
   Import createImport();
 
   /**
+   * Returns a new object of class '<em>Path</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Path</em>'.
+   * @generated
+   */
+  Path createPath();
+
+  /**
+   * Returns a new object of class '<em>Path Segment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Path Segment</em>'.
+   * @generated
+   */
+  PathSegment createPathSegment();
+
+  /**
+   * Returns a new object of class '<em>Parameter Segment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Segment</em>'.
+   * @generated
+   */
+  ParameterSegment createParameterSegment();
+
+  /**
+   * Returns a new object of class '<em>Simple Segment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Segment</em>'.
+   * @generated
+   */
+  SimpleSegment createSimpleSegment();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

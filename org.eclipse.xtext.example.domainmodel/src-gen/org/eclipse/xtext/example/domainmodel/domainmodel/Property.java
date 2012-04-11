@@ -15,7 +15,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive <em>Derive</em>}</li>
+ *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#getMappedBy <em>Mapped By</em>}</li>
  * </ul>
@@ -28,30 +28,30 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface Property extends Feature
 {
   /**
-   * Returns the value of the '<em><b>Derive</b></em>' attribute.
+   * Returns the value of the '<em><b>Generated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Derive</em>' attribute isn't clear,
+   * If the meaning of the '<em>Generated</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Derive</em>' attribute.
-   * @see #setDerive(boolean)
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage#getProperty_Derive()
+   * @return the value of the '<em>Generated</em>' attribute.
+   * @see #setGenerated(boolean)
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage#getProperty_Generated()
    * @model
    * @generated
    */
-  boolean isDerive();
+  boolean isGenerated();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isDerive <em>Derive</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Property#isGenerated <em>Generated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Derive</em>' attribute.
-   * @see #isDerive()
+   * @param value the new value of the '<em>Generated</em>' attribute.
+   * @see #isGenerated()
    * @generated
    */
-  void setDerive(boolean value);
+  void setGenerated(boolean value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

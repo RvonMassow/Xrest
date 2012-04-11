@@ -72,6 +72,10 @@ public class ServicesFactoryImpl extends EFactoryImpl implements ServicesFactory
       case ServicesPackage.SERVICE: return createService();
       case ServicesPackage.REQUIRE_DECLARATION: return createRequireDeclaration();
       case ServicesPackage.IMPORT: return createImport();
+      case ServicesPackage.PATH: return createPath();
+      case ServicesPackage.PATH_SEGMENT: return createPathSegment();
+      case ServicesPackage.PARAMETER_SEGMENT: return createParameterSegment();
+      case ServicesPackage.SIMPLE_SEGMENT: return createSimpleSegment();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -130,6 +134,50 @@ public class ServicesFactoryImpl extends EFactoryImpl implements ServicesFactory
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Path createPath()
+  {
+    PathImpl path = new PathImpl();
+    return path;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PathSegment createPathSegment()
+  {
+    PathSegmentImpl pathSegment = new PathSegmentImpl();
+    return pathSegment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterSegment createParameterSegment()
+  {
+    ParameterSegmentImpl parameterSegment = new ParameterSegmentImpl();
+    return parameterSegment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SimpleSegment createSimpleSegment()
+  {
+    SimpleSegmentImpl simpleSegment = new SimpleSegmentImpl();
+    return simpleSegment;
   }
 
   /**

@@ -6,6 +6,9 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.services.services.ParameterSegment
+import org.eclipse.xtext.services.services.SimpleSegment
+import org.eclipse.xtext.services.services.ParameterSegment
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -20,6 +23,7 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
      */
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider qualifiedNameProvider
+	@Inject extension TypesBuilderExtensions
 
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -54,10 +58,10 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    				]
 			}
    			for(service : component.services) {
-   				members += service.toMethod(service.name, service.type) [
+   				members += service.toMethod(service.name.segments.join('$')[stringValue], service.type) [
    					if(service.get) {
 						annotations += service.toAnnotation("javax.ws.rs.GET")	
-						annotations += service.toAnnotation("javax.ws.rs.Produces", "application/json, application/xml")
+						annotations += service.toAnnotation("javax.ws.rs.Produces", "application/json")
    					} else if(service.post) {
 						annotations += service.toAnnotation("javax.ws.rs.POST")
 						annotations += service.toAnnotation("javax.ws.rs.Consumes", "application/json, application/xml")
@@ -67,13 +71,35 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
    					} else if(service.delete) {
 						annotations += service.toAnnotation("javax.ws.rs.DELETE")
    					}
-   					annotations += if(service.service) service.toAnnotation("javax.ws.rs.Path", service.name)
-  					for (p : service.params) {
-						parameters += p.toParameter(p.name, p.parameterType)
+   					annotations += if(!annotations.empty) service.toAnnotation("javax.ws.rs.Path", 
+   						service.name.segments.join('/')[pathStringValue]
+   					)
+  					for (p : service.name.segments) {
+  						if(p instanceof ParameterSegment)
+							parameters += p.toParameter(p.stringValue, (p as ParameterSegment).param.parameterType) [
+								annotations += service.toAnnotation("javax.ws.rs.PathParam", p.stringValue)
+							]
 					}
    					body = service.body
    				]
    			}
    		]
+   	}
+
+   	def dispatch stringValue(SimpleSegment ss) {
+   		ss.name
+   	}
+
+	def dispatch stringValue(ParameterSegment ps) {
+   		ps.param.name
+   	}
+
+
+   	def dispatch pathStringValue(SimpleSegment ss) {
+   		ss.name
+   	}
+
+	def dispatch pathStringValue(ParameterSegment ps) {
+   		'{' + ps.param.name + '}'
    	}
 }

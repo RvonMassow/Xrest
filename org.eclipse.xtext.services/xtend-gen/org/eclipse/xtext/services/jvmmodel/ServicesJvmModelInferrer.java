@@ -14,14 +14,21 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.services.jvmmodel.TypesBuilderExtensions;
 import org.eclipse.xtext.services.services.Component;
+import org.eclipse.xtext.services.services.ParameterSegment;
+import org.eclipse.xtext.services.services.Path;
+import org.eclipse.xtext.services.services.PathSegment;
 import org.eclipse.xtext.services.services.RequireDeclaration;
 import org.eclipse.xtext.services.services.Service;
+import org.eclipse.xtext.services.services.SimpleSegment;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -41,6 +48,9 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
   
   @Inject
   private IQualifiedNameProvider qualifiedNameProvider;
+  
+  @Inject
+  private TypesBuilderExtensions _typesBuilderExtensions;
   
   /**
    * Is called for each instance of the first argument's type contained in a resource.
@@ -107,9 +117,17 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
           EList<Service> _services = component.getServices();
           for (final Service service : _services) {
             EList<JvmMember> _members = it.getMembers();
-            String _name_1 = service.getName();
+            Path _name_1 = service.getName();
+            EList<PathSegment> _segments = _name_1.getSegments();
+            final Function1<PathSegment,String> _function = new Function1<PathSegment,String>() {
+                public String apply(final PathSegment it) {
+                  String _stringValue = ServicesJvmModelInferrer.this.stringValue(it);
+                  return _stringValue;
+                }
+              };
+            String _join = IterableExtensions.<PathSegment>join(_segments, "$", _function);
             JvmTypeReference _type = service.getType();
-            final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+            final Procedure1<JvmOperation> _function_1 = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
                   boolean _isGet = service.isGet();
                   if (_isGet) {
@@ -117,7 +135,7 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                     JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.GET");
                     ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
                     EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
-                    JvmAnnotationReference _annotation_1 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Produces", "application/json, application/xml");
+                    JvmAnnotationReference _annotation_1 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Produces", "application/json");
                     ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
                   } else {
                     boolean _isPost = service.isPost();
@@ -149,31 +167,77 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
                   }
                   EList<JvmAnnotationReference> _annotations_7 = it.getAnnotations();
                   JvmAnnotationReference _xifexpression = null;
-                  boolean _isService = service.isService();
-                  if (_isService) {
-                    String _name = service.getName();
-                    JvmAnnotationReference _annotation_7 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Path", _name);
+                  EList<JvmAnnotationReference> _annotations_8 = it.getAnnotations();
+                  boolean _isEmpty = _annotations_8.isEmpty();
+                  boolean _not = (!_isEmpty);
+                  if (_not) {
+                    Path _name = service.getName();
+                    EList<PathSegment> _segments = _name.getSegments();
+                    final Function1<PathSegment,String> _function = new Function1<PathSegment,String>() {
+                        public String apply(final PathSegment it) {
+                          String _pathStringValue = ServicesJvmModelInferrer.this.pathStringValue(it);
+                          return _pathStringValue;
+                        }
+                      };
+                    String _join = IterableExtensions.<PathSegment>join(_segments, "/", _function);
+                    JvmAnnotationReference _annotation_7 = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.Path", _join);
                     _xifexpression = _annotation_7;
                   }
                   ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_7, _xifexpression);
-                  EList<JvmFormalParameter> _params = service.getParams();
-                  for (final JvmFormalParameter p : _params) {
-                    EList<JvmFormalParameter> _parameters = it.getParameters();
-                    String _name_1 = p.getName();
-                    JvmTypeReference _parameterType = p.getParameterType();
-                    JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._jvmTypesBuilder.toParameter(p, _name_1, _parameterType);
-                    ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+                  Path _name_1 = service.getName();
+                  EList<PathSegment> _segments_1 = _name_1.getSegments();
+                  for (final PathSegment p : _segments_1) {
+                    if ((p instanceof ParameterSegment)) {
+                      EList<JvmFormalParameter> _parameters = it.getParameters();
+                      String _stringValue = ServicesJvmModelInferrer.this.stringValue(p);
+                      JvmFormalParameter _param = ((ParameterSegment) p).getParam();
+                      JvmTypeReference _parameterType = _param.getParameterType();
+                      final Procedure1<JvmFormalParameter> _function_1 = new Procedure1<JvmFormalParameter>() {
+                          public void apply(final JvmFormalParameter it) {
+                            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+                            String _stringValue = ServicesJvmModelInferrer.this.stringValue(p);
+                            JvmAnnotationReference _annotation = ServicesJvmModelInferrer.this._jvmTypesBuilder.toAnnotation(service, "javax.ws.rs.PathParam", _stringValue);
+                            ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+                          }
+                        };
+                      JvmFormalParameter _parameter = ServicesJvmModelInferrer.this._typesBuilderExtensions.toParameter(p, _stringValue, _parameterType, _function_1);
+                      ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+                    }
                   }
                   XExpression _body = service.getBody();
                   ServicesJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
                 }
               };
-            JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _name_1, _type, _function);
+            JvmOperation _method = ServicesJvmModelInferrer.this._jvmTypesBuilder.toMethod(service, _join, _type, _function_1);
             ServicesJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
           }
         }
       };
     _accept.initializeLater(_function);
+  }
+  
+  protected String _stringValue(final SimpleSegment ss) {
+    String _name = ss.getName();
+    return _name;
+  }
+  
+  protected String _stringValue(final ParameterSegment ps) {
+    JvmFormalParameter _param = ps.getParam();
+    String _name = _param.getName();
+    return _name;
+  }
+  
+  protected String _pathStringValue(final SimpleSegment ss) {
+    String _name = ss.getName();
+    return _name;
+  }
+  
+  protected String _pathStringValue(final ParameterSegment ps) {
+    JvmFormalParameter _param = ps.getParam();
+    String _name = _param.getName();
+    String _plus = ("{" + _name);
+    String _plus_1 = (_plus + "}");
+    return _plus_1;
   }
   
   public void infer(final EObject component, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
@@ -186,6 +250,28 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(component, acceptor, isPrelinkingPhase).toString());
+    }
+  }
+  
+  public String stringValue(final PathSegment ps) {
+    if (ps instanceof ParameterSegment) {
+      return _stringValue((ParameterSegment)ps);
+    } else if (ps instanceof SimpleSegment) {
+      return _stringValue((SimpleSegment)ps);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ps).toString());
+    }
+  }
+  
+  public String pathStringValue(final PathSegment ps) {
+    if (ps instanceof ParameterSegment) {
+      return _pathStringValue((ParameterSegment)ps);
+    } else if (ps instanceof SimpleSegment) {
+      return _pathStringValue((SimpleSegment)ps);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ps).toString());
     }
   }
 }
