@@ -1,0 +1,11 @@
+chapter:implementation[Implementation of the Languages]
+
+Both, the domain model as well as the service language, have been developed using the
+link[http://www.xtext.org][Xtext languagedevelopment framework]. While the domain model language is originally
+bundled with Xtext as an example, the service language was developed from scratch. In this section we
+go into detail how both languages have been implemented.
+
+section[The Domain Model Language]
+
+section[The Services Language]
+

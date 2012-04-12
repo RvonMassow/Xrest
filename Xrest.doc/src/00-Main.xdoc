@@ -23,8 +23,18 @@ codelanguage-def[dmodel]
 	finally, float, super, while, entity, generated, generate, null
 ]
 
+codelanguage-def[service]
+[
+	for, new, switch, default, package, boolean, do, if, this,
+	throw, else, import, case, instanceof, return, 	catch, extends, try,
+	finally, float, super, while, component, requires, GET, POST, PUT, DELETE,
+	null, int
+]
+
 chapter-ref[Introduction]
 
 chapter-ref[dmodel]
 
 chapter-ref[service]
+
+chapter-ref[implementation]

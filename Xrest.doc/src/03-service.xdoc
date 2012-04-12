@@ -3,3 +3,48 @@ chapter:service[Services]
 In this chapter we describe the service language for RESTful webservices built with Xtext. 
 
 section[Components]
+
+In the services language, actual services are declared in components. It is just a container, bunching
+up whatever services the developer thinks need to be grouped. Components also declare dependencies to
+other components or even plain Java classes, making their public methods available as extension methods.
+
+A simple component declaring one service is given below.
+
+code[service][
+...
+component TestComponent {
+	requires app.MessageDao
+
+	GET message/{id : int} : Message {
+		id.retrieveMessageById()
+	}
+}
+]
+
+A component declaration starts with the keyword code[service][component] followed by a name. In the component's
+header, requirements can be specified. For each of the requirements a field is generated in the target
+class. The field is annotated with code[@javax.inject.Inject], to be able to bind different implementations using
+a dependency injection framework of choice. Further, a component can contain RESTful web services. These
+are declared as a typical RESTful path mapping, which can contain path parameters, like above, as well.
+While the given service just returns a code[Message] by using the DAO to retrieve it from the database,
+it is of cause possible to implement much more complex services as well as bindings to other HTTP methods.
+As a restriction of the underlying Java code generation, no two services with the same signature can be declared.
+The resulting Java code is given below.
+
+code[Java][
+@Path("app/services/TestComponent")
+public class TestComponent {
+  @Inject
+  private MessageDao messageDao;
+  
+  @GET
+  @Produces("application/json")
+  @Path("message/{id}")
+  public Message message$id(@PathParam("id") final int id) {
+    Message _retrieveMessageById = this.messageDao.retrieveMessageById(id);
+    return _retrieveMessageById;
+  }
+}
+]
+
+

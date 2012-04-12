@@ -19,6 +19,14 @@
 		<li id="03-service.html#service_2.html" ><a href="03-service.php#service_2.php" >Components</a></li>
 		</ul>
 		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="04-implementation.php">Implementation of the Languages</a></div>
+		<ul style="display: none;" id="subToc_04-implementation.html">
+		<li id="04-implementation.html#implementation_2.html" ><a href="04-implementation.php#implementation_2.php" >The Domain Model Language</a></li>
+		<li id="04-implementation.html#implementation_3.html" ><a href="04-implementation.php#implementation_3.php" >The Services Language</a></li>
+		</ul>
+		</li>
 		</ul>
 	</div>
 	<div id="midcolumn">
@@ -39,6 +47,62 @@
 			padding-top: 5px;"></span><a style="float: right" href="#">Top</a>
 			<br style="clear:both"></br>
 			<h1>Components</h1>
+			<p>
+			In the services language, actual services are declared in components. It is just a container, bunching
+			up whatever services the developer thinks need to be grouped. Components also declare dependencies to
+			other components or even plain Java classes, making their public methods available as extension methods.
+			</p>
+			<p>
+			A simple component declaring one service is given below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						...<br/>
+						<span class="keyword">component</span>&nbsp;TestComponent&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">requires</span>&nbsp;app.MessageDao<br/>
+						<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">GET</span>&nbsp;message/{id&nbsp;:&nbsp;<span class="keyword">int</span>}&nbsp;:&nbsp;Message&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id.retrieveMessageById()<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			A component declaration starts with the keyword <span class="inlinecode"><span class="keyword">component</span></span> followed by a name. In the component's
+			header, requirements can be specified. For each of the requirements a field is generated in the target
+			class. The field is annotated with <span class="inlinecode">@javax.inject.Inject</span>, to be able to bind different implementations using
+			a dependency injection framework of choice. Further, a component can contain RESTful web services. These
+			are declared as a typical RESTful path mapping, which can contain path parameters, like above, as well.
+			While the given service just returns a <span class="inlinecode">Message</span> by using the DAO to retrieve it from the database,
+			it is of cause possible to implement much more complex services as well as bindings to other HTTP methods.
+			As a restriction of the underlying Java code generation, no two services with the same signature can be declared.
+			The resulting Java code is given below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						@Path(<span class="string">"app/services/TestComponent"</span>)<br/>
+						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;TestComponent&nbsp;{<br/>
+						&nbsp;&nbsp;@Inject<br/>
+						&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;MessageDao&nbsp;messageDao;<br/>
+						&nbsp;&nbsp;<br/>
+						&nbsp;&nbsp;@GET<br/>
+						&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+						&nbsp;&nbsp;@Path(<span class="string">"message/{id}"</span>)<br/>
+						&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;message$id(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;_retrieveMessageById&nbsp;=&nbsp;<span class="keyword">this</span>.messageDao.retrieveMessageById(id);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_retrieveMessageById;<br/>
+						&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript" src="documentationRoot.js"></script>
 		<script type="text/javascript">
