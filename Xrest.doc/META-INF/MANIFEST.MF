@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xrest.doc
+Bundle-SymbolicName: Xrest.doc;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: My Company
+Require-Bundle: org.eclipse.help,
+ org.eclipse.xtext.example.domainmodel;bundle-version="2.1.0",
+ org.eclipse.xtext.services;bundle-version="1.0.0",
+ org.eclipse.xtext.services.ui;bundle-version="1.0.0",
+ org.eclipse.xtext.example.domainmodel.ui;bundle-version="2.1.0"
+

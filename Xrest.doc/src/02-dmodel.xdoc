@@ -1,0 +1,168 @@
+chapter:dmodel[The Domain Model Language]
+
+The domain model language is a simple language to model entities and there relations textually. Originally,
+it compiles POJOs creating fields, getters and setters for each feature declared in an entity. We extended
+the compiler to also support validation and server side auto-generation of values. 
+
+A small code snippet of a simple entity is given below.
+
+code[dmodel][
+package app {
+	entity Message {
+		text: String
+		generated created : String
+	}
+	generate {
+		if(this.getCreated == null)
+			this.setCreated(new Date().toString)
+	}
+}
+]
+
+An entitiy code[Message] is declared in the package
+code[app.model], containing two code[String] type features. One of these features is marked to be generated.
+This is done by calling the code[dmodel][generate] block. The code[dmodel][generate] block can contain
+arbitrary Xbase expressions. The above entity compiles to the following Java code.
+
+code[Java][
+...
+@Entity
+@XmlRootElement
+public class Message {
+  @GeneratedValue
+  @Id
+  private int id;
+  
+  public int getId() {
+    return this.id;
+  }
+  
+  public void setId(final int id) {
+    this.id = id;
+  }
+  
+  private String text;
+  
+  public String getText() {
+    return this.text;
+  }
+  
+  public void setText(final String text) {
+    this.text = text;
+  }
+  
+  private String created;
+  
+  public String getCreated() {
+    return this.created;
+  }
+  
+  public void setCreated(final String created) {
+    this.created = created;
+  }
+  
+  public void generate() {
+    String _created = this.getCreated();
+    boolean _equals = ObjectExtensions.operator_equals(_created, null);
+    if (_equals) {
+      Date _date = new Date();
+      String _string = _date.toString();
+      this.setCreated(_string);
+    }
+  }
+}
+]
+
+As you can see, it is plain java code with some annotations. For each property in the declared entity a 
+getter and a setter is generated. Also, if the entity did not declare a field named code[id], it is 
+added automatically. The class annotation code[@Entity] declares the class to be a persistable entity
+using the link[http://jcp.org/en/jsr/detail?id=317][Java Persistence Api], while the code[@XmlRootElement]
+(a link[http://jcp.org/en/jsr/detail?id=222][JAXB] annotation) annotation denotes that the entity is
+serializable to XML.
+
+In addition to the entity class, also a data access object (DAO) class is generated for each declared
+entity, which looks like the code given below for the code[Message] entity. For the sake of readibility,
+constructors, fields and method bodies are omitted.
+
+code[Java][
+...
+public class MessageDao {
+...  
+  public Message retrieveMessageById(final int id) {
+...
+  }
+  
+  public List<Message> retrieveAllMessages() {
+...
+  }
+  
+  public int createMessage(final Message message) {
+...
+  }
+  
+  public Message modifyMessage(final Message message) {
+...
+  }
+  
+  public void deleteMessage(final int id) {
+...
+  }
+  
+  public List<Message> retrieve(final String query, final List<Pair<String,String>> args) {
+...
+  }
+}
+]
+
+So the DAO class encapsulates the whole database access logics to plain Java methods, implementing the typical
+CRUD operations. This API can be reused by any Java language such as the service language described in
+ref:service[Service].
+
+In addition to the generated DAO classes, also RESTful webservices are generated using the
+link[http://jcp.org/en/jsr/detail?id=339][JAX-RS] annotation framework. Below, the service controller
+class is given.
+
+code[Java][
+...
+@Path("app/message")
+public class MessageController {
+  @Inject
+  private MessageDao _dao;
+  
+  @PUT
+  @Consumes("application/json")
+  public Response putMessage(final Message message) {
+...
+  }
+  
+  @DELETE
+  @Path("{id}")
+  public Response deleteMessage(@PathParam("id") final int id) {
+...
+  }
+  
+  @GET
+  @Produces("application/json")
+  @Path("{id}")
+  public Response getMessageAsJSON(@PathParam("id") final int id) {
+...
+  }
+  
+  @POST
+  @Consumes("application/json")
+  public Response postMessage(final Message message) {
+...
+  }
+  
+  @GET
+  @Produces("application/json")
+  public List<Message> getMessageAllAsJSON() {
+...
+  }
+}
+]
+
+Again, the method bodies are omitted for the sake of readability. The class itself is mapped to the path
+generated from the fully qualified name of the entity, the methods are mapped to the HTTP methods used
+for RESTful web services. 
+

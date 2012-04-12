@@ -1,0 +1,7 @@
+chapter:Introduction[Introduction]
+
+The Xrest framework provides two domain specific languages (DSLs) to simplify the development of REST style
+web services. The first DSL originates from the link[http://www.xtext.org][Xtext] domain model example for
+modeling entities and their relations and generates RESTful web services, JPA entities and a data access layer. The
+second DSL provides a simple way to declare and implement plain RESTful services.
+

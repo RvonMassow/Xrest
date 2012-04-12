@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>The Domain Model Language</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="xtext.html" title="">
+</head>
+<body>
+<a name="dmodel"></a>
+<h1>The Domain Model Language</h1>
+<p>
+The domain model language is a simple language to model entities and there relations textually. Originally,
+it compiles POJOs creating fields, getters and setters for each feature declared in an entity. We extended
+the compiler to also support validation and server side auto-generation of values. 
+</p>
+<p>
+A small code snippet of a simple entity is given below.
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">package</span>&nbsp;app&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">entity</span>&nbsp;Message&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;String<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">generated</span>&nbsp;created&nbsp;:&nbsp;String<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">generate</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(<span class="keyword">this</span>.getCreated&nbsp;==&nbsp;<span class="keyword">null</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(<span class="keyword">new</span>&nbsp;Date().toString)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+An entitiy <span class="inlinecode">Message</span> is declared in the package
+<span class="inlinecode">app.model</span>, containing two <span class="inlinecode">String</span> type features. One of these features is marked to be generated.
+This is done by calling the <span class="inlinecode"><span class="keyword">generate</span></span> block. The <span class="inlinecode"><span class="keyword">generate</span></span> block can contain
+arbitrary Xbase expressions. The above entity compiles to the following Java code.
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+@Entity<br/>
+@XmlRootElement<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;Message&nbsp;{<br/>
+&nbsp;&nbsp;@GeneratedValue<br/>
+&nbsp;&nbsp;@Id<br/>
+&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;<span class="keyword">int</span>&nbsp;id;<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;getId()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.id;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setId(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.id&nbsp;=&nbsp;id;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;String&nbsp;text;<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;getText()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.text;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setText(<span class="keyword">final</span>&nbsp;String&nbsp;text)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.text&nbsp;=&nbsp;text;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;String&nbsp;created;<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;getCreated()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.created;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setCreated(<span class="keyword">final</span>&nbsp;String&nbsp;created)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.created&nbsp;=&nbsp;created;<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;generate()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_created&nbsp;=&nbsp;<span class="keyword">this</span>.getCreated();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_equals&nbsp;=&nbsp;ObjectExtensions.operator_equals(_created,&nbsp;null);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(_equals)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;_date&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;Date();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_string&nbsp;=&nbsp;_date.toString();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(_string);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+As you can see, it is plain java code with some annotations. For each property in the declared entity a 
+getter and a setter is generated. Also, if the entity did not declare a field named <span class="inlinecode">id</span>, it is 
+added automatically. The class annotation <span class="inlinecode">@Entity</span> declares the class to be a persistable entity
+using the <a href="http://jcp.org/en/jsr/detail?id=317">Java Persistence Api</a>, while the <span class="inlinecode">@XmlRootElement</span>
+(a <a href="http://jcp.org/en/jsr/detail?id=222">JAXB</a> annotation) annotation denotes that the entity is
+serializable to XML.
+</p>
+<p>
+In addition to the entity class, also a data access object (DAO) class is generated for each declared
+entity, which looks like the code given below for the <span class="inlinecode">Message</span> entity. For the sake of readibility,
+constructors, fields and method bodies are omitted.
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageDao&nbsp;{<br/>
+...&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;retrieveMessageById(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieveAllMessages()&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;createMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;modifyMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;deleteMessage(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieve(<span class="keyword">final</span>&nbsp;String&nbsp;query,&nbsp;<span class="keyword">final</span>&nbsp;List&lt;Pair&lt;String,String&gt;&gt;&nbsp;args)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+So the DAO class encapsulates the whole database access logics to plain Java methods, implementing the typical
+CRUD operations. This API can be reused by any Java language such as the service language described in
+<a href="03-service.html#service" title="Go to &quot;Services&quot;">Service</a>.
+</p>
+<p>
+In addition to the generated DAO classes, also RESTful webservices are generated using the
+<a href="http://jcp.org/en/jsr/detail?id=339">JAX-RS</a> annotation framework. Below, the service controller
+class is given.
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+@Path(<span class="string">"app/message"</span>)<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageController&nbsp;{<br/>
+&nbsp;&nbsp;@Inject<br/>
+&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;MessageDao&nbsp;_dao;<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@PUT<br/>
+&nbsp;&nbsp;@Consumes(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;putMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@DELETE<br/>
+&nbsp;&nbsp;@Path(<span class="string">"{id}"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;deleteMessage(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@GET<br/>
+&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;@Path(<span class="string">"{id}"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;getMessageAsJSON(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@POST<br/>
+&nbsp;&nbsp;@Consumes(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;postMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@GET<br/>
+&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;getMessageAllAsJSON()&nbsp;{<br/>
+...<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Again, the method bodies are omitted for the sake of readability. The class itself is mapped to the path
+generated from the fully qualified name of the entity, the methods are mapped to the HTTP methods used
+for RESTful web services. 
+</p>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<toc topic="contents/00-Main.html" label="Xrest -- A Rest Framework built with Xtext" >
+	<topic href="contents/01-Introduction.html#Introduction" label="Introduction" >
+	</topic>
+	<topic href="contents/02-dmodel.html#dmodel" label="The Domain Model Language" >
+	</topic>
+	<topic href="contents/03-service.html#service" label="Services" >
+		<topic href="contents/03-service.html#service_2" label="Components" >
+		</topic>
+	</topic>
+</toc>
