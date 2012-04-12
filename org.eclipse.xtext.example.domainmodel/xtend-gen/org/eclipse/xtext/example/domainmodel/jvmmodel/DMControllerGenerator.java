@@ -319,10 +319,8 @@ public class DMControllerGenerator {
                       String _simpleName_1 = t.getSimpleName();
                       String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_1);
                       _builder.append(_firstLower_1, "");
-                      _builder.append(".validate())");
+                      _builder.append(".validate()) {");
                       _builder.newLineIfNotEmpty();
-                      _builder.append("{");
-                      _builder.newLine();
                     }
                   }
                   _builder.append("int id = _dao.create");
@@ -428,10 +426,8 @@ public class DMControllerGenerator {
                       String _simpleName_1 = t.getSimpleName();
                       String _firstLower_1 = StringExtensions.toFirstLower(_simpleName_1);
                       _builder.append(_firstLower_1, "");
-                      _builder.append(".validate())");
+                      _builder.append(".validate()) {");
                       _builder.newLineIfNotEmpty();
-                      _builder.append("{");
-                      _builder.newLine();
                     }
                   }
                   _builder.append("try{");

@@ -105,8 +105,7 @@ class DMControllerGenerator {
 				«t.simpleName.toFirstLower».generate();
 				«ENDIF»
 				«IF validate != null»
-				if(«t.simpleName.toFirstLower».validate())
-				{
+				if(«t.simpleName.toFirstLower».validate()) {
 				«ENDIF»
 				int id = _dao.create«t.simpleName»(«t.simpleName.toFirstLower»);
 				java.net.URI location = _uriInfo.getAbsolutePathBuilder().path("" + id).build();
@@ -136,8 +135,7 @@ class DMControllerGenerator {
 				«t.simpleName.toFirstLower».generate();
 				«ENDIF»
 				«IF validate != null»
-				if(«t.simpleName.toFirstLower».validate())
-				{
+				if(«t.simpleName.toFirstLower».validate()) {
 				«ENDIF»
 				try{
 					«t.simpleName» modified«t.simpleName» = _dao.modify«t.simpleName»(«t.simpleName.toFirstLower»);
