@@ -309,25 +309,25 @@ finally {
 
 
 
-// Entry rule entryRuleDerive
-entryRuleDerive 
+// Entry rule entryRuleGenerate
+entryRuleGenerate 
 :
-{ before(grammarAccess.getDeriveRule()); }
-	 ruleDerive
-{ after(grammarAccess.getDeriveRule()); } 
+{ before(grammarAccess.getGenerateRule()); }
+	 ruleGenerate
+{ after(grammarAccess.getGenerateRule()); } 
 	 EOF 
 ;
 
-// Rule Derive
-ruleDerive
+// Rule Generate
+ruleGenerate
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getDeriveAccess().getGroup()); }
-(rule__Derive__Group__0)
-{ after(grammarAccess.getDeriveAccess().getGroup()); }
+{ before(grammarAccess.getGenerateAccess().getGroup()); }
+(rule__Generate__Group__0)
+{ after(grammarAccess.getGenerateAccess().getGroup()); }
 )
 
 ;
@@ -2217,9 +2217,9 @@ rule__Operation__Alternatives
 )
 
     |(
-{ before(grammarAccess.getOperationAccess().getDeriveParserRuleCall_1()); }
-	ruleDerive
-{ after(grammarAccess.getOperationAccess().getDeriveParserRuleCall_1()); }
+{ before(grammarAccess.getOperationAccess().getGenerateParserRuleCall_1()); }
+	ruleGenerate
+{ after(grammarAccess.getOperationAccess().getGenerateParserRuleCall_1()); }
 )
 
 ;
@@ -3825,27 +3825,27 @@ finally {
 
 
 
-rule__Derive__Group__0
+rule__Generate__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Derive__Group__0__Impl
-	rule__Derive__Group__1
+	rule__Generate__Group__0__Impl
+	rule__Generate__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Derive__Group__0__Impl
+rule__Generate__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDeriveAccess().getNameAssignment_0()); }
-(rule__Derive__NameAssignment_0)
-{ after(grammarAccess.getDeriveAccess().getNameAssignment_0()); }
+{ before(grammarAccess.getGenerateAccess().getNameAssignment_0()); }
+(rule__Generate__NameAssignment_0)
+{ after(grammarAccess.getGenerateAccess().getNameAssignment_0()); }
 )
 
 ;
@@ -3854,26 +3854,26 @@ finally {
 }
 
 
-rule__Derive__Group__1
+rule__Generate__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Derive__Group__1__Impl
+	rule__Generate__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Derive__Group__1__Impl
+rule__Generate__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDeriveAccess().getBodyAssignment_1()); }
-(rule__Derive__BodyAssignment_1)
-{ after(grammarAccess.getDeriveAccess().getBodyAssignment_1()); }
+{ before(grammarAccess.getGenerateAccess().getBodyAssignment_1()); }
+(rule__Generate__BodyAssignment_1)
+{ after(grammarAccess.getGenerateAccess().getBodyAssignment_1()); }
 )
 
 ;
@@ -14460,22 +14460,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Derive__NameAssignment_0
+rule__Generate__NameAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
+{ before(grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0()); }
 (
-{ before(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
+{ before(grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0()); }
 
 	'generate' 
 
-{ after(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
+{ after(grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0()); }
 )
 
-{ after(grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0()); }
+{ after(grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0()); }
 )
 
 ;
@@ -14483,14 +14483,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Derive__BodyAssignment_1
+rule__Generate__BodyAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDeriveAccess().getBodyXBlockExpressionParserRuleCall_1_0()); }
-	ruleXBlockExpression{ after(grammarAccess.getDeriveAccess().getBodyXBlockExpressionParserRuleCall_1_0()); }
+{ before(grammarAccess.getGenerateAccess().getBodyXBlockExpressionParserRuleCall_1_0()); }
+	ruleXBlockExpression{ after(grammarAccess.getGenerateAccess().getBodyXBlockExpressionParserRuleCall_1_0()); }
 )
 
 ;

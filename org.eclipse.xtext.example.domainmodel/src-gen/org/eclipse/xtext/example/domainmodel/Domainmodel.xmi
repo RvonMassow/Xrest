@@ -130,9 +130,9 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Derive">
+    <rules xsi:type="xtext:ParserRule" name="Generate">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.xtext.org/example/Domainmodel#//Derive"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.xtext.org/example/Domainmodel#//Generate"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">

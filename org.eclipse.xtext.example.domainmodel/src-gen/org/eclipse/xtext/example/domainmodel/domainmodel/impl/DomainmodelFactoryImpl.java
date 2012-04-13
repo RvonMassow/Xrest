@@ -76,7 +76,7 @@ public class DomainmodelFactoryImpl extends EFactoryImpl implements DomainmodelF
       case DomainmodelPackage.PROPERTY: return createProperty();
       case DomainmodelPackage.OPERATION: return createOperation();
       case DomainmodelPackage.VALIDATE: return createValidate();
-      case DomainmodelPackage.DERIVE: return createDerive();
+      case DomainmodelPackage.GENERATE: return createGenerate();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -186,10 +186,10 @@ public class DomainmodelFactoryImpl extends EFactoryImpl implements DomainmodelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Derive createDerive()
+  public Generate createGenerate()
   {
-    DeriveImpl derive = new DeriveImpl();
-    return derive;
+    GenerateImpl generate = new GenerateImpl();
+    return generate;
   }
 
   /**

@@ -145,12 +145,12 @@ public class DomainmodelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DomainmodelPackage.DERIVE:
+      case DomainmodelPackage.GENERATE:
       {
-        Derive derive = (Derive)theEObject;
-        T result = caseDerive(derive);
-        if (result == null) result = caseOperation(derive);
-        if (result == null) result = caseFeature(derive);
+        Generate generate = (Generate)theEObject;
+        T result = caseGenerate(generate);
+        if (result == null) result = caseOperation(generate);
+        if (result == null) result = caseFeature(generate);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -303,17 +303,17 @@ public class DomainmodelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Derive</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Generate</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Derive</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Generate</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDerive(Derive object)
+  public T caseGenerate(Generate object)
   {
     return null;
   }

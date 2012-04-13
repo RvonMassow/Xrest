@@ -40,7 +40,7 @@ protected class ThisRootNode extends RootToken {
 			case 6: return new Property_Group(this, this, 6, inst);
 			case 7: return new Operation_Alternatives(this, this, 7, inst);
 			case 8: return new Validate_Group(this, this, 8, inst);
-			case 9: return new Derive_Group(this, this, 9, inst);
+			case 9: return new Generate_Group(this, this, 9, inst);
 			case 10: return new XExpression_XAssignmentParserRuleCall(this, this, 10, inst);
 			case 11: return new XAssignment_Alternatives(this, this, 11, inst);
 			case 12: return new XOrExpression_Group(this, this, 12, inst);
@@ -895,7 +895,7 @@ protected class Feature_Alternatives extends AlternativesToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDeriveRule().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getGenerateRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPropertyRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getValidateRule().getType().getClassifier())
 			return null;
@@ -962,7 +962,7 @@ protected class Feature_OperationParserRuleCall_1 extends RuleCallToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDeriveRule().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getGenerateRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getValidateRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(Operation_Alternatives.class, eObjectConsumer)) return null;
@@ -1244,11 +1244,11 @@ protected class Property_MappedByAssignment_4_1 extends AssignmentToken  {
 /************ begin Rule Operation ****************
  *
  * Operation:
- * 	Validate | Derive;
+ * 	Validate | Generate;
  *
  **/
 
-// Validate | Derive
+// Validate | Generate
 protected class Operation_Alternatives extends AlternativesToken {
 
 	public Operation_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1264,14 +1264,14 @@ protected class Operation_Alternatives extends AlternativesToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new Operation_ValidateParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Operation_DeriveParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
+			case 1: return new Operation_GenerateParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDeriveRule().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getGenerateRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getValidateRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
@@ -1315,31 +1315,31 @@ protected class Operation_ValidateParserRuleCall_0 extends RuleCallToken {
 	}	
 }
 
-// Derive
-protected class Operation_DeriveParserRuleCall_1 extends RuleCallToken {
+// Generate
+protected class Operation_GenerateParserRuleCall_1 extends RuleCallToken {
 	
-	public Operation_DeriveParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Operation_GenerateParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getOperationAccess().getDeriveParserRuleCall_1();
+		return grammarAccess.getOperationAccess().getGenerateParserRuleCall_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Derive_Group(this, this, 0, inst);
+			case 0: return new Generate_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDeriveRule().getType().getClassifier())
+		if(getEObject().eClass() != grammarAccess.getGenerateRule().getType().getClassifier())
 			return null;
-		if(checkForRecursion(Derive_Group.class, eObjectConsumer)) return null;
+		if(checkForRecursion(Generate_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
 	}
 	
@@ -1474,36 +1474,36 @@ protected class Validate_BodyAssignment_1 extends AssignmentToken  {
 /************ end Rule Validate ****************/
 
 
-/************ begin Rule Derive ****************
+/************ begin Rule Generate ****************
  *
- * Derive:
+ * Generate:
  * 	name="generate" body=XBlockExpression;
  *
  **/
 
 // name="generate" body=XBlockExpression
-protected class Derive_Group extends GroupToken {
+protected class Generate_Group extends GroupToken {
 	
-	public Derive_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Generate_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getDeriveAccess().getGroup();
+		return grammarAccess.getGenerateAccess().getGroup();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Derive_BodyAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Generate_BodyAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDeriveRule().getType().getClassifier())
+		if(getEObject().eClass() != grammarAccess.getGenerateRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -1511,15 +1511,15 @@ protected class Derive_Group extends GroupToken {
 }
 
 // name="generate"
-protected class Derive_NameAssignment_0 extends AssignmentToken  {
+protected class Generate_NameAssignment_0 extends AssignmentToken  {
 	
-	public Derive_NameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Generate_NameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getDeriveAccess().getNameAssignment_0();
+		return grammarAccess.getGenerateAccess().getNameAssignment_0();
 	}
 
     @Override
@@ -1533,9 +1533,9 @@ protected class Derive_NameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0();
+			element = grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0();
 			return obj;
 		}
 		return null;
@@ -1544,15 +1544,15 @@ protected class Derive_NameAssignment_0 extends AssignmentToken  {
 }
 
 // body=XBlockExpression
-protected class Derive_BodyAssignment_1 extends AssignmentToken  {
+protected class Generate_BodyAssignment_1 extends AssignmentToken  {
 	
-	public Derive_BodyAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Generate_BodyAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getDeriveAccess().getBodyAssignment_1();
+		return grammarAccess.getGenerateAccess().getBodyAssignment_1();
 	}
 
     @Override
@@ -1571,7 +1571,7 @@ protected class Derive_BodyAssignment_1 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getXBlockExpressionRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getDeriveAccess().getBodyXBlockExpressionParserRuleCall_1_0(); 
+				element = grammarAccess.getGenerateAccess().getBodyXBlockExpressionParserRuleCall_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1583,14 +1583,14 @@ protected class Derive_BodyAssignment_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Derive_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Generate_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 
-/************ end Rule Derive ****************/
+/************ end Rule Generate ****************/
 
 
 

@@ -36,13 +36,13 @@ Property:
 ;
 
 Operation:
-	Validate | Derive;
+	Validate | Generate;
 
 Validate:
 	 name='validate'
 		body=XBlockExpression;
 
-Derive:
+Generate:
 	 name='generate' 
 		body=XBlockExpression;
 

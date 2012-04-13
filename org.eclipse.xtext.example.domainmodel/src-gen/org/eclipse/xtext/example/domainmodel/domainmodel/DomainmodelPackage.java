@@ -375,14 +375,14 @@ public interface DomainmodelPackage extends EPackage
   int VALIDATE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl <em>Derive</em>}' class.
+   * The meta object id for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.GenerateImpl <em>Generate</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getDerive()
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.GenerateImpl
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getGenerate()
    * @generated
    */
-  int DERIVE = 9;
+  int GENERATE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -391,7 +391,7 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DERIVE__NAME = OPERATION__NAME;
+  int GENERATE__NAME = OPERATION__NAME;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -400,16 +400,16 @@ public interface DomainmodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DERIVE__BODY = OPERATION__BODY;
+  int GENERATE__BODY = OPERATION__BODY;
 
   /**
-   * The number of structural features of the '<em>Derive</em>' class.
+   * The number of structural features of the '<em>Generate</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DERIVE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+  int GENERATE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
 
 
   /**
@@ -635,14 +635,14 @@ public interface DomainmodelPackage extends EPackage
   EClass getValidate();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Derive <em>Derive</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.xtext.example.domainmodel.domainmodel.Generate <em>Generate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Derive</em>'.
-   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Derive
+   * @return the meta object for class '<em>Generate</em>'.
+   * @see org.eclipse.xtext.example.domainmodel.domainmodel.Generate
    * @generated
    */
-  EClass getDerive();
+  EClass getGenerate();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -854,14 +854,14 @@ public interface DomainmodelPackage extends EPackage
     EClass VALIDATE = eINSTANCE.getValidate();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl <em>Derive</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.xtext.example.domainmodel.domainmodel.impl.GenerateImpl <em>Generate</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DeriveImpl
-     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getDerive()
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.GenerateImpl
+     * @see org.eclipse.xtext.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getGenerate()
      * @generated
      */
-    EClass DERIVE = eINSTANCE.getDerive();
+    EClass GENERATE = eINSTANCE.getGenerate();
 
   }
 

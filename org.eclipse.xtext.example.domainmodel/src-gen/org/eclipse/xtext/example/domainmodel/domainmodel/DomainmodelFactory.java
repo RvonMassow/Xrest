@@ -107,13 +107,13 @@ public interface DomainmodelFactory extends EFactory
   Validate createValidate();
 
   /**
-   * Returns a new object of class '<em>Derive</em>'.
+   * Returns a new object of class '<em>Generate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Derive</em>'.
+   * @return a new object of class '<em>Generate</em>'.
    * @generated
    */
-  Derive createDerive();
+  Generate createGenerate();
 
   /**
    * Returns the package supported by this factory.

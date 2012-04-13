@@ -19,9 +19,9 @@ import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Derive;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Generate;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Validate;
 import org.eclipse.xtext.example.domainmodel.jvmmodel.DMControllerGenerator;
@@ -183,21 +183,21 @@ public class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
         }
       }
       if (!_matched) {
-        if (f instanceof Derive) {
-          final Derive _derive = (Derive)f;
+        if (f instanceof Generate) {
+          final Generate _generate = (Generate)f;
           _matched=true;
           EList<JvmMember> _members = it.getMembers();
-          String _name = _derive.getName();
+          String _name = _generate.getName();
           JvmTypeReference _typeForName = this._typeReferences.getTypeForName(void.class, e);
           final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
               public void apply(final JvmOperation it) {
-                String _documentation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(_derive);
+                String _documentation = DomainmodelJvmModelInferrer.this._jvmTypesBuilder.getDocumentation(_generate);
                 DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setDocumentation(it, _documentation);
-                XExpression _body = _derive.getBody();
+                XExpression _body = _generate.getBody();
                 DomainmodelJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _body);
               }
             };
-          JvmOperation _method = this._jvmTypesBuilder.toMethod(_derive, _name, _typeForName, _function);
+          JvmOperation _method = this._jvmTypesBuilder.toMethod(_generate, _name, _typeForName, _function);
           this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
         }
       }

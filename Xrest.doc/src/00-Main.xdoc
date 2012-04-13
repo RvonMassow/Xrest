@@ -31,6 +31,10 @@ codelanguage-def[service]
 	null, int
 ]
 
+codelanguage-def[Xtext][
+	generate, import, grammar, with, terminal
+]
+
 chapter-ref[Introduction]
 
 chapter-ref[dmodel]

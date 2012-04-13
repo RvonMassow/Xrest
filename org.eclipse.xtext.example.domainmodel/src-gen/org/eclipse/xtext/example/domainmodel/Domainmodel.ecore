@@ -37,5 +37,5 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Validate" eSuperTypes="#//Operation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Derive" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Generate" eSuperTypes="#//Operation"/>
 </ecore:EPackage>

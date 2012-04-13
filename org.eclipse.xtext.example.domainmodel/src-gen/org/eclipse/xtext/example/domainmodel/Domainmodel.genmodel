@@ -37,6 +37,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/body"/>
     </genClasses>
     <genClasses ecoreClass="Domainmodel.ecore#//Validate"/>
-    <genClasses ecoreClass="Domainmodel.ecore#//Derive"/>
+    <genClasses ecoreClass="Domainmodel.ecore#//Generate"/>
   </genPackages>
 </genmodel:GenModel>

@@ -51,6 +51,102 @@
 			padding-top: 5px;"></span><a style="float: right" href="#">Top</a>
 			<br style="clear:both"></br>
 			<h1>The Domain Model Language</h1>
+			<div class="toc">
+			  <ul>
+			    <li><a href="04-implementation.php#implementation_2_2.php" >The Grammar</a></li>
+			    <li><a href="04-implementation.php#implementation_2_3.php" >Jvm Model Inference</a></li>
+			  </ul>
+			</div>
+			<p>
+			The domain model language is implemented using the Xtext language framework. To define a language, one
+			develops a grammar in the Xtext grammar language, which is a straight forward EBNF style grammar language
+			with some Xtext specific additions. Also, as we are using the Java type system, the concepts of the domain
+			model language have to be mapped to the Java type system by implementing a model inferrer, which also
+			contributes to the compiler by adding custom compilation strategies for DAO and service generation.
+			</p>
+			<a name="implementation_2_2" ></a>
+			<h2>The Grammar</h2>
+			<p>
+			The header of the domain model grammar is given here:
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">grammar</span>&nbsp;org.eclipse.xtext.example.domainmodel.Domainmodel&nbsp;<span class="keyword">with</span>&nbsp;org.eclipse.xtext.xbase.Xbase<br/>
+						<br/>
+						<span class="keyword">generate</span>&nbsp;domainmodel&nbsp;<span class="string">"http://www.xtext.org/example/Domainmodel"</span>
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			It simply declares a grammar <span class="inlinecode">org.eclipse.xtext.example.domainmodel.Domainmodel</span> that inherits all
+			rules from another grammar <span class="inlinecode">org.eclipse.xtext.xbase.Xbase</span>. The inherited grammar defines the Xbase
+			expression rules. In the second line, the Xtext generator is told to generate a new EMF meta model with
+			the given URI.
+			</p>
+			<p>
+			The rest of the grammar defines the abstract and concrete syntax of the domain model language.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						DomainModel:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;elements+=AbstractElement*;<br/>
+						<br/>
+						AbstractElement:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;PackageDeclaration&nbsp;|&nbsp;Entity&nbsp;|&nbsp;Import;<br/>
+						<br/>
+						Import:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;import&apos;</span>&nbsp;importedNamespace=QualifiedNameWithWildCard;<br/>
+						<br/>
+						PackageDeclaration:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;package&apos;</span>&nbsp;name=QualifiedName&nbsp;<span class="string">&apos;{&apos;</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements+=AbstractElement*<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;<br/>
+						<br/>
+						Entity:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;entity&apos;</span>&nbsp;name=ValidID&nbsp;(<span class="string">&apos;extends&apos;</span>&nbsp;superType=JvmParameterizedTypeReference)?&nbsp;<span class="string">&apos;{&apos;</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;features+=Feature*<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;<br/>
+						<br/>
+						Feature:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;|&nbsp;Operation;<br/>
+						<br/>
+						Property:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;(generated?=<span class="string">&apos;generated&apos;</span>)?&nbsp;name=ValidID&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;type=JvmTypeReference&nbsp;(<span class="string">&apos;-&gt;&apos;</span>&nbsp;mappedBy=[Property&nbsp;|&nbsp;QualifiedName])?&nbsp;<br/>
+						;<br/>
+						<br/>
+						Operation:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Validate&nbsp;|&nbsp;Generate;<br/>
+						<br/>
+						Validate:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=<span class="string">&apos;validate&apos;</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body=XBlockExpression;<br/>
+						<br/>
+						Generate:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=<span class="string">&apos;generate&apos;</span>&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body=XBlockExpression;<br/>
+						<br/>
+						QualifiedNameWithWildCard&nbsp;:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;QualifiedName&nbsp;&nbsp;(<span class="string">&apos;.&apos;</span>&nbsp;<span class="string">&apos;*&apos;</span>)?;<br/>
+						<br/>
+						ValidID:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;(ID&nbsp;|&nbsp;<span class="string">&apos;generated&apos;</span>&nbsp;|&nbsp;<span class="string">&apos;validate&apos;</span>)<br/>
+						;
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			The grammar declares a simple entity languages, where entities can be declared in packages and contain
+			properties of any Java type and a validation and generation operation. These two operations reuse the
+			<span class="inlinecode">XBlockExpression</span> from the inherited Xbase grammar. 
+			</p>
+			<a name="implementation_2_3" ></a>
+			<h2>Jvm Model Inference</h2>
 		<a name="implementation_3" ></a>
 		<span style="float:left; border-top: 1px dotted #d4d4dd; margin-left: 0; margin-top: 5px;
 			padding: 5px 0;

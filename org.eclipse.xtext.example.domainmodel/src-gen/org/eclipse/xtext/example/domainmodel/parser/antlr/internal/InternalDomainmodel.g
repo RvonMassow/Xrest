@@ -516,11 +516,11 @@ ruleOperation returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getOperationAccess().getDeriveParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getOperationAccess().getGenerateParserRuleCall_1()); 
     }
-    this_Derive_1=ruleDerive
+    this_Generate_1=ruleGenerate
     { 
-        $current = $this_Derive_1.current; 
+        $current = $this_Generate_1.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -584,17 +584,17 @@ ruleValidate returns [EObject current=null]
 
 
 
-// Entry rule entryRuleDerive
-entryRuleDerive returns [EObject current=null] 
+// Entry rule entryRuleGenerate
+entryRuleGenerate returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getDeriveRule()); }
-	 iv_ruleDerive=ruleDerive 
-	 { $current=$iv_ruleDerive.current; } 
+	{ newCompositeNode(grammarAccess.getGenerateRule()); }
+	 iv_ruleGenerate=ruleGenerate 
+	 { $current=$iv_ruleGenerate.current; } 
 	 EOF 
 ;
 
-// Rule Derive
-ruleDerive returns [EObject current=null] 
+// Rule Generate
+ruleGenerate returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -602,12 +602,12 @@ ruleDerive returns [EObject current=null]
 (
 		lv_name_0_0=	'generate' 
     {
-        newLeafNode(lv_name_0_0, grammarAccess.getDeriveAccess().getNameGenerateKeyword_0_0());
+        newLeafNode(lv_name_0_0, grammarAccess.getGenerateAccess().getNameGenerateKeyword_0_0());
     }
  
 	    {
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDeriveRule());
+	            $current = createModelElement(grammarAccess.getGenerateRule());
 	        }
        		setWithLastConsumed($current, "name", lv_name_0_0, "generate");
 	    }
@@ -616,11 +616,11 @@ ruleDerive returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDeriveAccess().getBodyXBlockExpressionParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getGenerateAccess().getBodyXBlockExpressionParserRuleCall_1_0()); 
 	    }
 		lv_body_1_0=ruleXBlockExpression		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDeriveRule());
+	            $current = createModelElementForParent(grammarAccess.getGenerateRule());
 	        }
        		set(
        			$current, 

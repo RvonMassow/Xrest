@@ -10,6 +10,10 @@
 	</topic>
 	<topic href="contents/04-implementation.html#implementation" label="Implementation of the Languages" >
 		<topic href="contents/04-implementation.html#implementation_2" label="The Domain Model Language" >
+			<topic href="contents/04-implementation.html#implementation_2_2" label="The Grammar" >
+			</topic>
+			<topic href="contents/04-implementation.html#implementation_2_3" label="Jvm Model Inference" >
+			</topic>
 		</topic>
 		<topic href="contents/04-implementation.html#implementation_3" label="The Services Language" >
 		</topic>

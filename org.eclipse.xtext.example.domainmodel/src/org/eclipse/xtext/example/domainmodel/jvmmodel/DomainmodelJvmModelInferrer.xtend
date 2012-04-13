@@ -7,8 +7,8 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.example.domainmodel.domainmodel.Derive
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity
+import org.eclipse.xtext.example.domainmodel.domainmodel.Generate
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property
 import org.eclipse.xtext.example.domainmodel.domainmodel.Validate
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -72,7 +72,7 @@ class DomainmodelJvmModelInferrer extends AbstractModelInferrer {
 						members += f.toSetter(f.name, f.type)
 					}
 	
-					Derive : {
+					Generate : {
 						members += f.toMethod(f.name, typeof(void).getTypeForName(e)) [
 							documentation = f.documentation
 							body = f.body

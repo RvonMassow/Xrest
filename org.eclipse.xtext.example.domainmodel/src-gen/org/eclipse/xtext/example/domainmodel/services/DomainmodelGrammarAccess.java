@@ -264,20 +264,20 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Operation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cValidateParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDeriveParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cGenerateParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Operation:
-		//	Validate | Derive;
+		//	Validate | Generate;
 		public ParserRule getRule() { return rule; }
 
-		//Validate | Derive
+		//Validate | Generate
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Validate
 		public RuleCall getValidateParserRuleCall_0() { return cValidateParserRuleCall_0; }
 
-		//Derive
-		public RuleCall getDeriveParserRuleCall_1() { return cDeriveParserRuleCall_1; }
+		//Generate
+		public RuleCall getGenerateParserRuleCall_1() { return cGenerateParserRuleCall_1; }
 	}
 
 	public class ValidateElements extends AbstractParserRuleElementFinder {
@@ -308,15 +308,15 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getBodyXBlockExpressionParserRuleCall_1_0() { return cBodyXBlockExpressionParserRuleCall_1_0; }
 	}
 
-	public class DeriveElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Derive");
+	public class GenerateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Generate");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cNameGenerateKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
 		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
 		
-		//Derive:
+		//Generate:
 		//	name="generate" body=XBlockExpression;
 		public ParserRule getRule() { return rule; }
 
@@ -398,7 +398,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	private PropertyElements pProperty;
 	private OperationElements pOperation;
 	private ValidateElements pValidate;
-	private DeriveElements pDerive;
+	private GenerateElements pGenerate;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private ValidIDElements pValidID;
 	
@@ -496,7 +496,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Operation:
-	//	Validate | Derive;
+	//	Validate | Generate;
 	public OperationElements getOperationAccess() {
 		return (pOperation != null) ? pOperation : (pOperation = new OperationElements());
 	}
@@ -515,14 +515,14 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidateAccess().getRule();
 	}
 
-	//Derive:
+	//Generate:
 	//	name="generate" body=XBlockExpression;
-	public DeriveElements getDeriveAccess() {
-		return (pDerive != null) ? pDerive : (pDerive = new DeriveElements());
+	public GenerateElements getGenerateAccess() {
+		return (pGenerate != null) ? pGenerate : (pGenerate = new GenerateElements());
 	}
 	
-	public ParserRule getDeriveRule() {
-		return getDeriveAccess().getRule();
+	public ParserRule getGenerateRule() {
+		return getGenerateAccess().getRule();
 	}
 
 	//QualifiedNameWithWildCard:

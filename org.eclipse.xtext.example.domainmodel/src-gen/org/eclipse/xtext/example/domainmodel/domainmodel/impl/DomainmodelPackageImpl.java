@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.example.domainmodel.domainmodel.AbstractElement;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Derive;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainModel;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelFactory;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainmodelPackage;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
+import org.eclipse.xtext.example.domainmodel.domainmodel.Generate;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Import;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
 import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration;
@@ -105,7 +105,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deriveEClass = null;
+  private EClass generateEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -388,9 +388,9 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDerive()
+  public EClass getGenerate()
   {
-    return deriveEClass;
+    return generateEClass;
   }
 
   /**
@@ -453,7 +453,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
 
     validateEClass = createEClass(VALIDATE);
 
-    deriveEClass = createEClass(DERIVE);
+    generateEClass = createEClass(GENERATE);
   }
 
   /**
@@ -495,7 +495,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     propertyEClass.getESuperTypes().add(this.getFeature());
     operationEClass.getESuperTypes().add(this.getFeature());
     validateEClass.getESuperTypes().add(this.getOperation());
-    deriveEClass.getESuperTypes().add(this.getOperation());
+    generateEClass.getESuperTypes().add(this.getOperation());
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainModelEClass, DomainModel.class, "DomainModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -528,7 +528,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
 
     initEClass(validateEClass, Validate.class, "Validate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(deriveEClass, Derive.class, "Derive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(generateEClass, Generate.class, "Generate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

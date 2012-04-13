@@ -7,5 +7,80 @@ go into detail how both languages have been implemented.
 
 section[The Domain Model Language]
 
+The domain model language is implemented using the Xtext language framework. To define a language, one
+develops a grammar in the Xtext grammar language, which is a straight forward EBNF style grammar language
+with some Xtext specific additions. Also, as we are using the Java type system, the concepts of the domain
+model language have to be mapped to the Java type system by implementing a model inferrer, which also
+contributes to the compiler by adding custom compilation strategies for DAO and service generation.
+
+section2[The Grammar]
+
+The header of the domain model grammar is given here:
+
+code[Xtext][
+grammar org.eclipse.xtext.example.domainmodel.Domainmodel with org.eclipse.xtext.xbase.Xbase
+
+generate domainmodel "http://www.xtext.org/example/Domainmodel"
+]
+
+It simply declares a grammar code[org.eclipse.xtext.example.domainmodel.Domainmodel] that inherits all
+rules from another grammar code[org.eclipse.xtext.xbase.Xbase]. The inherited grammar defines the Xbase
+expression rules. In the second line, the Xtext generator is told to generate a new EMF meta model with
+the given URI.
+
+The rest of the grammar defines the abstract and concrete syntax of the domain model language.
+
+code[Xtext][
+DomainModel:
+	elements+=AbstractElement*;
+
+AbstractElement:
+	PackageDeclaration | Entity | Import;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+PackageDeclaration:
+	'package' name=QualifiedName '{'
+		elements+=AbstractElement*
+	'}';
+
+Entity:
+	'entity' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+		features+=Feature*
+	'}';
+
+Feature:
+	Property | Operation;
+
+Property:
+	(generated?='generated')? name=ValidID ':' type=JvmTypeReference ('->' mappedBy=\[Property | QualifiedName\])? 
+;
+
+Operation:
+	Validate | Generate;
+
+Validate:
+	 name='validate'
+		body=XBlockExpression;
+
+Generate:
+	 name='generate' 
+		body=XBlockExpression;
+
+QualifiedNameWithWildCard :
+	QualifiedName  ('.' '*')?;
+
+ValidID:
+	(ID | 'generated' | 'validate')
+;
+]
+
+The grammar declares a simple entity languages, where entities can be declared in packages and contain
+properties of any Java type and a validation and generation operation. These two operations reuse the
+code[XBlockExpression] from the inherited Xbase grammar. 
+
+section2[Jvm Model Inference]
+
 section[The Services Language]
 
