@@ -8,5 +8,6 @@ Require-Bundle: org.eclipse.help,
  org.eclipse.xtext.example.domainmodel;bundle-version="2.1.0",
  org.eclipse.xtext.services;bundle-version="1.0.0",
  org.eclipse.xtext.services.ui;bundle-version="1.0.0",
- org.eclipse.xtext.example.domainmodel.ui;bundle-version="2.1.0"
+ org.eclipse.xtext.example.domainmodel.ui;bundle-version="2.1.0",
+ org.eclipse.xtext.xdoc;bundle-version="0.1.0"
 

@@ -13,7 +13,6 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.services.jvmmodel.TypesBuilderExtensions;
 import org.eclipse.xtext.services.services.Component;
 import org.eclipse.xtext.services.services.ParameterSegment;
@@ -45,9 +44,6 @@ public class ServicesJvmModelInferrer extends AbstractModelInferrer {
    */
   @Inject
   private JvmTypesBuilder _jvmTypesBuilder;
-  
-  @Inject
-  private IQualifiedNameProvider qualifiedNameProvider;
   
   @Inject
   private TypesBuilderExtensions _typesBuilderExtensions;

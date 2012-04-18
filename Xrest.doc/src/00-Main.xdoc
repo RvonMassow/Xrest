@@ -1,6 +1,6 @@
 document[Xrest -- A Rest Framework built with Xtext]
 
-authors[Robert von Massow, Bjoern Wei√üenfels]
+authors[Robert von Massow, Bjoern Weiﬂenfels]
 
 codelanguage-def[Java]
 [
@@ -14,6 +14,20 @@ codelanguage-def[Java]
 	char,final,interface,static,void,
 	class,finally,long,strictfp,volatile,
 	float,native,super,while
+]
+
+codelanguage-def[Xtend]
+[
+	for,new,switch,
+	default,package,
+	boolean,do,if,private,this,
+	break,double,implements,throw,
+	else,import,public,throws,
+	case,instanceof,return,
+	catch,extends,int,short,try,
+	char,final,static,void,
+	class,finally,long,
+	float,super,while
 ]
 
 codelanguage-def[dmodel]

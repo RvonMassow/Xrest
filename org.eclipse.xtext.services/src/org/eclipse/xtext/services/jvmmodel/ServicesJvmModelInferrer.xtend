@@ -1,14 +1,13 @@
 package org.eclipse.xtext.services.jvmmodel
 
 import com.google.inject.Inject
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.services.services.Component
+import org.eclipse.xtext.services.services.ParameterSegment
+import org.eclipse.xtext.services.services.SimpleSegment
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.services.services.ParameterSegment
-import org.eclipse.xtext.services.services.SimpleSegment
-import org.eclipse.xtext.services.services.ParameterSegment
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -22,7 +21,6 @@ class ServicesJvmModelInferrer extends AbstractModelInferrer {
      * convenience API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
-	@Inject extension IQualifiedNameProvider qualifiedNameProvider
 	@Inject extension TypesBuilderExtensions
 
 	/**

@@ -12,7 +12,7 @@
 	# these are optional
 	# $Nav->setLinkList(array());
 
-	$pageAuthor		= "Robert von Massow, Bjoern WeiÃŸenfels";
+	$pageAuthor		= "Robert von Massow, Bjoern Weißenfels";
 	$pageTitle 		= "Xrest -- A Rest Framework built with Xtext";
 
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="code.css"/>' . "\n\t");
