@@ -166,6 +166,20 @@ compiles to the following Java code.
 <br/>
 }
 <br/>
+
+<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">boolean</span>&nbsp;validate()&nbsp;{
+<br/>
+&nbsp;&nbsp;String&nbsp;_text&nbsp;=&nbsp;<span class="keyword">this</span>.getText();
+<br/>
+&nbsp;&nbsp;<span class="keyword">int</span>&nbsp;_length&nbsp;=&nbsp;_text.length();
+<br/>
+&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_greaterThan&nbsp;=&nbsp;IntegerExtensions.operator_greaterThan(_length,&nbsp;3);
+<br/>
+&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_greaterThan;
+<br/>
+}
+<br/>
 }
 <br/>
 </p>

@@ -27,6 +27,13 @@
 		<li id="04-implementation.html#implementation_3.html" ><a href="04-implementation.php#implementation_3.php" >The Services Language</a></li>
 		</ul>
 		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="05-tutorial.php">Tutorial</a></div>
+		<ul style="display: none;" id="subToc_05-tutorial.html">
+		<li id="05-tutorial.html#tutorial_2.html" ><a href="05-tutorial.php#tutorial_2.php" >Creating A New Project</a></li>
+		</ul>
+		</li>
 		</ul>
 	</div>
 	<div id="midcolumn">
@@ -185,6 +192,20 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(_string);
 					<br/>
 					&nbsp;&nbsp;}
+					<br/>
+					}
+					<br/>
+					
+					<br/>
+					<span class="keyword">public</span>&nbsp;<span class="keyword">boolean</span>&nbsp;validate()&nbsp;{
+					<br/>
+					&nbsp;&nbsp;String&nbsp;_text&nbsp;=&nbsp;<span class="keyword">this</span>.getText();
+					<br/>
+					&nbsp;&nbsp;<span class="keyword">int</span>&nbsp;_length&nbsp;=&nbsp;_text.length();
+					<br/>
+					&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_greaterThan&nbsp;=&nbsp;IntegerExtensions.operator_greaterThan(_length,&nbsp;3);
+					<br/>
+					&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_greaterThan;
 					<br/>
 					}
 					<br/>

@@ -86,6 +86,13 @@ public class Message {
       this.setCreated(_string);
     }
   }
+  
+  public boolean validate() {
+    String _text = this.getText();
+    int _length = _text.length();
+    boolean _greaterThan = IntegerExtensions.operator_greaterThan(_length, 3);
+    return _greaterThan;
+  }
 }
 ]
 
