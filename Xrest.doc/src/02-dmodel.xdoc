@@ -8,21 +8,37 @@ A small code snippet of a simple entity is given below.
 
 code[dmodel][
 package app {
+
+	import java.util.Date
+	
 	entity Message {
-		text: String
+		text : String
 		generated created : String
+		
+		generate {
+			if(this.getCreated == null)
+				this.setCreated(new Date().toString)
+		}
+
+		validate {
+			this.getText().length > 3
+		}
 	}
-	generate {
-		if(this.getCreated == null)
-			this.setCreated(new Date().toString)
-	}
+	
 }
 ]
 
-An entitiy code[Message] is declared in the package
-code[app.model], containing two code[String] type features. One of these features is marked to be generated.
-This is done by calling the code[dmodel][generate] block. The code[dmodel][generate] block can contain
-arbitrary Xbase expressions. The above entity compiles to the following Java code.
+As you see, in contrast to Java code, no statement must be terminated with a semicolon. For each package
+in the model a package in the Java project is generated. The ordinary imports of type names are equivalent
+to the imports known from Java. An entity declaration starts with the keyword entity folowed by a name.
+In the entity's body, fields and two types of methods, code[dmodel][generate] and code[dmodel][validate], 
+can be specified.
+
+In this example an entity code[Message] is declared in the package code[app], containing two code[String]
+type features. One of these features is marked to be generated. This is done by calling the code[dmodel][generate]
+block. The code[dmodel][validate] block defines a boolean method which for example is used in the post method 
+of the controller class seen below. Both blocks can contain arbitrary Xbase expressions. The above entity
+compiles to the following Java code.
 
 code[Java][
 ...

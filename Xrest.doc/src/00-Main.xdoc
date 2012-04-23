@@ -34,7 +34,7 @@ codelanguage-def[dmodel]
 [
 	for, new, switch, default, package, boolean, do, if, this,
 	throw, else, import, case, instanceof, return, 	catch, extends, try,
-	finally, float, super, while, entity, generated, generate, null
+	finally, float, super, while, entity, generated, generate, null, validate
 ]
 
 codelanguage-def[service]
