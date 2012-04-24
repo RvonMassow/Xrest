@@ -9,6 +9,14 @@
 		<a href="01-Introduction.php">Introduction</a></div>
 		</li>
 		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="02a-getting_started.php">Getting started with Xrest</a></div>
+		<ul style="display: none;" id="subToc_02a-getting_started.html">
+		<li id="02a-getting_started.html#getting_started_2.html" ><a href="02a-getting_started.php#getting_started_2.php" >Dependencies and Assumptions</a></li>
+		<li id="02a-getting_started.html#getting_started_3.html" ><a href="02a-getting_started.php#getting_started_3.php" >Creating A New Project</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
 		<img src="triangle.gif" style="height:12px; margin-right: 2px; display:none"  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
 		<a href="02-dmodel.php">The Domain Model Language</a></div>
 		</li>
@@ -25,13 +33,6 @@
 		<ul style="display: none;" id="subToc_04-implementation.html">
 		<li id="04-implementation.html#implementation_2.html" ><a href="04-implementation.php#implementation_2.php" >The Domain Model Language</a></li>
 		<li id="04-implementation.html#implementation_3.html" ><a href="04-implementation.php#implementation_3.php" >The Services Language</a></li>
-		</ul>
-		</li>
-		<li class="separator"><div class="separator">
-		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
-		<a href="05-tutorial.php">Tutorial</a></div>
-		<ul style="display: none;" id="subToc_05-tutorial.html">
-		<li id="05-tutorial.html#tutorial_2.html" ><a href="05-tutorial.php#tutorial_2.php" >Creating A New Project</a></li>
 		</ul>
 		</li>
 		</ul>
@@ -66,18 +67,13 @@
 			<div class="literallayout">
 				<div class="incode">
 					<p class="code">
-						...
+						...<br/>
+						<span class="keyword">component</span>&nbsp;TestComponent&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">requires</span>&nbsp;app.MessageDao<br/>
 						<br/>
-						<span class="keyword">component</span>&nbsp;TestComponent&nbsp;{
-						<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">requires</span>&nbsp;app.MessageDao
-						<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">GET</span>&nbsp;message/{id&nbsp;:&nbsp;<span class="keyword">int</span>}&nbsp;:&nbsp;Message&nbsp;{
-						<br/>
-						id.retrieveMessageById()
-						<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;}
-						<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">GET</span>&nbsp;message/{id&nbsp;:&nbsp;<span class="keyword">int</span>}&nbsp;:&nbsp;Message&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id.retrieveMessageById()<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
 				</div>
@@ -98,30 +94,18 @@
 			<div class="literallayout">
 				<div class="incode">
 					<p class="code">
-						@Path(<span class="string">"app/services/TestComponent"</span>)
-						<br/>
-						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;TestComponent&nbsp;{
-						<br/>
-						@Inject
-						<br/>
-						<span class="keyword">private</span>&nbsp;MessageDao&nbsp;messageDao;
-						<br/>
-						
-						<br/>
-						@GET
-						<br/>
-						@Produces(<span class="string">"application/json"</span>)
-						<br/>
-						@Path(<span class="string">"message/{id}"</span>)
-						<br/>
-						<span class="keyword">public</span>&nbsp;Message&nbsp;message$id(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-						<br/>
-						&nbsp;&nbsp;Message&nbsp;_retrieveMessageById&nbsp;=&nbsp;<span class="keyword">this</span>.messageDao.retrieveMessageById(id);
-						<br/>
-						&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_retrieveMessageById;
-						<br/>
-						}
-						<br/>
+						@Path(<span class="string">"app/services/TestComponent"</span>)<br/>
+						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;TestComponent&nbsp;{<br/>
+						&nbsp;&nbsp;@Inject<br/>
+						&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;MessageDao&nbsp;messageDao;<br/>
+						&nbsp;&nbsp;<br/>
+						&nbsp;&nbsp;@GET<br/>
+						&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+						&nbsp;&nbsp;@Path(<span class="string">"message/{id}"</span>)<br/>
+						&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;message$id(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;_retrieveMessageById&nbsp;=&nbsp;<span class="keyword">this</span>.messageDao.retrieveMessageById(id);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_retrieveMessageById;<br/>
+						&nbsp;&nbsp;}<br/>
 						}
 					</p>
 				</div>

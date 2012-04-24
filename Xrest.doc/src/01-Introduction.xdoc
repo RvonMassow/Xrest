@@ -1,7 +1,25 @@
 chapter:Introduction[Introduction]
 
 The Xrest framework provides two domain specific languages (DSLs) to simplify the development of REST style
-web services. The first DSL originates from the link[http://www.xtext.org][Xtext] domain model example for
+web services. It was developped in the context of the Xbase Project, which was funded by the German Federal
+Ministry of Education and Research under the grant number 01S10008, as an evalution theme for the Xbase
+expression language. Xbase itself is distributed as part of link[http://www.xtext.org][Xtext] and can be
+reused by any domain specific language developed with Xtext, where expressions are needed. The Xbase
+language can be seen as a partial programming language, which only provides expressions and needs to
+be embedded in some kind of structural language. In the Xrest framework two DSLs have been developed
+to simplify the development of RESTful webservices.
+
+The first DSL originates from the link[http://www.xtext.org][Xtext] domain model example for
 modeling entities and their relations and generates RESTful web services, JPA entities and a data access layer. The
-second DSL provides a simple way to declare and implement plain RESTful services.
+second DSL provides a simple way to declare and implement plain RESTful services. Both DSLs are compiled
+to plain Java code. While the first, as it's producing link[http://jcp.org/en/jsr/detail?id=317][Java Persistence Api]
+(JPA) entities and web services that rely on serializability of those, the domain model language depends
+on the JPA library and also the link[http://jcp.org/en/jsr/detail?id=222][JAXB] framework, which solves
+the serialization requirements. Both languages also use link[http://jcp.org/en/jsr/detail?id=339][JAX-RS]
+for mapping HTTP methods to URLs and thus enable their usage as a RESTful web service.
+
+In this document, the usage and implementation of both languages is described and a short e[getting started]
+guide is given. We start of with the getting started guide in ref:getting_started followed by a more
+complete user guide of the domain model language in ref:dmodel. This is followed by a guide on how to
+implement services in ref:service. Finally, the implementation of both languages is discussed in ref:implementation.
 

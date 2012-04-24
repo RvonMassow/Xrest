@@ -1,0 +1,145 @@
+chapter:getting_started[Getting started with Xrest]
+
+
+In this chapter you'll learn how to create a new Xrest project.
+
+section[Dependencies and Assumptions]
+
+In this tutorial we assume you have installed the Eclipse IDE with the following Plugins:
+
+ul[
+	item[Xtext and its dependencies (JDT, EMF, ...)]
+	item[Eclipse Plugins for Web development, especially support for dynamic web projects]
+	item[Xrest]
+]
+
+Addionally you will need some libraries in your new project. We give a list below. Where ever it is possible to chose from
+different implementations, a recommendation is given. Some of the setup described in this chapter depends
+on the actual implementation of the library you are using. Please edit configuration properties as necessary.
+
+ul[
+	item[JPA (code[javax.persistence]) version 2 or higher. We used Eclipse Link as implementation and
+	derby as local database]
+	item[Dependency Injection for Java (code[javax.inject]) version 1. We used google guice as implementation.
+	Addtionally we used guice servlet. It is mandatory to use a dependency injection framework for the
+	instatiation of the services as the database access objects' are injected.]
+	item[The Java API for RESTful Web Services (code[javax.ws.rs]) version 1. We use Jersey, including
+	the jersey-guice extesion.]
+	item[Google guava version r09 or higher]
+	item[Xbase library (code[org.eclipse.xtext.xbase.lib]), which is located in the plugins folder of
+	your Eclipse installation after installing the Xtext feature]
+]
+
+section[Creating A New Project]
+
+The first step is to create a new Dynamic Web Project by choosing File -> New -> Project.... The dialog offers 
+a couple of different project types. Select Dynamic Web Project from the category Web, choose a project 
+name and a target runtime, choose the next button and add the folder src-gen and finish the wizard with 
+the default settings.
+
+The generated classes use JPA as persistence framework, JAX-RS as webservice framework, google guava
+and guice and the Xbase library, so add the libraries mentioned before, to the code[WebContent/WEB-INF/lib]
+folder.
+Create a package in the source folder and a .dmodel file in there.
+Declare a package and entities as described in ref:dmodel[The Domain Model Language].
+To use Xbase expressions in the generate and validate methods, add the Xbase library to the lib folder.
+Create another package in the source folder, add a .svc file and declare some services as decribed in
+ref:service[Service].
+
+Create a code[META-INF] folder in code[src] and in there a file named code[persistence.xml].
+If you use eclipselink as JPA implementation and derby as database, your persistence.xml might look like
+this:
+code[<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="messageboard" transaction-type="RESOURCE_LOCAL">
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:derby:simpleDb;create=true" />
+			<property name="javax.persistence.jdbc.user" value="test" />
+			<property name="javax.persistence.jdbc.password" value="test" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+		</properties>
+
+	</persistence-unit>
+</persistence>]
+
+Now that you set up persistency for your project, it is time to set up the actual web services. For this
+you need to edit the default code[web.xml] located in code[WebContent/WEB-INF/]. For our example the
+following content is just fine:
+code[
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<listener>
+		<listener-class>app.config.GuiceConfig</listener-class>
+	</listener>
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+
+    <welcome-file-list>
+		<welcome-file>
+            index.html
+        </welcome-file>
+    </welcome-file-list>
+
+</web-app>
+]
+
+Note the listener declaration in line 4 to 6. Here a guice configuration is referenced, which is a java
+class you have to implement if you decide to use this configuration. An example implementation, simply
+mapping all available in the package code[app] services to their standard paths is given here:
+code[Java][
+package app.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.servlet.GuiceServletContextListener;
+import com.google.inject.servlet.ServletModule;
+import com.sun.jersey.api.core.PackagesResourceConfig;
+import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
+
+public class GuiceConfig extends GuiceServletContextListener {
+	
+	protected Injector getInjector() {
+		
+		final Map<String, String> params = new HashMap<String, String>();
+
+		return Guice.createInjector(
+				new ServletModule() {
+					@Override
+					protected void configureServlets() {
+						params.put(PackagesResourceConfig.PROPERTY_PACKAGES, "app");
+						serve("/app/*").with(GuiceContainer.class, params);
+					}
+				});
+	}
+	
+}
+]
+
+In the code[GuiceConfig] class it is also possible to exchange the data access object implementation
+and other dependencies, introduced by using the service language.
+
+Finally, add an code[index.html] page to the code[WebContent] folder, which will be the landing page.
+Here, you can implement ajax calls using JavaScript accessing the RESTful webservices you are implementing
+using Xrest.
+
+The usage of Xrest is further documented in the following sections of this documentation.

@@ -99,8 +99,8 @@ public class Message {
 As you can see, it is plain java code with some annotations. For each property in the declared entity a 
 getter and a setter is generated. Also, if the entity did not declare a field named code[id], it is 
 added automatically. The class annotation code[@Entity] declares the class to be a persistable entity
-using the link[http://jcp.org/en/jsr/detail?id=317][Java Persistence Api], while the code[@XmlRootElement]
-(a link[http://jcp.org/en/jsr/detail?id=222][JAXB] annotation) annotation denotes that the entity is
+using the JPA, while the code[@XmlRootElement]
+(a JAXB annotation) annotation denotes that the entity is
 serializable to XML.
 
 In addition to the entity class, also a data access object (DAO) class is generated for each declared
@@ -142,7 +142,7 @@ CRUD operations. This API can be reused by any Java language such as the service
 ref:service[Service].
 
 In addition to the generated DAO classes, also RESTful webservices are generated using the
-link[http://jcp.org/en/jsr/detail?id=339][JAX-RS] annotation framework. Below, the service controller
+JAX-RS annotation framework. Below, the service controller
 class is given.
 
 code[Java][

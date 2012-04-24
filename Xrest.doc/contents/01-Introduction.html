@@ -12,9 +12,29 @@
 <h1>Introduction</h1>
 <p>
 The Xrest framework provides two domain specific languages (DSLs) to simplify the development of REST style
-web services. The first DSL originates from the <a href="http://www.xtext.org">Xtext</a> domain model example for
+web services. It was developped in the context of the Xbase Project, which was funded by the German Federal
+Ministry of Education and Research under the grant number 01S10008, as an evalution theme for the Xbase
+expression language. Xbase itself is distributed as part of <a href="http://www.xtext.org">Xtext</a> and can be
+reused by any domain specific language developed with Xtext, where expressions are needed. The Xbase
+language can be seen as a partial programming language, which only provides expressions and needs to
+be embedded in some kind of structural language. In the Xrest framework two DSLs have been developed
+to simplify the development of RESTful webservices.
+</p>
+<p>
+The first DSL originates from the <a href="http://www.xtext.org">Xtext</a> domain model example for
 modeling entities and their relations and generates RESTful web services, JPA entities and a data access layer. The
-second DSL provides a simple way to declare and implement plain RESTful services.
+second DSL provides a simple way to declare and implement plain RESTful services. Both DSLs are compiled
+to plain Java code. While the first, as it&apos;s producing <a href="http://jcp.org/en/jsr/detail?id=317">Java Persistence Api</a>
+(JPA) entities and web services that rely on serializability of those, the domain model language depends
+on the JPA library and also the <a href="http://jcp.org/en/jsr/detail?id=222">JAXB</a> framework, which solves
+the serialization requirements. Both languages also use <a href="http://jcp.org/en/jsr/detail?id=339">JAX-RS</a>
+for mapping HTTP methods to URLs and thus enable their usage as a RESTful web service.
+</p>
+<p>
+In this document, the usage and implementation of both languages is described and a short <em>getting started</em>
+guide is given. We start of with the getting started guide in <a href="02a-getting_started.html#getting_started" title="Go to &quot;Getting started with Xrest&quot;" >section getting_started</a> followed by a more
+complete user guide of the domain model language in <a href="02-dmodel.html#dmodel" title="Go to &quot;The Domain Model Language&quot;" >section dmodel</a>. This is followed by a guide on how to
+implement services in <a href="03-service.html#service" title="Go to &quot;Services&quot;" >section service</a>. Finally, the implementation of both languages is discussed in <a href="04-implementation.html#implementation" title="Go to &quot;Implementation of the Languages&quot;" >section implementation</a>.
 </p>
 </body>
 </html>

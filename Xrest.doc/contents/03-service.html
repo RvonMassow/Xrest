@@ -27,20 +27,14 @@ A simple component declaring one service is given below.
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-...
+...<br/>
+<span class="keyword">component</span>&nbsp;TestComponent&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">requires</span>&nbsp;app.MessageDao<br/>
 <br/>
-<span class="keyword">component</span>&nbsp;TestComponent&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">requires</span>&nbsp;app.MessageDao
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">GET</span>&nbsp;message/{id&nbsp;:&nbsp;<span class="keyword">int</span>}&nbsp;:&nbsp;Message&nbsp;{
-<br/>
-id.retrieveMessageById()
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-}
-<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">GET</span>&nbsp;message/{id&nbsp;:&nbsp;<span class="keyword">int</span>}&nbsp;:&nbsp;Message&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id.retrieveMessageById()<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
 </p>
 </div>
 </div>
@@ -60,32 +54,19 @@ The resulting Java code is given below.
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-@Path(<span class="string">"app/services/TestComponent"</span>)
-<br/>
-<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;TestComponent&nbsp;{
-<br/>
-@Inject
-<br/>
-<span class="keyword">private</span>&nbsp;MessageDao&nbsp;messageDao;
-<br/>
-
-<br/>
-@GET
-<br/>
-@Produces(<span class="string">"application/json"</span>)
-<br/>
-@Path(<span class="string">"message/{id}"</span>)
-<br/>
-<span class="keyword">public</span>&nbsp;Message&nbsp;message$id(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-<br/>
-&nbsp;&nbsp;Message&nbsp;_retrieveMessageById&nbsp;=&nbsp;<span class="keyword">this</span>.messageDao.retrieveMessageById(id);
-<br/>
-&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_retrieveMessageById;
-<br/>
-}
-<br/>
-}
-<br/>
+@Path(<span class="string">"app/services/TestComponent"</span>)<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;TestComponent&nbsp;{<br/>
+&nbsp;&nbsp;@Inject<br/>
+&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;MessageDao&nbsp;messageDao;<br/>
+&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;@GET<br/>
+&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;@Path(<span class="string">"message/{id}"</span>)<br/>
+&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;message$id(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;_retrieveMessageById&nbsp;=&nbsp;<span class="keyword">this</span>.messageDao.retrieveMessageById(id);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_retrieveMessageById;<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
 </p>
 </div>
 </div>

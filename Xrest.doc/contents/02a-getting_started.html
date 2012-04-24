@@ -1,0 +1,200 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>Getting started with Xrest</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="xtext.html" title="">
+</head>
+<body>
+<a name="getting_started"></a>
+<h1>Getting started with Xrest</h1>
+<p>
+In this chapter you&apos;ll learn how to create a new Xrest project.
+</p>
+<a name="getting_started_2"></a>
+<h2>Dependencies and Assumptions</h2>
+<p>
+In this tutorial we assume you have installed the Eclipse IDE with the following Plugins:
+</p>
+<p>
+<ul>
+	<li>
+		Xtext and its dependencies (JDT, EMF, ...)
+	</li>
+	<li>
+		Eclipse Plugins for Web development, especially support for dynamic web projects
+	</li>
+	<li>
+		Xrest
+	</li>
+</ul>
+</p>
+<p>
+Addionally you will need some libraries in your new project. We give a list below. Where ever it is possible to chose from
+different implementations, a recommendation is given. Some of the setup described in this chapter depends
+on the actual implementation of the library you are using. Please edit configuration properties as necessary.
+</p>
+<p>
+<ul>
+	<li>
+		JPA (<span class="inlinecode">javax.persistence</span>) version 2 or higher. We used Eclipse Link as implementation and
+			derby as local database
+	</li>
+	<li>
+		Dependency Injection for Java (<span class="inlinecode">javax.inject</span>) version 1. We used google guice as implementation.
+			Addtionally we used guice servlet. It is mandatory to use a dependency injection framework for the
+			instatiation of the services as the database access objects&apos; are injected.
+	</li>
+	<li>
+		The Java API for RESTful Web Services (<span class="inlinecode">javax.ws.rs</span>) version 1. We use Jersey, including
+			the jersey-guice extesion.
+	</li>
+	<li>
+		Google guava version r09 or higher
+	</li>
+	<li>
+		Xbase library (<span class="inlinecode">org.eclipse.xtext.xbase.lib</span>), which is located in the plugins folder of
+			your Eclipse installation after installing the Xtext feature
+	</li>
+</ul>
+</p>
+<a name="getting_started_3"></a>
+<h2>Creating A New Project</h2>
+<p>
+The first step is to create a new Dynamic Web Project by choosing File -&gt; New -&gt; Project.... The dialog offers 
+a couple of different project types. Select Dynamic Web Project from the category Web, choose a project 
+name and a target runtime, choose the next button and add the folder src-gen and finish the wizard with 
+the default settings.
+</p>
+<p>
+The generated classes use JPA as persistence framework, JAX-RS as webservice framework, google guava
+and guice and the Xbase library, so add the libraries mentioned before, to the <span class="inlinecode">WebContent/WEB-INF/lib</span>
+folder.
+Create a package in the source folder and a .dmodel file in there.
+Declare a package and entities as described in <a href="02-dmodel.html#dmodel" title="Go to &quot;The Domain Model Language&quot;">The Domain Model Language</a>.
+To use Xbase expressions in the generate and validate methods, add the Xbase library to the lib folder.
+Create another package in the source folder, add a .svc file and declare some services as decribed in
+<a href="03-service.html#service" title="Go to &quot;Services&quot;">Service</a>.
+</p>
+<p>
+Create a <span class="inlinecode">META-INF</span> folder in <span class="inlinecode">src</span> and in there a file named <span class="inlinecode">persistence.xml</span>.
+If you use eclipselink as JPA implementation and derby as database, your persistence.xml might look like
+this:
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+&lt;?xml&nbsp;version=<span class="string">"1.0"</span>&nbsp;encoding=<span class="string">"UTF-8"</span>&nbsp;?&gt;<br/>
+&lt;persistence&nbsp;xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=<span class="string">"http://java.sun.com/xml/ns/persistence&nbsp;http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;version=<span class="string">"2.0"</span>&nbsp;xmlns=<span class="string">"http://java.sun.com/xml/ns/persistence"</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;persistence-unit&nbsp;name=<span class="string">"messageboard"</span>&nbsp;transaction-type=<span class="string">"RESOURCE_LOCAL"</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;exclude-unlisted-classes&gt;false&lt;/exclude-unlisted-classes&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;properties&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"javax.persistence.jdbc.driver"</span>&nbsp;value=<span class="string">"org.apache.derby.jdbc.EmbeddedDriver"</span>&nbsp;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"javax.persistence.jdbc.url"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=<span class="string">"jdbc:derby:simpleDb;create=true"</span>&nbsp;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"javax.persistence.jdbc.user"</span>&nbsp;value=<span class="string">"test"</span>&nbsp;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"javax.persistence.jdbc.password"</span>&nbsp;value=<span class="string">"test"</span>&nbsp;/&gt;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;EclipseLink&nbsp;should&nbsp;create&nbsp;the&nbsp;database&nbsp;schema&nbsp;automatically&nbsp;--&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"eclipselink.ddl-generation"</span>&nbsp;value=<span class="string">"create-tables"</span>&nbsp;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=<span class="string">"eclipselink.ddl-generation.output-mode"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=<span class="string">"database"</span>&nbsp;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/properties&gt;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/persistence-unit&gt;<br/>
+&lt;/persistence&gt;
+</p>
+</div>
+</div>
+</p>
+<p>
+Now that you set up persistency for your project, it is time to set up the actual web services. For this
+you need to edit the default <span class="inlinecode">web.xml</span> located in <span class="inlinecode">WebContent/WEB-INF/</span>. For our example the
+following content is just fine:
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+&lt;?xml&nbsp;version=<span class="string">"1.0"</span>&nbsp;encoding=<span class="string">"UTF-8"</span>?&gt;<br/>
+&lt;web-app&nbsp;version=<span class="string">"2.5"</span>&nbsp;xmlns=<span class="string">"http://java.sun.com/xml/ns/javaee"</span>&nbsp;xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>&nbsp;xsi:schemaLocation=<span class="string">"http://java.sun.com/xml/ns/javaee&nbsp;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span>&gt;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;listener&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listener-class&gt;app.config.GuiceConfig&lt;/listener-class&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/listener&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;guiceFilter&lt;/filter-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-class&gt;com.google.inject.servlet.GuiceFilter&lt;/filter-class&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-mapping&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;guiceFilter&lt;/filter-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url-pattern&gt;/app/*&lt;/url-pattern&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter-mapping&gt;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;welcome-file-list&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;welcome-file&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.html<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/welcome-file&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/welcome-file-list&gt;<br/>
+<br/>
+&lt;/web-app&gt;<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Note the listener declaration in line 4 to 6. Here a guice configuration is referenced, which is a java
+class you have to implement if you decide to use this configuration. An example implementation, simply
+mapping all available in the package <span class="inlinecode">app</span> services to their standard paths is given here:
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">package</span>&nbsp;app.config;<br/>
+<br/>
+<span class="keyword">import</span>&nbsp;java.util.HashMap;<br/>
+<span class="keyword">import</span>&nbsp;java.util.Map;<br/>
+<br/>
+<span class="keyword">import</span>&nbsp;com.google.inject.Guice;<br/>
+<span class="keyword">import</span>&nbsp;com.google.inject.Injector;<br/>
+<span class="keyword">import</span>&nbsp;com.google.inject.servlet.GuiceServletContextListener;<br/>
+<span class="keyword">import</span>&nbsp;com.google.inject.servlet.ServletModule;<br/>
+<span class="keyword">import</span>&nbsp;com.sun.jersey.api.core.PackagesResourceConfig;<br/>
+<span class="keyword">import</span>&nbsp;com.sun.jersey.guice.spi.container.servlet.GuiceContainer;<br/>
+<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;GuiceConfig&nbsp;<span class="keyword">extends</span>&nbsp;GuiceServletContextListener&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;Injector&nbsp;getInjector()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">final</span>&nbsp;Map&lt;String,&nbsp;String&gt;&nbsp;params&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;HashMap&lt;String,&nbsp;String&gt;();<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;Guice.createInjector(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span>&nbsp;ServletModule()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;<span class="keyword">void</span>&nbsp;configureServlets()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.put(PackagesResourceConfig.PROPERTY_PACKAGES,&nbsp;<span class="string">"app"</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serve(<span class="string">"/app/*"</span>).with(GuiceContainer.<span class="keyword">class</span>,&nbsp;params);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+In the <span class="inlinecode">GuiceConfig</span> class it is also possible to exchange the data access object implementation
+and other dependencies, introduced by using the service language.
+</p>
+<p>
+Finally, add an <span class="inlinecode">index.html</span> page to the <span class="inlinecode">WebContent</span> folder, which will be the landing page.
+Here, you can implement ajax calls using JavaScript accessing the RESTful webservices you are implementing
+using Xrest.
+</p>
+<p>
+The usage of Xrest is further documented in the following sections of this documentation.
+</p>
+</body>
+</html>

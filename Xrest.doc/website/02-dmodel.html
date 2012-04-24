@@ -9,6 +9,14 @@
 		<a href="01-Introduction.php">Introduction</a></div>
 		</li>
 		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="02a-getting_started.php">Getting started with Xrest</a></div>
+		<ul style="display: none;" id="subToc_02a-getting_started.html">
+		<li id="02a-getting_started.html#getting_started_2.html" ><a href="02a-getting_started.php#getting_started_2.php" >Dependencies and Assumptions</a></li>
+		<li id="02a-getting_started.html#getting_started_3.html" ><a href="02a-getting_started.php#getting_started_3.php" >Creating A New Project</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
 		<img src="triangle.gif" style="height:12px; margin-right: 2px; display:none"  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
 		<a href="02-dmodel.php">The Domain Model Language</a></div>
 		</li>
@@ -25,13 +33,6 @@
 		<ul style="display: none;" id="subToc_04-implementation.html">
 		<li id="04-implementation.html#implementation_2.html" ><a href="04-implementation.php#implementation_2.php" >The Domain Model Language</a></li>
 		<li id="04-implementation.html#implementation_3.html" ><a href="04-implementation.php#implementation_3.php" >The Services Language</a></li>
-		</ul>
-		</li>
-		<li class="separator"><div class="separator">
-		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
-		<a href="05-tutorial.php">Tutorial</a></div>
-		<ul style="display: none;" id="subToc_05-tutorial.html">
-		<li id="05-tutorial.html#tutorial_2.html" ><a href="05-tutorial.php#tutorial_2.php" >Creating A New Project</a></li>
 		</ul>
 		</li>
 		</ul>
@@ -52,36 +53,24 @@
 		<div class="literallayout">
 			<div class="incode">
 				<p class="code">
-					<span class="keyword">package</span>&nbsp;app&nbsp;{
+					<span class="keyword">package</span>&nbsp;app&nbsp;{<br/>
 					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;java.util.Date
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;java.util.Date<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">entity</span>&nbsp;Message&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;:&nbsp;String<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">generated</span>&nbsp;created&nbsp;:&nbsp;String<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">generate</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(<span class="keyword">this</span>.getCreated&nbsp;==&nbsp;<span class="keyword">null</span>)<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(<span class="keyword">new</span>&nbsp;Date().toString)<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 					<br/>
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">entity</span>&nbsp;Message&nbsp;{
-					<br/>
-					text&nbsp;:&nbsp;String
-					<br/>
-					<span class="keyword">generated</span>&nbsp;created&nbsp;:&nbsp;String
-					<br/>
-					
-					<br/>
-					<span class="keyword">generate</span>&nbsp;{
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(<span class="keyword">this</span>.getCreated&nbsp;==&nbsp;<span class="keyword">null</span>)
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(<span class="keyword">new</span>&nbsp;Date().toString)
-					<br/>
-					}
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">validate</span>&nbsp;{
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.getText().length&nbsp;&gt;&nbsp;3
-					<br/>
-					}
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}
-					<br/>
-					<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">validate</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.getText().length&nbsp;&gt;&nbsp;3<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br/>
 					}
 				</p>
 			</div>
@@ -105,110 +94,58 @@
 		<div class="literallayout">
 			<div class="incode">
 				<p class="code">
-					...
-					<br/>
-					@Entity
-					<br/>
-					@XmlRootElement
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;Message&nbsp;{
-					<br/>
-					@GeneratedValue
-					<br/>
-					@Id
-					<br/>
-					<span class="keyword">private</span>&nbsp;<span class="keyword">int</span>&nbsp;id;
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;getId()&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.id;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setId(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">this</span>.id&nbsp;=&nbsp;id;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">private</span>&nbsp;String&nbsp;text;
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;String&nbsp;getText()&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.text;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setText(<span class="keyword">final</span>&nbsp;String&nbsp;text)&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">this</span>.text&nbsp;=&nbsp;text;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">private</span>&nbsp;String&nbsp;created;
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;String&nbsp;getCreated()&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.created;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setCreated(<span class="keyword">final</span>&nbsp;String&nbsp;created)&nbsp;{
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">this</span>.created&nbsp;=&nbsp;created;
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;generate()&nbsp;{
-					<br/>
-					&nbsp;&nbsp;String&nbsp;_created&nbsp;=&nbsp;<span class="keyword">this</span>.getCreated();
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_equals&nbsp;=&nbsp;ObjectExtensions.operator_equals(_created,&nbsp;null);
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(_equals)&nbsp;{
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;_date&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;Date();
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_string&nbsp;=&nbsp;_date.toString();
-					<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(_string);
-					<br/>
-					&nbsp;&nbsp;}
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">boolean</span>&nbsp;validate()&nbsp;{
-					<br/>
-					&nbsp;&nbsp;String&nbsp;_text&nbsp;=&nbsp;<span class="keyword">this</span>.getText();
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">int</span>&nbsp;_length&nbsp;=&nbsp;_text.length();
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_greaterThan&nbsp;=&nbsp;IntegerExtensions.operator_greaterThan(_length,&nbsp;3);
-					<br/>
-					&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_greaterThan;
-					<br/>
-					}
-					<br/>
+					...<br/>
+					@Entity<br/>
+					@XmlRootElement<br/>
+					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;Message&nbsp;{<br/>
+					&nbsp;&nbsp;@GeneratedValue<br/>
+					&nbsp;&nbsp;@Id<br/>
+					&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;<span class="keyword">int</span>&nbsp;id;<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;getId()&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.id;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setId(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.id&nbsp;=&nbsp;id;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;String&nbsp;text;<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;getText()&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.text;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setText(<span class="keyword">final</span>&nbsp;String&nbsp;text)&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.text&nbsp;=&nbsp;text;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;String&nbsp;created;<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;getCreated()&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">this</span>.created;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;setCreated(<span class="keyword">final</span>&nbsp;String&nbsp;created)&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.created&nbsp;=&nbsp;created;<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;generate()&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_created&nbsp;=&nbsp;<span class="keyword">this</span>.getCreated();<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_equals&nbsp;=&nbsp;ObjectExtensions.operator_equals(_created,&nbsp;null);<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(_equals)&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;_date&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;Date();<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_string&nbsp;=&nbsp;_date.toString();<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.setCreated(_string);<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">boolean</span>&nbsp;validate()&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;_text&nbsp;=&nbsp;<span class="keyword">this</span>.getText();<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span>&nbsp;_length&nbsp;=&nbsp;_text.length();<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">boolean</span>&nbsp;_greaterThan&nbsp;=&nbsp;IntegerExtensions.operator_greaterThan(_length,&nbsp;3);<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;_greaterThan;<br/>
+					&nbsp;&nbsp;}<br/>
 					}
 				</p>
 			</div>
@@ -218,8 +155,8 @@
 		As you can see, it is plain java code with some annotations. For each property in the declared entity a 
 		getter and a setter is generated. Also, if the entity did not declare a field named <span class="inlinecode">id</span>, it is 
 		added automatically. The class annotation <span class="inlinecode">@Entity</span> declares the class to be a persistable entity
-		using the <a href="http://jcp.org/en/jsr/detail?id=317" >Java Persistence Api</a>, while the <span class="inlinecode">@XmlRootElement</span>
-		(a <a href="http://jcp.org/en/jsr/detail?id=222" >JAXB</a> annotation) annotation denotes that the entity is
+		using the JPA, while the <span class="inlinecode">@XmlRootElement</span>
+		(a JAXB annotation) annotation denotes that the entity is
 		serializable to XML.
 		</p>
 		<p>
@@ -231,58 +168,32 @@
 		<div class="literallayout">
 			<div class="incode">
 				<p class="code">
-					...
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageDao&nbsp;{
-					<br/>
-					...&nbsp;&nbsp;
-					<br/>
-					<span class="keyword">public</span>&nbsp;Message&nbsp;retrieveMessageById(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieveAllMessages()&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;createMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;Message&nbsp;modifyMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;deleteMessage(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieve(<span class="keyword">final</span>&nbsp;String&nbsp;query,&nbsp;<span class="keyword">final</span>&nbsp;List&lt;Pair&lt;String,String&gt;&gt;&nbsp;args)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
+					...<br/>
+					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageDao&nbsp;{<br/>
+					...&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;retrieveMessageById(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieveAllMessages()&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">int</span>&nbsp;createMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Message&nbsp;modifyMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;deleteMessage(<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;retrieve(<span class="keyword">final</span>&nbsp;String&nbsp;query,&nbsp;<span class="keyword">final</span>&nbsp;List&lt;Pair&lt;String,String&gt;&gt;&nbsp;args)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
 					}
 				</p>
 			</div>
@@ -295,85 +206,49 @@
 		</p>
 		<p>
 		In addition to the generated DAO classes, also RESTful webservices are generated using the
-		<a href="http://jcp.org/en/jsr/detail?id=339" >JAX-RS</a> annotation framework. Below, the service controller
+		JAX-RS annotation framework. Below, the service controller
 		class is given.
 		</p>
 		<p>
 		<div class="literallayout">
 			<div class="incode">
 				<p class="code">
-					...
-					<br/>
-					@Path(<span class="string">"app/message"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageController&nbsp;{
-					<br/>
-					@Inject
-					<br/>
-					<span class="keyword">private</span>&nbsp;MessageDao&nbsp;_dao;
-					<br/>
-					
-					<br/>
-					@PUT
-					<br/>
-					@Consumes(<span class="string">"application/json"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;Response&nbsp;putMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					@DELETE
-					<br/>
-					@Path(<span class="string">"{id}"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;Response&nbsp;deleteMessage(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					@GET
-					<br/>
-					@Produces(<span class="string">"application/json"</span>)
-					<br/>
-					@Path(<span class="string">"{id}"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;Response&nbsp;getMessageAsJSON(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					@POST
-					<br/>
-					@Consumes(<span class="string">"application/json"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;Response&nbsp;postMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
-					
-					<br/>
-					@GET
-					<br/>
-					@Produces(<span class="string">"application/json"</span>)
-					<br/>
-					<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;getMessageAllAsJSON()&nbsp;{
-					<br/>
-					...
-					<br/>
-					}
-					<br/>
+					...<br/>
+					@Path(<span class="string">"app/message"</span>)<br/>
+					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MessageController&nbsp;{<br/>
+					&nbsp;&nbsp;@Inject<br/>
+					&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;MessageDao&nbsp;_dao;<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;@PUT<br/>
+					&nbsp;&nbsp;@Consumes(<span class="string">"application/json"</span>)<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;putMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;@DELETE<br/>
+					&nbsp;&nbsp;@Path(<span class="string">"{id}"</span>)<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;deleteMessage(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;@GET<br/>
+					&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+					&nbsp;&nbsp;@Path(<span class="string">"{id}"</span>)<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;getMessageAsJSON(@PathParam(<span class="string">"id"</span>)&nbsp;<span class="keyword">final</span>&nbsp;<span class="keyword">int</span>&nbsp;id)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;@POST<br/>
+					&nbsp;&nbsp;@Consumes(<span class="string">"application/json"</span>)<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Response&nbsp;postMessage(<span class="keyword">final</span>&nbsp;Message&nbsp;message)&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;@GET<br/>
+					&nbsp;&nbsp;@Produces(<span class="string">"application/json"</span>)<br/>
+					&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;List&lt;Message&gt;&nbsp;getMessageAllAsJSON()&nbsp;{<br/>
+					...<br/>
+					&nbsp;&nbsp;}<br/>
 					}
 				</p>
 			</div>

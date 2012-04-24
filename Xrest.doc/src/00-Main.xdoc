@@ -51,10 +51,12 @@ codelanguage-def[Xtext][
 
 chapter-ref[Introduction]
 
+chapter-ref[getting_started]
+
 chapter-ref[dmodel]
 
 chapter-ref[service]
 
 chapter-ref[implementation]
 
-chapter-ref[tutorial]
+

@@ -34,10 +34,9 @@ The header of the domain model grammar is given here:
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">grammar</span>&nbsp;org.eclipse.xtext.example.domainmodel.Domainmodel&nbsp;<span class="keyword">with</span>&nbsp;org.eclipse.xtext.xbase.Xbase
+<span class="keyword">grammar</span>&nbsp;org.eclipse.xtext.example.domainmodel.Domainmodel&nbsp;<span class="keyword">with</span>&nbsp;org.eclipse.xtext.xbase.Xbase<br/>
 <br/>
-<span class="keyword">generate</span>&nbsp;domainmodel&nbsp;<span class="string">"http://www.xtext.org/example/Domainmodel"</span>
-<br/>
+<span class="keyword">generate</span>&nbsp;domainmodel&nbsp;<span class="string">"http://www.xtext.org/example/Domainmodel"</span><br/>
 </p>
 </div>
 </div>
@@ -55,70 +54,49 @@ The rest of the grammar defines the abstract and concrete syntax of the domain m
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-DomainModel:
+DomainModel:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;elements+=AbstractElement*;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;elements+=AbstractElement*;
+AbstractElement:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;PackageDeclaration&nbsp;|&nbsp;Entity&nbsp;|&nbsp;Import;<br/>
 <br/>
-AbstractElement:
+Import:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;import&apos;</span>&nbsp;importedNamespace=QualifiedNameWithWildCard;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;PackageDeclaration&nbsp;|&nbsp;Entity&nbsp;|&nbsp;Import;
+PackageDeclaration:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;package&apos;</span>&nbsp;name=QualifiedName&nbsp;<span class="string">&apos;{&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements+=AbstractElement*<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;<br/>
 <br/>
-Import:
+Entity:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;entity&apos;</span>&nbsp;name=ValidID&nbsp;(<span class="string">&apos;extends&apos;</span>&nbsp;superType=JvmParameterizedTypeReference)?&nbsp;<span class="string">&apos;{&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;features+=Feature*<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;import&apos;</span>&nbsp;importedNamespace=QualifiedNameWithWildCard;
+Feature:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;|&nbsp;Operation;<br/>
 <br/>
-PackageDeclaration:
+Property:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(generated?=<span class="string">&apos;generated&apos;</span>)?&nbsp;name=ValidID&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;type=JvmTypeReference&nbsp;(<span class="string">&apos;-&gt;&apos;</span>&nbsp;mappedBy=[Property&nbsp;|&nbsp;QualifiedName])?&nbsp;<br/>
+;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;package&apos;</span>&nbsp;name=QualifiedName&nbsp;<span class="string">&apos;{&apos;</span>
+Operation:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Validate&nbsp;|&nbsp;Generate;<br/>
 <br/>
-elements+=AbstractElement*
+Validate:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=<span class="string">&apos;validate&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body=XBlockExpression;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;
+Generate:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=<span class="string">&apos;generate&apos;</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body=XBlockExpression;<br/>
 <br/>
-Entity:
+QualifiedNameWithWildCard&nbsp;:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;QualifiedName&nbsp;&nbsp;(<span class="string">&apos;.&apos;</span>&nbsp;<span class="string">&apos;*&apos;</span>)?;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;entity&apos;</span>&nbsp;name=ValidID&nbsp;(<span class="string">&apos;extends&apos;</span>&nbsp;superType=JvmParameterizedTypeReference)?&nbsp;<span class="string">&apos;{&apos;</span>
-<br/>
-features+=Feature*
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span>;
-<br/>
-Feature:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;|&nbsp;Operation;
-<br/>
-Property:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;(generated?=<span class="string">&apos;generated&apos;</span>)?&nbsp;name=ValidID&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;type=JvmTypeReference&nbsp;(<span class="string">&apos;-&gt;&apos;</span>&nbsp;mappedBy=[Property&nbsp;|&nbsp;QualifiedName])?&nbsp;
-<br/>
-;
-<br/>
-Operation:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;Validate&nbsp;|&nbsp;Generate;
-<br/>
-Validate:
-<br/>
-name=<span class="string">&apos;validate&apos;</span>
-<br/>
-body=XBlockExpression;
-<br/>
-Generate:
-<br/>
-name=<span class="string">&apos;generate&apos;</span>&nbsp;
-<br/>
-body=XBlockExpression;
-<br/>
-QualifiedNameWithWildCard&nbsp;:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;QualifiedName&nbsp;&nbsp;(<span class="string">&apos;.&apos;</span>&nbsp;<span class="string">&apos;*&apos;</span>)?;
-<br/>
-ValidID:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;(ID&nbsp;|&nbsp;<span class="string">&apos;generated&apos;</span>&nbsp;|&nbsp;<span class="string">&apos;validate&apos;</span>)
-<br/>
-;
-<br/>
+ValidID:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(ID&nbsp;|&nbsp;<span class="string">&apos;generated&apos;</span>&nbsp;|&nbsp;<span class="string">&apos;validate&apos;</span>)<br/>
+;<br/>
 </p>
 </div>
 </div>
@@ -146,36 +124,21 @@ compiler like this:
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-e.toMethod(<span class="string">&apos;&apos;</span><span class="string">&apos;retrieve&laquo;t.simpleName&raquo;ById&apos;</span><span class="string">&apos;&apos;</span>.toString,&nbsp;ref)&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;visibility&nbsp;=&nbsp;JvmVisibility::PUBLIC
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;e.toParameter(<span class="string">"id"</span>,&nbsp;typeof(<span class="keyword">int</span>).getTypeForName(e))
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;setBody&nbsp;[
-<br/>
-trace(e)
-<br/>
-append(<span class="string">&apos;&apos;</span><span class="string">&apos;
-<br/>
-javax.persistence.EntityManager&nbsp;_entityManager&nbsp;=&nbsp;_emf.createEntityManager();
-<br/>
-_entityManager.getTransaction().begin();
-<br/>
-&laquo;t.simpleName&raquo;&nbsp;&laquo;t.simpleName.toFirstLower&raquo;&nbsp;=&nbsp;_entityManager.find(&laquo;t.simpleName&raquo;.class,&nbsp;id);
-<br/>
-_entityManager.getTransaction().commit();
-<br/>
-_entityManager.close();
-<br/>
-return&nbsp;&laquo;t.simpleName.toFirstLower&raquo;;
-<br/>
-&apos;</span><span class="string">&apos;&apos;</span>.toString)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;]
-<br/>
-]
-<br/>
+e.toMethod(<span class="string">&apos;&apos;</span><span class="string">&apos;retrieve&laquo;t.simpleName&raquo;ById&apos;</span><span class="string">&apos;&apos;</span>.toString,&nbsp;ref)&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;visibility&nbsp;=&nbsp;JvmVisibility::PUBLIC<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;e.toParameter(<span class="string">"id"</span>,&nbsp;typeof(<span class="keyword">int</span>).getTypeForName(e))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;setBody&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace(e)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;append(<span class="string">&apos;&apos;</span><span class="string">&apos;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javax.persistence.EntityManager&nbsp;_entityManager&nbsp;=&nbsp;_emf.createEntityManager();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_entityManager.getTransaction().begin();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&laquo;t.simpleName&raquo;&nbsp;&laquo;t.simpleName.toFirstLower&raquo;&nbsp;=&nbsp;_entityManager.find(&laquo;t.simpleName&raquo;.class,&nbsp;id);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_entityManager.getTransaction().commit();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_entityManager.close();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&laquo;t.simpleName.toFirstLower&raquo;;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&apos;</span><span class="string">&apos;&apos;</span>.toString)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+]<br/>
 </p>
 </div>
 </div>
@@ -193,44 +156,25 @@ The generation of the services classes is similar to that of the DAO classes.
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-e.toMethod(<span class="string">&apos;&apos;</span><span class="string">&apos;get&laquo;t.simpleName&raquo;AsJSON&apos;</span><span class="string">&apos;&apos;</span>.toString,&nbsp;<span class="string">"javax.ws.rs.core.Response"</span>.getTypeForName(e))&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;visibility&nbsp;=&nbsp;JvmVisibility::PUBLIC
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createGetAnnotation()
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createProducesAnnotation(<span class="string">"application/json"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createPathAnnotation(<span class="string">"{id}"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;e.toParameter(<span class="string">"id"</span>,&nbsp;typeof(<span class="keyword">int</span>).getTypeForName(e))&nbsp;[
-<br/>
-annotations&nbsp;+=&nbsp;e.createPathParamAnnotation(<span class="string">"id"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;]
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;setBody&nbsp;[
-<br/>
-trace(e)
-<br/>
-append(<span class="string">&apos;&apos;</span><span class="string">&apos;
-<br/>
-&laquo;t.simpleName&raquo;&nbsp;&laquo;t.simpleName.toFirstLower&raquo;&nbsp;=&nbsp;_dao.retrieve&laquo;t.simpleName&raquo;ById(id);
-<br/>
-if(&laquo;t.simpleName.toFirstLower&raquo;&nbsp;==&nbsp;null){
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
-<br/>
-}
-<br/>
-return&nbsp;Response.ok(&laquo;t.simpleName.toFirstLower&raquo;).build();
-<br/>
-&apos;</span><span class="string">&apos;&apos;</span>.toString)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;]
-<br/>
-]
-<br/>
+e.toMethod(<span class="string">&apos;&apos;</span><span class="string">&apos;get&laquo;t.simpleName&raquo;AsJSON&apos;</span><span class="string">&apos;&apos;</span>.toString,&nbsp;<span class="string">"javax.ws.rs.core.Response"</span>.getTypeForName(e))&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;visibility&nbsp;=&nbsp;JvmVisibility::PUBLIC<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createGetAnnotation()<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createProducesAnnotation(<span class="string">"application/json"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createPathAnnotation(<span class="string">"{id}"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;e.toParameter(<span class="string">"id"</span>,&nbsp;typeof(<span class="keyword">int</span>).getTypeForName(e))&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;e.createPathParamAnnotation(<span class="string">"id"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;setBody&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace(e)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;append(<span class="string">&apos;&apos;</span><span class="string">&apos;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&laquo;t.simpleName&raquo;&nbsp;&laquo;t.simpleName.toFirstLower&raquo;&nbsp;=&nbsp;_dao.retrieve&laquo;t.simpleName&raquo;ById(id);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(&laquo;t.simpleName.toFirstLower&raquo;&nbsp;==&nbsp;null){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Response.ok(&laquo;t.simpleName.toFirstLower&raquo;).build();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&apos;</span><span class="string">&apos;&apos;</span>.toString)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+]<br/>
 </p>
 </div>
 </div>
@@ -251,94 +195,62 @@ The grammar of the service language is given below.
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">grammar</span>&nbsp;org.eclipse.xtext.services.Services&nbsp;<span class="keyword">with</span>&nbsp;org.eclipse.xtext.xbase.Xbase
+<span class="keyword">grammar</span>&nbsp;org.eclipse.xtext.services.Services&nbsp;<span class="keyword">with</span>&nbsp;org.eclipse.xtext.xbase.Xbase<br/>
 <br/>
-<span class="keyword">generate</span>&nbsp;services&nbsp;<span class="string">"http://www.eclipse.org/xtext/services/Services"</span>
+<span class="keyword">generate</span>&nbsp;services&nbsp;<span class="string">"http://www.eclipse.org/xtext/services/Services"</span><br/>
 <br/>
-<span class="keyword">import</span>&nbsp;<span class="string">"http://www.eclipse.org/xtext/common/JavaVMTypes"</span>&nbsp;as&nbsp;types
+<span class="keyword">import</span>&nbsp;<span class="string">"http://www.eclipse.org/xtext/common/JavaVMTypes"</span>&nbsp;as&nbsp;types<br/>
 <br/>
-ServicesFile:
+ServicesFile:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;component=Component<br/>
+;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;component=Component
+Component:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;package&apos;</span>&nbsp;packageName=QualifiedName<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(imports+=Import)*<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"component"</span>&nbsp;name=ValidID&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="string">&apos;conforms&apos;</span>&nbsp;implements+=JvmParameterizedTypeReference&nbsp;(<span class="string">&apos;,&apos;</span>&nbsp;implements+=JvmParameterizedTypeReference)*)?<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;{&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="string">&apos;requires&apos;</span>&nbsp;requires+=RequireDeclaration&nbsp;(<span class="string">&apos;,&apos;</span>&nbsp;requires+=RequireDeclaration)*)?<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(services+=Service)*<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;}&apos;</span><br/>
+;<br/>
 <br/>
-;
+Service:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;(get?=<span class="string">&apos;GET&apos;</span>&nbsp;|&nbsp;post?=<span class="string">&apos;POST&apos;</span>&nbsp;|&nbsp;put?=<span class="string">&apos;PUT&apos;</span>&nbsp;|&nbsp;delete?=<span class="string">&apos;DELETE&apos;</span>)&nbsp;)?&nbsp;name=Path<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;type=JvmTypeReference<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body=XBlockExpression<br/>
+;<br/>
 <br/>
-Component:
+RequireDeclaration:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;type=JvmTypeReference&nbsp;(name=ID)?<br/>
+;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;package&apos;</span>&nbsp;packageName=QualifiedName
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;(imports+=Import)*
+Import:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"import"</span>&nbsp;importedNamespace=QualifiedName<br/>
+;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"component"</span>&nbsp;name=ValidID&nbsp;
+Path:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;segments+=PathSegment&nbsp;(<span class="string">&apos;/&apos;</span>&nbsp;segments+=PathSegment)*<br/>
+;<br/>
 <br/>
-(<span class="string">&apos;conforms&apos;</span>&nbsp;implements+=JvmParameterizedTypeReference&nbsp;(<span class="string">&apos;,&apos;</span>&nbsp;implements+=JvmParameterizedTypeReference)*)?
+PathSegment:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ParameterSegment&nbsp;|&nbsp;SimpleSegment<br/>
+;<br/>
 <br/>
-<span class="string">&apos;{&apos;</span>
+ParameterSegment:&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;{&apos;</span>param=Parameter&nbsp;<span class="string">&apos;}&apos;</span><br/>
+;<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="string">&apos;requires&apos;</span>&nbsp;requires+=RequireDeclaration&nbsp;(<span class="string">&apos;,&apos;</span>&nbsp;requires+=RequireDeclaration)*)?
+Parameter<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;returns&nbsp;types::JvmFormalParameter:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=ValidID&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;parameterType=JvmTypeReference<br/>
+;<br/>
 <br/>
-(services+=Service)*
-<br/>
-<span class="string">&apos;}&apos;</span>
-<br/>
-;
-<br/>
-Service:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;(get?=<span class="string">&apos;GET&apos;</span>&nbsp;|&nbsp;post?=<span class="string">&apos;POST&apos;</span>&nbsp;|&nbsp;put?=<span class="string">&apos;PUT&apos;</span>&nbsp;|&nbsp;delete?=<span class="string">&apos;DELETE&apos;</span>)&nbsp;)?&nbsp;name=Path
-<br/>
-<span class="string">&apos;:&apos;</span>&nbsp;type=JvmTypeReference
-<br/>
-body=XBlockExpression
-<br/>
-;
-<br/>
-RequireDeclaration:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;type=JvmTypeReference&nbsp;(name=ID)?
-<br/>
-;
-<br/>
-
-<br/>
-Import:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"import"</span>&nbsp;importedNamespace=QualifiedName
-<br/>
-;
-<br/>
-Path:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;segments+=PathSegment&nbsp;(<span class="string">&apos;/&apos;</span>&nbsp;segments+=PathSegment)*
-<br/>
-;
-<br/>
-PathSegment:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;ParameterSegment&nbsp;|&nbsp;SimpleSegment
-<br/>
-;
-<br/>
-ParameterSegment:&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">&apos;{&apos;</span>param=Parameter&nbsp;<span class="string">&apos;}&apos;</span>
-<br/>
-;
-<br/>
-Parameter
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;returns&nbsp;types::JvmFormalParameter:
-<br/>
-name=ValidID&nbsp;<span class="string">&apos;:&apos;</span>&nbsp;parameterType=JvmTypeReference
-<br/>
-;
-<br/>
-SimpleSegment:
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;name=ValidID
-<br/>
-;
-<br/>
+SimpleSegment:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;name=ValidID<br/>
+;<br/>
 </p>
 </div>
 </div>
@@ -358,98 +270,52 @@ method for each each service.
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-acceptor.accept(component.toClass(component.packageName&nbsp;+&nbsp;<span class="string">"."</span>&nbsp;+component.name)).initializeLater&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;component.toAnnotation(<span class="string">"javax.ws.rs.Path"</span>,&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(component.packageName.toLowerCase.replace(<span class="string">"."</span>,<span class="string">"/"</span>)&nbsp;+&nbsp;<span class="string">"/"</span>&nbsp;+&nbsp;component.name))
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(interface&nbsp;:&nbsp;component.^implements)&nbsp;{
-<br/>
-superTypes&nbsp;+=&nbsp;interface.cloneWithProxies
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(injectedMember:&nbsp;component.requires&nbsp;){
-<br/>
-val&nbsp;name&nbsp;=&nbsp;{&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(injectedMember.name&nbsp;!=&nbsp;null)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;injectedMember.name&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;injectedMember.type?.simpleName?.toFirstLower
-<br/>
-}
-<br/>
-members&nbsp;+=&nbsp;injectedMember.toField(&nbsp;name
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;,&nbsp;injectedMember.type
-<br/>
-)&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;injectedMember.toAnnotation(<span class="string">"javax.inject.Inject"</span>)
-<br/>
-]
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(service&nbsp;:&nbsp;component.services)&nbsp;{
-<br/>
-members&nbsp;+=&nbsp;service.toMethod(service.name.segments.join(<span class="string">&apos;$&apos;</span>)[stringValue],&nbsp;service.type)&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(service.get)&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.GET"</span>)&nbsp;&nbsp;&nbsp;&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Produces"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.post)&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.POST"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Consumes"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.put)&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.PUT"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Consumes"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.delete)&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.DELETE"</span>)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;<span class="keyword">if</span>(!annotations.empty)&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Path"</span>,&nbsp;
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service.name.segments.join(<span class="string">&apos;/&apos;</span>)[pathStringValue]
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>&nbsp;(p&nbsp;:&nbsp;service.name.segments)&nbsp;{
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(p&nbsp;<span class="keyword">instanceof</span>&nbsp;ParameterSegment)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;p.toParameter(p.stringValue,&nbsp;(p&nbsp;as&nbsp;ParameterSegment).param.parameterType)&nbsp;[
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.PathParam"</span>,&nbsp;p.stringValue)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;service.body
-<br/>
-]
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br/>
-]
-<br/>
+acceptor.accept(component.toClass(component.packageName&nbsp;+&nbsp;<span class="string">"."</span>&nbsp;+component.name)).initializeLater&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;component.toAnnotation(<span class="string">"javax.ws.rs.Path"</span>,&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(component.packageName.toLowerCase.replace(<span class="string">"."</span>,<span class="string">"/"</span>)&nbsp;+&nbsp;<span class="string">"/"</span>&nbsp;+&nbsp;component.name))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(interface&nbsp;:&nbsp;component.^implements)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;superTypes&nbsp;+=&nbsp;interface.cloneWithProxies<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(injectedMember:&nbsp;component.requires&nbsp;){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;name&nbsp;=&nbsp;{&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(injectedMember.name&nbsp;!=&nbsp;null)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;injectedMember.name&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;injectedMember.type?.simpleName?.toFirstLower<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;members&nbsp;+=&nbsp;injectedMember.toField(&nbsp;name<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,&nbsp;injectedMember.type<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;injectedMember.toAnnotation(<span class="string">"javax.inject.Inject"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>(service&nbsp;:&nbsp;component.services)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;members&nbsp;+=&nbsp;service.toMethod(service.name.segments.join(<span class="string">&apos;$&apos;</span>)[stringValue],&nbsp;service.type)&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(service.get)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.GET"</span>)&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Produces"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.post)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.POST"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Consumes"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.put)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.PUT"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Consumes"</span>,&nbsp;<span class="string">"application/json,&nbsp;application/xml"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span>&nbsp;<span class="keyword">if</span>(service.delete)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.DELETE"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;<span class="keyword">if</span>(!annotations.empty)&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.Path"</span>,&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service.name.segments.join(<span class="string">&apos;/&apos;</span>)[pathStringValue]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>&nbsp;(p&nbsp;:&nbsp;service.name.segments)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>(p&nbsp;<span class="keyword">instanceof</span>&nbsp;ParameterSegment)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;+=&nbsp;p.toParameter(p.stringValue,&nbsp;(p&nbsp;as&nbsp;ParameterSegment).param.parameterType)&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotations&nbsp;+=&nbsp;service.toAnnotation(<span class="string">"javax.ws.rs.PathParam"</span>,&nbsp;p.stringValue)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;=&nbsp;service.body<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+]<br/>
 </p>
 </div>
 </div>

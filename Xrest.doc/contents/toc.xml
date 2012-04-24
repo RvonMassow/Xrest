@@ -2,6 +2,12 @@
 <toc topic="contents/00-Main.html" label="Xrest -- A Rest Framework built with Xtext" >
 	<topic href="contents/01-Introduction.html#Introduction" label="Introduction" >
 	</topic>
+	<topic href="contents/02a-getting_started.html#getting_started" label="Getting started with Xrest" >
+		<topic href="contents/02a-getting_started.html#getting_started_2" label="Dependencies and Assumptions" >
+		</topic>
+		<topic href="contents/02a-getting_started.html#getting_started_3" label="Creating A New Project" >
+		</topic>
+	</topic>
 	<topic href="contents/02-dmodel.html#dmodel" label="The Domain Model Language" >
 	</topic>
 	<topic href="contents/03-service.html#service" label="Services" >
@@ -20,10 +26,6 @@
 			</topic>
 			<topic href="contents/04-implementation.html#implementation_3_2" label="JvmModelInference" >
 			</topic>
-		</topic>
-	</topic>
-	<topic href="contents/05-tutorial.html#tutorial" label="Tutorial" >
-		<topic href="contents/05-tutorial.html#tutorial_2" label="Creating A New Project" >
 		</topic>
 	</topic>
 </toc>
