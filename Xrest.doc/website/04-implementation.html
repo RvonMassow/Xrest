@@ -35,6 +35,15 @@
 		<li id="04-implementation.html#implementation_3.html" ><a href="04-implementation.php#implementation_3.php" >The Services Language</a></li>
 		</ul>
 		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="05-remarks.php">Final Remarks on using Xbase</a></div>
+		<ul style="display: none;" id="subToc_05-remarks.html">
+		<li id="05-remarks.html#remarks_2.html" ><a href="05-remarks.php#remarks_2.php" >Inheriting from the Xbase Grammar</a></li>
+		<li id="05-remarks.html#remarks_3.html" ><a href="05-remarks.php#remarks_3.php" >Building the Jvm Model Inferrer and Code Generator</a></li>
+		<li id="05-remarks.html#remarks_4.html" ><a href="05-remarks.php#remarks_4.php" >Building tooling</a></li>
+		</ul>
+		</li>
 		</ul>
 	</div>
 	<div id="midcolumn">
@@ -239,11 +248,14 @@
 			<h1>The Services Language</h1>
 			<div class="toc">
 			  <ul>
-			    <li><a href="04-implementation.php#implementation_3_1.php" >The Grammar</a></li>
-			    <li><a href="04-implementation.php#implementation_3_2.php" >JvmModelInference</a></li>
+			    <li><a href="04-implementation.php#implementation_3_2.php" >The Grammar</a></li>
+			    <li><a href="04-implementation.php#implementation_3_3.php" >JvmModelInference</a></li>
 			  </ul>
 			</div>
-			<a name="implementation_3_1" ></a>
+			<p>
+			The service language can be seen as a simple component language, which defines services for each component.
+			</p>
+			<a name="implementation_3_2" ></a>
 			<h2>The Grammar</h2>
 			<p>
 			The grammar of the service language is given below.
@@ -313,15 +325,20 @@
 			</div>
 			</p>
 			<p>
-			The services grammar also inherits from Xbase and imports the Java type system. The Xtext generator will
+			The grammar declares the main concept of components. These components can conform to interfaces, which
+			are given in the form of a list of <span class="inlinecode">JvmParametrizedTypeReference</span>s. Also a component can use other
+			classes, which is implemented in the <span class="inlinecode">RequireDeclaration</span>. 
+			The services grammar inherits from Xbase and imports the Java type system. The Xtext generator will
 			create a meta model, like for the domain model language, resembling the AST structure of the service
 			language.
 			</p>
-			<a name="implementation_3_2" ></a>
+			<a name="implementation_3_3" ></a>
 			<h2>JvmModelInference</h2>
 			<p>
 			The Jvm model inferrer for the service language generates one service class for each component and one
-			method for each each service.
+			method for each each service. This is quite straight forward. The methods are mapped to the URLs specified
+			by the methods names. The component is mapped to its fully qualified name with each segment beeing translated
+			into a path segment. Thus, the resulting mapping is a concatenation of both.
 			</p>
 			<p>
 			<div class="literallayout">

@@ -1,0 +1,896 @@
+\documentclass[a4paper]{scrreprt}
+
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl,aeguill} 
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage[american]{babel}
+\usepackage{graphicx}
+\usepackage{pdfcprot}
+
+\usepackage{todonotes}
+
+
+
+
+%%\usepackage{helvet}
+
+
+\lstdefinelanguage{Java}
+  {morekeywords={abstract, continue, for, new, switch, assert, default, package, synchronized, boolean, do, if, private, this, break, double, implements, protected, throw, byte, else, import, public, throws, case, enum, instanceof, return, transient, catch, extends, int, short, try, char, final, interface, static, void, class, finally, long, strictfp, volatile, float, native, super, while},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+  }
+
+\lstdefinelanguage{Xtend}
+  {morekeywords={for, new, switch, default, package, boolean, do, if, private, this, break, double, implements, throw, else, import, public, throws, case, instanceof, return, catch, extends, int, short, try, char, final, static, void, class, finally, long, float, super, while},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+  }
+
+\lstdefinelanguage{dmodel}
+  {morekeywords={for, new, switch, default, package, boolean, do, if, this, throw, else, import, case, instanceof, return, catch, extends, try, finally, float, super, while, entity, generated, generate, null, validate},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+  }
+
+\lstdefinelanguage{service}
+  {morekeywords={for, new, switch, default, package, boolean, do, if, this, throw, else, import, case, instanceof, return, catch, extends, try, finally, float, super, while, component, requires, GET, POST, PUT, DELETE, null, int},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+  }
+
+\lstdefinelanguage{Xtext}
+  {morekeywords={generate, import, grammar, with, terminal},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+  }
+
+%% force more space between subsections!
+\makeatletter
+\renewcommand\subsection{\medskip\@startsection{subsection}{2}{\z@}%
+  {-.25ex\@plus -.1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex \@minus -.4ex}%
+  {\ifnum \scr@compatibility>\@nameuse{scr@v@2.96}\relax
+    \setlength{\parfillskip}{\z@ plus 1fil}\fi
+    \raggedsection\normalfont\sectfont\nobreak\size@subsection
+  }%
+}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\sffamily\normalsize\bfseries}}
+\makeatother
+\definecolor{listingsbg}{HTML}{E7E7E7}
+\definecolor{kwcolor}{HTML}{7F0055}
+\definecolor{strcolor}{HTML}{2A00FF}
+\definecolor{cocolor}{HTML}{3F7F5F}
+
+\lstset{tabsize=4, basicstyle=\sffamily\small, keywordstyle=\bfseries\color{kwcolor}, commentstyle=\color{cocolor},
+stringstyle=\color{strcolor}, columns=[r]fullflexible, escapechar={ß}, frame=single, %framexleftmargin=-5pt, framexrightmargin=-5pt, 
+xleftmargin=5pt, xrightmargin=5pt, rulecolor=\color{lightgray}, showstringspaces=false, backgroundcolor=\color{listingsbg!70}}
+
+%%\usepackage[english]{babel}
+
+% import this as last package
+\usepackage{hyperref}
+
+\newlength{\itemindentlen}
+\author{Robert von Massow, Bjoern Weißenfels}
+\title{Xrest -- A Rest Framework built with Xtext}
+\subtitle{\includegraphics[width=3cm]{bmbf}\\FKZ: 01IS10008}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+\label{Introduction}
+The Xrest framework provides two domain specific languages (DSLs) to simplify the development of REST style
+web services. It was developped in the context of the Xbase Project, which was funded by the German Federal
+Ministry of Education and Research under the grant number 01S10008, as an evalution theme for the Xbase
+expression language. Xbase itself is distributed as part of \href{http://www.xtext.org}{Xtext} and can be
+reused by any domain specific language developed with Xtext, where expressions are needed. The Xbase
+language can be seen as a partial programming language, which only provides expressions and needs to
+be embedded in some kind of structural language. In the Xrest framework two DSLs have been developed
+to simplify the development of RESTful webservices.
+
+The first DSL originates from the \href{http://www.xtext.org}{Xtext} domain model example for
+modeling entities and their relations and generates RESTful web services, JPA entities and a data access layer. The
+second DSL provides a simple way to declare and implement plain RESTful services. Both DSLs are compiled
+to plain Java code. While the first, as it's producing \href{http://jcp.org/en/jsr/detail?id=317}{Java Persistence Api}
+(JPA) entities and web services that rely on serializability of those, the domain model language depends
+on the JPA library and also the \href{http://jcp.org/en/jsr/detail?id=222}{JAXB} framework, which solves
+the serialization requirements. Both languages also use \href{http://jcp.org/en/jsr/detail?id=339}{JAX-RS}
+for mapping HTTP methods to URLs and thus enable their usage as a RESTful web service.
+
+In this document, the usage and implementation of both languages is described and a short \textit{getting started}
+guide is given. We start of with the getting started guide in \autoref{getting_started} followed by a more
+complete user guide of the domain model language in \autoref{dmodel}. This is followed by a guide on how to
+implement services in \autoref{service}. Finally, the implementation of both languages is discussed in \autoref{implementation}.\chapter{Getting started with Xrest}
+\label{getting_started}
+In this chapter you'll learn how to create a new Xrest project.
+\section{Dependencies and Assumptions}
+
+In this tutorial we assume you have installed the Eclipse IDE with the following Plugins:
+
+\setlength{\itemindentlen}{\textwidth}
+\begin{itemize}
+\addtolength{\itemindentlen}{-2.5em}
+\item \begin{minipage}[t]{\itemindentlen}
+Xtext and its dependencies (JDT, EMF, ...)
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+Eclipse Plugins for Web development, especially support for dynamic web projects
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+Xrest
+\end{minipage}
+\end{itemize}
+\addtolength{\itemindentlen}{2.5em}
+
+Addionally you will need some libraries in your new project. We give a list below. Where ever it is possible to chose from
+different implementations, a recommendation is given. Some of the setup described in this chapter depends
+on the actual implementation of the library you are using. Please edit configuration properties as necessary.
+
+\setlength{\itemindentlen}{\textwidth}
+\begin{itemize}
+\addtolength{\itemindentlen}{-2.5em}
+\item \begin{minipage}[t]{\itemindentlen}
+JPA (\lstinline[breakatwhitespace=false,breaklines=true]°javax.persistence°) version 2 or higher. We used Eclipse Link as implementation and
+	derby as local database
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+Dependency Injection for Java (\lstinline[breakatwhitespace=false,breaklines=true]°javax.inject°) version 1. We used google guice as implementation.
+	Addtionally we used guice servlet. It is mandatory to use a dependency injection framework for the
+	instatiation of the services as the database access objects' are injected.
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+The Java API for RESTful Web Services (\lstinline[breakatwhitespace=false,breaklines=true]°javax.ws.rs°) version 1. We use Jersey, including
+	the jersey-guice extesion.
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+Google guava version r09 or higher
+\end{minipage}
+\item \begin{minipage}[t]{\itemindentlen}
+Xbase library (\lstinline[breakatwhitespace=false,breaklines=true]°org.eclipse.xtext.xbase.lib°), which is located in the plugins folder of
+	your Eclipse installation after installing the Xtext feature
+\end{minipage}
+\end{itemize}
+\addtolength{\itemindentlen}{2.5em}
+
+
+
+\section{Creating A New Project}
+
+The first step is to create a new Dynamic Web Project by choosing File -> New -> Project.... The dialog offers 
+a couple of different project types. Select Dynamic Web Project from the category Web, choose a project 
+name and a target runtime, choose the next button and add the folder src-gen and finish the wizard with 
+the default settings.
+
+The generated classes use JPA as persistence framework, JAX-RS as webservice framework, google guava
+and guice and the Xbase library, so add the libraries mentioned before, to the \lstinline[breakatwhitespace=false,breaklines=true]°WebContent/WEB-INF/lib°
+folder.
+Create a package in the source folder and a .dmodel file in there.
+Declare a package and entities as described in \hyperref[dmodel]{The Domain Model Language~(§\ref*{dmodel})}.
+To use Xbase expressions in the generate and validate methods, add the Xbase library to the lib folder.
+Create another package in the source folder, add a .svc file and declare some services as decribed in
+\hyperref[service]{Service~(§\ref*{service})}.
+
+Create a \lstinline[breakatwhitespace=false,breaklines=true]°META-INF° folder in \lstinline[breakatwhitespace=false,breaklines=true]°src° and in there a file named \lstinline[breakatwhitespace=false,breaklines=true]°persistence.xml°.
+If you use eclipselink as JPA implementation and derby as database, your persistence.xml might look like
+this:
+
+ \begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="messageboard" transaction-type="RESOURCE_LOCAL">
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:derby:simpleDb;create=true" />
+			<property name="javax.persistence.jdbc.user" value="test" />
+			<property name="javax.persistence.jdbc.password" value="test" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+		</properties>
+
+	</persistence-unit>
+</persistence>
+\end{lstlisting}
+\noindent
+
+Now that you set up persistency for your project, it is time to set up the actual web services. For this
+you need to edit the default \lstinline[breakatwhitespace=false,breaklines=true]°web.xml° located in \lstinline[breakatwhitespace=false,breaklines=true]°WebContent/WEB-INF/°. For our example the
+following content is just fine:
+
+ \begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<listener>
+		<listener-class>app.config.GuiceConfig</listener-class>
+	</listener>
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+
+    <welcome-file-list>
+		<welcome-file>
+            index.html
+        </welcome-file>
+    </welcome-file-list>
+
+</web-app>
+\end{lstlisting}
+\noindent
+
+Note the listener declaration in line 4 to 6. Here a guice configuration is referenced, which is a java
+class you have to implement if you decide to use this configuration. An example implementation, simply
+mapping all available in the package \lstinline[breakatwhitespace=false,breaklines=true]°app° services to their standard paths is given here:
+
+ \begin{lstlisting}[language=Java]
+package app.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.servlet.GuiceServletContextListener;
+import com.google.inject.servlet.ServletModule;
+import com.sun.jersey.api.core.PackagesResourceConfig;
+import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
+
+public class GuiceConfig extends GuiceServletContextListener {
+	
+	protected Injector getInjector() {
+		
+		final Map<String, String> params = new HashMap<String, String>();
+
+		return Guice.createInjector(
+				new ServletModule() {
+					@Override
+					protected void configureServlets() {
+						params.put(PackagesResourceConfig.PROPERTY_PACKAGES, "app");
+						serve("/app/*").with(GuiceContainer.class, params);
+					}
+				});
+	}
+	
+}
+\end{lstlisting}
+\noindent
+
+In the \lstinline[breakatwhitespace=false,breaklines=true]°GuiceConfig° class it is also possible to exchange the data access object implementation
+and other dependencies, introduced by using the service language.
+
+Finally, add an \lstinline[breakatwhitespace=false,breaklines=true]°index.html° page to the \lstinline[breakatwhitespace=false,breaklines=true]°WebContent° folder, which will be the landing page.
+Here, you can implement ajax calls using JavaScript accessing the RESTful webservices you are implementing
+using Xrest.
+
+The usage of Xrest is further documented in the following sections of this documentation.
+
+
+\chapter{The Domain Model Language}
+\label{dmodel}
+The domain model language is a simple language to model entities and there relations textually. Originally,
+it compiles POJOs creating fields, getters and setters for each feature declared in an entity. We extended
+the compiler to also support validation and server side auto-generation of values. 
+
+A small code snippet of a simple entity is given below.
+
+
+ \begin{lstlisting}[language=dmodel]
+package app {
+
+	import java.util.Date
+	
+	entity Message {
+		text : String
+		generated created : String
+		
+		generate {
+			if(this.getCreated == null)
+				this.setCreated(new Date().toString)
+		}
+
+		validate {
+			this.getText().length > 3
+		}
+	}
+	
+}
+\end{lstlisting}
+\noindent
+
+As you see, in contrast to Java code, no statement must be terminated with a semicolon. For each package
+in the model a package in the Java project is generated. The ordinary imports of type names are equivalent
+to the imports known from Java. An entity declaration starts with the keyword entity folowed by a name.
+In the entity's body, fields and two types of methods, \lstinline[breakatwhitespace=false,breaklines=true,language=dmodel]°generate° and \lstinline[breakatwhitespace=false,breaklines=true,language=dmodel]°validate°, 
+can be specified.
+
+In this example an entity \lstinline[breakatwhitespace=false,breaklines=true]°Message° is declared in the package \lstinline[breakatwhitespace=false,breaklines=true]°app°, containing two \lstinline[breakatwhitespace=false,breaklines=true]°String°
+type features. One of these features is marked to be generated. This is done by calling the \lstinline[breakatwhitespace=false,breaklines=true,language=dmodel]°generate°
+block. The \lstinline[breakatwhitespace=false,breaklines=true,language=dmodel]°validate° block defines a boolean method which for example is used in the post method 
+of the controller class seen below. Both blocks can contain arbitrary Xbase expressions. The above entity
+compiles to the following Java code.
+
+
+ \begin{lstlisting}[language=Java]
+...
+@Entity
+@XmlRootElement
+public class Message {
+  @GeneratedValue
+  @Id
+  private int id;
+  
+  public int getId() {
+    return this.id;
+  }
+  
+  public void setId(final int id) {
+    this.id = id;
+  }
+  
+  private String text;
+  
+  public String getText() {
+    return this.text;
+  }
+  
+  public void setText(final String text) {
+    this.text = text;
+  }
+  
+  private String created;
+  
+  public String getCreated() {
+    return this.created;
+  }
+  
+  public void setCreated(final String created) {
+    this.created = created;
+  }
+  
+  public void generate() {
+    String _created = this.getCreated();
+    boolean _equals = ObjectExtensions.operator_equals(_created, null);
+    if (_equals) {
+      Date _date = new Date();
+      String _string = _date.toString();
+      this.setCreated(_string);
+    }
+  }
+  
+  public boolean validate() {
+    String _text = this.getText();
+    int _length = _text.length();
+    boolean _greaterThan = IntegerExtensions.operator_greaterThan(_length, 3);
+    return _greaterThan;
+  }
+}
+\end{lstlisting}
+\noindent
+
+As you can see, it is plain java code with some annotations. For each property in the declared entity a 
+getter and a setter is generated. Also, if the entity did not declare a field named \lstinline[breakatwhitespace=false,breaklines=true]°id°, it is 
+added automatically. The class annotation \lstinline[breakatwhitespace=false,breaklines=true]°@Entity° declares the class to be a persistable entity
+using the JPA, while the \lstinline[breakatwhitespace=false,breaklines=true]°@XmlRootElement°
+(a JAXB annotation) annotation denotes that the entity is
+serializable to XML.
+
+In addition to the entity class, also a data access object (DAO) class is generated for each declared
+entity, which looks like the code given below for the \lstinline[breakatwhitespace=false,breaklines=true]°Message° entity. For the sake of readibility,
+constructors, fields and method bodies are omitted.
+
+
+ \begin{lstlisting}[language=Java]
+...
+public class MessageDao {
+...  
+  public Message retrieveMessageById(final int id) {
+...
+  }
+  
+  public List<Message> retrieveAllMessages() {
+...
+  }
+  
+  public int createMessage(final Message message) {
+...
+  }
+  
+  public Message modifyMessage(final Message message) {
+...
+  }
+  
+  public void deleteMessage(final int id) {
+...
+  }
+  
+  public List<Message> retrieve(final String query, final List<Pair<String,String>> args) {
+...
+  }
+}
+\end{lstlisting}
+\noindent
+
+So the DAO class encapsulates the whole database access logics to plain Java methods, implementing the typical
+CRUD operations. This API can be reused by any Java language such as the service language described in
+\hyperref[service]{Service~(§\ref*{service})}.
+
+In addition to the generated DAO classes, also RESTful webservices are generated using the
+JAX-RS annotation framework. Below, the service controller
+class is given.
+
+
+ \begin{lstlisting}[language=Java]
+...
+@Path("app/message")
+public class MessageController {
+  @Inject
+  private MessageDao _dao;
+  
+  @PUT
+  @Consumes("application/json")
+  public Response putMessage(final Message message) {
+...
+  }
+  
+  @DELETE
+  @Path("{id}")
+  public Response deleteMessage(@PathParam("id") final int id) {
+...
+  }
+  
+  @GET
+  @Produces("application/json")
+  @Path("{id}")
+  public Response getMessageAsJSON(@PathParam("id") final int id) {
+...
+  }
+  
+  @POST
+  @Consumes("application/json")
+  public Response postMessage(final Message message) {
+...
+  }
+  
+  @GET
+  @Produces("application/json")
+  public List<Message> getMessageAllAsJSON() {
+...
+  }
+}
+\end{lstlisting}
+\noindent
+
+Again, the method bodies are omitted for the sake of readability. The class itself is mapped to the path
+generated from the fully qualified name of the entity, the methods are mapped to the HTTP methods used
+for RESTful web services. \chapter{Services}
+\label{service}
+In this chapter we describe the service language for RESTful webservices built with Xtext. 
+\section{Components}
+
+In the services language, actual services are declared in components. It is just a container, bunching
+up whatever services the developer thinks need to be grouped. Components also declare dependencies to
+other components or even plain Java classes, making their public methods available as extension methods.
+
+A simple component declaring one service is given below.
+
+
+ \begin{lstlisting}[language=service]
+...
+component TestComponent {
+	requires app.MessageDao
+
+	GET message/{id : int} : Message {
+		id.retrieveMessageById()
+	}
+}
+\end{lstlisting}
+\noindent
+
+A component declaration starts with the keyword \lstinline[breakatwhitespace=false,breaklines=true,language=service]°component° followed by a name. In the component's
+header, requirements can be specified. For each of the requirements a field is generated in the target
+class. The field is annotated with \lstinline[breakatwhitespace=false,breaklines=true]°@javax.inject.Inject°, to be able to bind different implementations using
+a dependency injection framework of choice. Further, a component can contain RESTful web services. These
+are declared as a typical RESTful path mapping, which can contain path parameters, like above, as well.
+While the given service just returns a \lstinline[breakatwhitespace=false,breaklines=true]°Message° by using the DAO to retrieve it from the database,
+it is of cause possible to implement much more complex services as well as bindings to other HTTP methods.
+As a restriction of the underlying Java code generation, no two services with the same signature can be declared.
+The resulting Java code is given below.
+
+
+ \begin{lstlisting}[language=Java]
+@Path("app/services/TestComponent")
+public class TestComponent {
+  @Inject
+  private MessageDao messageDao;
+  
+  @GET
+  @Produces("application/json")
+  @Path("message/{id}")
+  public Message message$id(@PathParam("id") final int id) {
+    Message _retrieveMessageById = this.messageDao.retrieveMessageById(id);
+    return _retrieveMessageById;
+  }
+}
+\end{lstlisting}
+\noindent
+
+\chapter{Implementation of the Languages}
+\label{implementation}
+Both, the domain model as well as the service language, have been developed using the
+\href{http://www.xtext.org}{Xtext languagedevelopment framework}. While the domain model language is originally
+bundled with Xtext as an example, the service language was developed from scratch. In this section we
+go into detail how both languages have been implemented.
+\section{The Domain Model Language}
+
+The domain model language is implemented using the Xtext language framework. To define a language, one
+develops a grammar in the Xtext grammar language, which is a straight forward EBNF style grammar language
+with some Xtext specific additions. Also, as we are using the Java type system, the concepts of the domain
+model language have to be mapped to the Java type system by implementing a model inferrer, which also
+contributes to the compiler by adding custom compilation strategies for DAO and service generation.
+
+\subsection{The Grammar}
+
+The header of the domain model grammar is given here:
+
+
+ \begin{lstlisting}[language=Xtext]
+grammar org.eclipse.xtext.example.domainmodel.Domainmodel with org.eclipse.xtext.xbase.Xbase
+
+generate domainmodel "http://www.xtext.org/example/Domainmodel"
+\end{lstlisting}
+\noindent
+
+It simply declares a grammar \lstinline[breakatwhitespace=false,breaklines=true]°org.eclipse.xtext.example.domainmodel.Domainmodel° that inherits all
+rules from another grammar \lstinline[breakatwhitespace=false,breaklines=true]°org.eclipse.xtext.xbase.Xbase°. The inherited grammar defines the Xbase
+expression rules. In the second line, the Xtext generator is told to generate a new EMF meta model with
+the given URI.
+
+The rest of the grammar defines the abstract and concrete syntax of the domain model language.
+
+
+ \begin{lstlisting}[language=Xtext]
+DomainModel:
+	elements+=AbstractElement*;
+
+AbstractElement:
+	PackageDeclaration | Entity | Import;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+PackageDeclaration:
+	'package' name=QualifiedName '{'
+		elements+=AbstractElement*
+	'}';
+
+Entity:
+	'entity' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+		features+=Feature*
+	'}';
+
+Feature:
+	Property | Operation;
+
+Property:
+	(generated?='generated')? name=ValidID ':' type=JvmTypeReference ('->' mappedBy=[Property | QualifiedName])? 
+;
+
+Operation:
+	Validate | Generate;
+
+Validate:
+	 name='validate'
+		body=XBlockExpression;
+
+Generate:
+	 name='generate' 
+		body=XBlockExpression;
+
+QualifiedNameWithWildCard :
+	QualifiedName  ('.' '*')?;
+
+ValidID:
+	(ID | 'generated' | 'validate')
+;
+\end{lstlisting}
+\noindent
+
+The grammar declares a simple entity languages, where entities can be declared in packages and contain
+properties of any Java type and a validation and generation operation. These two operations reuse the
+\lstinline[breakatwhitespace=false,breaklines=true]°XBlockExpression° from the inherited Xbase grammar. While this grammar is very close to the original
+Xtext example, there are major extensions to the Jvm model generation, described in the following section.
+
+
+\subsection{Jvm Model Inference}
+
+The Jvm model inferrer for the entity classes also looks pretty much like the original. Just the generation
+of an id field and the annotation generation has been added here. In addition to the entity class, there are
+two more classes to be mapped to for each entity.
+
+To create a DAO class, the name of the entity plus an addition \lstinline[breakatwhitespace=false,breaklines=true]°DAO° is taken as its class name.
+The generation of the CRUD methods is done by creating a signature for each of them using the Xbase model
+inference mechanism. The methods' bodies are generated by adding a compilation strategy to the Xbase
+compiler like this:
+
+
+ \begin{lstlisting}[language=Java]
+e.toMethod('''retrieve«t.simpleName»ById'''.toString, ref) [
+	visibility = JvmVisibility::PUBLIC
+	parameters += e.toParameter("id", typeof(int).getTypeForName(e))
+	setBody [
+		trace(e)
+		append('''
+		javax.persistence.EntityManager _entityManager = _emf.createEntityManager();
+		_entityManager.getTransaction().begin();
+		«t.simpleName» «t.simpleName.toFirstLower» = _entityManager.find(«t.simpleName».class, id);
+		_entityManager.getTransaction().commit();
+		_entityManager.close();
+		return «t.simpleName.toFirstLower»;
+		'''.toString)
+	]
+]
+\end{lstlisting}
+\noindent
+
+The code above generates a method that retrieves entities by their ID. In the closure, which is handed
+in to the setBody method, the compilation strategy for the method's body is defined. It consists of a
+trace commant, which makes it possible to use the Eclipse debugger for the DSL instead of jumping into
+the generated Java code. The append command takes a string which is simply inserted as the method's body.
+
+The generation of the services classes is similar to that of the DAO classes.
+
+
+ \begin{lstlisting}[language=Java]
+e.toMethod('''get«t.simpleName»AsJSON'''.toString, "javax.ws.rs.core.Response".getTypeForName(e)) [
+	visibility = JvmVisibility::PUBLIC
+	annotations += e.createGetAnnotation()
+	annotations += e.createProducesAnnotation("application/json")
+	annotations += e.createPathAnnotation("{id}")
+	parameters += e.toParameter("id", typeof(int).getTypeForName(e)) [
+		annotations += e.createPathParamAnnotation("id")
+	]
+	setBody [
+		trace(e)
+		append('''
+		«t.simpleName» «t.simpleName.toFirstLower» = _dao.retrieve«t.simpleName»ById(id);
+		if(«t.simpleName.toFirstLower» == null){
+			return Response.status(javax.ws.rs.core.Response.Status.NOT_FOUND).build();
+		}
+		return Response.ok(«t.simpleName.toFirstLower»).build();
+		'''.toString)
+	]
+]
+\end{lstlisting}
+\noindent
+
+Here, a method is generated like for the DAO class. The method is also annotated with some JAX-RS annotations
+(\lstinline[breakatwhitespace=false,breaklines=true]°@GET°, \lstinline[breakatwhitespace=false,breaklines=true]°@Produces°, \lstinline[breakatwhitespace=false,breaklines=true]°@PathParam°). Also a parameter \lstinline[breakatwhitespace=false,breaklines=true]°id° is generated for the method.
+Again, a compilation strategy is added to create the method's body.
+
+
+
+\section{The Services Language}
+
+The service language can be seen as a simple component language, which defines services for each component.
+
+\subsection{The Grammar}
+
+The grammar of the service language is given below.
+
+
+ \begin{lstlisting}[language=Xtext]
+grammar org.eclipse.xtext.services.Services with org.eclipse.xtext.xbase.Xbase
+
+generate services "http://www.eclipse.org/xtext/services/Services"
+
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+
+ServicesFile:
+	component=Component
+;
+
+Component:
+	'package' packageName=QualifiedName
+	(imports+=Import)*
+	"component" name=ValidID 
+		('conforms' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?
+		'{'
+			('requires' requires+=RequireDeclaration (',' requires+=RequireDeclaration)*)?
+		(services+=Service)*
+		'}'
+;
+
+Service:
+	( (get?='GET' | post?='POST' | put?='PUT' | delete?='DELETE') )? name=Path
+		':' type=JvmTypeReference
+		body=XBlockExpression
+;
+
+RequireDeclaration:
+	type=JvmTypeReference (name=ID)?
+;
+
+
+Import:
+	"import" importedNamespace=QualifiedName
+;
+
+Path:
+	segments+=PathSegment ('/' segments+=PathSegment)*
+;
+
+PathSegment:
+	ParameterSegment | SimpleSegment
+;
+
+ParameterSegment: 
+	'{'param=Parameter '}'
+;
+
+Parameter
+	returns types::JvmFormalParameter:
+		name=ValidID ':' parameterType=JvmTypeReference
+;
+
+SimpleSegment:
+	name=ValidID
+;
+\end{lstlisting}
+\noindent
+
+The grammar declares the main concept of components. These components can conform to interfaces, which
+are given in the form of a list of \lstinline[breakatwhitespace=false,breaklines=true]°JvmParametrizedTypeReference°s. Also a component can use other
+classes, which is implemented in the \lstinline[breakatwhitespace=false,breaklines=true]°RequireDeclaration°. 
+The services grammar inherits from Xbase and imports the Java type system. The Xtext generator will
+create a meta model, like for the domain model language, resembling the AST structure of the service
+language.
+
+
+\subsection{JvmModelInference}
+
+The Jvm model inferrer for the service language generates one service class for each component and one
+method for each each service. This is quite straight forward. The methods are mapped to the URLs specified
+by the methods names. The component is mapped to its fully qualified name with each segment beeing translated
+into a path segment. Thus, the resulting mapping is a concatenation of both.
+
+
+ \begin{lstlisting}[language=Xtend]
+acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater [
+	annotations += component.toAnnotation("javax.ws.rs.Path", 
+						(component.packageName.toLowerCase.replace(".","/") + "/" + component.name))
+	for(interface : component.^implements) {
+		superTypes += interface.cloneWithProxies
+	}
+	for(injectedMember: component.requires ){
+		val name = { 
+			if(injectedMember.name != null)
+				injectedMember.name 
+			else 
+				injectedMember.type?.simpleName?.toFirstLower
+		}
+		members += injectedMember.toField( name
+			, injectedMember.type
+		) [
+			annotations += injectedMember.toAnnotation("javax.inject.Inject")
+		]
+	}
+	for(service : component.services) {
+		members += service.toMethod(service.name.segments.join('$')[stringValue], service.type) [
+			if(service.get) {
+				annotations += service.toAnnotation("javax.ws.rs.GET")	
+				annotations += service.toAnnotation("javax.ws.rs.Produces", "application/json, application/xml")
+			} else if(service.post) {
+				annotations += service.toAnnotation("javax.ws.rs.POST")
+				annotations += service.toAnnotation("javax.ws.rs.Consumes", "application/json, application/xml")
+			} else if(service.put) {
+				annotations += service.toAnnotation("javax.ws.rs.PUT")
+				annotations += service.toAnnotation("javax.ws.rs.Consumes", "application/json, application/xml")
+			} else if(service.delete) {
+				annotations += service.toAnnotation("javax.ws.rs.DELETE")
+			}
+			annotations += if(!annotations.empty) service.toAnnotation("javax.ws.rs.Path", 
+				service.name.segments.join('/')[pathStringValue]
+			)
+			for (p : service.name.segments) {
+				if(p instanceof ParameterSegment)
+					parameters += p.toParameter(p.stringValue, (p as ParameterSegment).param.parameterType) [
+						annotations += service.toAnnotation("javax.ws.rs.PathParam", p.stringValue)
+					]
+			}
+			body = service.body
+		]
+	}
+]
+\end{lstlisting}
+\noindent
+
+Required components, classes and interfaces are added. If they are declared with a name, the name is
+used, otherwise a name for the field in synthetizied. The fields are annotated with \lstinline[breakatwhitespace=false,breaklines=true]°javax.inject.Inject°,
+thus making it possible to use an arbitrary dependendy injection framework to inject the actual implementation.
+
+The methods are annotated with the requiered JAX-RS annotations for GET, POST, PUT 
+and DELETE operations. Also, the contents' mime types are set to produce or consume XML as
+well as JSON, enabling the JAX-RS content negotiation mechanism. 
+
+\chapter{Final Remarks on using Xbase}
+\label{remarks}
+This project has originally been started to evaluate the Xbase language and tools. In this section, the
+complication that arose are reviewed and a final conclusion is drawn.
+\section{Inheriting from the Xbase Grammar}
+
+The inheritence mechanism of Xtext works as expected. It was straight forward to inherit from the Xbase
+grammar and thus support Xbase expressions within the developed DSLs. The AST model is built correctly
+by the Xtext generator, which means that the AST for Xbase expressions is added where it has been referenced
+in the DSL's grammar.
+
+
+
+\section{Building the Jvm Model Inferrer and Code Generator}
+
+Building a Jvm Model Inferrer was not more difficult than in Java type system based DSLs that are not
+using Xbase. We had to generate classes and their members as usual, and when it comes to method bodies,
+one simply provides the relevant Xbase expression as the method's body. The same applies to constructors.
+
+The Jvm model inferrered from the DSL is passed to a generic Jvm model compiler, which is also capable
+of compiling Xbase expressions. Thus, the developer does not have to generate the code himself but can
+reuse tooling provided by Xtext for simple DSLs. If there is a need for additional code generation, like
+non-changing boiler plate code, it is still possible to do this by simply defining a so called compiler
+extension in the Jvm Model Inferrer.
+
+
+
+\section{Building tooling}
+
+When it comes to the development of IDE tooling, nothing has changed compared to the implementation of
+DSLs not using Xbase. The tooling for Xbase, like scoping or auto completion, relies heavily on the Jvm
+model inferrence, which defines the context and thus the scope of the Xbase expression. If additional
+tooling is needed, this is achieved like in other Xtext DSL projects, by exchanging class implementations
+using the dependency injection mechanism.
+
+
+\chapter*{List of External Links}
+\noindent\url{http://jcp.org/en/jsr/detail?id=317}
+
+\noindent\url{http://jcp.org/en/jsr/detail?id=339}
+
+\noindent\url{http://jcp.org/en/jsr/detail?id=222}
+
+\noindent\url{http://www.xtext.org}
+
+\listoftodos
+\end{document}

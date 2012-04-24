@@ -146,6 +146,8 @@ Again, a compilation strategy is added to create the method's body.
 
 section[The Services Language]
 
+The service language can be seen as a simple component language, which defines services for each component.
+
 section2[The Grammar]
 
 The grammar of the service language is given below.
@@ -209,14 +211,19 @@ SimpleSegment:
 ;
 ]
 
-The services grammar also inherits from Xbase and imports the Java type system. The Xtext generator will
+The grammar declares the main concept of components. These components can conform to interfaces, which
+are given in the form of a list of code[JvmParametrizedTypeReference]s. Also a component can use other
+classes, which is implemented in the code[RequireDeclaration]. 
+The services grammar inherits from Xbase and imports the Java type system. The Xtext generator will
 create a meta model, like for the domain model language, resembling the AST structure of the service
 language.
 
 section2[JvmModelInference]
 
 The Jvm model inferrer for the service language generates one service class for each component and one
-method for each each service.
+method for each each service. This is quite straight forward. The methods are mapped to the URLs specified
+by the methods names. The component is mapped to its fully qualified name with each segment beeing translated
+into a path segment. Thus, the resulting mapping is a concatenation of both.
 
 code[Xtend][
 acceptor.accept(component.toClass(component.packageName + "." +component.name)).initializeLater \[

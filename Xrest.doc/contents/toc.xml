@@ -22,10 +22,18 @@
 			</topic>
 		</topic>
 		<topic href="contents/04-implementation.html#implementation_3" label="The Services Language" >
-			<topic href="contents/04-implementation.html#implementation_3_1" label="The Grammar" >
+			<topic href="contents/04-implementation.html#implementation_3_2" label="The Grammar" >
 			</topic>
-			<topic href="contents/04-implementation.html#implementation_3_2" label="JvmModelInference" >
+			<topic href="contents/04-implementation.html#implementation_3_3" label="JvmModelInference" >
 			</topic>
+		</topic>
+	</topic>
+	<topic href="contents/05-remarks.html#remarks" label="Final Remarks on using Xbase" >
+		<topic href="contents/05-remarks.html#remarks_2" label="Inheriting from the Xbase Grammar" >
+		</topic>
+		<topic href="contents/05-remarks.html#remarks_3" label="Building the Jvm Model Inferrer and Code Generator" >
+		</topic>
+		<topic href="contents/05-remarks.html#remarks_4" label="Building tooling" >
 		</topic>
 	</topic>
 </toc>

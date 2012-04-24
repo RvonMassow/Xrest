@@ -186,7 +186,10 @@ Again, a compilation strategy is added to create the method&apos;s body.
 </p>
 <a name="implementation_3"></a>
 <h2>The Services Language</h2>
-<a name="implementation_3_1"></a>
+<p>
+The service language can be seen as a simple component language, which defines services for each component.
+</p>
+<a name="implementation_3_2"></a>
 <h3>The Grammar</h3>
 <p>
 The grammar of the service language is given below.
@@ -256,15 +259,20 @@ SimpleSegment:<br/>
 </div>
 </p>
 <p>
-The services grammar also inherits from Xbase and imports the Java type system. The Xtext generator will
+The grammar declares the main concept of components. These components can conform to interfaces, which
+are given in the form of a list of <span class="inlinecode">JvmParametrizedTypeReference</span>s. Also a component can use other
+classes, which is implemented in the <span class="inlinecode">RequireDeclaration</span>. 
+The services grammar inherits from Xbase and imports the Java type system. The Xtext generator will
 create a meta model, like for the domain model language, resembling the AST structure of the service
 language.
 </p>
-<a name="implementation_3_2"></a>
+<a name="implementation_3_3"></a>
 <h3>JvmModelInference</h3>
 <p>
 The Jvm model inferrer for the service language generates one service class for each component and one
-method for each each service.
+method for each each service. This is quite straight forward. The methods are mapped to the URLs specified
+by the methods names. The component is mapped to its fully qualified name with each segment beeing translated
+into a path segment. Thus, the resulting mapping is a concatenation of both.
 </p>
 <p>
 <div class="literallayout">
